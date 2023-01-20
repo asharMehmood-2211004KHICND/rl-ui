@@ -1,0 +1,50 @@
+.topHeader{
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    position: sticky;
+    top: 0;
+}
+
+.topHeaderWrapper{
+    height: 100%;
+    padding: 0px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.topLeft{
+    display: flex;
+    align-items: center;
+}
+
+.logoImage{
+    width: 95px;
+}
+
+.logoText{
+    font-size: 22px;    
+    color: rgb(94, 94, 211);
+    margin-left: 5px;
+}
+
+.topRight{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.topIconContainer{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.avatarTop{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
