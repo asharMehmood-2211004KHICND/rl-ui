@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './TopBar.css'
 import logo from '../images/logo_5.png'
 import dummymale from '../images/male.png'
@@ -8,27 +8,27 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export default function TopBar() {
 
-    
+	let user = sessionStorage.getItem("user_firstname");
 
-    return (
-        <div className='topHeader'>
-            <div className="topHeaderWrapper">
-                <div className="topLeft">
-                <img src={logo} alt="Resource Loop" className="logoImage" /> 
-                    <span className="logoText">
-                    Applicant Tracking System    
-                    </span>
-                    
-                </div>
-                <div className="topRight">
-                <img src={dummymale} className='avatarTop' />
-                    <div className="topIconContainer">    
-                        <span id="user_name"></span> <ArrowDropDownIcon className='menuIcon' />
-                    </div>
-                </div>
+	return (
+		<div className='topHeader'>
+			<div className="topHeaderWrapper">
+				<div className="topLeft">
+					<img src={logo} alt="Resource Loop" className="logoImage" />
+					<span className="logoText">
+						Applicant Tracking System
+					</span>
+
+				</div>
+				<div className="topRight">
+					<img src={dummymale} className='avatarTop' />
+					<div className="topIconContainer">
+						<span id="user_name">{user}</span> <ArrowDropDownIcon className='menuIcon' />
+					</div>
+				</div>
 
 
-            </div>
-        </div>
-    )
+			</div>
+		</div>
+	)
 }

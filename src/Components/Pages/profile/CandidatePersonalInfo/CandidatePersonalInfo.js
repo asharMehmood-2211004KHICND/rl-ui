@@ -6,7 +6,7 @@ import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import "./CandidatePersonalInfo.css";
 import { AlertMessage } from "../AlertMessage/AlertMessage";
-import swal from 'sweetalert';
+//import swal from 'sweetalert';
 
 
 function CandidatePersonalInfo() {
@@ -117,6 +117,7 @@ function CandidatePersonalInfo() {
             body: JSON.stringify(data)
         })
             .then(response => {
+                console.log(response);
                 const res = response ? response.ok : false;
                 const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 const alertUser = res ? 'info' : 'danger';
@@ -128,10 +129,10 @@ function CandidatePersonalInfo() {
                     setShowAlert(false)
                 }, "2000")
 
-                swal({
-                    title: "Personal Information Saved!",
-                    icon: "success",
-                })
+                // swal({
+                //     title: "Personal Information Saved!",
+                //     icon: "success",
+                // })
             })
             .catch(err => {
                 const updateUser = 'Error saving info!';
