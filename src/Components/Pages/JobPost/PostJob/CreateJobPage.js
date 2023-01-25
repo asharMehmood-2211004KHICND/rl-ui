@@ -4,11 +4,13 @@ import { Calander } from "../components/Calander";
 import { MultiSelectDropDown } from "../components/MultiSelectDropDown";
 import { SimpleDropDown } from "../components/SimpleDropDown";
 import { Textfeild } from "../components/Textfeild";
-
-
 import styled from "./CreateJobPage.module.css";
 
+import env from "react-dotenv";
+
+
 const CreateJobPage = () => {
+
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
   const [department, setDepartment] = useState(""); // for single drop down
@@ -21,7 +23,7 @@ const CreateJobPage = () => {
   const [experienceLevel, setExperienceLevel] = useState(""); // for single drop down
   const [perksAndBenefits, setPerksAndBenefits] = useState([]);
   const [travelling, setTravelling] = useState(""); // for single drop down
-  const [vacancies, setVacancies] = useState();
+  const [vacancies, setVacancies] = useState("");
   const [closingDate, setClosingDate] = useState(null);
   const [selectedResponsibilites, setSelectedResponsibilities] = useState([]);
 
@@ -125,7 +127,7 @@ const CreateJobPage = () => {
     };
 
     fetch(
-      `http://localhost:8080/job/post`,
+      env.REACT_APP_API_URL1,
       {
         method: "POST",
         headers: {
