@@ -59,7 +59,7 @@ a:hover{
   color: red;
 }
 
-form {
+.formLogin {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,12 +71,12 @@ form {
   grid-row: 1 / 2;
 }
 
-form.sign-up-form {
+.formLogin.sign-up-form {
   opacity: 0;
   z-index: 1;
 }
 
-form.sign-in-form {
+.formLogin.sign-in-form {
   z-index: 2;
 }
 

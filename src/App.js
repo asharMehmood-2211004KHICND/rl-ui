@@ -6,6 +6,7 @@ import SignupSignin from './Components/Pages/Login/SignupSignin';
 import ForgetPassword from './Components/Pages/Login/ForgetPassword';
 import ErrorPage from './Components/Pages/Error/ErrorPage';
 import SideBar from './Components/SideBar/SideBar';
+import CandidatePersonalInfo from './Components/Pages/profile/CandidatePersonalInfo/CandidatePersonalInfo'
 import {
 	BrowserRouter,
 	Routes,
@@ -46,6 +47,7 @@ function App() {
 								<Route path="/" element={<Home />} ></Route>
 								<Route path="/Dashboard" element={<Home />} ></Route>
 								<Route path="/Home" element={<Home />} ></Route>
+								<Route path="/profile" element={<CandidatePersonalInfo />} ></Route>
 							</Routes>
 
 						</BrowserRouter>

@@ -15,6 +15,10 @@ export default function SideBar() {
         window.location.assign('/');
     }
 
+    function profile(){
+        window.location.assign('/profile');
+    }
+
     return (
         <div className="sideBar">
 
@@ -50,7 +54,7 @@ export default function SideBar() {
                     <div className="sideBarTitle">Personal</div>
 
                     <ul className="sideBarList">
-                        <li className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
+                        <li onClick={profile} className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
                         <li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li> 
                     </ul>
                 </div>

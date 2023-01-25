@@ -94,38 +94,40 @@ function SignupSignin() {
 				email: login_email,
 				password: login_password
 			}
-				fetch("http://54.234.80.15:8080/auth/login", {
-					method: 'POST',
-					body: JSON.stringify(data),
-					headers: {
-						'Content-type': 'application/json; charset=UTF-8',
-					},
-				}).then((response) => {
-					if (response.status == 200) {
-						sessionStorage.clear();
-						response.json().then(function (result) {
+			fetch("http://54.234.80.15:8080/auth/login", {
+				method: 'POST',
+				body: JSON.stringify(data),
+				headers: {
+					'Content-type': 'application/json; charset=UTF-8',
+				},
+			}).then((response) => {
+				if (response.status == 200) {
+					sessionStorage.clear();
+					response.json().then(function (result) {
 
-							sessionStorage.setItem("user_id", result.id);
-							sessionStorage.setItem('user_email', result.email);
-							sessionStorage.setItem('user_firstname', result.first_name);
-							sessionStorage.setItem('user_lastname', result.last_name);
-							sessionStorage.setItem('user_roleid', result.role.id);
-							sessionStorage.setItem('user_rolename', result.role.name);
-							
-							
-
-						});
-			window.location.assign('/Dashboard');
+						sessionStorage.setItem("user_id", result.id);
+						sessionStorage.setItem('user_email', result.email);
+						sessionStorage.setItem('user_firstname', result.first_name);
+						sessionStorage.setItem('user_lastname', result.last_name);
+						sessionStorage.setItem('user_roleid', result.role.id);
+						sessionStorage.setItem('user_rolename', result.role.name);
+					});
+					window.location.assign('/Dashboard');
 
 
-				setLoginEmail('');
-				setLoginPassword('');
+					setLoginEmail('');
+					setLoginPassword('');
+				}
+				else if (response.status == 404) {
+					swal({
+						title: "Invalid Email or Password!",
+						icon: "error",
+
+					});
+				}
 			}
-			else if (response.status == 404) {
-				swal("Invalid Email or Password!");
-			}}
 			);
-	//Local API Call Login
+			//Local API Call Login
 
 
 			/**
@@ -231,51 +233,51 @@ function SignupSignin() {
 			);
 			/** Registration API Live Hunain*/
 
-/** Registration API LIve abdul wasey */
-		// 	const data = {
-		// 		fullname: first_name + ' ' + last_name,
-		// 		email: email,
-		// 		username: email,
-		// 		password: password
-		// 	}
-		// 	fetch("http://100.25.33.0:8080/auth-api/register", {
-		// 		method: 'POST',
-		// 		body: JSON.stringify(data),
-		// 		headers: {
-		// 			'Content-type': 'application/json; charset=UTF-8',
-		// 		},
-		// 	}).then((response) => {
-		// 		if (response.status == 200) {
+			/** Registration API LIve abdul wasey */
+			// 	const data = {
+			// 		fullname: first_name + ' ' + last_name,
+			// 		email: email,
+			// 		username: email,
+			// 		password: password
+			// 	}
+			// 	fetch("http://100.25.33.0:8080/auth-api/register", {
+			// 		method: 'POST',
+			// 		body: JSON.stringify(data),
+			// 		headers: {
+			// 			'Content-type': 'application/json; charset=UTF-8',
+			// 		},
+			// 	}).then((response) => {
+			// 		if (response.status == 200) {
 
-		// 			response.json().then(function (result) {
+			// 			response.json().then(function (result) {
 
-		// 				if (result.message == "Account Created Successfully") {
-		// 					swal({
-		// 						title: "Thanks For Registration!",
-		// 						icon: "success",
-		// 						buttons: {
-		// 							confirm: { text: 'Login', className: 'btn' },
-		// 						},
-		// 					});
-		// 					setFirst_name('');
-		// 					setLast_name('');
-		// 					setEmail('');
-		// 					setPassword('');
-		// 					changeSignupMode('');
-		// 				}
-		// 				else {
-		// 					swal({
-		// 						title: result.message,
-		// 						icon: "info"
-		// 					});
-		// 				}
-		// 			});
-				
-		// 		}	
-		// }
-		// );
+			// 				if (result.message == "Account Created Successfully") {
+			// 					swal({
+			// 						title: "Thanks For Registration!",
+			// 						icon: "success",
+			// 						buttons: {
+			// 							confirm: { text: 'Login', className: 'btn' },
+			// 						},
+			// 					});
+			// 					setFirst_name('');
+			// 					setLast_name('');
+			// 					setEmail('');
+			// 					setPassword('');
+			// 					changeSignupMode('');
+			// 				}
+			// 				else {
+			// 					swal({
+			// 						title: result.message,
+			// 						icon: "info"
+			// 					});
+			// 				}
+			// 			});
 
-		/** Registration API LIve abdul wasey */
+			// 		}	
+			// }
+			// );
+
+			/** Registration API LIve abdul wasey */
 
 
 		}
@@ -294,7 +296,7 @@ function SignupSignin() {
 			<div className={containerClass}>
 				<div className="forms-container">
 					<div className="signin-signup">
-						<form action="#" className="sign-in-form" onSubmit={handleSubmit}>
+						<form action="#" className="formLogin sign-in-form" onSubmit={handleSubmit}>
 							<h2 className="title">Sign in</h2>
 							<div className="input-field">
 								<i className="fa-solid fa-user"></i>
@@ -326,7 +328,7 @@ function SignupSignin() {
 							</div>
 
 						</form>
-						<form action="#" className="sign-up-form" onSubmit={handleSignupSubmit}>
+						<form action="#" className="formLogin sign-up-form" onSubmit={handleSignupSubmit}>
 							<h2 className="title">Sign up</h2>
 							<div className="input-field">
 								<i className="fas fa-user"></i>
