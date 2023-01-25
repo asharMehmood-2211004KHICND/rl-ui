@@ -4,8 +4,45 @@
 
 .pages{
     flex: 5;
-    background-color: rgb(217, 240, 240);
-    padding: 20px;
+    background-color: rgb(255, 255, 255);
+    margin: 20px;
+    border: 1px solid rgb(235, 234, 234);
+    scroll-behavior: smooth;
+}
+
+
+
+.btn-darkblue{
+    background-color:#205295;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.btn-darkblue:hover{
+    background-color:#144272;
+}
+
+.btn-lightblue{
+    background-color:#2C74B3;
+    width: fit-content;
+    padding: 7px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.5s;
+}
+
+.btn-lightblue:hover{
+    background-color:#144272;
+}
+
+
+.btn-danger:hover{
+    background-color: rgb(202, 81, 68);
 }
 
 .btn-danger{
@@ -15,22 +52,23 @@
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+    transition: all 0.5s;
 }
 .btn-danger:hover{
     background-color: rgb(202, 81, 68);
-    width: fit-content;
-    padding: 7px;
-    border-radius: 5px;
-    color: #fff;
-    cursor: pointer;
 }
 
 .btn-success{
-    background-color: rgb(99, 171, 48);
+    background-color: rgb(87, 167, 30);
     width: fit-content;
     padding: 7px;
     border-radius: 5px;
     color: #fff;
     cursor: pointer;
+    transition: all 0.5s;
+}
+
+.btn-success:hover{
+    background-color: rgb(77, 131, 15);
 }
 

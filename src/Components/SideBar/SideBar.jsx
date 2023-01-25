@@ -5,7 +5,16 @@ import QueuePlayNextIcon from '@mui/icons-material/QueuePlayNext';
 import TodayIcon from '@mui/icons-material/Today';
 import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import LogoutIcon from '@mui/icons-material/Logout';
+import AccountBoxIcon from '@mui/icons-material/AccountBox';
+
 export default function SideBar() {
+
+    function logout(){
+        sessionStorage.clear();
+        window.location.assign('/');
+    }
+
     return (
         <div className="sideBar">
 
@@ -35,6 +44,15 @@ export default function SideBar() {
                     </ul>
 
 
+                </div>
+
+                <div className="sideBarMenu">
+                    <div className="sideBarTitle">Personal</div>
+
+                    <ul className="sideBarList">
+                        <li className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
+                        <li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li> 
+                    </ul>
                 </div>
             </div>
 

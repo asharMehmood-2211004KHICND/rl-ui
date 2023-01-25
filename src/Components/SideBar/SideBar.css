@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;  
     color: #555;
+    cursor: pointer;
 }
 
 .sideBarListItem.active, .sideBarListItem:hover{

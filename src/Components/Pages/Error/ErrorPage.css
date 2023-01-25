@@ -1,0 +1,20 @@
+.error-page{
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.error-heading{
+    font-size: 50px;
+}
+
+.error-message{
+    font-size: 35px;
+}
+
+.error-image{
+    width: 20%;
+}
