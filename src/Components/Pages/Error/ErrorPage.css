@@ -1,5 +1,4 @@
 .error-page{
-    text-align: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,4 +16,5 @@
 
 .error-image{
     width: 20%;
+    margin-bottom: 80px;
 }

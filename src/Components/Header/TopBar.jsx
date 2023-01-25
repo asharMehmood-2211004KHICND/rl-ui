@@ -1,9 +1,15 @@
 import React from 'react'
 import './TopBar.css'
-import logo from './image.png'
+import logo from '../images/logo_5.png'
+import dummymale from '../images/male.png'
+import dummyfemale from '../images/female.png'
+
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 
 export default function TopBar() {
+
+    
+
     return (
         <div className='topHeader'>
             <div className="topHeaderWrapper">
@@ -15,9 +21,9 @@ export default function TopBar() {
                     
                 </div>
                 <div className="topRight">
-                <img src='https://cdn.truelancer.com/user-picture/57794-55041a9d6de42.jpg' className='avatarTop' />
+                <img src={dummymale} className='avatarTop' />
                     <div className="topIconContainer">    
-                        <span>User Profile</span> <ArrowDropDownIcon className='menuIcon' />
+                        <span id="user_name"></span> <ArrowDropDownIcon className='menuIcon' />
                     </div>
                 </div>
 

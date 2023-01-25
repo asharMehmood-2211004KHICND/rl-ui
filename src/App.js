@@ -3,6 +3,7 @@ import './App.css';
 import TopBar from './Components/Header/TopBar';
 import Home from './Components/Pages/Home/Home';
 import SignupSignin from './Components/Pages/Login/SignupSignin';
+import ForgetPassword from './Components/Pages/Login/ForgetPassword';
 import ErrorPage from './Components/Pages/Error/ErrorPage';
 import SideBar from './Components/SideBar/SideBar';
 import {
@@ -17,7 +18,20 @@ function App() {
 	const [token, setToken] = useState();
 
 	if (sessionStorage.getItem('user_id') == null) {
-		return <SignupSignin />
+
+		return (
+			<>
+				<BrowserRouter>
+					<Routes>
+						<Route exact path="*" element={<ErrorPage />} ></Route>
+						<Route path="/" element={<SignupSignin />} ></Route>
+						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
+						<Route path="/forgetpassword" element={<ForgetPassword />} ></Route>
+					</Routes>
+				</BrowserRouter>
+
+			</>
+		)
 	}
 	else {
 		return (
@@ -31,6 +45,7 @@ function App() {
 								<Route exact path="*" element={<ErrorPage />} ></Route>
 								<Route path="/" element={<Home />} ></Route>
 								<Route path="/Dashboard" element={<Home />} ></Route>
+								<Route path="/Home" element={<Home />} ></Route>
 							</Routes>
 
 						</BrowserRouter>
