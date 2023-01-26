@@ -7,6 +7,7 @@ import { Textfeild } from "../components/Textfeild";
 import styled from "./CreateJobPage.module.css";
 
 import env from "react-dotenv";
+import swal from "sweetalert";
 
 
 const CreateJobPage = () => {
@@ -94,7 +95,11 @@ const CreateJobPage = () => {
       !perksAndBenefits.length ||
       !experienceLevel.length
     ) {
-      alert("Please fill out all the required fields");
+      // alert("Please fill out all the required fields");
+      swal({
+        title:"Please fill out all the required fields",
+        icon:"error"
+      })
       return;
     }
 
@@ -142,7 +147,11 @@ const CreateJobPage = () => {
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
-        alert("sucessful");
+        // alert("sucessful");
+        swal({
+          title:"Job posted sucessfully!",
+          icon:"success"
+        })
       })
       .catch((err) => {
         // setError("Server is busy or crediential is invalid");
