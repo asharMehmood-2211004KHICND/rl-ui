@@ -14,6 +14,7 @@ import {
 } from "react-router-dom";
 
 import CreateJobPage from './Components/Pages/JobPost/PostJob/CreateJobPage.js';
+import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 						<Route path="/" element={<SignupSignin />} ></Route>
 						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
 						<Route path="/forgetpassword" element={<ForgetPassword />} ></Route>
-						<Route path="/createJob" element={< SignupSignin />} ></Route>
+						<Route path="/UpdateJobPage" element={< UpdateJobPage />} ></Route>
 					</Routes>
 				</BrowserRouter>
 			</>

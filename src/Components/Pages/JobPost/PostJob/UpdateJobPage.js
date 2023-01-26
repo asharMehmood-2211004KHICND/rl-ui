@@ -10,7 +10,7 @@ import env from "react-dotenv";
 import swal from "sweetalert";
 
 
-const CreateJobPage = () => {
+const UpdateJobPage = () => {
 
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -340,7 +340,7 @@ const CreateJobPage = () => {
               ></Calander>
        <div className="button">
             <button className={styled.button} onClick={handleSubmit}>
-            SUBMIT
+            UPDATE
           </button>
           </div>
           </div>
@@ -352,4 +352,4 @@ const CreateJobPage = () => {
   );
 };
 
-export default CreateJobPage;
+export default UpdateJobPage;
