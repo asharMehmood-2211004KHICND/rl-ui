@@ -201,6 +201,7 @@ const CreateJobPage = () => {
                 options={departmentOptions}
               ></SimpleDropDown>
             </div>
+        
             <div className={styled.responsibilities}>
               <h4 className={styled.heading5}>Responsibilities</h4>
 
@@ -211,7 +212,7 @@ const CreateJobPage = () => {
               ></MultiSelectDropDown>
             </div>
           </div>
-
+          <br></br>
           <div className={styled.div3}>
             <div className={styled.education}>
               <h4 className={styled.heading6}>Degrees/Education</h4>
@@ -283,11 +284,7 @@ const CreateJobPage = () => {
           </div>
 
           <br></br>
-          <br></br>
-          <br></br>
-
-          <br></br>
-
+       
           <section className={styled.form2}>
             <div className={styled.div6}>
               <div className={styled.experience}>
@@ -310,6 +307,7 @@ const CreateJobPage = () => {
                 ></Textfeild>
               </div>
             </div>
+            <br></br>
             <div className={styled.div7}>
               <div className={styled.gender}>
                 <h4 className={styled.heading14}>Gender</h4>
@@ -331,18 +329,23 @@ const CreateJobPage = () => {
                 ></SimpleDropDown>
               </div>
             </div>
-
+            <br></br>
+            <h4 className={styled.heading16}>Closing date</h4>
+          
             <div className={styled.closingdate}>
-              <h4 className={styled.heading16}>Closing date</h4>
+  
               <Calander
                 selectedDate={closingDate}
                 setSelectedDate={setClosingDate}
               ></Calander>
-            </div>
-          </section>
-          <button className={styled.button} onClick={handleSubmit}>
+       <div className="button">
+            <button className={styled.button} onClick={handleSubmit}>
             SUBMIT
           </button>
+          </div>
+          </div>
+          </section>
+         
         </form>
       </div>
     </div>
