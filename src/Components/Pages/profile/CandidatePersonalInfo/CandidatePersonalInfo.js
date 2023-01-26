@@ -84,7 +84,9 @@ function CandidatePersonalInfo() {
         setPhone(val);
     }, []);
 
-    const url = 'http://192.168.0.128:8080/api/personal-information'
+    // const url = 'http://192.168.0.128:8080/api/personal-information'
+    const url = 'http://35.168.113.87:8080/api/personal-information'
+    
 
     async function onSubmit(event) {
         event.preventDefault();
