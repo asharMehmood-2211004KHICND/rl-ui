@@ -17,6 +17,9 @@ useEffect(() => {
                     { title: "Name"},
                     { title: "Position"},
                 ],
+                buttons: [
+                    'pdf'
+                ],
                 destroy: true,  // I think some clean up is happening here
                 searching: true
         }
