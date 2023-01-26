@@ -1,7 +1,7 @@
 {
 	"name": "resourceloop",
 	"version": "0.1.0",
-	"homepage": "https://afnanyousuf89.github.io/resourceloop",
+	"homepage": "https://afnanyousuf89.github.io/gh-pages",
 	"private": true,
 	"dependencies": {
 		"@emotion/react": "^11.10.5",
