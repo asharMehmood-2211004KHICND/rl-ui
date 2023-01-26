@@ -8,6 +8,7 @@ import styled from "./CreateJobPage.module.css";
 
 import env from "react-dotenv";
 import swal from "sweetalert";
+import { style } from "@mui/system";
 
 
 const CreateJobPage = () => {
@@ -165,7 +166,7 @@ const CreateJobPage = () => {
         {" "}
         
         <h1 className={styled.heading}>CREATE JOB PAGE</h1>
-        
+        <div className={styled.FormCreateJob}>
         <form onSubmit={handleSubmit}>
           
           <div className={styled.enterjobtitle}>
@@ -347,6 +348,7 @@ const CreateJobPage = () => {
           </section>
          
         </form>
+        </div>
       </div>
     </div>
   );

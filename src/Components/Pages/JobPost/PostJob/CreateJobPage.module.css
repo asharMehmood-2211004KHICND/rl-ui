@@ -76,7 +76,7 @@ padding-bottom: 11px;
     font-family: sans-serif;
    
 }
-form {
+.FormCreateJob {
     /* display: inline; */
     right: 85px;
     position: relative;
