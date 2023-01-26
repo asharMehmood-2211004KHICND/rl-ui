@@ -30,7 +30,6 @@ function App() {
 						<Route exact path="*" element={<ErrorPage />} ></Route>
 						<Route path="/" element={<SignupSignin />} ></Route>
 						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
-						<Route path="/forgetpassword" element={<ForgetPassword />} ></Route>
 						<Route path="/forgetpassword" element={<VerificationEmail/>} ></Route>
 						<Route path="/createJob" element={< SignupSignin />} ></Route>
 					</Routes>
