@@ -3,7 +3,6 @@ import './App.css';
 import TopBar from './Components/Header/TopBar';
 import Home from './Components/Pages/Home/Home';
 import SignupSignin from './Components/Pages/Login/SignupSignin';
-import ForgetPassword from './Components/Pages/Login/ForgetPassword';
 import ErrorPage from './Components/Pages/Error/ErrorPage';
 import SideBar from './Components/SideBar/SideBar';
 import CandidatePersonalInfo from './Components/Pages/profile/CandidatePersonalInfo/CandidatePersonalInfo'
@@ -14,6 +13,8 @@ import {
 } from "react-router-dom";
 
 import CreateJobPage from './Components/Pages/JobPost/PostJob/CreateJobPage.js';
+import VerificationEmail from './Components/Pages/Login/VerificationEmail';
+import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
 						<Route exact path="*" element={<ErrorPage />} ></Route>
 						<Route path="/" element={<SignupSignin />} ></Route>
 						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
-						<Route path="/forgetpassword" element={<ForgetPassword />} ></Route>
+						<Route path="/forgetpassword" element={<VerificationEmail/>} ></Route>
 						<Route path="/createJob" element={< SignupSignin />} ></Route>
 					</Routes>
 				</BrowserRouter>
@@ -51,6 +52,7 @@ function App() {
 								<Route path="/Home" element={<Home />} ></Route>
 								<Route path="/profile" element={<CandidatePersonalInfo />} ></Route>
 								<Route path="/createJob" element={< CreateJobPage />} ></Route>	
+								<Route path="/updateJob" element={< UpdateJobPage />} ></Route>
 							</Routes>
 						</BrowserRouter>
 

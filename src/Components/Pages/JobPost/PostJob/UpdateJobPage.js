@@ -8,10 +8,9 @@ import styled from "./CreateJobPage.module.css";
 
 import env from "react-dotenv";
 import swal from "sweetalert";
-import { style } from "@mui/system";
 
 
-const CreateJobPage = () => {
+const UpdateJobPage = () => {
 
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -166,7 +165,7 @@ const CreateJobPage = () => {
         {" "}
         
         <h1 className={styled.heading}>CREATE JOB PAGE</h1>
-        <div className={styled.FormCreateJob}>
+        
         <form onSubmit={handleSubmit}>
           
           <div className={styled.enterjobtitle}>
@@ -341,17 +340,16 @@ const CreateJobPage = () => {
               ></Calander>
        <div className="button">
             <button className={styled.button} onClick={handleSubmit}>
-            SUBMIT
+            UPDATE
           </button>
           </div>
           </div>
           </section>
          
         </form>
-        </div>
       </div>
     </div>
   );
 };
 
-export default CreateJobPage;
+export default UpdateJobPage;
