@@ -94,7 +94,7 @@ function SignupSignin() {
 				email: login_email,
 				password: login_password
 			}
-			fetch("http://54.234.80.15:8080/auth/login", {
+			fetch("http://34.204.50.31:8080/auth/login", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
@@ -194,7 +194,7 @@ function SignupSignin() {
 					id: 1
 				}
 			}
-			fetch("http://54.234.80.15:8080/auth/register", {
+			fetch("http://34.204.50.31:8080/auth/register", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
