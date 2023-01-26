@@ -96,6 +96,7 @@ function SignupSignin() {
 			}
 			fetch("http://34.204.50.31:8080/auth/login", {
 				method: 'POST',
+				referrerPolicy: "unsafe_url" ,
 				body: JSON.stringify(data),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -196,6 +197,7 @@ function SignupSignin() {
 			}
 			fetch("http://34.204.50.31:8080/auth/register", {
 				method: 'POST',
+				referrerPolicy: "unsafe_url",
 				body: JSON.stringify(data),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
