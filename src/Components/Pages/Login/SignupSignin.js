@@ -15,10 +15,6 @@ import swal from 'sweetalert';
 function SignupSignin() {
 
 
-
-
-
-
 	const [first_name, setFirst_name] = useState('');
 	const [last_name, setLast_name] = useState('');
 	const [email, setEmail] = useState('');
@@ -34,6 +30,8 @@ function SignupSignin() {
 			errors.email = "Email address is required";
 		} else if (!/\S+@\S+\.\S+/.test(values.email)) {
 			errors.email = "Email address is invalid";
+		} else if (/^\d/.test(values.email)) {
+			errors.email = "Email should not contain number in start";
 		}
 		if (!values.password) {
 			errors.password = "Password is required";
