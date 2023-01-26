@@ -9,21 +9,21 @@ function VerificationEmail() {
   //validation code
   const [email, setEmail] = useState('');
   const [errors, setErrors] = useState({});
-  
 
-  const validate = (values)=>{
+
+  const validate = (values) => {
     let errors = {};
     if (!values.email) {
-        errors.email = "Email address is required";
-      } else if (!/\S+@\S+\.\S+/.test(values.email)) {
-        errors.email = "Email address is invalid";
-      }
+      errors.email = "Email address is required";
+    } else if (!/\S+@\S+\.\S+/.test(values.email)) {
+      errors.email = "Email address is invalid";
+    }
     return errors;
   }
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const errors = validate({email});
+    const errors = validate({ email });
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       // If there are no errors, make the login request to the server
@@ -42,17 +42,17 @@ function VerificationEmail() {
           <div className="signin-signup">
             <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
               <h2 className="title">Enter Email </h2>
-      
+
               <div className="input-field">
-              <i className="fa-solid fa-user"></i>
+                <i className="fa-solid fa-user"></i>
                 <input type="text"
-                value={email} onChange={(e) => setEmail(e.target.value)} 
-                placeholder="Verification Email"  />
+                  value={email} onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Verification Email" />
               </div>
               {errors.email && <p className="error">{errors.email}</p>}
               <input type="submit" value="Send Link" className="btn solid" />
             </form>
-          
+
           </div>
         </div>
 
@@ -60,7 +60,14 @@ function VerificationEmail() {
           <div className="panel left-panel">
             <div className="content">
               <div className="mainlogo"><img src={mainlogo}></img></div>
+              <p>
 
+              </p>
+              <a href="/">
+                <button className="btn transparent" >
+                  Sign In
+                </button>
+              </a>
             </div>
             <img id="resetimg" src={resetimg} className="image" alt="" />
           </div>
