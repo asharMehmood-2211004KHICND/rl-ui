@@ -94,9 +94,9 @@ function SignupSignin() {
 				email: login_email,
 				password: login_password
 			}
-			fetch("http://34.204.50.31:8080/auth/login", {
+			//fetch("http://34.204.50.31:8080/auth/login", {
+			fetch("http://54.196.142.166:8080/auth/login", {
 				method: 'POST',
-				referrerPolicy: "unsafe_url" ,
 				body: JSON.stringify(data),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
@@ -195,9 +195,9 @@ function SignupSignin() {
 					id: 1
 				}
 			}
-			fetch("http://34.204.50.31:8080/auth/register", {
+			//fetch("http://34.204.50.31:8080/auth/register", {
+			fetch("http://54.196.142.166:8080/auth/register", {
 				method: 'POST',
-				referrerPolicy: "unsafe_url",
 				body: JSON.stringify(data),
 				headers: {
 					'Content-type': 'application/json; charset=UTF-8',
