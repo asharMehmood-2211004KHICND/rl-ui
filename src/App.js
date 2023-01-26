@@ -31,7 +31,6 @@ function App() {
 						<Route path="/" element={<SignupSignin />} ></Route>
 						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
 						<Route path="/forgetpassword" element={<ForgetPassword />} ></Route>
-						<Route path="/UpdateJobPage" element={< UpdateJobPage />} ></Route>
 					</Routes>
 				</BrowserRouter>
 			</>
@@ -52,6 +51,7 @@ function App() {
 								<Route path="/Home" element={<Home />} ></Route>
 								<Route path="/profile" element={<CandidatePersonalInfo />} ></Route>
 								<Route path="/createJob" element={< CreateJobPage />} ></Route>	
+								<Route path="/updateJob" element={< UpdateJobPage />} ></Route>
 							</Routes>
 						</BrowserRouter>
 
