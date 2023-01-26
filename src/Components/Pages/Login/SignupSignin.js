@@ -93,7 +93,7 @@ function SignupSignin() {
 				password: login_password
 			}
 			//fetch("http://34.204.50.31:8080/auth/login", {
-			fetch("http://54.196.142.166:8080/auth/login", {
+			fetch("http://54.227.72.189:8080/auth/login", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
@@ -194,7 +194,7 @@ function SignupSignin() {
 				}
 			}
 			//fetch("http://34.204.50.31:8080/auth/register", {
-			fetch("http://54.196.142.166:8080/auth/register", {
+			fetch("http://54.227.72.189:8080/auth/register", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
