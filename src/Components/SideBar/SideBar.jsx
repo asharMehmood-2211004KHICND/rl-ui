@@ -15,6 +15,15 @@ export default function SideBar() {
         window.location.assign('/');
     }
 
+    function home(){
+        window.location.assign('/Home');
+    }
+    
+
+    function createJob(){
+        window.location.assign('/createJob');
+    }
+
     function profile(){
         window.location.assign('/profile');
     }
@@ -27,8 +36,8 @@ export default function SideBar() {
                     <div className="sideBarTitle">Dashboard</div>
 
                     <ul className="sideBarList">
-                        <li className="sideBarListItem active"><HomeIcon className="menuIcon" /> Home</li>
-                        <li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" />  Openings</li> 
+                        <li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
+                        <li onClick={createJob} className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" />  Openings</li> 
                         <li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
                         <li className="sideBarListItem"><GroupAddIcon className="menuIcon" /> Candidates</li>
                         <li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
