@@ -6,6 +6,7 @@ import signin from './img/signin.svg';
 import signup from './img/signup.svg';
 import './css/signupandsignin.css';
 import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 //import { useLinkedIn } from 'react-linkedin-login-oauth2';
 
@@ -14,6 +15,7 @@ import swal from 'sweetalert';
 
 function SignupSignin() {
 
+	const navigate = useNavigate();
 
 	const [first_name, setFirst_name] = useState('');
 	const [last_name, setLast_name] = useState('');
@@ -110,8 +112,9 @@ function SignupSignin() {
 						sessionStorage.setItem('user_lastname', result.last_name);
 						sessionStorage.setItem('user_roleid', result.role.id);
 						sessionStorage.setItem('user_rolename', result.role.name);
+						navigate('/Dashboard');
 					});
-					window.location.assign('/Dashboard');
+					
 
 
 					setLoginEmail('');

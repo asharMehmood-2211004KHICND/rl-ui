@@ -7,68 +7,71 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import { useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
 
-    function logout(){
-        sessionStorage.clear();
-        window.location.assign('/');
-    }
+	const navigate = useNavigate();
 
-    function home(){
-        window.location.assign('/Home');
-    }
-    
+	function logout() {
+		sessionStorage.clear();
+		navigate('/');
+	}
 
-    function createJob(){
-        window.location.assign('/createJob');
-    }
-
-    function profile(){
-        window.location.assign('/profile');
-    }
-
-    return (
-        <div className="sideBar">
-
-            <div className="sideBarWrapper">
-                <div className="sideBarMenu">
-                    <div className="sideBarTitle">Dashboard</div>
-
-                    <ul className="sideBarList">
-                        <li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
-                        <li onClick={createJob} className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" />  Openings</li> 
-                        <li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
-                        <li className="sideBarListItem"><GroupAddIcon className="menuIcon" /> Candidates</li>
-                        <li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
-                    </ul>
+	function home() {
+		navigate('/Home');
+	}
 
 
-                </div>
+	function createJob() {
+		navigate('/createJob');
+	}
 
-                <div className="sideBarMenu">
-                    <div className="sideBarTitle">Other Links</div>
+	function profile() {
+		navigate('/profile');
+	}
 
-                    <ul className="sideBarList">
-                        <li className="sideBarListItem"><HomeIcon className="menuIcon" />Job Types</li>
-                        <li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" />Locations</li> 
-                        <li className="sideBarListItem"><TodayIcon className="menuIcon" />Skills</li>
-                        <li className="sideBarListItem"><GroupAddIcon className="menuIcon" />Questions</li>
-                    </ul>
+	return (
+		<div className="sideBar">
+
+			<div className="sideBarWrapper">
+				<div className="sideBarMenu">
+					<div className="sideBarTitle">Dashboard</div>
+
+					<ul className="sideBarList">
+						<li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
+						<li onClick={createJob} className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" />  Openings</li>
+						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
+						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" /> Candidates</li>
+						<li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
+					</ul>
 
 
-                </div>
+				</div>
 
-                <div className="sideBarMenu">
-                    <div className="sideBarTitle">Personal</div>
+				<div className="sideBarMenu">
+					<div className="sideBarTitle">Other Links</div>
 
-                    <ul className="sideBarList">
-                        <li onClick={profile} className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
-                        <li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li> 
-                    </ul>
-                </div>
-            </div>
+					<ul className="sideBarList">
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" />Job Types</li>
+						<li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" />Locations</li>
+						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Skills</li>
+						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" />Questions</li>
+					</ul>
 
-        </div>
-    )
+
+				</div>
+
+				<div className="sideBarMenu">
+					<div className="sideBarTitle">Personal</div>
+
+					<ul className="sideBarList">
+						<li onClick={profile} className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
+						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
+					</ul>
+				</div>
+			</div>
+
+		</div>
+	)
 }
