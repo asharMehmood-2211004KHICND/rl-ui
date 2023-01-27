@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import mainlogo from './img/logo_5.png';
-import './css/forgot.css';
+import styled from './css/forgot.module.css';
 import resetimg from './img/reset_img2.svg';
 
 function SignupSignin() {
@@ -47,15 +47,10 @@ function SignupSignin() {
   }
   //end here
 
-  const [signupmode] = useState('');
-  const containerClass = 'container ' + signupmode;
-
   return (
     <>
-
-      <div className={containerClass}>
-
-        <div className="forms-container">
+      <div className={styled.container}>
+        <div className={styled.formsContainer}>
           <div className="signin-signup">
             <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
               <h2 className="title">Reset Password</h2>
