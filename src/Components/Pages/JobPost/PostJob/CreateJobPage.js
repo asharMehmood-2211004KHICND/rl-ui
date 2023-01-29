@@ -133,7 +133,7 @@ const CreateJobPage = () => {
     };
 
     fetch(
-      env.REACT_APP_API_URL1,
+      `${env.REACT_APP_API_URL1}/post`,
       {
         method: "POST",
         headers: {
