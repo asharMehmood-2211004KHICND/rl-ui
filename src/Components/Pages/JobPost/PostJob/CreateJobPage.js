@@ -8,11 +8,8 @@ import styled from "./CreateJobPage.module.css";
 
 import env from "react-dotenv";
 import swal from "sweetalert";
-import { style } from "@mui/system";
-
 
 const CreateJobPage = () => {
-
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
   const [department, setDepartment] = useState(""); // for single drop down
@@ -29,35 +26,10 @@ const CreateJobPage = () => {
   const [closingDate, setClosingDate] = useState(null);
   const [selectedResponsibilites, setSelectedResponsibilities] = useState([]);
 
-  const experienceLevelOptions = [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
-    "8",
-    "9",
-    "10",
-    "11",
-    "12",
-    "13",
-    "14",
-    "15",
-    "16",
-    "17",
-    "18",
-    "19",
-    "20",
-    "21",
-    "22",
-    "23",
-    "24",
-    "25",
-  ];
-  const genderOptions = ["MALE", "FEMALE", "BOTH_MALE_FEMALE", "ALL"];
-  const travellingOptions = ["YES", "NO", "MAYBE "];
+  const experienceLevelOptions = ["1 Year", "2 Year", "3 Year", "4 Year", "5 Year"];
+
+  const genderOptions = ["Male", "Female", "Both Male & Female", "All"];
+  const travellingOptions = ["Yes", "No", "MayBe "];
 
   let responsibilityOptions = [
     "Contribute in all phases of the development lifecycle",
@@ -65,16 +37,17 @@ const CreateJobPage = () => {
     "Ensure designs are in compliance with specifications",
   ];
 
-  let departmentOptions = ["CLOUD_NATIVE_ENGINEERING", "DATA_ENGINEERING"];
+  let departmentOptions = ["Cloud Engineering", "Data Engineering"];
 
   let degreeOptions = ["B.E - CIS", "BSCS"];
 
   let employmentCategoriesOptions = [
-    "PART_TIME",
-    "FULL_TIME",
-    "CONTRACT_BASE",
-    "ONLINE",
-    "ONSITE",
+    "Part Time",
+    "Full Time",
+    "Contract Base",
+    "Remote",
+    "Onsite",
+    "Internship"
   ];
 
   let softSkillsOptions = ["JAVA", "JUNIT", "SQL", "REACT"];
@@ -83,7 +56,7 @@ const CreateJobPage = () => {
 
   let benefitsAndPerksOptions = ["benefit A", "benefit B", "benefit C"];
 
-  let locationOptions = ["karachi", "lahore", "islamabad"];
+  let locationOptions = ["Karachi", "Lahore", "Islamabad"];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -98,9 +71,9 @@ const CreateJobPage = () => {
     ) {
       // alert("Please fill out all the required fields");
       swal({
-        title:"Please fill out all the required fields",
-        icon:"error"
-      })
+        title: "Please fill out all the required fields",
+        icon: "error",
+      });
       return;
     }
 
@@ -150,9 +123,9 @@ const CreateJobPage = () => {
         console.log(data);
         // alert("sucessful");
         swal({
-          title:"Job posted sucessfully!",
-          icon:"success"
-        })
+          title: "Job posted sucessfully!",
+          icon: "success",
+        });
       })
       .catch((err) => {
         // setError("Server is busy or crediential is invalid");
@@ -162,192 +135,213 @@ const CreateJobPage = () => {
   return (
     <div className={styled.mainContainer}>
       <div className={styled.create_job_page}>
-        
         {" "}
-        
-        <h1 className={styled.heading}>CREATE JOB PAGE</h1>
+        <h1 className={`${styled.heading} afnan`}>Create Job Page</h1>
         <div className={styled.FormCreateJob}>
-        <form onSubmit={handleSubmit}>
-          
-          <div className={styled.enterjobtitle}>
-            <h4 className={styled.heading2}>Job Title</h4>
-            <Textfeild
-              data-testid="title-input"
-              inputValue={jobTitle}
-              setInputValue={setJobTitle}
-              labelText="title"
-              placeholderText="enter job title"
-            ></Textfeild>
-          </div>
+          <form onSubmit={handleSubmit}>
+           
+            <div className={styled.enterjobtitle}>
+              <h4 className={styled.heading2}>Job Title</h4>
+              <Textfeild
+                ChildrenTag={{ type: "text" }}
+                data-testid="title-input"
+                inputValue={jobTitle}
+                setInputValue={setJobTitle}
+                labelText="title"
+                placeholderText="Enter Job Title"
+              ></Textfeild>
+            </div>
 
-          <div className={styled.jobdescription}>
+
+            {/* <div className={styled.jobdescription}>
             <h4 className={styled.heading3}>Job Description</h4>
-
+            
             <Textfeild
-              inputValue={description}
-              setInputValue={setDescription}
-              placeholderText="enter job description"
+            inputValue={description}
+            setInputValue={setDescription}
+            placeholderText="Enter Job Description"
             ></Textfeild>
-          </div>
-          <br></br>
-
-          <div className={styled.div2}>
-            <div className={styled.dropdown}>
-              <h4 className={styled.heading4}>Department</h4>
-
-              <SimpleDropDown
-                title="Department"
-                selectedOption={department}
-                setSelectedOption={setDepartment}
-                options={departmentOptions}
-              ></SimpleDropDown>
+          </div> */}
+            <div class={styled.job_description_container}>
+              <h4 className={styled.heading3}>Job Description</h4>
+              <textarea
+                class={styled.job_description_input}
+                placeholder="Enter Job Description"
+              ></textarea>
             </div>
-        
-            <div className={styled.responsibilities}>
-              <h4 className={styled.heading5}>Responsibilities</h4>
+            <br></br>
 
-              <MultiSelectDropDown
-                fetchedOptions={responsibilityOptions}
-                selected={selectedResponsibilites}
-                setSelected={setSelectedResponsibilities}
-              ></MultiSelectDropDown>
+            <div className={styled.div2}>
+              <div className={styled.employmentcategory}>
+                <h4 className={styled.heading4}>Employment Category</h4>
+
+                <MultiSelectDropDown
+                  fetchedOptions={employmentCategoriesOptions}
+                  selected={employmentCategories}
+                  setSelected={setEmploymentCategories}
+                ></MultiSelectDropDown>
+              </div>
+
+              <div className={styled.responsibilities}>
+                <h4 className={styled.heading5}>Responsibilities</h4>
+
+                <MultiSelectDropDown
+                  fetchedOptions={responsibilityOptions}
+                  selected={selectedResponsibilites}
+                  setSelected={setSelectedResponsibilities}
+                ></MultiSelectDropDown>
+              </div>
             </div>
-          </div>
-          <br></br>
-          <div className={styled.div3}>
-            <div className={styled.education}>
-              <h4 className={styled.heading6}>Degrees/Education</h4>
+            <br></br>
+            <div className={styled.div3}>
+              <div className={styled.education}>
+                <h4 className={styled.heading6}>Education</h4>
 
-              <MultiSelectDropDown
-                fetchedOptions={degreeOptions}
-                selected={degrees}
-                setSelected={setDegrees}
-              ></MultiSelectDropDown>
+                <MultiSelectDropDown
+                  fetchedOptions={degreeOptions}
+                  selected={degrees}
+                  setSelected={setDegrees}
+                ></MultiSelectDropDown>
+              </div>
+
+              <div className={styled.dropdown}>
+                <h4 className={styled.heading4}>Department</h4>
+                <SimpleDropDown
+                  title="Department"
+                  selectedOption={department}
+                  setSelectedOption={setDepartment}
+                  options={departmentOptions}
+                ></SimpleDropDown>
+              </div>
+
+              {/* <div className={styled.employmentcategory}>
+                <h4 className={styled.heading7}>Employment Category</h4>
+
+                <MultiSelectDropDown
+                  fetchedOptions={employmentCategoriesOptions}
+                  selected={employmentCategories}
+                  setSelected={setEmploymentCategories}
+                ></MultiSelectDropDown>
+              </div> */}
             </div>
+            <br></br>
+            <div className={styled.div4}>
+              <div className={`${styled.softskills}`}>
+                <h4 className={styled.heading8}>Soft Skills</h4>
 
-            <div className={styled.employmentcategory}>
-              <h4 className={styled.heading7}>Employment Category</h4>
+                <MultiSelectDropDown
+                  fetchedOptions={softSkillsOptions}
+                  selected={softskills}
+                  setSelected={setSoftskills}
+                >
+                  {" "}
+                </MultiSelectDropDown>
+              </div>
 
-              <MultiSelectDropDown
-                fetchedOptions={employmentCategoriesOptions}
-                selected={employmentCategories}
-                setSelected={setEmploymentCategories}
-              ></MultiSelectDropDown>
+              <div className={styled.technicalskills}>
+                <h4 className={styled.heading9}>Technical Skills</h4>
+
+                <MultiSelectDropDown
+                  fetchedOptions={technicalskillsOptions}
+                  selected={technicalskills}
+                  setSelected={setTechnicalskills}
+                >
+                  {" "}
+                </MultiSelectDropDown>
+              </div>
             </div>
-          </div>
-          <br></br>
-          <div className={styled.div4}>
-            <div className={styled.softskills}>
-              <h4 className={styled.heading8}>Soft Skills</h4>
+            <br></br>
+            <div className={styled.div5}>
+              <div className={styled.perksandbenifits}>
+                <h4 className={styled.heading10}>Benifits</h4>
 
-              <MultiSelectDropDown
-                fetchedOptions={softSkillsOptions}
-                selected={softskills}
-                setSelected={setSoftskills}
-              >
-                {" "}
-              </MultiSelectDropDown>
-            </div>
-
-            <div className={styled.technicalskills}>
-              <h4 className={styled.heading9}>Technical Skills</h4>
-
-              <MultiSelectDropDown
-                fetchedOptions={technicalskillsOptions}
-                selected={technicalskills}
-                setSelected={setTechnicalskills}
-              >
-                {" "}
-              </MultiSelectDropDown>
-            </div>
-          </div>
-          <br></br>
-          <div className={styled.div5}>
-            <div className={styled.perksandbenifits}>
-              <h4 className={styled.heading10}>Perks and Benifits</h4>
-
-              <MultiSelectDropDown
-                fetchedOptions={benefitsAndPerksOptions}
-                selected={perksAndBenefits}
-                setSelected={setPerksAndBenefits}
-              ></MultiSelectDropDown>
-            </div>
-
-            <div className={styled.Location}>
-              <h4 className={styled.heading11}>Location</h4>
-
-              <SimpleDropDown
-                selectedOption={location}
-                setSelectedOption={setLocation}
-                options={locationOptions}
-              ></SimpleDropDown>
-            </div>
-          </div>
-
-          <br></br>
-       
-          <section className={styled.form2}>
-            <div className={styled.div6}>
+                <MultiSelectDropDown
+                  fetchedOptions={benefitsAndPerksOptions}
+                  selected={perksAndBenefits}
+                  setSelected={setPerksAndBenefits}
+                ></MultiSelectDropDown>
+              </div>
               <div className={styled.experience}>
                 <h4 className={styled.heading12}>Experience</h4>
 
                 <SimpleDropDown
+                  optionLabel="Year"
                   selectedOption={experienceLevel}
                   setSelectedOption={setExperienceLevel}
                   options={experienceLevelOptions}
                 ></SimpleDropDown>
               </div>
-              <div className={styled.vacancies}>
-                <h4 className={styled.heading13}>No# Vacancies</h4>
-
-                <Textfeild
-                  inputValue={vacancies}
-                  setInputValue={setVacancies}
-                  labelText="title"
-                  placeholderText="enter the number of vacancies"
-                ></Textfeild>
-              </div>
             </div>
-            <br></br>
-            <div className={styled.div7}>
-              <div className={styled.gender}>
-                <h4 className={styled.heading14}>Gender</h4>
 
-                <SimpleDropDown
-                  selectedOption={genders}
-                  setSelectedOption={setGenders}
-                  options={genderOptions}
-                ></SimpleDropDown>
+            <br></br>
+
+            <section className={styled.form2}>
+              <div className={styled.div6}>
+               <div className={styled.gender}>
+                  <h4 className={styled.heading14}>Gender</h4>
+
+                  <SimpleDropDown
+                    optionLabel="Select"
+                    selectedOption={genders}
+                    setSelectedOption={setGenders}
+                    options={genderOptions}
+                  ></SimpleDropDown>
+                </div>
+                <div className={styled.vacancies}>
+                  <h4 className={styled.heading13}>Vacancies</h4>
+
+                  <Textfeild
+                    ChildrenTag={{ type: "number", required: "htmlRequired" }}
+                    inputValue={vacancies}
+                    setInputValue={setVacancies}
+                    labelText="title"
+                    placeholderText="Number of vacancies"
+                  ></Textfeild>
+                </div>
+              </div>
+              <br></br>
+              <div className={styled.div7}>
+                
+                <div className={styled.Location}>
+                  <h4 className={styled.heading11}>City</h4>
+
+                  <SimpleDropDown
+                    optionLabel="City"
+                    selectedOption={location}
+                    setSelectedOption={setLocation}
+                    options={locationOptions}
+                  ></SimpleDropDown>
+                </div>
+                <div className={styled.requirestravelling}>
+                  <h4 className={styled.heading15}>Requires Travelling</h4>
+
+                  <SimpleDropDown
+                    optionLabel="Travelling..."
+                    selectedOption={travelling}
+                    setSelectedOption={setTravelling}
+                    options={travellingOptions}
+                  ></SimpleDropDown>
+                </div>
+                
+                
               </div>
 
-              <div className={styled.requirestravelling}>
-                <h4 className={styled.heading15}>Requires Travelling</h4>
+              <br></br>
+              <h4 className={styled.heading16}>Closing date</h4>
 
-                <SimpleDropDown
-                  selectedOption={travelling}
-                  setSelectedOption={setTravelling}
-                  options={travellingOptions}
-                ></SimpleDropDown>
+              <div className={styled.closingdate}>
+                <Calander
+                  selectedDate={closingDate}
+                  setSelectedDate={setClosingDate}
+                ></Calander>
+                <div className="button">
+                  <button className={styled.button} onClick={handleSubmit}>
+                    SUBMIT
+                  </button>
+                </div>
               </div>
-            </div>
-            <br></br>
-            <h4 className={styled.heading16}>Closing date</h4>
-          
-            <div className={styled.closingdate}>
-  
-              <Calander
-                selectedDate={closingDate}
-                setSelectedDate={setClosingDate}
-              ></Calander>
-       <div className="button">
-            <button className={styled.button} onClick={handleSubmit}>
-            SUBMIT
-          </button>
-          </div>
-          </div>
-          </section>
-         
-        </form>
+            </section>
+          </form>
         </div>
       </div>
     </div>
