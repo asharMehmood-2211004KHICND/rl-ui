@@ -8,6 +8,7 @@ import styled from "./CreateJobPage.module.css";
 
 import env from "react-dotenv";
 import swal from "sweetalert";
+import { type } from "@testing-library/user-event/dist/type";
 
 const CreateJobPage = () => {
   const [jobTitle, setJobTitle] = useState("");
@@ -28,8 +29,8 @@ const CreateJobPage = () => {
   const [buttonDisable, setButtonDisable] = useState(false);
   const [buttonText, setButtonText] = useState("SUBMIT")
 
-  const experienceLevelOptions = ["1 Year", "2 Year", "3 Year", "4 Year", "5 Year"];
-
+  const experienceLevelOptionsValue = ["1 Year", "2 Year", "3 Year", "4 Year", "5 Year"];
+  const experienceLevelOptions = [1,2,3,4,5];
   const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
 
@@ -108,10 +109,11 @@ const CreateJobPage = () => {
       benefitPerkss: perksAndBenefits[0].map((pb) => {
         return { benefitPerks: pb };
       }),
-      experienceLevel: experienceLevel,
+      experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
     };
 
+    console.log(requestData);
     fetch(
       `${env.REACT_APP_API_URL1}/post`,
       // `http://localhost:5000/job/post`,
@@ -126,32 +128,43 @@ const CreateJobPage = () => {
         mode: "cors",
       }
     )
-      .then((response) => response.json())
+      .then((response) =>{
+        if(!(response.status>=200 && response.status<300) ){
+          throw new Error(response.status);
+        }  
+        return response.json()
+      })
       .then((data) => {
-        console.log(data);
-        // alert("sucessful");
-        if(data.status>=200 && data.status<300 ){
-          swal({
+        swal({
             title: "Job posted sucessfully!",
             icon: "success",
-          });
-        }
-        else{
-
-          swal({
-            title: "Server Busy",
-            icon: "error",
-          });
-
-        }
+        });
         setButtonText("SUBMIT");
         setButtonDisable(false);
       })
       .catch((err) => {
-        
+        if(err.Error>400){
+          swal(
+            {
+              title: "Server Down",
+              icon: "error",
+            });
+        }
+        else if(err.Error>299){
+          swal({
+            title: "Server Busy",
+            icon: "error",
+          });
+        }
+        // else{
+        //   console.log("fdkmfk" +type(err.Error));
+        //   swal({
+        //     title: "Job posted sucessfully!",
+        //     icon: "success",
+        // });
+        // }
         setButtonText("SUBMIT");
         setButtonDisable(false);
-        // setError("Server is busy or crediential is invalid");
       });
   };
 
@@ -185,10 +198,10 @@ const CreateJobPage = () => {
             placeholderText="Enter Job Description"
             ></Textfeild>
           </div> */}
-            <div class={styled.job_description_container}>
+            <div className={styled.job_description_container}>
               <h4 className={styled.heading3}>Job Description</h4>
               <textarea
-                class={styled.job_description_input}
+                className={styled.job_description_input}
                 placeholder="Enter Job Description"
               ></textarea>
             </div>
@@ -292,6 +305,7 @@ const CreateJobPage = () => {
                   selectedOption={experienceLevel}
                   setSelectedOption={setExperienceLevel}
                   options={experienceLevelOptions}
+                  optionText={experienceLevelOptionsValue}
                 ></SimpleDropDown>
               </div>
             </div>
