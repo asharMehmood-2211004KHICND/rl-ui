@@ -1,7 +1,7 @@
 
 import React, { useState } from "react";
 import mainlogo from './img/logo_5.png';
-import './css/forgot.css';
+import styled from './css/signupandsignin.module.css';
 import resetimg from './img/resetimg.svg';
 
 function VerificationEmail() {
@@ -30,46 +30,40 @@ function VerificationEmail() {
     }
   }
   //end here
-
-  const [signupmode] = useState('');
-  const containerClass = 'container ' + signupmode;
-
   return (
     <>
 
-      <div className={containerClass}>
-        <div className="forms-container">
-          <div className="signin-signup">
-            <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
-              <h2 className="title">Enter Email </h2>
-
-              <div className="input-field">
+      <div className={styled.container}>
+        <div className={styled.formsContainer}>
+          <div className={styled.signinSignup}>
+            <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
+              <h2 className={styled.title}>Enter Email </h2>
+              <div className={styled.inputField}>
                 <i className="fa-solid fa-user"></i>
                 <input type="text"
                   value={email} onChange={(e) => setEmail(e.target.value)}
                   placeholder="Verification Email" />
               </div>
-              {errors.email && <p className="error">{errors.email}</p>}
-              <input type="submit" value="Send Link" className="btn solid" />
+              {errors.email && <p className={styled.error}>{errors.email}</p>}
+              <input type="submit" value="Send Link" className={`${styled.btn} ${styled.solid}`} />
             </form>
-
           </div>
         </div>
 
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content">
-              <div className="mainlogo"><img src={mainlogo}></img></div>
+        <div className={styled.panelsContainer}>
+          <div className={`${styled.panel} ${styled.leftPanel}`}>
+            <div className={styled.content}>
+              <div className={styled.mainlogo}><img src={mainlogo}></img></div>
               <p>
 
               </p>
               <a href="/">
-                <button className="btn transparent" >
+                <button className={`${styled.btn} ${styled.transparent}`} >
                   Sign In
                 </button>
               </a>
             </div>
-            <img id="resetimg" src={resetimg} className="image" alt="" />
+            <img id="resetimg" src={resetimg} className={styled.image} alt="" />
           </div>
 
         </div>
