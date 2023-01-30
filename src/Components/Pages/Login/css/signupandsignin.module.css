@@ -13,10 +13,10 @@ input {
 .social_icons i{
   padding: 5px;
 }
-.fa-brands{
+.faBrands{
   color: black;
 } 
-.fa-brands:hover{
+.faBrands:hover{
   color: #0B2647;
 }
 #signup{
@@ -36,7 +36,7 @@ a:hover{
   overflow: hidden;
 }
 
-.forms-container {
+.formsContainer {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -44,7 +44,7 @@ a:hover{
   left: 0;
 }
 
-.signin-signup {
+.signinSignup {
   position: absolute;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -71,12 +71,12 @@ a:hover{
   grid-row: 1 / 2;
 }
 
-.formLogin.sign-up-form {
+.formLogin.signUpForm {
   opacity: 0;
   z-index: 1;
 }
 
-.formLogin.sign-in-form {
+.formLogin.signInForm {
   z-index: 2;
 }
 
@@ -86,7 +86,7 @@ a:hover{
   margin-bottom: 10px;
 }
 
-.input-field {
+.inputField {
   max-width: 380px;
   width: 100%;
   background-color: #f0f0f0;
@@ -99,11 +99,11 @@ a:hover{
   position: relative;
   border: 2px solid #4481eb;
 }
-.input-field:hover{
+.inputField:hover{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
 }
 
-.input-field i {
+.inputField i {
   text-align: center;
   line-height: 55px;
   color: #acacac;
@@ -111,7 +111,7 @@ a:hover{
   font-size: 1.1rem;
 }
 
-.input-field input {
+.inputField input {
   background: none;
   outline: none;
   border: none;
@@ -121,12 +121,12 @@ a:hover{
   color: #333;
 }
 
-.input-field input::placeholder {
+.inputField input::placeholder {
   color: #aaa;
   font-weight: 500;
 }
 
-.social-text {
+.socialText {
   padding: 0.7rem 0;
   font-size: 1rem;
 }
@@ -169,7 +169,7 @@ a:hover{
 .btn:hover {
   background-color: #4d84e2;
 }
-.panels-container {
+.panelsContainer {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -208,12 +208,12 @@ a:hover{
   z-index: 6;
 }
 
-.left-panel {
+.leftPanel {
   pointer-events: all;
   padding: 3rem 17% 2rem 12%;
 }
 
-.right-panel {
+.rightPanel {
   pointer-events: none;
   padding: 3rem 12% 2rem 17%;
 }
@@ -237,7 +237,8 @@ a:hover{
 }
 
 .btn.transparent {
-  margin: 0;
+  margin:0;
+  margin-top: 20px;
   background: none;
   border: 2px solid #fff;
   width: 130px;
@@ -246,47 +247,47 @@ a:hover{
   font-size: 0.8rem;
 }
 
-.right-panel .image,
-.right-panel .content {
+.rightPanel .image,
+.rightPanel .content {
   transform: translateX(800px);
 }
 
 /* ANIMATION */
 
-.container.sign-up-mode:before {
+.container.signUpMode:before {
   transform: translate(100%, -50%);
   right: 52%;
 }
 
-.container.sign-up-mode .left-panel .image,
-.container.sign-up-mode .left-panel .content {
+.container.signUpMode .leftPanel .image,
+.container.signUpMode .leftPanel .content {
   transform: translateX(-800px);
 }
 
-.container.sign-up-mode .signin-signup {
+.container.signUpMode .signinSignup {
   left: 25%;
 }
 
-.container.sign-up-mode form.sign-up-form {
+.container.signUpMode .main_form.signUpForm {
   opacity: 1;
   z-index: 2;
 }
 
-.container.sign-up-mode form.sign-in-form {
+.container.signUpMode .main_form.signInForm {
   opacity: 0;
   z-index: 1;
 }
 
-.container.sign-up-mode .right-panel .image,
-.container.sign-up-mode .right-panel .content {
+.container.signUpMode .rightPanel .image,
+.container.signUpMode .rightPanel .content {
   transform: translateX(0%);
 }
 
-.container.sign-up-mode .left-panel {
+.container.signUpMode .leftPanel {
   pointer-events: none;
 }
 
-.container.sign-up-mode .right-panel {
+.container.signUpMode .rightPanel {
   pointer-events: all;
 }
 
@@ -295,19 +296,19 @@ a:hover{
     min-height: 800px;
     height: 100vh;
   }
-  .signin-signup {
+  .signinSignup {
     width: 100%;
     top: 95%;
     transform: translate(-50%, -100%);
     transition: 1s 0.8s ease-in-out;
   }
 
-  .signin-signup,
-  .container.sign-up-mode .signin-signup {
+  .signinSignup,
+  .container.signUpMode .signinSignup {
     left: 50%;
   }
 
-  .panels-container {
+  .panelsContainer {
     grid-template-columns: 1fr;
     grid-template-rows: 1fr 2fr 1fr;
   }
@@ -320,11 +321,11 @@ a:hover{
     grid-column: 1 / 2;
   }
 
-  .right-panel {
+  .rightPanel {
     grid-row: 3 / 4;
   }
 
-  .left-panel {
+  .leftPanel {
     grid-row: 1 / 2;
   }
 
@@ -366,43 +367,62 @@ a:hover{
     transition: 2s ease-in-out;
   }
 
-  .container.sign-up-mode:before {
+  .container.signUpMode:before {
     transform: translate(-50%, 100%);
     bottom: 32%;
     right: initial;
   }
 
-  .container.sign-up-mode .left-panel .image,
-  .container.sign-up-mode .left-panel .content {
+  .container.signUpMode .leftPanel .image,
+  .container.signUpMode .leftPanel .content {
     transform: translateY(-300px);
   }
 
-  .container.sign-up-mode .right-panel .image,
-  .container.sign-up-mode .right-panel .content {
+  .container.signUpMode .rightPanel .image,
+  .container.signUpMode .rightPanel .content {
     transform: translateY(0px);
   }
 
-  .right-panel .image,
-  .right-panel .content {
+  .rightPanel .image,
+  .rightPanel .content {
     transform: translateY(300px);
   }
 
-  .container.sign-up-mode .signin-signup {
+  .container.signUpMode .signinSignup {
     top: 5%;
     transform: translate(-50%, 0);
   }
 }
 
 @media (max-width: 570px) {
-  form {
+  .main_form {
     padding: 0 1.5rem;
+  }
+
+  .panel .content{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .panel .content {
+    padding-right: 0%;
+  }
+
+  .mainlogo{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .mainlogo img{
+    width: 70%;
+    text-align: center;
   }
 
   .image {
     display: none;
-  }
-  .panel .content {
-    padding: 0.5rem 1rem;
   }
   .container {
     padding: 1.5rem;
@@ -413,8 +433,12 @@ a:hover{
     left: 50%;
   }
 
-  .container.sign-up-mode:before {
+  .container.signUpMode:before {
     bottom: 28%;
     left: 50%;
+  }
+
+  .btn.transparent{
+    text-align: center;
   }
 }

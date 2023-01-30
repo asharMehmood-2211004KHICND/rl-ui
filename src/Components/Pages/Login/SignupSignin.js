@@ -4,7 +4,7 @@ import logo2 from './img/register.svg';
 import mainlogo from './img/logo_5.png';
 import signin from './img/signin.svg';
 import signup from './img/signup.svg';
-import './css/signupandsignin.css';
+import styled from './css/signupandsignin.module.css';
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 
@@ -286,9 +286,8 @@ function SignupSignin() {
 		}
 	}
 	const [signupmode, changeSignupMode] = useState('');
-	const containerClass = 'container ' + signupmode;
 	const ChangeToSignupMode = () => {
-		changeSignupMode('sign-up-mode');
+		changeSignupMode(styled.signUpMode);
 	}
 
 	const ChangeToSignInMode = () => {
@@ -296,12 +295,12 @@ function SignupSignin() {
 	}
 	return (
 		<>
-			<div className={containerClass}>
-				<div className="forms-container">
-					<div className="signin-signup">
-						<form action="#" className="formLogin sign-in-form" onSubmit={handleSubmit}>
-							<h2 className="title">Sign in</h2>
-							<div className="input-field">
+			<div className={`${styled.container} ${signupmode}`}>
+				<div className={styled.formsContainer}>
+					<div className={styled.signinSignup}>
+						<form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
+							<h2 className={styled.title}>Sign in</h2>
+							<div className={styled.inputField}>
 								<i className="fa-solid fa-user"></i>
 								<input
 									type="text"
@@ -310,7 +309,7 @@ function SignupSignin() {
 									placeholder="Email" />
 							</div>
 							{errors.login_email && <p className="error">{errors.login_email}</p>}
-							<div className="input-field">
+							<div className={styled.inputField}>
 								<i className="fas fa-lock"></i>
 								<input
 									type="password"
@@ -318,80 +317,70 @@ function SignupSignin() {
 									onChange={(e) => setLoginPassword(e.target.value)}
 									placeholder="Password" />
 							</div>
-							{errors.login_password && <p className="error">{errors.login_password}</p>}
+							{errors.login_password && <p className={styled.error}>{errors.login_password}</p>}
 							<div>
 								<a href="/forgetpassword">Forget Password?</a>
 							</div>
-							<input type="submit" value="Login" className="btn solid" />
-							<p className="social-text">Or Sign in with social platforms</p>
-							<div className="social_icons">
-								<a href="#"><i className="fa-brands fa-linkedin"></i></a>
-								<a href="#"><i className="fa-brands fa-microsoft"></i></a>
-								<a href="#"><i className="fa-brands fa-google"></i></a>
+							<input type="submit" value="Login" className={`${styled.btn} ${styled.solid}`} />
+							<p className={styled.socialText}>Or Sign in with social platforms</p>
+							<div className={styled.social_icons}>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-linkedin`}></i></a>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-microsoft`}></i></a>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-google`}></i></a>
 							</div>
 
 						</form>
-						<form action="#" className="formLogin sign-up-form" onSubmit={handleSignupSubmit}>
-							<h2 className="title">Sign up</h2>
-							<div className="input-field">
+						<form action="#" className={`${styled.formLogin} ${styled.signUpForm} ${styled.main_form}`} onSubmit={handleSignupSubmit}>
+							<h2 className={styled.title}>Sign up</h2>
+							<div className={styled.inputField}>
 								<i className="fas fa-user"></i>
 								<input type="text" value={first_name} onChange={(e) => setFirst_name(e.target.value)} placeholder="First Name" />
 							</div>
 							{errors.first_name && <p className="error">{errors.first_name}</p>}
-							<div className="input-field">
+							<div className={styled.inputField}>
 								<i className="fas fa-user"></i>
 								<input type="text" value={last_name} onChange={(e) => setLast_name(e.target.value)} placeholder="Last Name" />
 							</div>
 							{errors.last_name && <p className="error">{errors.last_name}</p>}
-							<div className="input-field">
+							<div className={styled.inputField}>
 								<i className="fas fa-envelope"></i>
 								<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
 							</div>
 							{errors.email && <p className="error">{errors.email}</p>}
-							<div className="input-field">
+							<div className={styled.inputField}>
 								<i className="fas fa-lock"></i>
 								<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
 							</div>
-							{errors.password && <p className="error">{errors.password}</p>}
-							<input type="submit" className="btn" value="Sign up" />
-							<p className="social-text">Or Sign up with social platforms</p>
-							<div className="social_icons">
-								<a href="#"><i className="fa-brands fa-linkedin"></i></a>
-								<a href="#"><i className="fa-brands fa-microsoft"></i></a>
-								<a href="#"><i className="fa-brands fa-google"></i></a>
+							{errors.password && <p className={styled.error}>{errors.password}</p>}
+							<input type="submit" className={styled.btn}btn value="Sign up" />
+							<p className={styled.socialText}>Or Sign up with social platforms</p>
+							<div className={styled.social_icons}>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-linkedin`}></i></a>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-microsoft`}></i></a>
+								<a href="#"><i className={`${styled.faBrands} fa-brands fa-google`}></i></a>
 							</div>
-
 						</form>
 					</div>
 				</div>
 
-				<div className="panels-container">
-					<div className="panel left-panel">
-						<div className="content">
-							<div className="mainlogo"><img src={mainlogo}></img></div>
-							<h3>New here ?</h3>
-							<p>
-
-							</p>
-							<button className="btn transparent" onClick={ChangeToSignupMode}>
+				<div className={styled.panelsContainer}>
+					<div className={`${styled.panel} ${styled.leftPanel}`}>
+						<div className={styled.content}>
+							<div className={styled.mainlogo}><img src={mainlogo}></img></div>
+							<button className={`${styled.btn} ${styled.transparent}`} onClick={ChangeToSignupMode}>
 								Sign up
 							</button>
 						</div>
-						<img id="signin" src={signin} className="image" alt="" />
+						<img id="signin" src={signin} className={styled.image} alt="" />
 					</div>
-					<div className="panel right-panel">
-						<div className="content">
-							<div className="mainlogo"><img src={mainlogo}></img></div>
-							<h3>One of us ?</h3>
-							<p>
-								Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-								laboriosam ad deleniti.
-							</p>
-							<button className="btn transparent" id="sign-in-btn" onClick={ChangeToSignInMode}>
+					<div className={`${styled.panel} ${styled.rightPanel}`}>
+						<div className={styled.content}>
+							<div className={styled.mainlogo}><img src={mainlogo}></img></div>
+							<button className={`${styled.btn} ${styled.transparent}`} id="sign-in-btn" onClick={ChangeToSignInMode}>
 								Sign in
 							</button>
 						</div>
-						<img id="signup" src={signup} className="image" alt="" />
+						<img id="signup" src={signup} className={styled.image} alt="" />
 					</div>
 				</div>
 			</div>
