@@ -11,6 +11,7 @@ import { AlertMessage } from "../AlertMessage/AlertMessage";
 
 function CandidatePersonalInfo() {
 
+    const [userId, setUserId] = useState('')
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [dob, setDob] = useState('2009-01-01');
@@ -40,6 +41,9 @@ function CandidatePersonalInfo() {
         //     });
         //
         setEmail(sessionStorage.getItem("user_email"));
+        setFirstname(sessionStorage.getItem("user_firstname"));
+        setLastname(sessionStorage.getItem("user_lastname"));
+        setUserId(sessionStorage.getItem("user_id"));
     }, [])
 
 
