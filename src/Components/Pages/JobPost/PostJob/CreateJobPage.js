@@ -25,10 +25,12 @@ const CreateJobPage = () => {
   const [vacancies, setVacancies] = useState("");
   const [closingDate, setClosingDate] = useState(null);
   const [selectedResponsibilites, setSelectedResponsibilities] = useState([]);
+  const [buttonDisable, setButtonDisable] = useState(false);
+  const [buttonText, setButtonText] = useState("SUBMIT")
 
   const experienceLevelOptions = ["1 Year", "2 Year", "3 Year", "4 Year", "5 Year"];
 
-  const genderOptions = ["Male", "Female", "Both Male & Female", "All"];
+  const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
 
   let responsibilityOptions = [
@@ -39,7 +41,7 @@ const CreateJobPage = () => {
 
   let departmentOptions = ["Cloud Engineering", "Data Engineering"];
 
-  let degreeOptions = ["B.E - CIS", "BSCS"];
+  let degreeOptions = ["BE", "BS","MS"];
 
   let employmentCategoriesOptions = [
     "Part Time",
@@ -50,7 +52,7 @@ const CreateJobPage = () => {
     "Internship"
   ];
 
-  let softSkillsOptions = ["JAVA", "JUNIT", "SQL", "REACT"];
+  let softSkillsOptions = ["Java", "JUnit", "SQL", "React.JS"];
 
   let technicalskillsOptions = ["technical Skill A", "technical Skill B"];
 
@@ -60,6 +62,8 @@ const CreateJobPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setButtonText("Loading...");
+    setButtonDisable(true);
     if (
       !degrees.length ||
       !employmentCategories.length ||
@@ -74,6 +78,9 @@ const CreateJobPage = () => {
         title: "Please fill out all the required fields",
         icon: "error",
       });
+      setButtonText("SUBMIT");
+      setButtonDisable(false);
+
       return;
     }
 
@@ -107,6 +114,7 @@ const CreateJobPage = () => {
 
     fetch(
       `${env.REACT_APP_API_URL1}/post`,
+      // `http://localhost:5000/job/post`,
       {
         method: "POST",
         headers: {
@@ -122,12 +130,27 @@ const CreateJobPage = () => {
       .then((data) => {
         console.log(data);
         // alert("sucessful");
-        swal({
-          title: "Job posted sucessfully!",
-          icon: "success",
-        });
+        if(data.status>=200 && data.status<300 ){
+          swal({
+            title: "Job posted sucessfully!",
+            icon: "success",
+          });
+        }
+        else{
+
+          swal({
+            title: "Server Busy",
+            icon: "error",
+          });
+
+        }
+        setButtonText("SUBMIT");
+        setButtonDisable(false);
       })
       .catch((err) => {
+        
+        setButtonText("SUBMIT");
+        setButtonDisable(false);
         // setError("Server is busy or crediential is invalid");
       });
   };
@@ -335,8 +358,8 @@ const CreateJobPage = () => {
                   setSelectedDate={setClosingDate}
                 ></Calander>
                 <div className="button">
-                  <button className={styled.button} onClick={handleSubmit}>
-                    SUBMIT
+                  <button type="button" className={styled.button} onClick={handleSubmit} disabled={buttonDisable}>
+                    {buttonText}
                   </button>
                 </div>
               </div>
