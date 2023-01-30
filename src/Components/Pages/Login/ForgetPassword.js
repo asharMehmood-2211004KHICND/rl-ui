@@ -1,10 +1,14 @@
 
 import React, { useState } from "react";
 import mainlogo from './img/logo_5.png';
-import styled from './css/forgot.module.css';
+import styled from './css/signupandsignin.module.css';
 import resetimg from './img/reset_img2.svg';
+import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 function SignupSignin() {
+
+  const navigate = useNavigate();
 
   //validation code
   const [password, setPassword] = useState('');
@@ -42,53 +46,70 @@ function SignupSignin() {
     const errors = validate({password, confirmPassword});
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
-      // If there are no errors, make the login request to the server
+      const data = {
+        email:sessionStorage.getItem('user_email'),
+        password:password
+      }
+      fetch("http://localhost:8080/auth/forgetpassword",{
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-type': 'application/json; charset=UTF-8',
+      },
+    }).then((response) => {
+      if (response.status === 200) {
+        swal(
+          {
+            title: "Password Updated Successfully!",
+            icon: "success",
+          });
+          sessionStorage.clear();
+          navigate('/login'); 
+      }
+      else if (response.status === 404) {
+        swal({
+          title: "Server Not Responding!",
+          icon: "error",
+        }
+        );
+      }
+    }
+    );
     }
   }
   //end here
-
   return (
     <>
       <div className={styled.container}>
         <div className={styled.formsContainer}>
-          <div className="signin-signup">
-            <form action="#" className="sign-in-form" onSubmit={handleSubmit}>
-              <h2 className="title">Reset Password</h2>
+          <div className={styled.signinSignup}>
+            <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
+              <h2 className={styled.title}>Reset Password</h2>
       
-              <div className="input-field">
+              <div className={styled.inputField}>
                 <i className="fas fa-lock"></i>
                 <input type="password"
                 value={password} onChange={(e) => setPassword(e.target.value)} 
                 placeholder="New Password"  />
               </div>
-              {errors.password && <p className="error">{errors.password}</p>}
-              <div className="input-field">
+              {errors.password && <p className={styled.error}>{errors.password}</p>}
+              <div className={styled.inputField}>
                 <i className="fas fa-lock"></i>
                 <input type="password"
                 value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} 
                  placeholder="Confirm Password" />
               </div>
-              {errors.confirmPassword && <p className="error">{errors.confirmPassword}</p>}
-              <input type="submit" value="Change" className="btn solid" />
+              {errors.confirmPassword && <p className={styled.error}>{errors.confirmPassword}</p>}
+              <input type="submit" value="Change" className={`${styled.btn} ${styled.solid}`} />
             </form>
-          
           </div>
         </div>
-
-        <div className="panels-container">
-          <div className="panel left-panel">
-            <div className="content">
-              <div className="mainlogo"><img src={mainlogo}></img></div>
-              <p>
-
-              </p>
-              <a href="/">
-                <button className="btn transparent" >
-                  Sign In
-                </button>
-              </a>
+        <div className={styled.panelsContainer}>
+          <div className={`${styled.panel} ${styled.leftPanel}`}>
+            <div className={styled.content}>
+              <div className={styled.mainlogo}><img src={mainlogo}></img></div>
             </div>
-            <img id="resetimg" src={resetimg} className="image" alt="" />
+            <img id="resetimg" src={resetimg} className={styled.image} alt="" />
           </div>
 
         </div>

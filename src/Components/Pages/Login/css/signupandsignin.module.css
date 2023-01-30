@@ -231,6 +231,10 @@ a:hover{
   margin-top: 20px;
 }
 
+.hidden{
+  display: none;
+}
+
 .panel p {
   font-size: 0.95rem;
   padding: 0.7rem 0;

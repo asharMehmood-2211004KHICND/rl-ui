@@ -4,7 +4,7 @@ import { Children } from 'react';
 
 
 export default function PrivateRoute({children}) {
-    if(sessionStorage.getItem('user_id') == null){
+    if(sessionStorage.getItem('user_email') == null){
         return <Navigate to="/login"/>
     }
 

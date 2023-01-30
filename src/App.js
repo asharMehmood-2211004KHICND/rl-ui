@@ -3,6 +3,7 @@ import './App.css';
 import TopBar from './Components/Header/TopBar';
 import Home from './Components/Pages/Home/Home';
 import SignupSignin from './Components/Pages/Login/SignupSignin';
+import ForgetPassword from './Components/Pages/Login/ForgetPassword';
 import ErrorPage from './Components/Pages/Error/ErrorPage';
 import SideBar from './Components/SideBar/SideBar';
 import CandidatePersonalInfo from './Components/Pages/profile/CandidatePersonalInfo/CandidatePersonalInfo'
@@ -26,6 +27,9 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route element={<SignupSignin />} path="/login" />
+				<Route element={<VerificationEmail/>} path="/forgetpassword" />
+				<Route element={<PrivateRoute><ForgetPassword/></PrivateRoute>} path="/resetpassword" />
+				
 			</Routes>
 
 			<div className="App">
