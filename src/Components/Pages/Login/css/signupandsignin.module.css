@@ -235,6 +235,11 @@ a:hover{
   display: none;
 }
 
+.resendOtp{
+  cursor: pointer;
+  font-size: 12px;
+}
+
 .panel p {
   font-size: 0.95rem;
   padding: 0.7rem 0;
