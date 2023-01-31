@@ -17,6 +17,7 @@ import CreateJobPage from './Components/Pages/JobPost/PostJob/CreateJobPage.js';
 import VerificationEmail from './Components/Pages/Login/VerificationEmail';
 import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
 import PrivateRoute from './Components/PrivateRoute';
+import ForgetRoute from './Components/ForgetRoute';
 
 
 function App() {
@@ -28,7 +29,7 @@ function App() {
 			<Routes>
 				<Route element={<SignupSignin />} path="/login" />
 				<Route element={<VerificationEmail/>} path="/forgetpassword" />
-				<Route element={<PrivateRoute><ForgetPassword/></PrivateRoute>} path="/resetpassword" />
+				<Route element={<ForgetRoute><ForgetPassword/></ForgetRoute>} path="/resetpassword" />
 				
 			</Routes>
 

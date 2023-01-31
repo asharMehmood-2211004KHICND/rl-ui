@@ -121,7 +121,7 @@ function VerificationEmail() {
                 },
               });
               setHiddenResend('');
-            }, 10000);
+            }, 60000);
           }
           else if (response.status === 403) {
             setBtnDisabled(false);
