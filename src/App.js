@@ -30,13 +30,14 @@ function App() {
 				<Route element={<SignupSignin />} path="/login" />
 			</Routes>
 
+
+			
 			<div className="App">
 				<TopBar />
 				<div className="containerz">
 					<SideBar />
 					<div className="pages">
 						<Routes>
-							<Route exact path="*" element={<ErrorPage />} ></Route>
 							<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
@@ -50,6 +51,7 @@ function App() {
 					</div>
 				</div>
 			</div>
+			
 
 
 		</BrowserRouter>
