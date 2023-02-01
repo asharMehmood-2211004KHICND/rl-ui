@@ -1,0 +1,550 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+
+.jobview{
+    justify-content: center;
+    display: grid;
+    padding-bottom: 38px;
+}
+h1.heading {
+    text-align: center;    
+    font-family: 'Poppins', sans-serif;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+.title{
+    display: flex;
+    gap: 12px;
+    text-align: center;
+   
+    
+
+}
+.heading1{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h1.jobview {
+    text-align: center;
+    text-decoration: underline;
+}
+
+textarea {
+        height: 26px;
+        width: 275px;
+        /* padding-top: 40px; */
+        margin-top: 19px;
+     
+    }
+span {
+        margin-top: 25px;
+        font-weight: 900;
+}
+.jobdescription{
+    display: flex;
+    gap: 12px;
+    text-align: center;
+    
+
+}
+.heading2{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+textarea{
+        height: 26px;
+        width: 275px;
+        /* padding-top: 40px; */
+        margin-top: 19px;
+     
+    }
+span {
+        margin-top: 25px;
+        font-weight: 900;
+}
+.department{
+    display: flex;
+    gap: 12px;
+    text-align: center;
+  
+}
+.heading3{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+p{
+      
+    margin-top: 25px;
+  
+    }
+span {
+        margin-top: 25px;
+        font-weight: 900;
+}
+.responsibilities{
+    display: flex;
+    gap: 12px ;
+    text-align: center;
+}
+.heading4{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+textarea{
+        height: 26px;
+        width: 275px;
+        /* padding-top: 40px; */
+        margin-top: 19px;
+     
+    }
+span {
+        margin-top: 25px;
+        font-weight: 900;
+}
+p.paragrap1 {
+        width: 556px;
+        margin-left: 177px;   
+    }
+
+
+ul.responsibilitieslist {
+    margin-top: -4px;
+    margin-left: 241px;
+}
+p.paragrap2 {
+   
+    width: 556px;
+    
+    margin-left: 37px;
+  
+}
+p.paragrap3 {
+   
+    width: 556px;
+
+    margin-left: 88px;
+   
+}
+p.paragrap4 {
+   
+    width: 556px;
+   
+    margin-left: 37px;
+   
+}
+p.paragrap5 {
+    margin-left: 2px;
+    width: 556px;
+}
+.degrees{
+    display: flex;
+    gap: 12px ;
+    text-align: center;
+}
+.heading5{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+p{
+      
+    margin-top: 25px;
+  
+    }
+span{
+        margin-top: 25px;
+        font-weight: 900;
+}
+ul.degreelist {
+    margin-top: -4px;
+    margin-left: 241px;
+}
+.employement{
+    display: flex;
+    gap: 12px ;
+    text-align: center;
+}
+.heading6{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+p{
+      
+    margin-top: 25px;
+  
+    }
+span{
+        margin-top: 25px;
+        font-weight: 900;
+}
+p.paragrap6{
+   
+    width: 556px;
+    margin-left: 65px;
+}
+ul.employmentlist{
+    margin-top: -4px;
+    margin-left: 241px;
+}
+
+.softskills{
+   display: flex;
+   gap: 12px;
+    text-align: center;
+}
+.heading7{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+}
+h2 {
+    text-align: center;
+}
+
+p{
+    margin-top: 25px;
+  
+    }
+span{
+        margin-top: 25px;
+        font-weight: 900;
+}
+p.paragrap7 {
+   
+    width: 556px;
+   
+    margin-left: 109px;
+
+}
+ul.softskillslist{
+    margin-top: -4px;
+    margin-left: 241px;
+   
+}
+.technicalskills{
+    display: flex;
+    gap: 12px;
+     text-align: center;
+
+ }
+ .heading8{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap8 {
+    
+     width: 556px;
+
+     margin-left: 50px;
+ }
+ ul.technicallist{
+     margin-top: -4px;
+     margin-left: 241px;
+    
+ }
+ .perksandbenefits{
+    display: flex;
+    gap: 12px;
+     text-align: center;
+ }
+ .heading9{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap9 {
+    
+     width: 556px;
+ 
+     margin-left: 7px;
+ }
+ ul.perksandbenefitslist{
+     margin-top: -4px;
+     margin-left: 241px;
+    
+ }
+ .location{
+    display: flex;
+    gap: 12px;
+  
+     text-align: center;
+ }
+ .heading10{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap10{
+    
+     width: 556px;
+     
+     margin-left: 127px;
+ }
+
+ .experience{
+    display: flex;
+   
+    gap: 12px;
+     text-align: center;
+ }
+ .heading11{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap11{
+    
+     width: 556px;
+     margin-left: 97px;
+ }
+ .vacancies{
+    display: flex;
+    gap: 12px;
+    
+     text-align: center;
+ }
+ .heading12{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap12{
+    
+     width: 556px;
+     margin-left: 108px;
+ }
+ .gender{
+    display: flex;
+    gap: 12px;
+     text-align: center;
+ }
+ 
+
+ .heading13{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap13 {
+    
+     width: 556px;
+   
+     margin-left: 142px;
+ }
+ ul.genderlist{
+     margin-top: -4px;
+     margin-left: 241px;
+    
+ }
+ .travelling{
+    display: flex;
+    gap: 12px;
+     text-align: center;
+ }
+ .heading14{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+         margin-top: 25px;
+         font-weight: 900;
+ }
+ p.paragrap14 {
+    
+     width: 556px;
+     margin-left: 12px;
+ }
+ ul.travellinglist{
+     margin-top: -4px;
+     margin-left: 241px;
+    
+ }
+ .closingdate{
+    display: flex;
+    gap: 12px;
+     text-align: center;
+ }
+ .heading15{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    letter-spacing: 2px;
+ }
+ h2 {
+     text-align: center;
+ }
+ 
+ p{
+     margin-top: 25px;
+   
+     }
+ span{
+    margin-top: 25px;
+    font-weight: 900;
+    position: relative;
+    font-size: 15px;
+    color: white;
+    top: 10px;
+
+ }
+ p.paragrap15{
+    
+     width: 556px;
+     margin-left: 77px;
+ }
+
+ section.icon {
+  
+    color: white;
+    position: relative;
+    /* padding-left: 18px; */
+    top: 20px;
+    height: 42px;
+    /* right: 0px; */
+    background-color: #1877f2;
+    border-radius: 20px;
+    left: 529px;
+    /* padding-top: 20px; */
+    text-align: center;
+    width: 120px;
+}
+
+.herosec{
+    display: flex;
+   
+}
+section.line {
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
+    border-color: #8080808a;
+}  
+section.line2{
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
+    border-color: #8080808a;
+}  
+section.line3{
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
+    border-color: #8080808a;
+}    
+section.line4{
+    border-bottom-style: solid;
+    border-bottom-width: 0.1px;
+    border-color: #8080808a;
+    width: 30px;
+}   
+.fa-regular .far {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 400;
+    top: 10px;
+    position: relative;
+}
+
