@@ -28,6 +28,8 @@ function App() {
 				<Route element={<SignupSignin />} path="/login" />
 			</Routes>
 
+
+			
 			<div className="App">
 				<TopBar />
 				<div className="containerz">
@@ -45,6 +47,7 @@ function App() {
 					</div>
 				</div>
 			</div>
+			
 
 
 		</BrowserRouter>
