@@ -34,7 +34,6 @@ function App() {
 					<SideBar />
 					<div className="pages">
 						<Routes>
-							<Route exact path="*" element={<ErrorPage />} ></Route>
 							<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
