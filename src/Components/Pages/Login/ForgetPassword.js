@@ -81,7 +81,7 @@ function SignupSignin() {
   return (
     <>
       <div className={styled.container}>
-        <div className={styled.formsContainer}>
+        <div className={`${styled.formsContainer} ${styled.forget_password_form}`}>
           <div className={styled.signinSignup}>
             <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
               <h2 className={styled.title}>Reset Password</h2>

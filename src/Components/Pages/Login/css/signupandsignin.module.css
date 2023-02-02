@@ -450,4 +450,11 @@ a:hover{
   .btn.transparent{
     text-align: center;
   }
+   .verfication_email_form{
+    height: 70%;
+  }
+
+  .forget_password_form{
+    height: 80%;
+  }
 }

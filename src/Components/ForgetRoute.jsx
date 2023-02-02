@@ -4,8 +4,8 @@ import { Children } from 'react';
 
 
 export default function ForgetRoute({children}) {
-    if(sessionStorage.getItem('user_email') == null){
-        return <Navigate to="/login"/>
+    if(sessionStorage.getItem('forget_email') == null){
+        return <Navigate to="/"/>
     }
 
     return children;

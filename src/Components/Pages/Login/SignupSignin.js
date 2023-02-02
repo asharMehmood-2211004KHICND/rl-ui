@@ -209,7 +209,7 @@ function SignupSignin() {
 									onChange={(e) => setLoginEmail(e.target.value)}
 									placeholder="Email" />
 							</div>
-							{errors.login_email && <p className="error">{errors.login_email}</p>}
+							{errors.login_email && <p className={styled.error}>{errors.login_email}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-lock"></i>
 								<input
@@ -237,17 +237,17 @@ function SignupSignin() {
 								<i className="fas fa-user"></i>
 								<input type="text" value={first_name} onChange={(e) => setFirst_name(e.target.value)} placeholder="First Name" />
 							</div>
-							{errors.first_name && <p className="error">{errors.first_name}</p>}
+							{errors.first_name && <p className={styled.error}>{errors.first_name}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-user"></i>
 								<input type="text" value={last_name} onChange={(e) => setLast_name(e.target.value)} placeholder="Last Name" />
 							</div>
-							{errors.last_name && <p className="error">{errors.last_name}</p>}
+							{errors.last_name && <p className={styled.error}>{errors.last_name}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-envelope"></i>
 								<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
 							</div>
-							{errors.email && <p className="error">{errors.email}</p>}
+							{errors.email && <p className={styled.error}>{errors.email}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-lock"></i>
 								<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
