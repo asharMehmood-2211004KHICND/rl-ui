@@ -18,6 +18,8 @@ import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
 import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
 import IndividualJob from './Components/Pages/JobPost/JobList/JobView/IndividualJob';
+import CandidateAcademicInfo from './Components/Pages/profile/CandidateAcademicInfo/CandidateAcademicInfo';
+import CandidateWorkInfo from './Components/Pages/profile/CandidateWorkInfo/CandidateWorkInfo';
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
 							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
+							<Route path="/academic-details" element={<PrivateRoute><CandidateAcademicInfo /></PrivateRoute>} ></Route>
+							<Route path="/work-experience" element={<PrivateRoute><CandidateWorkInfo /></PrivateRoute>} ></Route>
 							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
             				<Route path="/job/detail/:jodId" element={<IndividualJob/>}/>
