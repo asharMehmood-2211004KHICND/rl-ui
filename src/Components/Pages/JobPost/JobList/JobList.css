@@ -1,0 +1,8 @@
+.ant-table-thead > tr > th {
+  background-color: rgb(50, 145, 240) !important;
+  color: white !important;
+}
+.ant-table-thead > tr > th > svg{
+  color: white !important;
+}
+

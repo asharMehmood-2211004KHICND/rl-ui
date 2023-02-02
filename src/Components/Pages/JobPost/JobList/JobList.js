@@ -1,47 +1,84 @@
-import React, { useState } from 'react';
-import { Table, Input, DatePicker, Button, Popconfirm } from 'antd';
+import React, { useEffect, useState } from 'react';
+import { Table, Input, DatePicker, Popconfirm } from 'antd';
 import {SearchOutlined, FilterOutlined} from "@ant-design/icons";
 import moment from 'moment';
-import 'antd/dist/reset.css';
+import { Link } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash, faEdit, faExpand } from '@fortawesome/free-solid-svg-icons';
+import Button from '@mui/material/Button';
+import './JobList.css';
+import styled from "./JobList.module.css"
+import swal from "sweetalert";
+import { IconButton } from '@mui/material';
+import env from "react-dotenv";
+
+const CustomColor ={
+  iconColor: {color:"#f0f0f0"},
+  edit:   "rgb(50, 145, 240) ",
+  view:   "#f1f8ff",
+  viewText:   "#f1f8ff",
+  deleteIcon:"#ff4747"
+}
 
 const { RangePicker } = DatePicker;
 
-const JobsList = () => {
+const JobsList = ({jobsProp}) => {
 
-  const jobs = [
-    {id:"1",title: "Software Engineer", type: "DEG Engineer",postDate:"2023-01-15", expireDate: "2023-02-28", appliedCandidate: 20},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-    {id:"1",title: "Data Analyst", type: "CND Engineer",postDate:"2023-01-15", expireDate: "2023-03-15", appliedCandidate: 15},
-  ];
-  
-  // const [jobs, setJobs] = useState(jobser);
+ 
+  const [jobs, setJobs] = useState([]);
   const [filteredData, setFilteredData] = useState(jobs);
   const [searchText, setSearchText] = useState('');
   const [filteredDate, setFilteredDate] = useState([]);
+
+  useEffect(() => {  
+    fetch(
+      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
+      // `http://localhost:5000/job/post`,
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      },
+      {
+        mode: "cors",
+      }
+    )
+      .then((response) =>{
+        if(!(response.status>=200 && response.status<300) ){
+          throw new Error(response.status);
+        }  
+        return response.json()
+      })
+      .then((data) => {
+        console.log(data)
+        setJobs(data);
+        setFilteredData(data);
+      })
+      .catch((err) => {
+        if(err.Error>400){
+          swal(
+            {
+              title: "Server Down",
+              icon: "error",
+            });
+        }
+        else if(err.Error>299){
+          swal({
+            title: "Server Busy",
+            icon: "error",
+          });
+        }
+        // else{
+        //   console.log("fdkmfk" +type(err.Error));
+        //   swal({
+        //     title: "Job posted sucessfully!",
+        //     icon: "success",
+        // });
+        // }
+      });
+  }, [])
+  
 
   const handleSearch = (selectedKeys, confirm) => {
     confirm();
@@ -84,7 +121,9 @@ const JobsList = () => {
   };
 
   const columns = [    
-    {      title: 'Title',      dataIndex: 'title',      key: 'title',   
+    {     title: 'Title',
+          dataIndex: 'title', 
+          key: 'title',
      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) =>
       (        
         <div style={{ padding: 8 }}>
@@ -108,7 +147,7 @@ const JobsList = () => {
         </div>
       ),
       filterIcon: filtered => (
-        <SearchOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+        <SearchOutlined style={CustomColor.iconColor} />
 
         // <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
       ),
@@ -142,10 +181,10 @@ const JobsList = () => {
   },
   {
     title: 'Department',
-    dataIndex: 'type',
+    dataIndex: 'department',
     key: 'type',
   }, {
-    title: 'Candidate Applied',
+    title: 'Applied Candidates',
     dataIndex: 'appliedCandidate',
     key: 'appliedCandidate',
   },
@@ -160,7 +199,7 @@ const JobsList = () => {
       </div>
     ),
     filterIcon: filtered => (
-      <FilterOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+      <FilterOutlined style={CustomColor.iconColor} />
     ),
   },
   {
@@ -174,34 +213,45 @@ const JobsList = () => {
       </div>
     ),
     filterIcon: filtered => (
-      <FilterOutlined style={{ color: filtered ? '#1890ff' : undefined }} />
+      <FilterOutlined style={CustomColor.iconColor} />
     ),
-  },
-  {
-    title: 'Candidate Applied',
-    dataIndex: 'appliedCandidate',
-    key: 'appliedCandidate',
   },
   {
     title: 'Action',
     key: 'action',
     render: (text, record) => (
-      <span>
-        <Button onClick={() => handleViewJob(record)}>View</Button>
+      <span >
+        {/* <Button onClick={() => handleViewJob(record)}>View</Button> */}
+        <Link state={{ ...record }} to={`/job/detail/${record.id}`}>
+          <Button  variant='contained' style={{backgroundColor:CustomColor.view, color: CustomColor.edit }}>
+            View
+          </Button>
+        </Link>
+        <Link state={{...record }} to="/job/edit/1">
+        <IconButton  style={{color: CustomColor.edit}}>
+          <FontAwesomeIcon icon={faEdit}/>
+        </IconButton>
+        </Link>
         <Popconfirm
-          title="Are you sure delete this job?"
-          onConfirm={() => handleDeleteJob(record)}
-          okText="Yes"
-          cancelText="No"
-        >
-          <Button type="danger">Delete</Button>
+            title="Are you sure delete this job?"
+            onConfirm={() => handleDeleteJob(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+          <IconButton >
+            <FontAwesomeIcon icon={faTrash} style={{color:CustomColor.deleteIcon}} />
+          </IconButton>
         </Popconfirm>
+
       </span>
     ),
   },
 ];
 
-return <Table columns={columns} dataSource={filteredData} />;
+return <Table
+   rowKey={(record) => record.uid} 
+   columns={columns} 
+   dataSource={filteredData} />;
 };
 
 export default JobsList;

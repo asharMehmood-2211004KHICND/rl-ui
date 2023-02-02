@@ -10,7 +10,7 @@ export const MultiSelectDropDown = ({fetchedOptions,selected,setSelected}) => {
     // 'Ensure designs are in compliance with specifications']);
 
     //const[selected,setSelected] = useState([]);
-
+    console.log("multiselect "+selected)
 
     function handleSelect(selectedOption){
         setSelected([selectedOption]);
@@ -30,6 +30,7 @@ export const MultiSelectDropDown = ({fetchedOptions,selected,setSelected}) => {
   isObject={false}
   onKeyPressFn={function noRefCheck(){}}
   onRemove={handleRemove}
+  selectedValues={selected}
   onSearch={function noRefCheck(){}}
   options={fetchedOptions}
   onSelect={handleSelect}

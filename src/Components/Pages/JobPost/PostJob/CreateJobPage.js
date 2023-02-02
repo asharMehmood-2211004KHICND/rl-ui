@@ -172,7 +172,7 @@ const CreateJobPage = () => {
     <div className={styled.mainContainer}>
       <div className={styled.create_job_page}>
         {" "}
-        <h1 className={`${styled.heading} afnan`}>Create Job Page</h1>
+        <h1 className={`${styled.heading} afnan`}>Create Job</h1>
         <div className={styled.FormCreateJob}>
           <form onSubmit={handleSubmit}>
            
@@ -202,6 +202,8 @@ const CreateJobPage = () => {
               <h4 className={styled.heading3}>Job Description</h4>
               <textarea
                 className={styled.job_description_input}
+                value={description}
+                onChange={(e)=>setDescription(e.target.value)}
                 placeholder="Enter Job Description"
               ></textarea>
             </div>

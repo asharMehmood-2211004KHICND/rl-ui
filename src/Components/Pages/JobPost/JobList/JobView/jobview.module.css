@@ -4,47 +4,36 @@
 .jobview{
     justify-content: center;
     display: grid;
-    padding-bottom: 38px;
+    padding-top: 20px;
+    padding-left: 250px;
+    padding-right: 250px;
 }
-h1.heading {
-    text-align: center;    
+.heading {
+    text-align: center;
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
+    left: 167px;
+    position: relative;
     letter-spacing: 2px;
 }
 .title{
     display: flex;
-    gap: 12px;
-    text-align: center;
-   
-    
+    padding-top: 25px;
+  
 
 }
 .heading1{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-}
-h1.jobview {
-    text-align: center;
-    text-decoration: underline;
+    font-weight: 500;
 }
 
-textarea {
-        height: 26px;
-        width: 275px;
-        /* padding-top: 40px; */
-        margin-top: 19px;
-     
-    }
-span {
-        margin-top: 25px;
-        font-weight: 900;
-}
 .jobdescription{
     display: flex;
     gap: 12px;
     text-align: center;
+    padding-top: 20px;
     
 
 }
@@ -52,25 +41,12 @@ span {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-}
-h2 {
-    text-align: center;
-}
-
-textarea{
-        height: 26px;
-        width: 275px;
-        /* padding-top: 40px; */
-        margin-top: 19px;
-     
-    }
-span {
-        margin-top: 25px;
-        font-weight: 900;
+    font-weight: 500;
 }
 .department{
     display: flex;
     gap: 12px;
+    padding-top: 20px;
     text-align: center;
   
 }
@@ -78,330 +54,196 @@ span {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
-}
-h2 {
-    text-align: center;
-}
-
-p{
-      
-    margin-top: 25px;
-  
-    }
-span {
-        margin-top: 25px;
-        font-weight: 900;
+    font-weight: 500;
 }
 .responsibilities{
     display: flex;
     gap: 12px ;
     text-align: center;
+    padding-top: 20px;
 }
 .heading4{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
 }
-h2 {
-    text-align: center;
+.paragrap1 {
+ padding-left: 200px;
+}
+.responsibilitieslist {
+    padding-left: 268px;
+}
+.paragrap2 {
+   
+    padding-left: 53px;
 }
 
-textarea{
-        height: 26px;
-        width: 275px;
-        /* padding-top: 40px; */
-        margin-top: 19px;
-     
-    }
-span {
-        margin-top: 25px;
-        font-weight: 900;
+.paragrap3 {
+   
+    padding-left: 99px;
 }
-p.paragrap1 {
-        width: 556px;
-        margin-left: 177px;   
-    }
 
-
-ul.responsibilitieslist {
-    margin-top: -4px;
-    margin-left: 241px;
-}
-p.paragrap2 {
-   
-    width: 556px;
-    
-    margin-left: 37px;
-  
-}
-p.paragrap3 {
-   
-    width: 556px;
-
-    margin-left: 88px;
-   
-}
-p.paragrap4 {
-   
-    width: 556px;
-   
-    margin-left: 37px;
-   
-}
-p.paragrap5 {
+.paragrap5 {
     margin-left: 2px;
-    width: 556px;
+
 }
 .degrees{
     display: flex;
     gap: 12px ;
     text-align: center;
+    padding-top: 20px;
 }
 .heading5{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
 }
-h2 {
-    text-align: center;
-}
-
-p{
-      
-    margin-top: 25px;
-  
-    }
-span{
-        margin-top: 25px;
-        font-weight: 900;
-}
-ul.degreelist {
-    margin-top: -4px;
-    margin-left: 241px;
+.degreelist {
+    padding-left: 268px;
 }
 .employement{
     display: flex;
     gap: 12px ;
     text-align: center;
+    padding-top: 20px;
 }
 .heading6{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
+    font-weight: 500;
 }
-h2 {
-    text-align: center;
-}
-
-p{
-      
-    margin-top: 25px;
-  
-    }
-span{
-        margin-top: 25px;
-        font-weight: 900;
-}
-p.paragrap6{
-   
+.paragrap6{
     width: 556px;
-    margin-left: 65px;
+ 
 }
-ul.employmentlist{
-    margin-top: -4px;
-    margin-left: 241px;
+.employmentlist{
+    padding-left: 268px;
 }
 
 .softskills{
    display: flex;
    gap: 12px;
     text-align: center;
+    padding-top: 20px;
 }
 .heading7{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
-}
-h2 {
-    text-align: center;
+    font-weight: 500;
 }
 
-p{
-    margin-top: 25px;
-  
-    }
-span{
-        margin-top: 25px;
-        font-weight: 900;
-}
-p.paragrap7 {
+.paragrap7 {
    
     width: 556px;
-   
-    margin-left: 109px;
-
+ 
 }
-ul.softskillslist{
-    margin-top: -4px;
-    margin-left: 241px;
-   
+.softskillslist{
+    padding-left: 268px;
 }
 .technicalskills{
     display: flex;
     gap: 12px;
+    padding-top: 20px;
      text-align: center;
 
  }
  .heading8{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
+    font-weight: 500;
  }
- h2 {
-     text-align: center;
- }
- 
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
- }
- p.paragrap8 {
-    
-     width: 556px;
 
-     margin-left: 50px;
+ .paragrap8 {
+     width: 556px;
+  
  }
- ul.technicallist{
-     margin-top: -4px;
-     margin-left: 241px;
-    
+ .technicallist{
+    padding-left: 268px;
  }
  .perksandbenefits{
     display: flex;
     gap: 12px;
      text-align: center;
+     padding-top: 20px;
  }
  .heading9{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
- }
- h2 {
-     text-align: center;
- }
- 
- p{
-     margin-top: 25px;
    
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
+    font-weight: 500;
  }
- p.paragrap9 {
+
+ .paragrap9 {
     
      width: 556px;
  
-     margin-left: 7px;
  }
- ul.perksandbenefitslist{
-     margin-top: -4px;
-     margin-left: 241px;
+ .perksandbenefitslist{
+    padding-left: 268px;
     
  }
  .location{
     display: flex;
     gap: 12px;
-  
+    padding-top: 20px;
      text-align: center;
  }
  .heading10{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
- }
- h2 {
-     text-align: center;
+    font-weight: 500;
  }
  
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
- }
- p.paragrap10{
-    
-     width: 556px;
-     
-     margin-left: 127px;
- }
-
  .experience{
     display: flex;
-   
+    padding-top: 20px;
     gap: 12px;
      text-align: center;
  }
  .heading11{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
  }
- h2 {
-     text-align: center;
- }
- 
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
- }
- p.paragrap11{
+ .paragrap11{
+   padding-left: 120px;
     
-     width: 556px;
-     margin-left: 97px;
  }
  .vacancies{
     display: flex;
     gap: 12px;
-    
+    padding-top: 20px;
      text-align: center;
  }
  .heading12{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
+    font-weight: 500;
  }
- h2 {
-     text-align: center;
+ .paragrap10{
+    padding-left: 148px;
  }
- 
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
- }
- p.paragrap12{
+ .paragrap12{
     
-     width: 556px;
-     margin-left: 108px;
+    padding-left: 127px;
+  
  }
  .gender{
     display: flex;
     gap: 12px;
+    padding-top: 20px;
      text-align: center;
  }
  
@@ -410,59 +252,38 @@ ul.softskillslist{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
- }
- h2 {
-     text-align: center;
+    font-weight: 500;
  }
  
-
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
- }
- p.paragrap13 {
+.paragrap13 {
     
-     width: 556px;
-   
-     margin-left: 142px;
+ padding-left: 168px;
+  
  }
- ul.genderlist{
+ .genderlist{
      margin-top: -4px;
-     margin-left: 241px;
+
     
  }
  .travelling{
     display: flex;
     gap: 12px;
+    padding-top: 20px;
      text-align: center;
  }
  .heading14{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    font-weight: 500;
     letter-spacing: 2px;
  }
- h2 {
-     text-align: center;
- }
  
- p{
-     margin-top: 25px;
-   
-     }
- span{
-         margin-top: 25px;
-         font-weight: 900;
+ 
+
+ .paragrap14 {
+    padding-left: 66px;
  }
- p.paragrap14 {
-    
-     width: 556px;
-     margin-left: 12px;
- }
- ul.travellinglist{
+ .travellinglist{
      margin-top: -4px;
      margin-left: 241px;
     
@@ -471,80 +292,52 @@ ul.softskillslist{
     display: flex;
     gap: 12px;
      text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
  }
  .heading15{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
  }
- h2 {
-     text-align: center;
- }
- 
- p{
-     margin-top: 25px;
-   
-     }
- span{
-    margin-top: 25px;
-    font-weight: 900;
-    position: relative;
-    font-size: 15px;
-    color: white;
-    top: 10px;
 
- }
- p.paragrap15{
+ .paragrap15{
     
-     width: 556px;
-     margin-left: 77px;
+    padding-left: 100px;
  }
 
- section.icon {
+ .icon {
   
     color: white;
-    position: relative;
-    /* padding-left: 18px; */
-    top: 20px;
     height: 42px;
-    /* right: 0px; */
+    left: 329px;
+    position: relative;
     background-color: #1877f2;
     border-radius: 20px;
-    left: 529px;
-    /* padding-top: 20px; */
     text-align: center;
     width: 120px;
 }
+
 
 .herosec{
     display: flex;
    
 }
-section.line {
+.line {
     border-bottom-style: solid;
     border-bottom-width: 0.1px;
     border-color: #8080808a;
+    padding-bottom: 20px;
+   
 }  
-section.line2{
-    border-bottom-style: solid;
-    border-bottom-width: 0.1px;
-    border-color: #8080808a;
-}  
-section.line3{
-    border-bottom-style: solid;
-    border-bottom-width: 0.1px;
-    border-color: #8080808a;
-}    
-section.line4{
-    border-bottom-style: solid;
-    border-bottom-width: 0.1px;
-    border-color: #8080808a;
-    width: 30px;
-}   
-.fa-regular .far {
-    font-family: "Font Awesome 6 Free";
-    font-weight: 400;
-    top: 10px;
+
+.edit{
+    top: 7px;
     position: relative;
 }
 
+.fontAwesomeEdit{
+    position: relative;
+    top: 7px;
+    right: 2px;
+}
