@@ -18,6 +18,7 @@ import VerificationEmail from './Components/Pages/Login/VerificationEmail';
 import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
 import PrivateRoute from './Components/PrivateRoute';
 import ForgetRoute from './Components/ForgetRoute';
+import CreateStaff from './Components/Pages/Staff/CreateStaff';
 
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
 							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
 							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
+							<Route path="/createStaff" element={<PrivateRoute><CreateStaff /></PrivateRoute>}></Route>
 							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 							<Route path="/updateJob" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} ></Route>
 						</Routes>
@@ -54,6 +56,7 @@ function App() {
 
 
 		</BrowserRouter>
+		
 
 	)
 	/*
