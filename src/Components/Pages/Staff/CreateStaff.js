@@ -158,7 +158,7 @@ const CreateStaff = () => {
 
                     <div>
                         <DropdownField value={designation} handler={handleDesignation} options={['Manager', 'Trainer', 'Developer', 'Data Engineer']} placeholder='Designation' className={styles.halfSize} required='required' icon='fa-solid fa-level-up'></DropdownField>
-                        <DropdownField value={role} handler={handleRoles} options={['1', '2', '3']} placeholder='Roles' className={styles.halfSize} required='required' icon='fa-solid fa-tasks'></DropdownField>
+                        <DropdownField value={role} handler={handleRoles} options={['Interviewer', 'Hiring Manager']} placeholder='Role' className={styles.halfSize} required='required' icon='fa-solid fa-tasks'></DropdownField>
                     </div>
                     <div className={styles.buttonContainer}>
                         <Button type="submit" text="Save" className={styles.saveButton}>Submit</Button>
