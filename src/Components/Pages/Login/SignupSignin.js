@@ -24,6 +24,8 @@ function SignupSignin() {
 	const [password, setPassword] = useState('');
 	const [login_password, setLoginPassword] = useState('');
 	const [errors, setErrors] = useState({});
+	const [eyeMode,setEyeMode] = useState('fa-eye');
+	const [passwordType,setPasswordType] = useState("password");
 
 
 	const validate = (values) => {
@@ -131,6 +133,17 @@ function SignupSignin() {
 		}
 	}
 
+	const handleEyeMode =()=>{
+		if(eyeMode === 'fa-eye'){
+			setEyeMode('fa-eye-slash');
+			setPasswordType("text");
+		}
+		else{
+			setEyeMode('fa-eye');
+			setPasswordType("password");
+		}
+	}
+
 	const handleSignupSubmit = (event) => {
 		event.preventDefault();
 		const errors = validate({ email, password, first_name, last_name });
@@ -210,13 +223,14 @@ function SignupSignin() {
 									placeholder="Email" />
 							</div>
 							{errors.login_email && <p className={styled.error}>{errors.login_email}</p>}
-							<div className={styled.inputField}>
+							<div className={`${styled.inputField} ${styled.password_show}`}>
 								<i className="fas fa-lock"></i>
 								<input
-									type="password"
+									type={passwordType}
 									value={login_password}
 									onChange={(e) => setLoginPassword(e.target.value)}
 									placeholder="Password" />
+								<i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
 							</div>
 							{errors.login_password && <p className={styled.error}>{errors.login_password}</p>}
 							<div>
@@ -248,9 +262,10 @@ function SignupSignin() {
 								<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
 							</div>
 							{errors.email && <p className={styled.error}>{errors.email}</p>}
-							<div className={styled.inputField}>
+							<div className={`${styled.inputField} ${styled.password_show}`}>
 								<i className="fas fa-lock"></i>
-								<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+								<input type={passwordType} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+								<i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
 							</div>
 							{errors.password && <p className={styled.error}>{errors.password}</p>}
 							<input type="submit" className={styled.btn} btn value="Sign up" />

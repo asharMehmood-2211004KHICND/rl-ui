@@ -14,6 +14,8 @@ function SignupSignin() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
+  const [eyeMode, setEyeMode] = useState('fa-eye');
+  const [passwordType, setPasswordType] = useState("password");
 
 
   const validate = (values) => {
@@ -47,7 +49,7 @@ function SignupSignin() {
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       const data = {
-        email: sessionStorage.getItem('user_email'),
+        email: sessionStorage.getItem('forget_email'),
         password: password
       }
       fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword", {
@@ -77,6 +79,17 @@ function SignupSignin() {
       );
     }
   }
+
+  const handleEyeMode = () => {
+    if (eyeMode === 'fa-eye') {
+      setEyeMode('fa-eye-slash');
+      setPasswordType("text");
+    }
+    else {
+      setEyeMode('fa-eye');
+      setPasswordType("password");
+    }
+  }
   //end here
   return (
     <>
@@ -86,16 +99,17 @@ function SignupSignin() {
             <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
               <h2 className={styled.title}>Reset Password</h2>
 
-              <div className={styled.inputField}>
+              <div className={`${styled.inputField} ${styled.password_show}`}>
                 <i className="fas fa-lock"></i>
-                <input type="password"
+                <input type={passwordType}
                   value={password} onChange={(e) => setPassword(e.target.value)}
                   placeholder="New Password" />
+                <i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
               </div>
               {errors.password && <p className={styled.error}>{errors.password}</p>}
               <div className={styled.inputField}>
                 <i className="fas fa-lock"></i>
-                <input type="password"
+                <input type={passwordType}
                   value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
                   placeholder="Confirm Password" />
               </div>
