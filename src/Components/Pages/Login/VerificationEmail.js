@@ -42,7 +42,7 @@ function VerificationEmail() {
         email: email,
         otp: pin
       }
-      fetch("http://localhost:8080/auth/otp-verification", {
+      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-verification", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -90,7 +90,7 @@ function VerificationEmail() {
       email: email
     }
 
-    fetch("http://localhost:8080/auth/otp-expire", {
+    fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -99,7 +99,7 @@ function VerificationEmail() {
     }).then((response) => {
       if (response.status === 200) {
 
-        fetch("http://localhost:8080/auth/forgetpassword-link", {
+        fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword-link", {
           method: 'POST',
           body: JSON.stringify(data),
           headers: {
@@ -113,7 +113,7 @@ function VerificationEmail() {
             console.log('OTP Expire After 10 Second!')
             setTimeout(() => {
               console.log('OTP Expired!')
-              fetch("http://localhost:8080/auth/otp-expire", {
+              fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
                 method: 'POST',
                 body: JSON.stringify(data),
                 headers: {
@@ -176,8 +176,6 @@ function VerificationEmail() {
                   placeholder="Verification Email" readOnly={readOnly} />
               </div>
               {errors.email && <p className={styled.error}>{errors.email}</p>}
-              
-
               <div className={`${styled.inputField} ${hidden}`}>
                 <i className="fa-solid fa-key"></i>
                 <input type="text"
@@ -185,7 +183,6 @@ function VerificationEmail() {
                   placeholder="Enter Pin " />
               </div>
               {errors.pin && <p className={styled.error}>{errors.pin}</p>}
-
               <h6 className={`${styled.resendOtp} ${hiddenResend}`} onClick={handleSendEmail}>Resend Otp</h6>
 
               <button type="button" onClick={handleSendEmail} disabled={btnDisabled} className={`${styled.btn} ${styled.solid} ${hiddenButton}`} >{btnText}</button>

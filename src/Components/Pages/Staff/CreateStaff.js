@@ -17,7 +17,7 @@ const CreateStaff = () => {
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
     const [designation, setDesignation] = useState('');
-    const [roles, setRoles] = useState('');
+    const [role, setRole] = useState('');
 
     const [showAlert, setShowAlert] = useState(false)
     const [alertType, setalertType] = useState('alert');
@@ -58,7 +58,7 @@ const CreateStaff = () => {
     }, []);
 
     const handleRoles = useCallback(val => {
-        setRoles(val);
+        setRole(val);
     }, []);
 
     const url = "http://localhost:8080/creatstaff"
@@ -75,7 +75,7 @@ const CreateStaff = () => {
             date_of_birth : dob,
             password : password,
             designation : designation,
-            role : roles
+            role : role
         }
 
         console.log(data)
@@ -158,7 +158,7 @@ const CreateStaff = () => {
 
                     <div>
                         <DropdownField value={designation} handler={handleDesignation} options={['Manager', 'Trainer', 'Developer', 'Data Engineer']} placeholder='Designation' className={styles.halfSize} required='required' icon='fa-solid fa-level-up'></DropdownField>
-                        <DropdownField value={roles} handler={handleRoles} options={['1', '2', '3']} placeholder='Roles' className={styles.halfSize} required='required' icon='fa-solid fa-tasks'></DropdownField>
+                        <DropdownField value={role} handler={handleRoles} options={['1', '2', '3']} placeholder='Roles' className={styles.halfSize} required='required' icon='fa-solid fa-tasks'></DropdownField>
                     </div>
                     <div className={styles.buttonContainer}>
                         <Button type="submit" text="Save" className={styles.saveButton}>Submit</Button>
