@@ -22,8 +22,6 @@ import IndividualJob from './Components/Pages/JobPost/JobList/JobView/Individual
 
 function App() {
 
-	const [token, setToken] = useState();
-
 	return (
 		<BrowserRouter>
 			<Routes>
@@ -31,74 +29,20 @@ function App() {
 			</Routes>
 
 
-			
-			<div className="App">
-				<TopBar />
-				<div className="containerz">
-					<SideBar />
-					<div className="pages">
-						<Routes>
-							<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
-							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
-							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-            				<Route path="/job/view/:jodId" element={<IndividualJob/>}/>
-            				<Route path="/job/update" element={<UpdateJobPage/>}/>
-						</Routes>
-						{/* <Route element={<About />} path="/about" /> */}
-					</div>
-				</div>
-			</div>
-			
-
+			<Routes>
+				<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
+				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
+				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
+				<Route path="/job/view/:jodId" element={<IndividualJob />} />
+				<Route path="/job/update" element={<UpdateJobPage />} />
+			</Routes>
 
 		</BrowserRouter>
 
 	)
-	/*
-	if (sessionStorage.getItem('user_id') == null) {
-
-		return (
-			<>
-				<BrowserRouter>
-					<Routes>
-						<Route exact path="*" element={<ErrorPage />} ></Route>
-						<Route path="/" element={<SignupSignin />} ></Route>
-						<Route path="/Dashboard" element={<SignupSignin />} ></Route>
-						<Route path="/forgetpassword" element={<VerificationEmail/>} ></Route>
-						<Route path="/createJob" element={< SignupSignin />} ></Route>
-					</Routes>
-				</BrowserRouter>
-			</>
-		)
-	}
-	else {
-		return (
-			<div className="App">
-				<TopBar />
-				<div className="containerz">
-					<SideBar />
-					<div className="pages">
-						<BrowserRouter>
-							<Routes>
-								<Route exact path="*" element={<ErrorPage />} ></Route>
-								<Route path="/" element={<Home />} ></Route>
-								<Route path="/Dashboard" element={<Home />} ></Route>
-								<Route path="/Home" element={<Home />} ></Route>
-								<Route path="/profile" element={<CandidatePersonalInfo />} ></Route>
-								<Route path="/createJob" element={< CreateJobPage />} ></Route>	
-								<Route path="/updateJob" element={< UpdateJobPage />} ></Route>
-							</Routes>
-						</BrowserRouter>
-
-					</div>
-				</div>
-			</div>
-		);
-	}
-	*/
 }
 
 export default App;
