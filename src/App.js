@@ -44,8 +44,8 @@ function App() {
 							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
 							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-            				<Route path="/job/detail/:jodId" element={<IndividualJob/>}/>
-            				<Route path="/job/edit/:jodId" element={<UpdateJobPage/>}/>
+            				<Route path="/job/view/:jodId" element={<IndividualJob/>}/>
+            				<Route path="/job/update" element={<UpdateJobPage/>}/>
 						</Routes>
 						{/* <Route element={<About />} path="/about" /> */}
 					</div>

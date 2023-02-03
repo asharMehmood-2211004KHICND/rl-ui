@@ -9,8 +9,13 @@ import styled from "./CreateJobPage.module.css";
 import env from "react-dotenv";
 import swal from "sweetalert";
 import { type } from "@testing-library/user-event/dist/type";
+import { useNavigate } from "react-router-dom";
 
 const CreateJobPage = () => {
+	
+  const navigate = useNavigate();
+
+
   const [jobTitle, setJobTitle] = useState("");
   const [description, setDescription] = useState("");
   const [department, setDepartment] = useState(""); // for single drop down
@@ -88,25 +93,25 @@ const CreateJobPage = () => {
     let requestData = {
       title: jobTitle,
       department: department,
-      employementCategory: employmentCategories[0], // ["FULL_TIME","ONLINE"],
+      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
       location: location,
-      softSkills: softskills[0].map((ss) => {
+      softSkills: softskills.map((ss) => {
         return { softSkill: ss };
       }),
-      technicalSkills: technicalskills[0].map((ts) => {
+      technicalSkills: technicalskills.map((ts) => {
         return { technicalSkill: ts };
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
-      responsibilitiess: selectedResponsibilites[0].map((rs) => {
+      responsibilitiess: selectedResponsibilites.map((rs) => {
         return { responsibility: rs };
       }),
-      educations: degrees[0].map((edu) => {
+      educations: degrees.map((edu) => {
         return { education: edu };
       }),
-      benefitPerkss: perksAndBenefits[0].map((pb) => {
+      benefitPerkss: perksAndBenefits.map((pb) => {
         return { benefitPerks: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
@@ -115,7 +120,7 @@ const CreateJobPage = () => {
 
     console.log(requestData);
     fetch(
-      `${env.REACT_APP_API_URL1}/post`,
+      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/post`,
       // `http://localhost:5000/job/post`,
       {
         method: "POST",
@@ -139,8 +144,31 @@ const CreateJobPage = () => {
             title: "Job posted sucessfully!",
             icon: "success",
         });
+        
         setButtonText("SUBMIT");
         setButtonDisable(false);
+
+        setJobTitle("");
+        setDepartment("");
+        setEmploymentCategories([]);
+        setGenders([]);
+        setTravelling("");
+        setLocation("");
+        setSoftskills([]);
+        setTechnicalskills([]);
+        setClosingDate("");
+        setDescription("");
+        setSelectedResponsibilities([]);
+        setDegrees([]);
+        setPerksAndBenefits([]);
+        setExperienceLevel(0);
+        setVacancies(undefined);
+
+
+   
+        navigate('/job/all');
+
+
       })
       .catch((err) => {
         if(err.Error>400){
@@ -166,6 +194,7 @@ const CreateJobPage = () => {
         setButtonText("SUBMIT");
         setButtonDisable(false);
       });
+      
   };
 
   return (

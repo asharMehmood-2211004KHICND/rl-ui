@@ -222,12 +222,12 @@ const JobsList = ({jobsProp}) => {
     render: (text, record) => (
       <span >
         {/* <Button onClick={() => handleViewJob(record)}>View</Button> */}
-        <Link state={{ ...record }} to={`/job/detail/${record.id}`}>
+        <Link state={{ ...record }} to={`/job/view/${record.id}`}>
           <Button  variant='contained' style={{backgroundColor:CustomColor.view, color: CustomColor.edit }}>
             View
           </Button>
         </Link>
-        <Link state={{...record }} to="/job/edit/1">
+        <Link state={{...record }} to="/job/update">
         <IconButton  style={{color: CustomColor.edit}}>
           <FontAwesomeIcon icon={faEdit}/>
         </IconButton>
@@ -242,7 +242,6 @@ const JobsList = ({jobsProp}) => {
             <FontAwesomeIcon icon={faTrash} style={{color:CustomColor.deleteIcon}} />
           </IconButton>
         </Popconfirm>
-
       </span>
     ),
   },

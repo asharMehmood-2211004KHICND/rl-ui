@@ -5,17 +5,18 @@ import { MultiSelectDropDown } from "../components/MultiSelectDropDown";
 import { SimpleDropDown } from "../components/SimpleDropDown";
 import { Textfeild } from "../components/Textfeild";
 import styled from "./CreateJobPage.module.css";
-
+import { useNavigate } from "react-router-dom";
 import env from "react-dotenv";
 import swal from "sweetalert";
 import { type } from "@testing-library/user-event/dist/type";
 import { useLocation, useParams } from "react-router-dom";
 
 const UpdateJobPage = () => {
+  const navigate = useNavigate();
 
   const params = useParams();
   const {state} = useLocation();
-  console.log(state)
+  // console.log(state)
   const [data, setData] = useState(state);
 
   const [jobTitle, setJobTitle] = useState(data.title);
@@ -23,7 +24,9 @@ const UpdateJobPage = () => {
   const [department, setDepartment] = useState(data.department); // for single drop down
   const [degrees, setDegrees] = useState(data.educations.map(data=>data.education));
   //data problem
-  const [employmentCategories, setEmploymentCategories] = useState(data.employementCategory);
+  // const [employmentCategories, setEmploymentCategories] = useState(data.employementCategory);
+
+  const [employmentCategories, setEmploymentCategories] = useState(["Full Time","Part Time"]);
 
   const [genders, setGenders] = useState(data.gender); // for single drop down
   const [location, setLocation] = useState(data.location ); // for single drop down
@@ -42,6 +45,7 @@ const UpdateJobPage = () => {
   const experienceLevelOptions = [1,2,3,4,5];
   const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
+
 
   let responsibilityOptions = [
     "Contribute in all phases of the development lifecycle",
@@ -72,6 +76,13 @@ const UpdateJobPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    console.log(degrees.length)
+    console.log( employmentCategories.length)
+    console.log( softskills.length)
+    console.log( technicalskills.length)
+    console.log( selectedResponsibilites.length)
+    console.log( experienceLevel.length) 
+    console.log(perksAndBenefits.length  )
     setButtonText("Loading...");
     setButtonDisable(true);
     if (
@@ -81,10 +92,13 @@ const UpdateJobPage = () => {
       !technicalskills.length ||
       !selectedResponsibilites.length ||
       !perksAndBenefits.length ||
-      !experienceLevel.length
+      !experienceLevel
     ) {
+
+      console.log(degrees)
       // alert("Please fill out all the required fields");
       swal({
+        
         title: "Please fill out all the required fields",
         icon: "error",
       });
@@ -94,37 +108,60 @@ const UpdateJobPage = () => {
       return;
     }
 
-    let requestData = {
+    const dataResponse = {
+
       title: jobTitle,
       department: department,
-      employementCategory: employmentCategories[0], // ["FULL_TIME","ONLINE"],
+      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
       location: location,
-      softSkills: softskills[0].map((ss) => {
+      softSkills: softskills ,
+      technicalSkills: technicalskills,
+      closeDate: closingDate, //"2023-01-30"
+      description: description,
+      responsibilitiess: selectedResponsibilites,
+      educations: degrees,
+      benefitPerkss: perksAndBenefits,
+      experienceLevel: parseInt(experienceLevel),
+      vacancyCount: vacancies,
+    
+
+    }
+
+    console.log(dataResponse)
+
+    let requestData = {
+      title: jobTitle,
+      department: department,
+      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
+      gender: genders, //["MALE","FEMALE"],
+      traveling: travelling,
+      location: location,
+      softSkills: softskills.map((ss) => {
         return { softSkill: ss };
       }),
-      technicalSkills: technicalskills[0].map((ts) => {
+      technicalSkills: technicalskills.map((ts) => {
         return { technicalSkill: ts };
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
-      responsibilitiess: selectedResponsibilites[0].map((rs) => {
+      responsibilitiess: selectedResponsibilites.map((rs) => {
         return { responsibility: rs };
       }),
-      educations: degrees[0].map((edu) => {
+      educations: degrees.map((edu) => {
         return { education: edu };
       }),
-      benefitPerkss: perksAndBenefits[0].map((pb) => {
+      benefitPerkss: perksAndBenefits.map((pb) => {
         return { benefitPerks: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
     };
 
-    console.log(requestData);
+
     fetch(
-      `${env.REACT_APP_API_URL1}/post`,
+      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/update/${data.id}`,
       // `http://localhost:5000/job/post`,
       {
         method: "POST",
@@ -136,7 +173,7 @@ const UpdateJobPage = () => {
       {
         mode: "cors",
       }
-    )
+     )
       .then((response) =>{
         if(!(response.status>=200 && response.status<300) ){
           throw new Error(response.status);
@@ -148,8 +185,27 @@ const UpdateJobPage = () => {
             title: "Job posted sucessfully!",
             icon: "success",
         });
+
         setButtonText("SUBMIT");
         setButtonDisable(false);
+
+        setJobTitle("");
+        setDepartment("");
+        setEmploymentCategories([]);
+        setGenders([]);
+        setTravelling("");
+        setLocation("");
+        setSoftskills([]);
+        setTechnicalskills([]);
+        setClosingDate("");
+        setDescription("");
+        setSelectedResponsibilities([]);
+        setDegrees([]);
+        setPerksAndBenefits([]);
+        setExperienceLevel(0);
+        setVacancies(undefined);
+        navigate('/job/all');
+
       })
       .catch((err) => {
         if(err.Error>400){
