@@ -46,6 +46,7 @@ function App() {
 							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
 							<Route path="/academic-details" element={<PrivateRoute><CandidateAcademicInfo /></PrivateRoute>} ></Route>
 							<Route path="/work-experience" element={<PrivateRoute><CandidateWorkInfo /></PrivateRoute>} ></Route>
+							<Route path="/skills" element={<PrivateRoute><div><h1>hello</h1></div></PrivateRoute>} ></Route>
 							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
             				<Route path="/job/detail/:jodId" element={<IndividualJob/>}/>

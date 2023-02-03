@@ -9,6 +9,7 @@ import { message, Popconfirm } from 'antd';
 // import swal from 'sweetalert';
 // import AddCircleIcon from '@material-ui/icons/AddCircle';
 import InputLabel from '../Label/InputLabel';
+import { useNavigate } from "react-router-dom";
 
 const qualificationOptions = [
     'SSC',
@@ -43,7 +44,8 @@ function CandidateAcademicInfo() {
     const [deleteId, setDeleteId] = useState(null);
     const [editId, setEditId] = useState(null)
 
-    const basicRoute = 'http://192.168.0.160:8080/api/educational_information'
+    // const basicRoute = 'http://192.168.0.160:8080/api/educational_information'
+    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/educational_information'
     const getByUserIdUrl = `${basicRoute}/user`
     const postUrl = basicRoute
     const deleteUrl = basicRoute
@@ -317,6 +319,12 @@ function CandidateAcademicInfo() {
         setShowEdit(false)
     }
 
+    const navigate = useNavigate();
+
+    const onNext = () => {
+        navigate("/work-experience")
+    }
+
     if (view === 'details') {
         return (
             <>
@@ -381,7 +389,7 @@ function CandidateAcademicInfo() {
                     </div>
                     <div>
                         {/* <Button onClick={onSave} text="Save" type="button" className={styles.saveButton} /> */}
-                        <Button disabled={disNextBtn} text="Next" type="button" className={styles.nextButton} />
+                        <Button disabled={disNextBtn} onClick={onNext} text="Next" type="button" className={styles.nextButton} />
                     </div>
                 </div>
             </>

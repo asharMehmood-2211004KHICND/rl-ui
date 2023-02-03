@@ -6,6 +6,7 @@ import Button from "../Button/Button"
 import InputLabel from "../Label/InputLabel"
 import { useCallback, useState, useEffect } from "react"
 import { message, Popconfirm } from 'antd';
+import { useNavigate } from "react-router-dom"
 
 
 export default function CandidateWorkInfo() {
@@ -29,7 +30,8 @@ export default function CandidateWorkInfo() {
     const [editId, setEditId] = useState(null)
 
 
-    const basicRoute = 'http://192.168.0.160:8081/api/work_experience'
+    // const basicRoute = 'http://192.168.0.160:8081/api/work_experience'
+    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/work_experience'
     const getByUserIdUrl = `${basicRoute}/user`
     const postUrl = basicRoute
     const deleteUrl = basicRoute
@@ -301,6 +303,12 @@ export default function CandidateWorkInfo() {
         setShowEdit(false)
     }
 
+    const navigate = useNavigate();
+
+    const onNext = () => {
+        navigate("/skills");
+    }
+
     if (view == 'details') {
         return (
             <>
@@ -360,7 +368,7 @@ export default function CandidateWorkInfo() {
                         <Button onClick={onAddAnother} text="+ Add New" type="button" className={styles.saveButton} />
                     </div>
                     <div>
-                        <Button disabled={disNextBtn} text="Next" type="button" className={styles.nextButton} />
+                        <Button disabled={disNextBtn} onClick={onNext} text="Next" type="button" className={styles.nextButton} />
                     </div>
 
                 </div>
@@ -379,8 +387,8 @@ export default function CandidateWorkInfo() {
                             <tr>
 
                                 <td><InputLabel className={styles.inputLabel} text='Company'></InputLabel></td>
-                                <td><InputField value={company} handler={handleCompany} type='text' pattern="[a-zA-Z ]*" placeholder='Company' className={styles.fullSize} required='required' icon='fa fa-briefcase' /></td>
-                                <td style={{minWidth: '150px', margin: '10px'}} ><InputLabel className={styles.inputLabel} text='Start Date'></InputLabel></td>
+                                <td style={{minWidth: '250px', margin: '10px'}} ><InputField value={company} handler={handleCompany} type='text' pattern="[a-zA-Z ]*" placeholder='Company' className={styles.fullSize} required='required' icon='fa fa-briefcase' /></td>
+                                <td style={{minWidth: '120px', padding: '10px'}} ><InputLabel className={styles.inputLabel} text='Start Date'></InputLabel></td>
 
                                 <td><InputField value={startDate} handler={handleStartDate} type='date' placeholder='Start Date' className={styles.inputFields} required='required' ></InputField></td>
 
@@ -410,7 +418,7 @@ export default function CandidateWorkInfo() {
                                         <span>No</span>
                                     </div>
                                 </div></td>
-                                <td><InputLabel className={styles.inputLabel} text='End Date'></InputLabel></td>
+                                <td style={{minWidth: '120px', padding: '10px'}} ><InputLabel className={styles.inputLabel} text='End Date'></InputLabel></td>
 
                                 <td><InputField disabled={disEndDate} value={endDate} handler={handleEndDate} type='date' placeholder='End Date' className={styles.inputFields} required='required' ></InputField></td>
                             </tr>
