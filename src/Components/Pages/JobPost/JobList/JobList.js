@@ -4,7 +4,7 @@ import {SearchOutlined, FilterOutlined} from "@ant-design/icons";
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faEdit, faExpand } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faExpand, faClone } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
 import './JobList.css';
 import styled from "./JobList.module.css"
@@ -17,7 +17,8 @@ const CustomColor ={
   edit:   "rgb(50, 145, 240) ",
   view:   "#f1f8ff",
   viewText:   "#f1f8ff",
-  deleteIcon:"#ff4747"
+  deleteIcon:"#ff4747",
+  coneIcone: "rgb(50, 145, 240)"
 }
 
 const { RangePicker } = DatePicker;
@@ -51,7 +52,6 @@ const JobsList = ({jobsProp}) => {
         return response.json()
       })
       .then((data) => {
-        console.log(data)
         setJobs(data);
         setFilteredData(data);
       })
@@ -69,13 +69,6 @@ const JobsList = ({jobsProp}) => {
             icon: "error",
           });
         }
-        // else{
-        //   console.log("fdkmfk" +type(err.Error));
-        //   swal({
-        //     title: "Job posted sucessfully!",
-        //     icon: "success",
-        // });
-        // }
       });
   }, [])
   
@@ -111,15 +104,94 @@ const JobsList = ({jobsProp}) => {
     );
   };
 
-  const handleViewJob = (record) => {
-    // console.log(record);
-    // your logic for view job
-  };
 
   const handleDeleteJob = job => {
-    setFilteredData(filteredData.filter(j => j !== job));
+    fetch(
+      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/delete/${job.id}`,
+      {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        }
+      },
+      {
+        mode: "cors",
+      }
+    )
+      .then((response) => {
+        if(!(response.status>=200 && response.status<300) ){
+          throw new Error(response.status);
+        }
+        setJobs(job);
+        setFilteredData(filteredData.filter(j => j !== job));
+      })
+      .catch((err) => {
+        if(err.Error>400){
+          swal(
+            {
+              title: "Server Down",
+              icon: "error",
+            });
+        }
+        else if(err.Error>299){
+          swal({
+            title: "Server Busy",
+            icon: "error",
+          });
+        }
+      });
   };
 
+  const handleCreateClone = job=>{
+    
+    const [id , ...data] = job; 
+
+    fetch(
+      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/post`,
+      // `http://localhost:5000/job/post`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      },
+      {
+        mode: "cors",
+      }
+    )
+      .then((response) =>{
+        if(!(response.status>=200 && response.status<300) ){
+          throw new Error(response.status);
+        }  
+        return response.json()
+      })
+      .then((data) => {
+        swal({
+            title: "Job Cloned sucessfully!",
+            icon: "success",
+        });
+
+        // setJobs(job);
+        setFilteredData(job);
+
+      })
+      .catch((err) => {
+        if(err.Error>400){
+          swal(
+            {
+              title: "Server Down",
+              icon: "error",
+            });
+        }
+        else if(err.Error>299){
+          swal({
+            title: "Server Busy",
+            icon: "error",
+          });
+        }
+      });
+  }
   const columns = [    
     {     title: 'Title',
           dataIndex: 'title', 
@@ -233,6 +305,16 @@ const JobsList = ({jobsProp}) => {
         </IconButton>
         </Link>
         <Popconfirm
+            title="Do you need a Clone of this Job?"
+            onConfirm={() => handleCreateClone(record)}
+            okText="Yes"
+            cancelText="No"
+          >
+          <IconButton >
+            <FontAwesomeIcon icon={faClone} style={{color:CustomColor.coneIcone}} />
+          </IconButton>
+        </Popconfirm>
+        <Popconfirm
             title="Are you sure delete this job?"
             onConfirm={() => handleDeleteJob(record)}
             okText="Yes"
@@ -242,6 +324,7 @@ const JobsList = ({jobsProp}) => {
             <FontAwesomeIcon icon={faTrash} style={{color:CustomColor.deleteIcon}} />
           </IconButton>
         </Popconfirm>
+        
       </span>
     ),
   },
