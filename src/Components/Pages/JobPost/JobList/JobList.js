@@ -122,7 +122,7 @@ const JobsList = ({jobsProp}) => {
         if(!(response.status>=200 && response.status<300) ){
           throw new Error(response.status);
         }
-        setJobs(job);
+        setJobs(job.filter(j => j !== job));
         setFilteredData(filteredData.filter(j => j !== job));
       })
       .catch((err) => {
@@ -144,7 +144,34 @@ const JobsList = ({jobsProp}) => {
 
   const handleCreateClone = job=>{
     
-    const [id , ...data] = job; 
+    const {id , ...data} = job; 
+    const requestData = {
+      title: data.title,
+      department: data.department,
+      employementCategory: data.employementCategory, // ["FULL_TIME","ONLINE"],
+      gender: data.gender, //["MALE","FEMALE"],
+      traveling: data.traveling,
+      location: data.location,
+      softSkills: data.softSkills.map((ss) => {
+        return  ss.softSkill ;
+      }),
+      technicalSkills: data.technicalSkills.map((ts) => {
+        return  ts.technicalSkill ;
+      }),
+      closeDate: data.closeDate, //"2023-01-30"
+      description: data.description,
+      responsibilitiess: data.responsibilitiess.map((rs) => {
+        return  rs.responsibility ;
+      }),
+      educations: data.educations.map((edu) => {
+        return edu.education;
+      }),
+      benefitPerkss: data.benefitPerkss.map((pb) => {
+        return  pb.benefitPerks;
+      }),
+      experienceLevel: parseInt(data.experienceLevel),
+      vacancyCount: data.vacancyCount,
+    };
 
     fetch(
       `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/post`,
@@ -154,7 +181,7 @@ const JobsList = ({jobsProp}) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(requestData),
       },
       {
         mode: "cors",
@@ -172,8 +199,8 @@ const JobsList = ({jobsProp}) => {
             icon: "success",
         });
 
-        // setJobs(job);
-        setFilteredData(job);
+        setJobs(prev=>[data, ...prev ]);
+        setFilteredData(prev=>[data, ...prev ]);
 
       })
       .catch((err) => {
@@ -224,13 +251,13 @@ const JobsList = ({jobsProp}) => {
         // <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
       ),
       onFilter: (value, record) =>
-    record.title.toLowerCase().includes(value.toLowerCase()),
-  onFilterDropdownVisibleChange: visible => {
-    if (visible) {
-      setTimeout(() => {
-        document.getElementById('titleSearch').select();
-      });
-    }
+        record.title.toLowerCase().includes(value.toLowerCase()),
+        onFilterDropdownVisibleChange: visible => {
+         if (visible) {
+           setTimeout(() => {
+             document.getElementById('titleSearch').select();
+           });
+         }
   },
   render: text =>
     searchText ? (
