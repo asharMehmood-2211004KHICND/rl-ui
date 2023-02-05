@@ -1,0 +1,354 @@
+.mainContainer{
+    /* background-color: #216ba5e6; */
+    border: 2px solid rgb(42, 107, 168);    
+    display: flex; 
+    justify-content: center;
+    border-radius: 10px;
+}
+.job_description_container {
+    width: 800px;
+    /* margin: 20px auto; */
+}
+  
+.job_description_input {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+.create_job_page{
+    background-color: rgb(255, 255, 255);
+    padding-left: 160px;
+    /* left: 24px; */
+    /* position: relative; */
+    padding-top: 20px;
+    margin-bottom: 27px;
+    margin-top: 25px;
+    bottom: 80px;
+    border-radius: 22px;
+}
+.heading2 {
+    font-family: sans-serif;
+    font-size: 25px;
+    padding-bottom: 11px;
+    padding-top: 18px;
+}
+.enterjobtitle {
+    margin-left: -2px;
+}
+.enterjobtitle label input {
+    width: 367px;
+    border-radius: 5px;
+    padding-left: 10px;
+    height: 33px;
+    /* top: -20px; */
+  
+    border-style: solid;
+    border-color: #e7e7e7;
+    background-color: #ffffff00;
+}
+
+.InActiveJob {
+    color: red !important;
+}
+
+.ActiveJob{
+    color: var(--main-color) !important;
+} 
+
+.jobdescription label input {
+    width: 780px;
+    border-radius: 5px;
+    padding-left: 5px;
+    height: 87px;
+  
+    border-style: solid;
+    border-color: #e7e7e7;
+    background-color: #ffffff00;
+}
+.jobdescription{
+    margin-left: -2px; 
+}
+   
+
+.dropdown select{
+    width: 382px;
+    height: 34px;
+    border-radius: 4px;
+    /* top: -12px; */
+    padding-left: 3px;
+    border-style: solid;
+    border-color: #ccc;
+    background-color: #ffffff00;
+    
+
+}
+.heading3{
+    font-size: 25px;
+    font-family: sans-serif;
+    padding-bottom: 11px;
+    padding-top: 18px;
+}
+.heading4{
+    font-size: 25px;
+padding-bottom: 11px;
+    font-family: sans-serif;
+   
+}
+.FormCreateJob {
+    /* display: inline; */
+    right: 85px;
+    position: relative;
+    display: grid;
+  column-gap: 50px;
+}
+
+.responsibilities {
+    width: 382px;
+}
+
+.heading5 {
+    font-size: 25px;
+    font-family: sans-serif;
+    padding-bottom: 11px;
+}
+.heading6 {
+            font-size: 25px;
+            padding-bottom: 11px;
+            font-family: sans-serif;
+}
+.education {
+    /* top: -22px; */
+    position: relative;
+    width: 382px;
+}
+.heading7 {
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+
+}
+.employmentcategory{
+    /* top: -22px; */
+    position: relative;
+    width: 382px;
+}
+.heading8{
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.heading9 {
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.softskills{
+    /* top: -22px; */
+    position: relative;
+    width: 382px;
+
+}
+.technicalskills{
+    /* top: -22px; */
+    position: relative;
+    width: 382px;
+}
+.heading10 {
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.perksandbenifits{
+
+    width: 382px;
+}
+.heading11 {
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.Location select {
+    
+    /* top: -22px;  */
+    width: 382px;
+    height: 34px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 4px;
+  
+}
+.heading12{
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.experience select {
+
+    width: 382px;
+    height: 34px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 4px;
+}
+.heading13{
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.vacancies label input{
+ 
+    width: 382px;
+    height: 31px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    /* position: relative; */
+    padding-left: 4px;
+}
+.heading14{
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.gender select{
+
+    width: 382px;
+    height: 31px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 4px;
+}
+.heading15 { 
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.requirestravelling select{
+   
+    width: 382px;
+    height: 34px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 4px;
+}
+.heading16{
+    font-size: 25px;
+    padding-bottom: 11px;
+    font-family: sans-serif;
+}
+.closingdate input {
+  
+    height: 34px;
+    border-style: solid;
+    border-color: #0000002b;
+    background-color: transparent;
+    border-radius: 5px;
+    padding-left: 6px;
+    
+ 
+}
+
+
+.experience .opt{
+    color: #000;
+
+}
+.div {
+    display: flex;
+    grid-gap: 10px 40px;
+}
+.div2 {
+    display: flex;
+    grid-gap: 10px 40px;
+    /* top: -89px; */
+    position: relative;
+}
+.div3{
+    display: flex;
+    grid-gap: 10px 40px;
+    /* top: -78px; */
+    position: relative;
+}
+.div4{
+    display: flex;
+    grid-gap: 10px 40px;
+    /* top: -104px; */
+    position: relative;
+}
+.div5{
+    display: flex;
+    grid-gap: 10px 40px;
+    /* top: -152px; */
+    position: relative;
+}
+.div6{
+     display: flex;
+    grid-gap: 10px 40px;
+    /* top: -132px; */
+    position: relative;
+}
+.div7{
+    display: flex;
+   grid-gap: 10px 40px;
+   /* top: -132px; */
+   position: relative;
+}
+
+.closingdate {
+    padding-bottom: 20px;
+  display: flex;
+ 
+}
+.heading {
+    text-align: center;
+    position: relative;
+    right: 61px;
+    /* text-decoration: underline; */
+
+    margin-bottom: 50px;
+
+} 
+
+
+.heading_For_label{
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    margin-top: 25px;
+    padding-bottom: 2px;
+}
+
+button.button {
+    background: #4481eb;
+    /* top: -281px; */
+    color: white;
+    height: 38px;
+    /* position: relative; */
+    width: 475px;
+    /* left: 11px; */
+    font-size: 17px;
+    border: none;
+    border-radius: 19px;
+    box-shadow: none;
+
+}
+button.button a{
+    text-decoration: none;
+    color: white;
+    
+}

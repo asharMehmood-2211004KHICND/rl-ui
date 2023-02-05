@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Select } from "antd";
-import '../JobList/JobList.css';
+import "./MultiSelectDropDown.css"
 
 const { Option } = Select;
 
@@ -9,7 +9,7 @@ export const MultiSelectDropDown = ({
   selected,
   setSelected,
 }) => {
-  function handleSelect(selectedOption) {
+  function handleSelect(selectedOption) { 
     setSelected(selectedOption);
     console.log(selectedOption)
   }
@@ -19,7 +19,12 @@ export const MultiSelectDropDown = ({
   }
 
   return (
+<div
+ className="MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt"
+ >
   <Select
+    // className="multiSelectStyled"
+    // className={styled.Select}
     mode="multiple"
     style={{ width: "100%" }}
     placeholder="Please select"
@@ -27,9 +32,10 @@ export const MultiSelectDropDown = ({
     onChange={handleSelect}
   >
    { fetchedOptions && 
-      fetchedOptions.map(opt=>
-        <Option value={opt}>{opt}</Option>    
+      fetchedOptions.map((opt,i)=>
+        <Option key={i} value={opt} >{opt}</Option>    
     )}
   </Select>
+  </div>
   );
 };

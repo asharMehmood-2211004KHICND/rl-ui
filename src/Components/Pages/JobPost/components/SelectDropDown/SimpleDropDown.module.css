@@ -1,0 +1,12 @@
+
+.SimpleDropDown select:focus {
+  color: black;
+}
+
+.greyColor{
+  color: rgb(181, 181, 181);
+}
+
+.blackColor{
+  color: black;
+}

@@ -1,0 +1,21 @@
+/* .multiSelectStyled .ant-select .ant-select-selection-item{
+  background-color: #4481eb !important;
+  color: white;
+}
+
+.multiSelectStyled .ant-select .anticon-close{
+  color: white !important;
+  margin-left: 10px;
+  font-size: 12px !important;
+} */
+
+.MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt .ant-select-selection-item {
+  background-color: #4481eb !important;
+  color: white;
+}
+
+.MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt .ant-select .anticon-close {
+  color: white !important;
+  margin-left: 10px;
+  font-size: 12px !important;
+}

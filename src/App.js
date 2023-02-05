@@ -12,12 +12,12 @@ import {
 	Route
 } from "react-router-dom";
 
-import CreateJobPage from './Components/Pages/JobPost/PostJob/CreateJobPage.js';
+import CreateJobPage from './Components/Pages/JobPost/CreateJob/CreateJobPage.js';
 import VerificationEmail from './Components/Pages/Login/VerificationEmail';
-import UpdateJobPage from './Components/Pages/JobPost/PostJob/UpdateJobPage.js';
+import UpdateJobPage from './Components/Pages/JobPost/UpdatePageComponent/UpdateJobPage';
 import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
-import IndividualJob from './Components/Pages/JobPost/JobList/JobView/IndividualJob';
+import IndividualJob from './Components/Pages/JobPost/JobView/IndividualJob';
 
 
 function App() {
@@ -36,8 +36,8 @@ function App() {
 				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
 				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-				<Route path="/job/view/:jodId" element={<IndividualJob />} />
-				<Route path="/job/update" element={<UpdateJobPage />} />
+				<Route path="/job/view/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} />
+				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} />
 			</Routes>
 
 		</BrowserRouter>

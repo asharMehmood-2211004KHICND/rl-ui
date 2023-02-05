@@ -4,22 +4,14 @@ import {SearchOutlined, FilterOutlined} from "@ant-design/icons";
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrash, faEdit, faExpand, faClone } from '@fortawesome/free-solid-svg-icons';
+import { faTrash, faEdit, faClone, faCirclePlus } from '@fortawesome/free-solid-svg-icons';
 import Button from '@mui/material/Button';
-import './JobList.css';
-import styled from "./JobList.module.css"
+// import './JobList.css';
+import Styled from './JobList.module.css'
 import swal from "sweetalert";
 import { IconButton } from '@mui/material';
 import env from "react-dotenv";
 
-const CustomColor ={
-  iconColor: {color:"#f0f0f0"},
-  edit:   "rgb(50, 145, 240) ",
-  view:   "#f1f8ff",
-  viewText:   "#f1f8ff",
-  deleteIcon:"#ff4747",
-  coneIcone: "rgb(50, 145, 240)"
-}
 
 const { RangePicker } = DatePicker;
 
@@ -30,6 +22,8 @@ const JobsList = ({jobsProp}) => {
   const [filteredData, setFilteredData] = useState(jobs);
   const [searchText, setSearchText] = useState('');
   const [filteredDate, setFilteredDate] = useState([]);
+  const [loading, setLoading] = useState(true);
+
 
   useEffect(() => {  
     fetch(
@@ -54,6 +48,7 @@ const JobsList = ({jobsProp}) => {
       .then((data) => {
         setJobs(data);
         setFilteredData(data);
+        setLoading(false);
       })
       .catch((err) => {
         if(err.Error>400){
@@ -122,8 +117,9 @@ const JobsList = ({jobsProp}) => {
         if(!(response.status>=200 && response.status<300) ){
           throw new Error(response.status);
         }
-        setJobs(job.filter(j => j !== job));
-        setFilteredData(filteredData.filter(j => j !== job));
+        // setJobs(job.filter(j => j !== job));
+        setFilteredData(filteredData.map(j =>{ return (j === job) ?{...j, active:false} : j; }));
+        setJobs(filteredData.map(j =>{ return (j === job) ?{...j, active:false} : j; }));
       })
       .catch((err) => {
         if(err.Error>400){
@@ -219,10 +215,13 @@ const JobsList = ({jobsProp}) => {
         }
       });
   }
+
   const columns = [    
-    {     title: 'Title',
-          dataIndex: 'title', 
-          key: 'title',
+    {  
+     title: 'Title',
+     dataIndex: 'title', 
+     key: 'title',
+     width:200,
      filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) =>
       (        
         <div style={{ padding: 8 }}>
@@ -246,8 +245,7 @@ const JobsList = ({jobsProp}) => {
         </div>
       ),
       filterIcon: filtered => (
-        <SearchOutlined style={CustomColor.iconColor} />
-
+        <SearchOutlined className={Styled.sameIconColor} />
         // <Icon type="search" style={{ color: filtered ? '#1890ff' : undefined }} />
       ),
       onFilter: (value, record) =>
@@ -280,17 +278,28 @@ const JobsList = ({jobsProp}) => {
   },
   {
     title: 'Department',
+    width:200,
     dataIndex: 'department',
     key: 'type',
+    sorter: (a, b) => a.department.localeCompare(b.department),
+    // sorter: true,
   }, {
     title: 'Applied Candidates',
+    align: 'center',
     dataIndex: 'appliedCandidate',
+    width:150,
     key: 'appliedCandidate',
+    ellipsis: false,
+    sorter: (a, b) => a.appliedCandidate - b.appliedCandidate,
   },
   {
     title: 'Post Date',
     dataIndex: 'postDate',
     key: 'postDate',
+    ellipsis: false,
+    width:150,
+
+    sorter: (a, b) => moment(a.postDate).valueOf() - moment(b.postDate).valueOf(),
     render: text => <span>{moment(text).format('YYYY-MM-DD')}</span>,
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
@@ -298,47 +307,54 @@ const JobsList = ({jobsProp}) => {
       </div>
     ),
     filterIcon: filtered => (
-      <FilterOutlined style={CustomColor.iconColor} />
+      <FilterOutlined className={Styled.sameIconColor} />
     ),
   },
   {
     title: 'End Date',
-    dataIndex: 'expireDate',
-    key: 'expireDate',
+    dataIndex: 'closeDate',
+    key: 'closeDate',
+    width:150,
+    ellipsis: false,
     render: text => <span>{moment(text).format('YYYY-MM-DD')}</span>,
+    defaultSortOrder: 'descend',
+    sorter: (a, b) => moment(a.closeDate).valueOf() - moment(b.closeDate).valueOf(),
     filterDropdown: ({ setSelectedKeys, selectedKeys, confirm, clearFilters }) => (
       <div style={{ padding: 8 }}>
         <RangePicker onChange={handleDateChange} />
       </div>
     ),
     filterIcon: filtered => (
-      <FilterOutlined style={CustomColor.iconColor} />
+      <FilterOutlined className={Styled.sameIconColor} />
     ),
   },
   {
     title: 'Action',
     key: 'action',
+    width:200,
+    responsive: ['md'],
     render: (text, record) => (
-      <span >
+      <span      >
         {/* <Button onClick={() => handleViewJob(record)}>View</Button> */}
+        
         <Link state={{ ...record }} to={`/job/view/${record.id}`}>
-          <Button  variant='contained' style={{backgroundColor:CustomColor.view, color: CustomColor.edit }}>
+          <Button  variant='contained' className={Styled.viewBtn}>
             View
           </Button>
         </Link>
         <Link state={{...record }} to="/job/update">
-        <IconButton  style={{color: CustomColor.edit}}>
+        <IconButton  className={Styled.editIcon}>
           <FontAwesomeIcon icon={faEdit}/>
         </IconButton>
         </Link>
         <Popconfirm
-            title="Do you need a Clone of this Job?"
+            title="Do you want to Clone this Job?"
             onConfirm={() => handleCreateClone(record)}
             okText="Yes"
             cancelText="No"
           >
           <IconButton >
-            <FontAwesomeIcon icon={faClone} style={{color:CustomColor.coneIcone}} />
+            <FontAwesomeIcon icon={faClone} className={Styled.cloneIcone} />
           </IconButton>
         </Popconfirm>
         <Popconfirm
@@ -347,20 +363,43 @@ const JobsList = ({jobsProp}) => {
             okText="Yes"
             cancelText="No"
           >
-          <IconButton >
-            <FontAwesomeIcon icon={faTrash} style={{color:CustomColor.deleteIcon}} />
+          <IconButton disabled={!record.active} className={Styled.DeleteBtn}>
+            <FontAwesomeIcon icon={faTrash} className={Styled.DeleteIcon} />
           </IconButton>
         </Popconfirm>
         
       </span>
     ),
+    
   },
 ];
 
-return <Table
-   rowKey={(record) => record.uid} 
-   columns={columns} 
-   dataSource={filteredData} />;
+return(
+
+  <>
+    <div className={Styled.JobsTableHeading}>
+      <h1> Jobs List</h1>
+      <Link to="/createJob">
+        <IconButton >
+              <FontAwesomeIcon icon={faCirclePlus} className={Styled.addBtn}  />
+        </IconButton>
+      </Link>
+    </div>
+  <Table
+  pagination={{
+    showSizeChanger: true,
+    pageSizeOptions: ['5','10', '20', '30', '40','50'],
+    defaultPageSize: 5,
+  }}
+  // scroll={{
+  //   x:124,y: 224  }}
+  loading={loading}
+  className={Styled.JobTable}
+  rowKey={(record) => record.id} 
+  columns={columns} 
+  dataSource={filteredData} />
+  </>
+  ) 
 };
 
 export default JobsList;

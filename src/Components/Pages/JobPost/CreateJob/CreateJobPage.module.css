@@ -308,7 +308,9 @@ padding-bottom: 11px;
       text-align: center;
     position: relative;
     right: 61px;
-    text-decoration: underline;
+    margin-bottom: 50px;
+
+    /* text-decoration: underline; */
 
 
 }
