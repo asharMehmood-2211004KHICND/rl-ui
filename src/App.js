@@ -17,7 +17,7 @@ import VerificationEmail from './Components/Pages/Login/VerificationEmail';
 import UpdateJobPage from './Components/Pages/JobPost/UpdatePageComponent/UpdateJobPage';
 import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
-import IndividualJob from './Components/Pages/JobPost/JobList/JobView/IndividualJob';
+import IndividualJob from './Components/Pages/JobPost/JobView/IndividualJob';
 
 
 function App() {
