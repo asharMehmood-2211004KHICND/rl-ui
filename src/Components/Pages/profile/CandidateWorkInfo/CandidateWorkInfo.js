@@ -309,6 +309,10 @@ export default function CandidateWorkInfo() {
         navigate("/skills");
     }
 
+    const onBack = () => {
+        navigate("/academic-details");
+    }
+
     if (view == 'details') {
         return (
             <>
@@ -368,6 +372,7 @@ export default function CandidateWorkInfo() {
                         <Button onClick={onAddAnother} text="+ Add New" type="button" className={styles.saveButton} />
                     </div>
                     <div>
+                    <Button onClick={onBack} text="Back" type="button" className={styles.nextButton} />
                         <Button disabled={disNextBtn} onClick={onNext} text="Next" type="button" className={styles.nextButton} />
                     </div>
 

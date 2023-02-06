@@ -5,16 +5,16 @@ import PhoneComponent from "../PhoneComponent/PhoneComponent";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import styles from "./CandidatePersonalInfo.module.css";
-import { AlertMessage } from "../AlertMessage/AlertMessage";
 import { useNavigate } from "react-router-dom";
 import InputLabel from "../Label/InputLabel";
+import { message } from 'antd';
 //import swal from 'sweetalert';
 
 
 function CandidatePersonalInfo() {
 
     const [id, setId] = useState(null); 
-    const [userId, setUserId] = useState(sessionStorage.getItem("user_id"))
+    const [userId, setUserId] = useState(sessionStorage.getItem("user_id"));
     const [firstname, setFirstname] = useState(sessionStorage.getItem("user_firstname"));
     const [lastname, setLastname] = useState(sessionStorage.getItem("user_lastname"));
     const [dob, setDob] = useState('');
@@ -27,22 +27,17 @@ function CandidatePersonalInfo() {
     const [email, setEmail] = useState(sessionStorage.getItem("user_email"));
     const [phone, setPhone] = useState('');
 
-    const [showAlert, setShowAlert] = useState(false)
-    const [alertType, setalertType] = useState('alert');
-    const [message, setMessage] = useState('')
+    const [messageApi, contextHolder] = message.useMessage();
     const [disableNextBtn, setDisableNextBtn] = useState(true)
 
-    const [userData, setUserData] = useState(null);
-    const signupServiceUrl = '';
+    const [dataExists, setDataExists] = useState(false);
 
-    const [requestUrl, setRequestUrl] = useState(null);
-    const [requestType, setRequestType] = useState(null)
-
-    const [basicRoute, setBasicRoute] = useState('http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/personal-information')
+    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/personal_information'
+    // const basicRoute = 'http://192.168.0.128:5000/api/personal_information'
     const getByUserIdUrl = `${basicRoute}/users/${userId}`
     const postUrl = basicRoute
-    const deleteUrl = basicRoute
-    const putUrl = `${basicRoute}/${userId}`
+    const deleteUrl = `${basicRoute}/${id}`
+    const putUrl = `${basicRoute}/${id}`
 
     useEffect(() => {
         fetch(getByUserIdUrl)
@@ -50,8 +45,7 @@ function CandidatePersonalInfo() {
             .then((data) => {
                 console.log(data)
                 if (data.userId) {
-                    setRequestUrl(`${basicRoute}/${userId}`)
-                    setRequestType('PUT')
+                    setDataExists(true)
 
                     const {id, firstName, lastName, dateOfBirth, gender, nationalIdentityNumber,
                     city, address, linkedProfile, maritalStatus, phoneNumber} = data
@@ -69,20 +63,9 @@ function CandidatePersonalInfo() {
                     setDisableNextBtn(false)
                     
                 }
-                else {
-                    setRequestUrl(basicRoute)
-                    setRequestType('POST')
-
-                    setDisableNextBtn(true)
-                }
             })
             .catch(err => {
                 console.log(err, "\nhello I caught this error");
-                if(err.code === 404){
-                    setRequestUrl(basicRoute)
-                    setRequestType('POST')
-                }
-                setDisableNextBtn(true)
             });
     }, [])
 
@@ -128,13 +111,10 @@ function CandidatePersonalInfo() {
         setPhone(val);
     }, []);
 
-    const url = 'http://35.168.113.87:8080/api/personal-information'
-
     async function onSubmit(event) {
         event.preventDefault();
 
         const data = {
-            id: id,
             userId,
             firstName: firstname,
             lastName: lastname,
@@ -148,10 +128,8 @@ function CandidatePersonalInfo() {
             phoneNumber: phone
         }
 
-
-        console.log(data)
-        fetch(requestUrl ? requestUrl : postUrl, {
-            method: requestType ? requestType : 'POST',
+        fetch(dataExists ? putUrl : postUrl, {
+            method: dataExists ? 'PUT' : 'POST',
             mode: 'cors',
             cache: 'no-cache',
             credentials: 'same-origin',
@@ -165,15 +143,15 @@ function CandidatePersonalInfo() {
             .then(response => {
                 console.log(response);
                 const res = response ? response.ok : false;
-                const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
-                const alertUser = res ? 'info' : 'danger';
-                setShowAlert(true);
-                setMessage(updateUser)
-                setalertType(alertUser)
+                let updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 setDisableNextBtn(!res)
-                setTimeout(() => {
-                    setShowAlert(false)
-                }, "2000")
+                if (res) {
+                    updateUser = dataExists ? 'Info edited successfully!' : updateUser
+                    messageApi.success(updateUser);
+                }
+                else {
+                    messageApi.error(updateUser)
+                }
 
                 // swal({
                 //     title: "Personal Information Saved!",
@@ -183,14 +161,8 @@ function CandidatePersonalInfo() {
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error saving info!';
-                const alertUser = 'danger';
-                setShowAlert(true);
-                setMessage(updateUser)
-                setalertType(alertUser)
+                messageApi.error(updateUser);
                 setDisableNextBtn(true)
-                setTimeout(() => {
-                    setShowAlert(false)
-                }, "2000")
             });
     }
 
@@ -202,9 +174,10 @@ function CandidatePersonalInfo() {
 
     return (
         <>
+            {contextHolder}
             <div className={styles.mainContainer}>
                 <form className={styles.formPersonalInfo} onSubmit={onSubmit}>
-                    {showAlert ? <AlertMessage showAlert={showAlert} setAlert={setShowAlert} alertType={alertType} message={message} /> : ''}
+                    
                     <Heading className={styles.personalInfoHeading} text="Personal Information" />
                     {/* <div>
                         <InputField value={firstname} handler={handleFirstname} type='text' placeholder='First Name' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField>

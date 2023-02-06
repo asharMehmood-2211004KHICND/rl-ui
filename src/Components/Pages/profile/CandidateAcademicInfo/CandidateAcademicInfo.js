@@ -325,6 +325,10 @@ function CandidateAcademicInfo() {
         navigate("/work-experience")
     }
 
+    const onBack = () => {
+        navigate("/profile")
+    }
+
     if (view === 'details') {
         return (
             <>
@@ -389,6 +393,7 @@ function CandidateAcademicInfo() {
                     </div>
                     <div>
                         {/* <Button onClick={onSave} text="Save" type="button" className={styles.saveButton} /> */}
+                        <Button onClick={onBack} text="Back" type="button" className={styles.nextButton} />
                         <Button disabled={disNextBtn} onClick={onNext} text="Next" type="button" className={styles.nextButton} />
                     </div>
                 </div>
