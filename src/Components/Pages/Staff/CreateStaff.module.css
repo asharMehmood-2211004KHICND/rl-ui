@@ -1,36 +1,33 @@
 .mainContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .formCreateStaff {
     margin-top: 15px;
     padding:20px;
-    width: 60%;
+    width: 100%;
     margin-left: 50px;
-    border: 2px solid black;
-    border-radius: 10px;
   }
-  .createStaffHeading {
-    margin: 10px;
-  }
+  /* .createStaffHeading {
+    margin-top: 10px;
+  } */
   
   /* Input css */
   .usericon{
     width: 180px;
-    display: flex;
+    /* display: flex; */
+    margin-left: 60px;
   }
 
-  .form_with_pic{
+  /* .form_with_pic{
     display: flex;
-  }
+  } */
 
-  .form_with_pic .feilds{
+  /* .form_with_pic .feilds{
     width: 100%;
-  }
+  } */
   
   
-  .inputFields {
+  /* .inputFields {
     -ms-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
@@ -41,27 +38,37 @@
     background-color: #f0f0f0;
     outline: none;
     border: 1px solid #6270b1;
-  }
+  } */
   
-  .fullSize {
-    width: 60%;
-    margin: 10px;
-  }
-
-  .maxSize {
+  /* .fullSize {
     width: 80%;
     margin: 10px;
+  } */
+
+  .maxSize {
+   width: 100%; 
+   margin: 10px;
   }
   
+.table{
+  width: 90%;
+}
+
+  /* .label{
+    margin-left: 0px;
+  } */
   .halfSize {
-    width: 44.5%;
-    margin: 10px 0 10px 10px;
+    width: 90%;
+    margin: 10px;
   }
+  /* .smallSize{
+    width: 100%;
+  } */
   
-  .inputFields:hover,
+  /* .inputFields:hover,
   .PhoneInputCountrySelect:hover {
     background-color: #ebe6e6;
-  }
+  } */
   
   /* .first-name-input , .last-name-input, .cnic-input, .date-input {
   width: 94%;
@@ -84,47 +91,42 @@
     border: 1px solid #6270b1;
   } */
   
-  .option {
+  /* .option {
     text-transform: capitalize;
-  }
+  } */
   
   
   /* Button css */
   
-  .buttonContainer {
+  /* .buttonContainerStaff {
     display: flex;
     text-align: center;
     justify-content: flex-start;
-  }
+  } */
   
-  .saveButton {
+  .saveButtonStaff {
     /* float: right; */
-    margin: 10px;
-    padding: 13px;
-    border-radius: 12px;
-    width: 80px;
-    background-color: #2196F3;
-    border: 1px solid white;
-    outline: none;
-    font-size: 1.1rem;
-    color: white;
-    cursor: pointer;
-    transition: ease-out 500ms;
-    margin-right: 7px;
+    margin: 10px !important;
+    padding: 13px !important;
+    border-radius: 12px !important;
+    width: 80px !important;
+    background-color: #2196F3 !important;
+    border: 1px solid white !important;
+    outline: none !important;
+    font-size: 1.1rem !important;
+    color: white !important;
+    cursor: pointer !important;
+    transition: ease-out 500ms !important;
+    margin-right: 7px !important;
   }
   
-  .saveButton:hover {
-    color: black;
-    background-color: white;
-    border: 1px solid #2196F3;
+  .saveButtonStaff:hover {
+    color: black !important;
+    background-color: white !important;
+    border: 1px solid #2196F3 !important;
   }
   
-  .nextButton:disabled,
-  .nextButton:disabled:hover {
-    background-color: #7cc4ff;
-    color: white;
-    cursor: not-allowed;
-  }
+
   
   /* @media (max-width: 960px) { */
     /* styles for screens smaller than 450px */
