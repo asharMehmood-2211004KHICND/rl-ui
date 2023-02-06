@@ -66,7 +66,7 @@ export default function SideBar() {
 
 					<ul className="sideBarList">
 						<li className="sideBarListItem"><AccountBoxIcon className="menuIcon" /><Link to="/profile">Profile</Link></li>
-						<li className="sideBarListItem"><LogoutIcon className="menuIcon" /><Link to="/logout">Logout</Link></li>
+						<li className="sideBarListItem"><LogoutIcon className="menuIcon" /><Link to="/login">Logout</Link></li>
 					</ul>
 				</div>
 			</div>
