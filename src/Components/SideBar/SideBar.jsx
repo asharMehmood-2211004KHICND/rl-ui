@@ -66,7 +66,7 @@ export default function SideBar() {
 
 					<ul className="sideBarList">
 						<li className="sideBarListItem"><AccountBoxIcon className="menuIcon" /><Link to="/profile">Profile</Link></li>
-						<li className="sideBarListItem"><LogoutIcon className="menuIcon" /><Link to="/login">Logout</Link></li>
+						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
 				</div>
 			</div>
