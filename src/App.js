@@ -17,7 +17,7 @@ import VerificationEmail from './Components/Pages/Login/VerificationEmail';
 import UpdateJobPage from './Components/Pages/JobPost/UpdatePageComponent/UpdateJobPage';
 import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
-import IndividualJob from './Components/Pages/JobPost/JobView/IndividualJob';
+import IndividualJob from './Components/Pages/JobPost/JobList/JobView/IndividualJob';
 
 
 function App() {
@@ -29,16 +29,28 @@ function App() {
 			</Routes>
 
 
-			<Routes>
-				<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
-				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
-				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-				<Route path="/job/view/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} />
-				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} />
-			</Routes>
+			
+			<div className="App">
+				<TopBar />
+				<div className="containerz">
+					<SideBar />
+					<div className="pages">
+						<Routes>
+							<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
+							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
+							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
+            				<Route path="/job/detail/:jodId" element={<IndividualJob/>}/>
+            				<Route path="/job/edit/:jodId" element={<UpdateJobPage/>}/>
+						</Routes>
+						{/* <Route element={<About />} path="/about" /> */}
+					</div>
+				</div>
+			</div>
+			
+
 
 		</BrowserRouter>
 

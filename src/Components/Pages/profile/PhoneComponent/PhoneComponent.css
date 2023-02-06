@@ -20,8 +20,8 @@
 
 .PhoneInput {
     display: flex;
-    width: 90%;
-    margin: 10px;
+    width: 100%;
+    margin: 5px;
 }
 
 .PhoneInputCountry {

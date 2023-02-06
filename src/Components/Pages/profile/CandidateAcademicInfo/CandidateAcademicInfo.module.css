@@ -2,6 +2,7 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 .formPersonalInfo {
@@ -24,7 +25,8 @@
   left: 25px;
 }
 
-.inputFields, .select {
+.inputFields,
+.select {
   -ms-box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -32,13 +34,18 @@
   padding: 10px 10px 10px 30px;
   font-size: 1.2rem;
   border-radius: 6px;
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   outline: none;
-  border: 1px solid #6270B1;
+  border: 1px solid #6270b1;
   width: 100%;
-  margin: 5px;
-
 }
+.inputLabel {
+  margin-left: 10px;
+  font-size: 1.1rem;
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 500;
+ }
 
 
 .inputFields:focus,
@@ -56,6 +63,8 @@
   width: 44.5%;
   margin: 10px 0 10px 10px;
 } */
+
+
 
 .inputFields:hover,
 .PhoneInputCountrySelect:hover {
@@ -99,10 +108,11 @@ width: 94%;
 .saveButton,
 .nextButton {
   /* float: right; */
+  /* white-space: nowrap; */
   margin: 10px;
   padding: 13px;
   border-radius: 12px;
-  width: 80px;
+  /* width: 80px; */
   background-color: #2196F3;
   border: 1px solid white;
   outline: none;
@@ -165,12 +175,13 @@ width: 94%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 90%;
+  /* width: 90%; */
+  width: 100%;
   margin: 10px;
 }
 
 .graduationDate {
-  width: 300px;
+  /* width: 300px; */
 }
 
 /* TextArea css */
@@ -179,10 +190,13 @@ width: 94%;
   border-radius: 10px;
   overflow: auto;
   margin: 10px;
-  width: 86.5%;
+  /* width: 86.5%; */
+  width: 100%;
   background-color: #f0f0f0;
   border: 1px solid #2196F3;
   font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin-left: 0;
 }
 
 .textArea:focus {
@@ -196,11 +210,51 @@ width: 94%;
   /* font-weight: 600; */
 }
 
-.makeFieldAdjustment {
-  min-width: 250px;
+/* table css */
+.formTable {
+  width: 100%;
 }
 
-.makeLabelAdjustment {
-  min-width: 120px;
-  padding: 15px;
+.eduTable {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  border: 2px solid rgb(95, 95, 95);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.eduTable th {
+  border-bottom: 1px solid rebeccapurple;
+  padding: 10px;
+  border: 1px solid #000;
+  text-transform: capitalize;
+  background-color: #2196F3;
+  color: white;
+}
+.eduTable tr td {
+  text-align: center;
+  background-color: #F0F0F0;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.tableContainer {
+  margin: 10px;
+}
+
+.actionBtn {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: none;
+  /* border: 2px solid #000; */
+  border: none;
+  font-size: 1.1rem;
+  color: #000;
+  cursor: pointer;
+  transition: ease-out 500ms;
+}
+.actionBtn:hover{
+  color: #227fca;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
