@@ -9,8 +9,8 @@ import swal from 'sweetalert';
 
 const CreateStaff = () => {
 
-    const [first_name, setfirst_name] = useState('');
-    const [last_name, setlast_name] = useState('');
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
     const [nic, setNic] = useState('');
     const [gender, setGender] = useState('');
@@ -67,12 +67,12 @@ const CreateStaff = () => {
     ]
 
 
-    const handlefirst_name = useCallback(val => {
-        setfirst_name(val);
+    const handleFirstname = useCallback(val => {
+        setFirstName(val);
     }, []);
 
-    const handlelast_name = useCallback(val => {
-        setlast_name(val);
+    const handleLastname = useCallback(val => {
+        setLastName(val);
     }, []);
 
     const handleEmail = useCallback(val => {
@@ -108,12 +108,12 @@ const CreateStaff = () => {
     async function onSubmit(event) {
         event.preventDefault();
 
-        const errors = validate({ email, password, first_name, last_name });
+        const errors = validate({ email, password, firstName, lastName });
         setErrors(errors);
 
         const data = {
-            first_name: first_name,
-            last_name: last_name,
+            firstName: firstName,
+            lastName: lastName,
             email: email,
             cnic: nic,
             gender: gender,
@@ -124,8 +124,8 @@ const CreateStaff = () => {
         }
 
         const signupData = {
-            first_name: first_name,
-            last_name: last_name,
+            first_name: firstName,
+            last_name: lastName,
             email: email,
             password: password,
             role: {
@@ -197,11 +197,11 @@ const CreateStaff = () => {
                     <table className={styles.table}>
                         <tr>
                             <td ><label >First Name:</label></td>
-                            <td colSpan="3"><InputField value={first_name} handler={handlefirst_name} type='text' placeholder='First Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField></td>
+                            <td colSpan="3"><InputField value={firstName} handler={handleFirstname} type='text' placeholder='First Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField></td>
                             <td></td>
                             <td ><label>Last Name: </label></td>
                             <td></td>
-                            <td colSpan=""><InputField value={last_name} handler={handlelast_name} type='text' placeholder='Last Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required'></InputField></td>
+                            <td colSpan=""><InputField value={lastName} handler={handleLastname} type='text' placeholder='Last Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required'></InputField></td>
                         </tr>
                         <tr>
                             <td><label className={styles.label}>Email:</label></td>
