@@ -33,6 +33,14 @@ function VerificationEmail() {
     return errors;
   }
 
+  const validateEmail = (email) => {
+    let errors = {};
+    if (!email) {
+      errors.email = "Email is required";
+    }
+    return errors;
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const errors = validatePin(pin);
@@ -42,7 +50,7 @@ function VerificationEmail() {
         email: email,
         otp: pin
       }
-      fetch("http://localhost:8080/auth/otp-verification", {
+      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-verification", {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -52,7 +60,7 @@ function VerificationEmail() {
         if (response.status === 200) {
           sessionStorage.clear();
           response.json().then(function (result) {
-            sessionStorage.setItem('user_email', result.email);
+            sessionStorage.setItem('forget_email', result.email);
             navigate('/resetpassword');
           });
         }
@@ -83,89 +91,93 @@ function VerificationEmail() {
   }
 
   const handleSendEmail = () => {
-    setBtnDisabled(true);
-    setBtnText("Sending.....");
-    setHiddenResend(styled.hidden);
-    const data = {
-      email: email
-    }
+    const errors = validateEmail(email);
+    setErrors(errors);
+    if (Object.keys(errors).length === 0) {
+      setBtnDisabled(true);
+      setBtnText("Sending.....");
+      setHiddenResend(styled.hidden);
+      const data = {
+        email: email
+      }
 
-    fetch("http://localhost:8080/auth/otp-expire", {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((response) => {
-      if (response.status === 200) {
+      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => {
+        if (response.status === 200) {
 
-        fetch("http://localhost:8080/auth/forgetpassword-link", {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-type': 'application/json; charset=UTF-8',
-          },
-        }).then((response) => {
-          if (response.status === 200) {
-            setHidden('');
-            setHiddenButton(styled.hidden);
-            setReadOnly(true);
-            console.log('OTP Expire After 10 Second!')
-            setTimeout(() => {
-              console.log('OTP Expired!')
-              fetch("http://localhost:8080/auth/otp-expire", {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                  'Content-type': 'application/json; charset=UTF-8',
-                },
-              });
-              setHiddenResend('');
-            }, 60000);
-          }
-          else if (response.status === 403) {
-            setBtnDisabled(false);
-            setBtnText("Send OTP");
-            swal(
-              {
-                title: "Email Not Found!",
-                icon: "warning",
-              });
-          }
-          else if (response.status === 404) {
-            swal({
-              title: "Server Not Responding!",
-              icon: "error",
+          fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword-link", {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            },
+          }).then((response) => {
+            if (response.status === 200) {
+              setHidden('');
+              setHiddenButton(styled.hidden);
+              setReadOnly(true);
+              console.log('OTP Expire After 10 Second!')
+              setTimeout(() => {
+                console.log('OTP Expired!')
+                fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
+                  method: 'POST',
+                  body: JSON.stringify(data),
+                  headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                  },
+                });
+                setHiddenResend('');
+              }, 60000);
             }
-            );
+            else if (response.status === 403) {
+              setBtnDisabled(false);
+              setBtnText("Send OTP");
+              swal(
+                {
+                  title: "Email Not Found!",
+                  icon: "warning",
+                });
+            }
+            else if (response.status === 404) {
+              swal({
+                title: "Server Not Responding!",
+                icon: "error",
+              }
+              );
+            }
           }
+          );
         }
-        );
-      }
-      else if (response.status === 403) {
-        setBtnDisabled(false);
-        setBtnText("Send OTP");
-        swal(
-          {
-            title: "Email Not Found!",
-            icon: "warning",
-          });
-      }
-      else if (response.status === 404) {
-        swal({
-          title: "Server Not Responding!",
-          icon: "error",
+        else if (response.status === 403) {
+          setBtnDisabled(false);
+          setBtnText("Send OTP");
+          swal(
+            {
+              title: "Email Not Found!",
+              icon: "warning",
+            });
         }
-        );
+        else if (response.status === 404) {
+          swal({
+            title: "Server Not Responding!",
+            icon: "error",
+          }
+          );
+        }
       }
+      );
     }
-    );
   }
   //end here
   return (
     <>
       <div className={styled.container}>
-        <div className={styled.formsContainer}>
+        <div className={`${styled.formsContainer} ${styled.verfication_email_form}`}>
           <div className={styled.signinSignup}>
             <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
               <h2 className={styled.title}>Enter Email </h2>
@@ -176,8 +188,6 @@ function VerificationEmail() {
                   placeholder="Verification Email" readOnly={readOnly} />
               </div>
               {errors.email && <p className={styled.error}>{errors.email}</p>}
-              
-
               <div className={`${styled.inputField} ${hidden}`}>
                 <i className="fa-solid fa-key"></i>
                 <input type="text"
@@ -185,7 +195,6 @@ function VerificationEmail() {
                   placeholder="Enter Pin " />
               </div>
               {errors.pin && <p className={styled.error}>{errors.pin}</p>}
-
               <h6 className={`${styled.resendOtp} ${hiddenResend}`} onClick={handleSendEmail}>Resend Otp</h6>
 
               <button type="button" onClick={handleSendEmail} disabled={btnDisabled} className={`${styled.btn} ${styled.solid} ${hiddenButton}`} >{btnText}</button>

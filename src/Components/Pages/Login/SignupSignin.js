@@ -24,6 +24,8 @@ function SignupSignin() {
 	const [password, setPassword] = useState('');
 	const [login_password, setLoginPassword] = useState('');
 	const [errors, setErrors] = useState({});
+	const [eyeMode,setEyeMode] = useState('fa-eye');
+	const [passwordType,setPasswordType] = useState("password");
 
 
 	const validate = (values) => {
@@ -94,8 +96,7 @@ function SignupSignin() {
 				email: login_email,
 				password: login_password
 			}
-			//fetch("http://34.204.50.31:8080/auth/login", {
-			fetch("http://54.227.72.189:8080/auth/login", {
+			fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/login", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
@@ -114,7 +115,7 @@ function SignupSignin() {
 						sessionStorage.setItem('user_rolename', result.role.name);
 						navigate('/Dashboard');
 					});
-					
+
 
 
 					setLoginEmail('');
@@ -129,54 +130,17 @@ function SignupSignin() {
 				}
 			}
 			);
-			//Local API Call Login
+		}
+	}
 
-
-			/**
-			 * Live API call - Abdul Wasey
-			 */
-			// const data = {
-			// 	username: login_email,
-			// 	password: login_password
-			// }
-			// fetch("http://100.25.33.0:8080/auth-api/login", {
-			// 	method: 'POST',
-			// 	body: JSON.stringify(data),
-			// 	headers: {
-			// 		'Content-type': 'application/json; charset=UTF-8',
-			// 	},
-			// }).then((response) => {
-			// 	if (response.status == 200) {
-			// 		sessionStorage.clear();
-			// 		response.json().then(function (result) {
-
-			// 			if (result.message) {
-			// 				swal("Invalid Email or Password!");
-			// 			}
-			// 			else {
-			// 				sessionStorage.setItem("user_id", result.id);
-			// 				sessionStorage.setItem('user_email', result.email);
-			// 				//sessionStorage.setItem('user_firstname', result.first_name);
-			// 				//sessionStorage.setItem('user_lastname', result.last_name);
-			// 				//sessionStorage.setItem('user_roleid', result.role.id);
-			// 				//sessionStorage.setItem('user_rolename', result.role.name);
-			// 				window.location.assign('/Dashboard');
-			// 			}
-
-			// 		});
-
-
-			// 		setLoginEmail('');
-			// 		setLoginPassword('');
-			// 	}
-			// 	else if (response.status == 404) {
-			// 		swal("Invalid Email or Password!");
-			// 	}
-			// }
-			// );
-			/**
-		 * Live API call - Abdul Wasey
-		 */
+	const handleEyeMode =()=>{
+		if(eyeMode === 'fa-eye'){
+			setEyeMode('fa-eye-slash');
+			setPasswordType("text");
+		}
+		else{
+			setEyeMode('fa-eye');
+			setPasswordType("password");
 		}
 	}
 
@@ -196,8 +160,7 @@ function SignupSignin() {
 					id: 1
 				}
 			}
-			//fetch("http://34.204.50.31:8080/auth/register", {
-			fetch("http://54.227.72.189:8080/auth/register", {
+			fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/register", {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
@@ -234,55 +197,6 @@ function SignupSignin() {
 				}
 			}
 			);
-			/** Registration API Live Hunain*/
-
-			/** Registration API LIve abdul wasey */
-			// 	const data = {
-			// 		fullname: first_name + ' ' + last_name,
-			// 		email: email,
-			// 		username: email,
-			// 		password: password
-			// 	}
-			// 	fetch("http://100.25.33.0:8080/auth-api/register", {
-			// 		method: 'POST',
-			// 		body: JSON.stringify(data),
-			// 		headers: {
-			// 			'Content-type': 'application/json; charset=UTF-8',
-			// 		},
-			// 	}).then((response) => {
-			// 		if (response.status == 200) {
-
-			// 			response.json().then(function (result) {
-
-			// 				if (result.message == "Account Created Successfully") {
-			// 					swal({
-			// 						title: "Thanks For Registration!",
-			// 						icon: "success",
-			// 						buttons: {
-			// 							confirm: { text: 'Login', className: 'btn' },
-			// 						},
-			// 					});
-			// 					setFirst_name('');
-			// 					setLast_name('');
-			// 					setEmail('');
-			// 					setPassword('');
-			// 					changeSignupMode('');
-			// 				}
-			// 				else {
-			// 					swal({
-			// 						title: result.message,
-			// 						icon: "info"
-			// 					});
-			// 				}
-			// 			});
-
-			// 		}	
-			// }
-			// );
-
-			/** Registration API LIve abdul wasey */
-
-
 		}
 	}
 	const [signupmode, changeSignupMode] = useState('');
@@ -308,14 +222,15 @@ function SignupSignin() {
 									onChange={(e) => setLoginEmail(e.target.value)}
 									placeholder="Email" />
 							</div>
-							{errors.login_email && <p className="error">{errors.login_email}</p>}
-							<div className={styled.inputField}>
+							{errors.login_email && <p className={styled.error}>{errors.login_email}</p>}
+							<div className={`${styled.inputField} ${styled.password_show}`}>
 								<i className="fas fa-lock"></i>
 								<input
-									type="password"
+									type={passwordType}
 									value={login_password}
 									onChange={(e) => setLoginPassword(e.target.value)}
 									placeholder="Password" />
+								<i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
 							</div>
 							{errors.login_password && <p className={styled.error}>{errors.login_password}</p>}
 							<div>
@@ -336,23 +251,24 @@ function SignupSignin() {
 								<i className="fas fa-user"></i>
 								<input type="text" value={first_name} onChange={(e) => setFirst_name(e.target.value)} placeholder="First Name" />
 							</div>
-							{errors.first_name && <p className="error">{errors.first_name}</p>}
+							{errors.first_name && <p className={styled.error}>{errors.first_name}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-user"></i>
 								<input type="text" value={last_name} onChange={(e) => setLast_name(e.target.value)} placeholder="Last Name" />
 							</div>
-							{errors.last_name && <p className="error">{errors.last_name}</p>}
+							{errors.last_name && <p className={styled.error}>{errors.last_name}</p>}
 							<div className={styled.inputField}>
 								<i className="fas fa-envelope"></i>
 								<input type="text" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" />
 							</div>
-							{errors.email && <p className="error">{errors.email}</p>}
-							<div className={styled.inputField}>
+							{errors.email && <p className={styled.error}>{errors.email}</p>}
+							<div className={`${styled.inputField} ${styled.password_show}`}>
 								<i className="fas fa-lock"></i>
-								<input type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+								<input type={passwordType} value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Password" />
+								<i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
 							</div>
 							{errors.password && <p className={styled.error}>{errors.password}</p>}
-							<input type="submit" className={styled.btn}btn value="Sign up" />
+							<input type="submit" className={styled.btn} btn value="Sign up" />
 							<p className={styled.socialText}>Or Sign up with social platforms</p>
 							<div className={styled.social_icons}>
 								<a href="#"><i className={`${styled.faBrands} fa-brands fa-linkedin`}></i></a>

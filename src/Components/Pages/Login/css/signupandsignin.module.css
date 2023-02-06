@@ -99,6 +99,7 @@ a:hover{
   position: relative;
   border: 2px solid #4481eb;
 }
+
 .inputField:hover{
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px
 }
@@ -110,6 +111,19 @@ a:hover{
   transition: 0.5s;
   font-size: 1.1rem;
 }
+
+.password_show{
+  grid-template-columns: 15% 70% 15%;
+}
+
+.eye_show{
+  cursor: pointer;
+}
+
+.eye_show:hover{
+  color: black;
+}
+
 
 .inputField input {
   background: none;
@@ -449,5 +463,12 @@ a:hover{
 
   .btn.transparent{
     text-align: center;
+  }
+   .verfication_email_form{
+    height: 70%;
+  }
+
+  .forget_password_form{
+    height: 80%;
   }
 }

@@ -14,11 +14,13 @@ function SignupSignin() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errors, setErrors] = useState({});
-  
+  const [eyeMode, setEyeMode] = useState('fa-eye');
+  const [passwordType, setPasswordType] = useState("password");
+
 
   const validate = (values) => {
     let errors = {};
-   
+
     if (!values.password) {
       errors.password = "Password is required";
     } else if (values.password.length < 8) {
@@ -43,61 +45,73 @@ function SignupSignin() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const errors = validate({password, confirmPassword});
+    const errors = validate({ password, confirmPassword });
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       const data = {
-        email:sessionStorage.getItem('user_email'),
-        password:password
+        email: sessionStorage.getItem('forget_email'),
+        password: password
       }
-      fetch("http://localhost:8080/auth/forgetpassword",{
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    }).then((response) => {
-      if (response.status === 200) {
-        swal(
-          {
-            title: "Password Updated Successfully!",
-            icon: "success",
-          });
+      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          swal(
+            {
+              title: "Password Updated Successfully!",
+              icon: "success",
+            });
           sessionStorage.clear();
-          navigate('/login'); 
-      }
-      else if (response.status === 404) {
-        swal({
-          title: "Server Not Responding!",
-          icon: "error",
+          navigate('/login');
         }
-        );
+        else if (response.status === 404) {
+          swal({
+            title: "Server Not Responding!",
+            icon: "error",
+          }
+          );
+        }
       }
+      );
     }
-    );
+  }
+
+  const handleEyeMode = () => {
+    if (eyeMode === 'fa-eye') {
+      setEyeMode('fa-eye-slash');
+      setPasswordType("text");
+    }
+    else {
+      setEyeMode('fa-eye');
+      setPasswordType("password");
     }
   }
   //end here
   return (
     <>
       <div className={styled.container}>
-        <div className={styled.formsContainer}>
+        <div className={`${styled.formsContainer} ${styled.forget_password_form}`}>
           <div className={styled.signinSignup}>
             <form action="#" className={`${styled.formLogin} ${styled.signInForm} ${styled.main_form}`} onSubmit={handleSubmit}>
               <h2 className={styled.title}>Reset Password</h2>
-      
-              <div className={styled.inputField}>
+
+              <div className={`${styled.inputField} ${styled.password_show}`}>
                 <i className="fas fa-lock"></i>
-                <input type="password"
-                value={password} onChange={(e) => setPassword(e.target.value)} 
-                placeholder="New Password"  />
+                <input type={passwordType}
+                  value={password} onChange={(e) => setPassword(e.target.value)}
+                  placeholder="New Password" />
+                <i className={`${styled.eye_show} fa-solid ${eyeMode}`} onClick={handleEyeMode}></i>
               </div>
               {errors.password && <p className={styled.error}>{errors.password}</p>}
               <div className={styled.inputField}>
                 <i className="fas fa-lock"></i>
-                <input type="password"
-                value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} 
-                 placeholder="Confirm Password" />
+                <input type={passwordType}
+                  value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)}
+                  placeholder="Confirm Password" />
               </div>
               {errors.confirmPassword && <p className={styled.error}>{errors.confirmPassword}</p>}
               <input type="submit" value="Change" className={`${styled.btn} ${styled.solid}`} />
