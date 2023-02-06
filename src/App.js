@@ -28,32 +28,17 @@ function App() {
 				<Route element={<SignupSignin />} path="/login" />
 			</Routes>
 
-
-			
-			<div className="App">
-				<TopBar />
-				<div className="containerz">
-					<SideBar />
-					<div className="pages">
-						<Routes>
-							<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-							<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
-							<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
-							<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-            				<Route path="/job/detail/:jodId" element={<IndividualJob/>}/>
-            				<Route path="/job/edit/:jodId" element={<UpdateJobPage/>}/>
-						</Routes>
-						{/* <Route element={<About />} path="/about" /> */}
-					</div>
-				</div>
-			</div>
-			
-
-
+			<Routes>
+				<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
+				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
+				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
+				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
+				<Route path="/job/detail/:jodId" element={<IndividualJob />} />
+				<Route path="/job/edit/:jodId" element={<UpdateJobPage />} />
+			</Routes>
 		</BrowserRouter>
-
 	)
 }
 
