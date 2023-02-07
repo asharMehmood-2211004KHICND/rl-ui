@@ -18,6 +18,7 @@ import UpdateJobPage from './Components/Pages/JobPost/UpdatePageComponent/Update
 import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
 import IndividualJob from './Components/Pages/JobPost/JobView/IndividualJob';
+import C_JobList from './Components/Pages/JobPost/Candidate/C_JobList';
 
 
 function App() {
@@ -35,8 +36,9 @@ function App() {
 				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
 				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-				<Route path="/job/detail/:jodId" element={<IndividualJob />} />
-				<Route path="/job/edit/:jodId" element={<UpdateJobPage />} />
+				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} ></Route>
+				<Route path="/job/detail/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} ></Route>
+				<Route path="/candidate/JobList" element={<PrivateRoute>< C_JobList/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)
