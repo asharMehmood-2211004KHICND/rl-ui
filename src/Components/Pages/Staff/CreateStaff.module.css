@@ -1,143 +1,118 @@
 .mainContainer {
-    display: flex;
-  }
-  .formCreateStaff {
-    margin-top: 15px;
-    padding:20px;
-    width: 100%;
-    margin-left: 50px;
-  }
-  /* .createStaffHeading {
-    margin-top: 10px;
-  } */
-  
-  /* Input css */
-  .usericon{
-    width: 180px;
-    /* display: flex; */
-    margin-left: 60px;
-  }
-
-  /* .form_with_pic{
-    display: flex;
-  } */
-
-  /* .form_with_pic .feilds{
-    width: 100%;
-  } */
-  
-  
-  /* .inputFields {
-    -ms-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px 10px 10px 30px;
-    font-size: 1.2rem;
-    border-radius: 6px;
-    background-color: #f0f0f0;
-    outline: none;
-    border: 1px solid #6270b1;
-  } */
-  
-  /* .fullSize {
-    width: 80%;
-    margin: 10px;
-  } */
-
-  .maxSize {
-   width: 100%; 
-   margin: 10px;
-  }
-  
-.table{
-  width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
-  /* .label{
-    margin-left: 0px;
-  } */
-  .halfSize {
-    width: 90%;
-    margin: 10px;
-  }
-  /* .smallSize{
-    width: 100%;
-  } */
-  
-  /* .inputFields:hover,
-  .PhoneInputCountrySelect:hover {
-    background-color: #ebe6e6;
-  } */
-  
-  /* .first-name-input , .last-name-input, .cnic-input, .date-input {
-  width: 94%;
-  } */
-  
-  
-  /* Dropdown */
-  
-  .select {
-    -ms-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    padding: 10px 10px 10px 30px;
-    font-size: 1.2rem;
-    border-radius: 6px;
-    background-color: #f0f0f0;
-    outline: none;
-    width: 90%;
-    border: 1px solid #6270b1;
-  }
-  
-  .option {
-    text-transform: capitalize;
-  }
-  
-  
-  /* Button css */
-  
-  /* .buttonContainerStaff {
-    display: flex;
-    text-align: center;
-    justify-content: flex-start;
-  } */
-  
-  .saveButtonStaff {
-    /* float: right; */
-    margin: 10px !important;
-    padding: 13px !important;
-    border-radius: 12px !important;
-    width: 80px !important;
-    background-color: #2196F3 !important;
-    border: 1px solid white !important;
-    outline: none !important;
-    font-size: 1.1rem !important;
-    color: white !important;
-    cursor: pointer !important;
-    transition: ease-out 500ms !important;
-    margin-right: 7px !important;
-  }
-  
-  .saveButtonStaff:hover {
-    color: black !important;
-    background-color: white !important;
-    border: 1px solid #2196F3 !important;
-  }
-  
+.formCreateStaff {
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 
-  
-  /* @media (max-width: 960px) { */
-    /* styles for screens smaller than 450px */
-    /* .inputFields, .select {
-      width: 100%;
-    }
-  } */
-  @media (max-width: 570px)
-{
-  .inputFields{
+.form_row {
+  display: flex;
+  justify-content: center;
+}
+
+.form_column {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+}
+
+.column label {
+  width: 180px;
+}
+
+
+.createStaffHeading {
+  text-align: center;
+}
+
+/* Input css */
+.usericon {
+  width: 180px;
+  margin-top: 10px;
+  margin-bottom: 26px;
+  margin-left: 150px;
+}
+
+.maxSize {
+  width: 100%;
+  margin: 10px;
+}
+
+.halfSize {
+  width: 100%;
+  margin: 10px;
+}
+
+
+.select {
+  padding: 10px 10px 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  outline: none;
+  border: 1px solid #6270b1;
+  width: 420px;
+}
+
+.option {
+  text-transform: capitalize;
+}
+
+.btnDiv{
+  display: flex;
+  justify-content:center;
+  margin-top: 20px;
+}
+
+.picColumn{
+  display: flex;
+  justify-content: center;
+}
+
+.saveButtonStaff {
+  margin: 10px !important;
+  border-radius: 12px !important;
+  width: 80px !important;
+  background-color: #2196F3 !important;
+  border: 1px solid white !important;
+  outline: none !important;
+  font-size: 1.1rem !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: ease-out 500ms !important;
+  margin-right: 7px !important;
+  text-align: center;
+}
+
+.saveButtonStaff:hover {
+  color: black !important;
+  background-color: white !important;
+  border: 1px solid #2196F3 !important;
+}
+
+.error {
+  color: red;
+  margin-left: 180px;
+}
+
+@media (max-width: 570px) {
+  .inputFields {
     width: 100%;
   }
-}  
-  
+}
