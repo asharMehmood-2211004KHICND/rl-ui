@@ -197,7 +197,7 @@ const CreateStaff = () => {
                     <table className={styles.table}>
                         <tr>
                             <td ><label >First Name:</label></td>
-                            <td colSpan="3"><InputField value={firstName} handler={handleFirstname} type='text' placeholder='First Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField></td>
+                            <td colSpan="3"><InputField value={firstName} handler={handleFirstname} type='text' placeholder='First Name' pattern='[a-zA-Z]*' className={styles.halfSize} required='required'></InputField></td>
                             <td></td>
                             <td ><label>Last Name: </label></td>
                             <td></td>
@@ -232,13 +232,15 @@ const CreateStaff = () => {
                             <td><label className={styles.label}>Designation: </label></td>
                             <td colSpan="3"><DropdownField value={designation} handler={handleDesignation} options={['Manager', 'Trainer', 'Developer', 'Data Engineer']} placeholder='Designation' className={styles.halfSize} required='required' icon='fa-solid fa-level-up'></DropdownField></td>
                             <td></td>
-                            <td><label className={styles.label}>Roles: </label></td>
+                            <td><label className={styles.label}>Role: </label></td>
                             <td></td>
                             {/* <td><DropdownField value={roles} handler={handleRoles} options={['Interviewer','Hiring Manager']} placeholder='Roles' className={styles.halfSize} required='required' icon='fa-solid fa-tasks'></DropdownField>
                             </td> */}
-                            <td><select value={role} onChange={handleRole} className={styles.halfSize}>
+                            <td>
+                                <select value={role} onChange={handleRole} className={`${styles.halfSize} ${styles.select}`}>
+                                    <option value="">Select Role</option>
                                 {roleOptions.map((option) => (
-                                    <option value={option.value}>{option.label}</option>
+                                    <option className={styles.option} value={option.value}>{option.label}</option>
                                 ))}
                             </select></td>
 
