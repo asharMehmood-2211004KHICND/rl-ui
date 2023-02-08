@@ -1,0 +1,59 @@
+.JobCard{ 
+    border-radius: 10px;
+    margin-top:  10px ; 
+    
+}
+.JobCard:hover{
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.JobCard .muiCard{
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.DetailBtn{
+    color: var(--main-color) !important;
+}
+
+.DetailBtn:hover span{
+    text-decoration: underline !important;
+}
+
+.HeartIcon{
+    width: 35px;
+    height: 35px;
+    color: rgb(249, 106, 106);
+}
+
+.locationDate{
+    display: flex;
+    margin-top: 2px;
+    /* font-weight: 200; */
+}
+
+.description{
+    
+    margin-top: 3px;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-height: 50px;
+    position: relative;
+      
+}
+
+.HeartIcon:hover {
+    color: red;
+    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+}
+
+.categoryTag{
+    border: 1px solid var(--main-color);
+    background-color: white;
+    color: var(--main-color);
+}
+
+.newTag{
+    color: var(--main-color);
+}

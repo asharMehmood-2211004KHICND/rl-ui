@@ -43,7 +43,7 @@ export default function SideBar() {
 						<li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
 						<li className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" /><Link to="/job/all">Openings</Link></li>
 						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
-						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" /> Candidates</li>
+						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" /><Link to="/candidate/JobList"> Candidates</Link></li>
 						<li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
 					</ul>
 				</div>
