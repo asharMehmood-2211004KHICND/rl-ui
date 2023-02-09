@@ -34,14 +34,15 @@ const JobView = ({
 
 const handleApply = ()=>{
   fetch(
-    `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/${id}/apply/candidate/${sessionStorage.getItem("user_id")}`,
+    `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
+    // `http://localhost:5000/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
+    // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
     // `http://localhost:5000/job/post`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-      },
-      body: JSON.stringify({jobId: id, candidateId: sessionStorage.getItem("user_id")}),
+      }
     },
     {
       mode: "cors",
@@ -51,15 +52,12 @@ const handleApply = ()=>{
       if (!(response.status >= 200 && response.status < 300)) {
         throw new Error(response.status);
       }
-      return response.json();
-    })
-    .then((data) => {
       swal({
         title: "Job posted sucessfully!",
         icon: "success",
       });
-
-      navigate("/job/all");
+      // return response.json();
+      navigate("/candidate/JobList");
     })
     .catch((err) => {
       if (err.Error > 400) {
