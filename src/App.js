@@ -21,6 +21,11 @@ import PrivateRoute from './Components/PrivateRoute';
 import JobsList from './Components/Pages/JobPost/JobList/JobList';
 import IndividualJob from './Components/Pages/JobPost/JobView/IndividualJob';
 import C_JobList from './Components/Pages/JobPost/Candidate/C_JobList';
+import ForgetRoute from './Components/ForgetRoute';
+import ForgetPassword from './Components/Pages/Login/ForgetPassword';
+import CreateStaff from './Components/Pages/Staff/CreateStaff';
+import ScheduleInterview from './Components/Pages/Schedule Interview/ScheduleInterview';
+import AddJobHMandInterviewers from './Components/Pages/JobHMandInterviewers/AddJobHMandInterviewers';
 
 
 function App() {
@@ -29,6 +34,8 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route element={<SignupSignin />} path="/login" />
+				<Route element={<VerificationEmail/>} path="/forgetpassword" />
+				<Route element={<ForgetRoute><ForgetPassword/></ForgetRoute>} path="/resetpassword" />
 			</Routes>
 
 			<Routes>
@@ -39,11 +46,15 @@ function App() {
 				<Route path="/academic-details" element={<PrivateRoute><CandidateAcademicInfo /></PrivateRoute>} ></Route>
 				<Route path="/work-experience" element={<PrivateRoute><CandidateWorkInfo /></PrivateRoute>} ></Route>
 				<Route path="/skills" element={<PrivateRoute><h1>Skills Page</h1></PrivateRoute>} ></Route>
+				<Route path="/createStaff" element={<PrivateRoute><CreateStaff /></PrivateRoute>}></Route>
 				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
 				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} ></Route>
 				<Route path="/job/detail/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} ></Route>
 				<Route path="/candidate/JobList" element={<PrivateRoute>< C_JobList/></PrivateRoute>} ></Route>
+				<Route path="/scheduleInterview" element={<PrivateRoute><ScheduleInterview /></PrivateRoute>} ></Route>
+				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>
+
 			</Routes>
 		</BrowserRouter>
 	)
