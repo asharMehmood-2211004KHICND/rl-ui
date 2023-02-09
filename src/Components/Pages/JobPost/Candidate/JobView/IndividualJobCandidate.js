@@ -8,7 +8,6 @@ function IndividualJobCandidate() {
 
     const params = useParams();
     const {state} = useLocation();
-    console.log(state)
     const [data, setData] = useState(state);
 
     useEffect(() => {  

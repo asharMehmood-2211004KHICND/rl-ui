@@ -34,9 +34,9 @@ const JobView = ({
 
 const handleApply = ()=>{
   fetch(
-    `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
+    // `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
     // `http://localhost:5000/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
-    // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
+    `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
     // `http://localhost:5000/job/post`,
     {
       method: "POST",
@@ -52,8 +52,12 @@ const handleApply = ()=>{
       if (!(response.status >= 200 && response.status < 300)) {
         throw new Error(response.status);
       }
+      return response.json();
+    })
+    .then((response) => {
+      
       swal({
-        title: "Job posted sucessfully!",
+        title: `Job ${response.message}`,
         icon: "success",
       });
       // return response.json();
