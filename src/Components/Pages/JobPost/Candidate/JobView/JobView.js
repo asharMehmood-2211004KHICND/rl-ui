@@ -34,9 +34,9 @@ const JobView = ({
 
 const handleApply = ()=>{
   fetch(
-    `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
+    // `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
     // `http://localhost:5000/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
-    // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
+    `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
     // `http://localhost:5000/job/post`,
     {
       method: "POST",
