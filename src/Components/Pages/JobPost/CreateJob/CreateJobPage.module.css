@@ -5,7 +5,21 @@
     justify-content: center;
     border-radius: 10px;
 }
-
+.job_description_container {
+    width: 800px;
+    /* margin: 20px auto; */
+}
+  
+.job_description_input {
+    width: 100%;
+    height: 200px;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 1.5;
+    resize: vertical;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
 .create_job_page{
     background-color: rgb(255, 255, 255);
     padding-left: 160px;
@@ -294,13 +308,15 @@ padding-bottom: 11px;
       text-align: center;
     position: relative;
     right: 61px;
-    text-decoration: underline;
+    margin-bottom: 50px;
+
+    /* text-decoration: underline; */
 
 
 }
 
 button.button {
-    background: #216ba5;
+    background: #4481eb;
     /* top: -281px; */
     color: white;
     height: 38px;
@@ -314,7 +330,7 @@ button.button {
 
 }
 button.button a{
-        text-decoration: none;
-        color: white;
+    text-decoration: none;
+    color: white;
     
 }

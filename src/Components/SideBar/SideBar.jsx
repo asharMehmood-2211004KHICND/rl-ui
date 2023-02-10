@@ -7,7 +7,7 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
 
@@ -15,7 +15,7 @@ export default function SideBar() {
 
 	function logout() {
 		sessionStorage.clear();
-		navigate('/');
+		navigate('/login');
 	}
 
 	function home() {
@@ -27,6 +27,8 @@ export default function SideBar() {
 		navigate('/createJob');
 	}
 
+
+
 	function profile() {
 		navigate('/profile');
 	}
@@ -37,16 +39,13 @@ export default function SideBar() {
 			<div className="sideBarWrapper">
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Dashboard</div>
-
 					<ul className="sideBarList">
 						<li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
-						<li onClick={createJob} className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" />  Openings</li>
+						<li className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" /><Link to="/job/all">Openings</Link></li>
 						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
 						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" /> Candidates</li>
 						<li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
 					</ul>
-
-
 				</div>
 
 				<div className="sideBarMenu">
@@ -66,12 +65,11 @@ export default function SideBar() {
 					<div className="sideBarTitle">Personal</div>
 
 					<ul className="sideBarList">
-						<li onClick={profile} className="sideBarListItem"><AccountBoxIcon className="menuIcon" />Profile</li>
+						<li className="sideBarListItem"><AccountBoxIcon className="menuIcon" /><Link to="/profile">Profile</Link></li>
 						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
 				</div>
 			</div>
-
 		</div>
 	)
 }

@@ -1,0 +1,123 @@
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.scheduleInterview {
+  text-align: center;
+}
+
+.formInterview {
+  padding: 20px;
+  width: 100%;
+  display: grid;
+}
+
+.form_row {
+  display: flex;
+  justify-content: center;
+}
+
+.form_column {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 0 20px;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+}
+
+.column label {
+  width: 180px;
+}
+
+.select {
+  padding: 10px 10px 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  outline: none;
+  border: 1px solid #6270b1;
+  width: 420px;
+}
+
+.option {
+  text-transform: capitalize;
+}
+
+.maxSize {
+  width: 100%;
+  margin: 10px;
+}
+
+.halfSize {
+  width: 100%;
+  margin: 10px;
+}
+
+.btnDiv {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin-left: 150px;
+}
+
+.buttonSchedule {
+  margin: 10px !important;
+  border-radius: 12px !important;
+  width: fit-content !important;
+  background-color: #2196f3 !important;
+  border: 1px solid white !important;
+  outline: none !important;
+  font-size: 1.1rem !important;
+  color: white !important;
+  cursor: pointer !important;
+  transition: ease-out 500ms !important;
+  margin-right: 7px !important;
+  text-align: center;
+}
+
+.buttonSchedule:hover {
+  color: black !important;
+  background-color: white !important;
+  border: 1px solid #2196f3 !important;
+}
+
+.time_picker {
+  position: relative;
+}
+
+.time_picker,
+.select {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  outline: none;
+  border: 1px solid #6270b1;
+}
+
+.time_picker {
+  width: 100%;
+  margin: 10px;
+}
+
+.time_picker:hover {
+  background-color: #ebe6e6;
+}
