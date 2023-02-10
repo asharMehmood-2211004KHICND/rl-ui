@@ -26,6 +26,7 @@ import ForgetPassword from './Components/Pages/Login/ForgetPassword';
 import CreateStaff from './Components/Pages/Staff/CreateStaff';
 import ScheduleInterview from './Components/Pages/Schedule Interview/ScheduleInterview';
 import AddJobHMandInterviewers from './Components/Pages/JobHMandInterviewers/AddJobHMandInterviewers';
+import IndividualJobCandidate from './Components/Pages/JobPost/Candidate/JobView/IndividualJobCandidate';
 
 
 function App() {
@@ -50,7 +51,8 @@ function App() {
 				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
 				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
 				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} ></Route>
-				<Route path="/job/detail/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} ></Route>
+				<Route path="/job/view/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} ></Route>
+				<Route path="/candidate/job/view/:jodId" element={<PrivateRoute><IndividualJobCandidate /></PrivateRoute>} ></Route>
 				<Route path="/candidate/JobList" element={<PrivateRoute>< C_JobList/></PrivateRoute>} ></Route>
 				<Route path="/scheduleInterview" element={<PrivateRoute><ScheduleInterview /></PrivateRoute>} ></Route>
 				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>

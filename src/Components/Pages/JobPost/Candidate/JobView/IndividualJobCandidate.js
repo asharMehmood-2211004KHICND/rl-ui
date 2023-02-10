@@ -4,13 +4,10 @@ import JobView from './JobView';
 import swal from "sweetalert";
 
 
-function IndividualJob() {
+function IndividualJobCandidate() {
 
     const params = useParams();
-
-    
     const {state} = useLocation();
-    console.log(state)
     const [data, setData] = useState(state);
 
     useEffect(() => {  
@@ -68,6 +65,7 @@ function IndividualJob() {
   return (
     // <div>IndividualJob</div>
     <JobView 
+      id={data?.id}
       title={data?.title}
       jobDescription={data?.description}
       department={data?.department }
@@ -87,6 +85,6 @@ function IndividualJob() {
   )
 }
 
-export default IndividualJob
+export default IndividualJobCandidate
 
 
