@@ -111,8 +111,111 @@
   margin-left: 180px;
 }
 
-@media (max-width: 570px) {
-  .inputFields {
+@media (max-width: 760px) {
+  /* .usericon {
+    width: 100px;
+    margin-right: 50px;
+  } */
+
+  .picColumn{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+  }
+
+  .mainContainer {
+    width: 50%;
+    display: grid;
+  }
+   .formCreateStaff {
+    padding: 20px;
+    width: 100%;
+    display: grid;
+  }
+  
+  .form_row {
+    display: grid;
+    justify-content: center;
+  }
+  
+  .form_column {
+    display: grid;
+    width: 140%;
+    margin: 0 20px; 
+   }  
+  
+   .row {
+    display: grid;
+  }
+  
+  .column {
+    display: grid;
+    align-items: center;
+  }  
+  
+  .halfSize {
+    width: 100%;
+    margin: 10px;
+  }
+  
+} 
+
+@media (min-width: 761px) and  (max-width: 1600px) {
+  .mainContainer {
     width: 100%;
   }
-}
+  .mainContainer {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .formCreateStaff {
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form_row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .form_column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 0 20px;
+  }
+  
+  .row {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .column {
+    display: flex;
+    align-items: center;
+  }
+  
+  .column label {
+    width: 180px;
+  }
+  
+  
+  .createStaffHeading {
+    text-align: center;
+  }
+  
+  .usericon {
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 26px;
+    margin-left: 150px;
+  }
+  
+  .halfSize {
+    width: 100%;
+    margin: 10px;
+  }
+} 
