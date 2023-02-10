@@ -125,7 +125,8 @@ function CandidatePersonalInfo() {
             address: address,
             linkedProfile: linkedin,
             maritalStatus: maritalstat,
-            phoneNumber: phone
+            phoneNumber: phone,
+            email
         }
 
         fetch(dataExists ? putUrl : postUrl, {
