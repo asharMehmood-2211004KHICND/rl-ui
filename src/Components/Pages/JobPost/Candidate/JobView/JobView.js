@@ -52,8 +52,12 @@ const handleApply = ()=>{
       if (!(response.status >= 200 && response.status < 300)) {
         throw new Error(response.status);
       }
+      return response.json();
+    })
+    .then((response) => {
+      
       swal({
-        title: "Job posted sucessfully!",
+        title: `${response.message}`,
         icon: "success",
       });
       // return response.json();

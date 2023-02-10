@@ -147,7 +147,6 @@ function C_JobList() {
         return response.json()
       })
       .then((data) => {
-        console.log(data)
         setJobs(data);
         setFilteredData(data);
         setLoading(false);

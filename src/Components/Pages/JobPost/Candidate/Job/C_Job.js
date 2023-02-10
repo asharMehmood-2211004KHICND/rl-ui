@@ -13,7 +13,6 @@ export default function Job({ job }) {
   const companyName = "Xloop";
   
   const momentDate = moment(job.postDate);
-  console.log(momentDate.fromNow());
 
   return (
     <div className={styled.JobCard}>
