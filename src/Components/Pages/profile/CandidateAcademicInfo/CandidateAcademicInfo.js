@@ -45,7 +45,7 @@ function CandidateAcademicInfo() {
     const [editId, setEditId] = useState(null)
 
     // const basicRoute = 'http://192.168.0.160:8080/api/educational_information'
-    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/educational_information'
+    const basicRoute = 'http://userprofileserviceelastic-env.eba-piepztun.ap-south-1.elasticbeanstalk.com/api/educational_information'
     const getByUserIdUrl = `${basicRoute}/user`
     const postUrl = basicRoute
     const deleteUrl = basicRoute

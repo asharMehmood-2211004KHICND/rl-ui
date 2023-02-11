@@ -32,7 +32,7 @@ function CandidatePersonalInfo() {
 
     const [dataExists, setDataExists] = useState(false);
 
-    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/personal_information'
+    const basicRoute = 'http://userprofileserviceelastic-env.eba-piepztun.ap-south-1.elasticbeanstalk.com/api/personal_information'
     // const basicRoute = 'http://192.168.0.128:5000/api/personal_information'
     const getByUserIdUrl = `${basicRoute}/users/${userId}`
     const postUrl = basicRoute
@@ -141,10 +141,13 @@ function CandidatePersonalInfo() {
             referrerPolicy: 'no-referrer',
             body: JSON.stringify(data)
         })
-            .then(response => {
+            .then(async response => {
                 console.log(response);
                 const res = response ? response.ok : false;
                 let updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
+                const data = await response.json()
+                setId(data.id)
+                setDataExists(true)
                 setDisableNextBtn(!res)
                 if (res) {
                     updateUser = dataExists ? 'Info edited successfully!' : updateUser
@@ -216,7 +219,7 @@ function CandidatePersonalInfo() {
                         </tr>
                         <tr>
                             <td><InputLabel className={styles.inputLabel} text='Gender'></InputLabel></td>
-                            <td className={styles.makeFieldAdjustment}><DropdownField value={gender} handler={handleGender} options={['Male', 'Female']} className={styles.halfSize} placeholder='Select' icon='fa-sharp fa-solid fa-person-dress' /></td>
+                            <td className={styles.makeFieldAdjustment}><DropdownField value={gender} handler={handleGender} options={['Male', 'Female', 'Rather not say']} className={styles.halfSize} placeholder='Select' icon='fa-sharp fa-solid fa-person-dress' /></td>
                             <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='Birth Date'></InputLabel></td>
                             <td><InputField value={dob} handler={handleDob} min="" type='date' placeholder='' className={styles.halfSize} required='required' icon='fa-solid fa-calendar-days'></InputField></td>
                         </tr>
