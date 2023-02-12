@@ -1,0 +1,31 @@
+
+.levelField {
+    width: 25%;
+}
+.certificateField {
+    /* width: 50%; */
+    text-align: left;
+}
+.certificatHeading {
+    margin-top: 5%;
+}
+.deleteBtn {
+    color: rgb(190, 103, 103);
+    border: none;
+    
+}
+.deleteBtn:hover{
+    color: red;
+    cursor: pointer;
+}
+.deleteBtn i, .downloadBtn i {
+    font-size: 1.2rem;
+}
+.downloadBtn {
+    color: rgb(96, 96, 187);
+    border: none;
+}
+.downloadBtn:hover {
+    color: blue;
+    cursor: pointer;
+}
