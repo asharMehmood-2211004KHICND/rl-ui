@@ -23,9 +23,7 @@ export default function CandidateskillInfo() {
 
   // -------------xxxxxxxxxx-----------certificate-xxxxxxxxxxxx-----------
   const [deleteFileId, setDeleteFileId] = useState();
-  const [id, setId] = useState(1);
   const [userId, setUserId] = useState(sessionStorage.getItem("user_id"));
-  const [filename, setFileName] = useState("myResume");
 
   const [messageApi, contextHolder] = message.useMessage();
 
