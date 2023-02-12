@@ -10,7 +10,8 @@ import Button from '@mui/material/Button';
 import Styled from './JobList.module.css'
 import swal from "sweetalert";
 import { IconButton } from '@mui/material';
-import env from "react-dotenv";
+
+const BaseURL = process.env.REACT_APP_API_URL1;
 
 
 const { RangePicker } = DatePicker;
@@ -27,7 +28,7 @@ const JobsList = ({jobsProp}) => {
 
   useEffect(() => {  
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
+      `${BaseURL}/job/all`,
       // `http://localhost:5000/job/post`,
       {
         method: "GET",
@@ -46,6 +47,7 @@ const JobsList = ({jobsProp}) => {
         return response.json()
       })
       .then((data) => {
+        data = data.map(eachData=>{return {...eachData, department: eachData.department.departmentName}})
         setJobs(data);
         setFilteredData(data);
         setLoading(false);
@@ -102,7 +104,7 @@ const JobsList = ({jobsProp}) => {
 
   const handleDeleteJob = job => {
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/delete/${job.id}`,
+      `${BaseURL}/job/delete/${job.id}`,
       {
         method: "DELETE",
         headers: {
@@ -170,7 +172,7 @@ const JobsList = ({jobsProp}) => {
     };
 
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/post`,
+      `${BaseURL}/job/post`,
       // `http://localhost:5000/job/post`,
       {
         method: "POST",

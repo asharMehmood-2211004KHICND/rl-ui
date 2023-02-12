@@ -6,10 +6,13 @@ import { SimpleDropDown } from "../components/SelectDropDown/SimpleDropDown";
 import { Textfeild } from "../components/Textfeild";
 import styled from "./UpdateJobPage.module.css";
 import { useNavigate } from "react-router-dom";
-import env from "react-dotenv";
 import swal from "sweetalert";
 import { useLocation } from "react-router-dom";
 import Radio from '@mui/material/Radio';
+
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
 
 const UpdateJobPage = () => {
   const navigate = useNavigate();
@@ -18,7 +21,7 @@ const UpdateJobPage = () => {
 
   const [jobTitle, setJobTitle] = useState(data.title);
   const [description, setDescription] = useState(data.description);
-  const [department, setDepartment] = useState(data.department); // for single drop down
+  const [department, setDepartment] = useState(data.department ); // for single drop down
   const [degrees, setDegrees] = useState(
     data.educations.map((data) => data.education)
   );
@@ -313,7 +316,7 @@ const UpdateJobPage = () => {
 
     let requestData = {
       title: jobTitle,
-      department: department,
+      department: { id: 1, departmentName: department },
       employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
@@ -342,7 +345,7 @@ const UpdateJobPage = () => {
     };
 
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/update/${data.id}`,
+      `${BaseURL}/job/update/${data.id}`,
       // `http://localhost:5000/job/post`,
       {
         method: "POST",

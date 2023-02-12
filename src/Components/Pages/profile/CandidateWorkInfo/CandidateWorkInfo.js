@@ -8,6 +8,8 @@ import { useCallback, useState, useEffect } from "react"
 import { message, Popconfirm } from 'antd';
 import { useNavigate } from "react-router-dom"
 
+const BaseURL = process.env.REACT_APP_API_URL3;
+
 
 export default function CandidateWorkInfo() {
 
@@ -31,7 +33,7 @@ export default function CandidateWorkInfo() {
 
 
     // const basicRoute = 'http://192.168.0.160:8081/api/work_experience'
-    const basicRoute = 'http://userprofileserviceapplication3-env.eba-pm56e7xe.us-east-1.elasticbeanstalk.com/api/work_experience'
+    const basicRoute = `${BaseURL}/api/work_experience`
     const getByUserIdUrl = `${basicRoute}/user`
     const postUrl = basicRoute
     const deleteUrl = basicRoute

@@ -4,6 +4,9 @@ import { useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import styled from "./jobview.module.css";
 
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
 const JobView = ({
   id,
   title,
@@ -34,10 +37,7 @@ const JobView = ({
 
 const handleApply = ()=>{
   fetch(
-    // `http://localhost:5000/apply/job/1/candidate/${sessionStorage.getItem("user_id")}`,
-    // `http://localhost:5000/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
-    `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
-    // `http://localhost:5000/job/post`,
+    `${BaseURL}/apply/job/${id}/candidate/${sessionStorage.getItem("user_id")}`,
     {
       method: "POST",
       headers: {
@@ -119,7 +119,7 @@ const handleApply = ()=>{
         </div>
         {responsibilities &&
           responsibilities.map((responsibility, i) => (
-            <ul className={styled.responsibilitieslist}>{responsibility}</ul>
+            <ul key={i} className={styled.responsibilitieslist}>{responsibility}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -128,7 +128,7 @@ const handleApply = ()=>{
           <h2 className={styled.heading5}>Education:</h2>
         </div>
         {education &&
-          education.map((e, i) => <ul className={styled.degreelist}>{e}</ul>)}
+          education.map((e, i) => <ul key={i} className={styled.degreelist}>{e}</ul>)}
       </div>
       <section className={styled.line}></section>
       <div className={styled.employement1}>
@@ -142,7 +142,7 @@ const handleApply = ()=>{
 
         {employement &&
           employement.map((employ, i) => (
-            <ul className={styled.employmentlist}>{employ}</ul>
+            <ul key={i} className={styled.employmentlist}>{employ}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -157,7 +157,7 @@ const handleApply = ()=>{
 
         {softskills &&
           softskills.map((softSkill, i) => (
-            <ul className={styled.softskillslist}>{softSkill}</ul>
+            <ul key={i} className={styled.softskillslist}>{softSkill}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -172,7 +172,7 @@ const handleApply = ()=>{
 
         {technicalskills &&
           technicalskills.map((technicalSkill, i) => (
-            <ul className={styled.technicallist}>{technicalSkill}</ul>
+            <ul key={i} className={styled.technicallist}>{technicalSkill}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -186,7 +186,7 @@ const handleApply = ()=>{
         </div>
         {benefits &&
           benefits.map((benefitPerks, i) => (
-            <ul className={styled.perksandbenefitslist}>{benefitPerks}</ul>
+            <ul key={i} className={styled.perksandbenefitslist}>{benefitPerks}</ul>
           ))}
 
         <ul className={styled.perksandbenefitslist}>{benefits?.benefitPerks}</ul>
@@ -235,7 +235,7 @@ const handleApply = ()=>{
 
         <p className={styled.paragrap15}>{closingdate}</p>
       </div>
-      <Button  variant='contained' onClick={handleApply} disabled={buttonDisable} >{buttonText}</Button>
+      <Button  variant='contained' onClick={handleApply} disabled={buttonDisable} className={styled.viewBtn} >{buttonText}</Button>
     </div>
   );
 };

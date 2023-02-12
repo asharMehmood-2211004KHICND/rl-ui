@@ -9,6 +9,7 @@ import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 
 //import { useLinkedIn } from 'react-linkedin-login-oauth2';
+const BaseURL = process.env.REACT_APP_API_URL2;
 
 
 
@@ -96,7 +97,7 @@ function SignupSignin() {
 				email: login_email,
 				password: login_password
 			}
-			fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/login", {
+			fetch(`${BaseURL}/auth/login`, {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {
@@ -160,7 +161,7 @@ function SignupSignin() {
 					id: 1
 				}
 			}
-			fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/register", {
+			fetch(`${BaseURL}/auth/register`, {
 				method: 'POST',
 				body: JSON.stringify(data),
 				headers: {

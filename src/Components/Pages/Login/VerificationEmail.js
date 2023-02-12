@@ -6,6 +6,9 @@ import resetimg from './img/resetimg.svg';
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 
+const BaseURL = process.env.REACT_APP_API_URL2;
+
+
 function VerificationEmail() {
 
   const navigate = useNavigate();
@@ -50,7 +53,7 @@ function VerificationEmail() {
         email: email,
         otp: pin
       }
-      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-verification", {
+      fetch(`${BaseURL}/auth/otp-verification`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -101,7 +104,7 @@ function VerificationEmail() {
         email: email
       }
 
-      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
+      fetch(`${BaseURL}/auth/otp-expire`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
@@ -110,7 +113,7 @@ function VerificationEmail() {
       }).then((response) => {
         if (response.status === 200) {
 
-          fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword-link", {
+          fetch(`${BaseURL}/auth/forgetpassword-link`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -124,7 +127,7 @@ function VerificationEmail() {
               console.log('OTP Expire After 10 Second!')
               setTimeout(() => {
                 console.log('OTP Expired!')
-                fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/otp-expire", {
+                fetch(`${BaseURL}/auth/otp-expire`, {
                   method: 'POST',
                   body: JSON.stringify(data),
                   headers: {

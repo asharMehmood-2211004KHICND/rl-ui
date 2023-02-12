@@ -6,6 +6,10 @@ import resetimg from './img/reset_img2.svg';
 import swal from 'sweetalert';
 import { useNavigate } from "react-router-dom";
 
+const BaseURL = process.env.REACT_APP_API_URL2;
+
+
+
 function SignupSignin() {
 
   const navigate = useNavigate();
@@ -52,7 +56,7 @@ function SignupSignin() {
         email: sessionStorage.getItem('forget_email'),
         password: password
       }
-      fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/forgetpassword", {
+      fetch(`${BaseURL}/auth/forgetpassword`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {

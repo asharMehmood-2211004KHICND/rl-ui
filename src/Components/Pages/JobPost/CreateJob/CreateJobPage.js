@@ -11,6 +11,8 @@ import styled from "./CreateJobPage.module.css";
 import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
+const BaseURL = process.env.REACT_APP_API_URL1;
+
 const CreateJobPage = () => {
   const navigate = useNavigate();
 
@@ -282,7 +284,7 @@ const CreateJobPage = () => {
 
     let requestData = {
       title: jobTitle,
-      department: department,
+      department:{ id: 1, departmentName: department },
       employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
@@ -309,7 +311,7 @@ const CreateJobPage = () => {
     };
 
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/post`,
+      `${BaseURL}/job/post`,
       // `http://localhost:5000/job/post`,
       {
         method: "POST",
