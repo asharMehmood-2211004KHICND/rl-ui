@@ -4,6 +4,8 @@ import C_Job from "./Job/C_Job";
 import styled from "./C_JobList.module.css";
 import swal from "sweetalert";
 
+const BaseURL = process.env.REACT_APP_API_URL1;
+
 const { Search } = Input;
 
 const page_size = 4;
@@ -18,106 +20,7 @@ function C_JobList() {
         location: "Mountain View, CA",
         description: "fkn mfkwn fjn jirf i igfniorhan erug io",
         category: "IT",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Apple",
-        jobTitle: "Product Manager",
-        postDate: "2022-06-30",
-        location: "Cupertino, CA",
-        description: "mfskng vfkmm",
-        category: "Management",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Facebook",
-        jobTitle: "Data Scientist",
-        postDate: "2022-09-30",
-        location: "Menlo Park, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "Data Science",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Google",
-        jobTitle: "Software Engineer",
-        postDate: "2022-12-31",
-        location: "Mountain View, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "IT",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Apple",
-        jobTitle: "Product Manager",
-        postDate: "2022-06-30",
-        location: "Cupertino, CA",
-        description: "mfskng vfkmm",
-        category: "Management",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Facebook",
-        jobTitle: "Data Scientist",
-        postDate: "2022-09-30",
-        location: "Menlo Park, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "Data Science",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Google",
-        jobTitle: "Software Engineer",
-        postDate: "2022-12-31",
-        location: "Mountain View, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "IT",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Apple",
-        jobTitle: "Product Manager",
-        postDate: "2022-06-30",
-        location: "Cupertino, CA",
-        description: "mfskng vfkmm",
-        category: "Management",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Facebook",
-        jobTitle: "Data Scientist",
-        postDate: "2022-09-30",
-        location: "Menlo Park, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "Data Science",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Google",
-        jobTitle: "Software Engineer",
-        postDate: "2022-12-31",
-        location: "Mountain View, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "IT",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Apple",
-        jobTitle: "Product Manager",
-        postDate: "2022-06-30",
-        location: "Cupertino, CA",
-        description: "mfskng vfkmm",
-        category: "Management",
-      },
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Facebook",
-        jobTitle: "Data Scientist",
-        postDate: "2022-09-30",
-        location: "Menlo Park, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "Data Science",
-      },
+      }
     ]
   );
 
@@ -128,7 +31,7 @@ function C_JobList() {
   
   useEffect(() => {  
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
+      `${BaseURL}/job/all`,
       // `http://localhost:5000/job/post`,
       {
         method: "GET",

@@ -11,6 +11,9 @@ import { message, Popconfirm } from 'antd';
 import InputLabel from '../Label/InputLabel';
 import { useNavigate } from "react-router-dom";
 
+const BaseURL = process.env.REACT_APP_API_URL3;
+
+
 const qualificationOptions = [
     'SSC',
     'O-level',
@@ -45,7 +48,7 @@ function CandidateAcademicInfo() {
     const [editId, setEditId] = useState(null)
 
     // const basicRoute = 'http://192.168.0.160:8080/api/educational_information'
-    const basicRoute = 'http://userprofileserviceelastic-env.eba-piepztun.ap-south-1.elasticbeanstalk.com/api/educational_information'
+    const basicRoute = `${BaseURL}/api/educational_information`
     const getByUserIdUrl = `${basicRoute}/user`
     const postUrl = basicRoute
     const deleteUrl = basicRoute

@@ -10,6 +10,9 @@ import InputLabel from "../Label/InputLabel";
 import { message } from 'antd';
 //import swal from 'sweetalert';
 
+const BaseURL = process.env.REACT_APP_API_URL3;
+
+
 
 function CandidatePersonalInfo() {
 
@@ -32,7 +35,7 @@ function CandidatePersonalInfo() {
 
     const [dataExists, setDataExists] = useState(false);
 
-    const basicRoute = 'http://userprofileserviceelastic-env.eba-piepztun.ap-south-1.elasticbeanstalk.com/api/personal_information'
+    const basicRoute = `${BaseURL}/api/personal_information`;
     // const basicRoute = 'http://192.168.0.128:5000/api/personal_information'
     const getByUserIdUrl = `${basicRoute}/users/${userId}`
     const postUrl = basicRoute

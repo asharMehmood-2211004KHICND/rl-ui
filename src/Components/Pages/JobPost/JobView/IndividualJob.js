@@ -2,21 +2,21 @@ import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from 'react-router-dom';
 import JobView from './JobView';
 import swal from "sweetalert";
+import AppliedCandidates from './AppliedCandidates';
+
+const BaseURL = process.env.REACT_APP_API_URL1;
 
 
 function IndividualJob() {
 
     const params = useParams();
-
-    
     const {state} = useLocation();
-    console.log(state)
     const [data, setData] = useState(state);
 
     useEffect(() => {  
       if(!data){
       fetch(
-        `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/detail/`+params.jodId,
+        `${BaseURL}/job/detail/`+params.jodId,
         // `http://localhost:5000/job/post`,
         {
           method: "GET",
@@ -66,7 +66,8 @@ function IndividualJob() {
     , [])
 
   return (
-    // <div>IndividualJob</div>
+  <>
+    {/* // <div>IndividualJob</div> */}
     <JobView 
       title={data?.title}
       jobDescription={data?.description}
@@ -84,6 +85,10 @@ function IndividualJob() {
       travelling={data?.traveling}
       closingdate={data?.closeDate.substring(0, 10)}
     />
+    <AppliedCandidates params={params.jodId}/>
+
+
+  </>  
   )
 }
 

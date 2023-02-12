@@ -6,6 +6,8 @@ import styles from "./CreateStaff.module.css";
 import Male from "../../images/male.png";
 import swal from 'sweetalert';
 
+const BaseURL = process.env.REACT_APP_API_URL2;
+
 
 // function isValidIDCardNumber(idCardNumber) {
 //     const idCardNumberRegex = /^\d{10}$/;
@@ -173,7 +175,7 @@ const CreateStaff = () => {
                 }
             }
 
-            fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/auth/register", {
+            fetch(`${BaseURL}/auth/register`, {
                 method: 'POST',
                 body: JSON.stringify(signupData),
                 headers: {

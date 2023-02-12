@@ -5,8 +5,11 @@ import { Button } from "@mui/material";
 import { useState, useCallback } from "react";
 import InputField from "../profile/InputField/InputField";
 import '../../../index.css';
+import { useLocation } from "react-router-dom";
 
 const ScheduleInterview = () => {
+  const { state } = useLocation();
+  console.log(state);
   const [candidateName, setCandidateName] = useState("");
   const [interviewer, setInterviewer] = useState("");
   const [date, setDate] = useState("");

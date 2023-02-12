@@ -1,18 +1,51 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
 
+.profileIcon{
+    color: var(--main-color);
+
+}
+
+.viewBtn{
+    background-color: var(--main-color) !important;
+    color: var(--white-color-contrast) ;    
+}
+
+.JobTable{
+    margin-top: 20px;
+}
+
+.JobTable th {
+    background-color: var(--main-color) !important;
+    color: var(--white-color-contrast) !important;
+}
+  
+.JobTable th svg {
+    color: var(--white-color-contrast) !important;
+}
 
 .jobview{
+    display: flex;
+    flex-direction: column;
+    width:85%;
+    margin: auto;
+    /* align-items: center; */
     justify-content: center;
-    display: grid;
-    padding-top: 20px;
-    padding-left: 250px;
-    padding-right: 250px;
+    /* display: grid; */
+
+    /* padding-top: 20px;
+    padding-left: 200px;
+    padding-right: 250px; */
 }
 .heading {
     text-align: center;
+    /* align-content: center;
+    align-self: center; */
     font-family: 'Poppins', sans-serif;
     font-size: 30px;
-    left: 167px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    /* left: 167px; */
+    left: 50%;
     position: relative;
     letter-spacing: 2px;
 }
@@ -32,16 +65,19 @@
 .jobdescription{
     display: flex;
     gap: 12px;
-    text-align: center;
+    text-align: left;
     padding-top: 20px;
-    
-
+    /* width: 100px; */
 }
 .heading2{
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
     letter-spacing: 2px;
     font-weight: 500;
+}
+.paragrap2 {
+    white-space: pre-wrap;
+    padding-left: 110px;
 }
 .department{
     display: flex;
@@ -74,10 +110,7 @@
 .responsibilitieslist {
     padding-left: 268px;
 }
-.paragrap2 {
-   
-    padding-left: 53px;
-}
+
 
 .paragrap3 {
    
@@ -294,6 +327,7 @@
      text-align: center;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin-bottom: 40px;
  }
  .heading15{
     font-family: 'Poppins', sans-serif;

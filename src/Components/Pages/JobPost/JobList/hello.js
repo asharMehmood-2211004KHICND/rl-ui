@@ -1,6 +1,10 @@
 import { Table } from 'antd';
 import qs from 'qs';
 import { useEffect, useState } from 'react';
+
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
 const columns = [
   {
     title: 'Name',

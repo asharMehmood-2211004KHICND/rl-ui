@@ -34,7 +34,7 @@ const JobView = ({
       <section className={styled.line}></section>
       <div className={styled.jobdescription}>
         <h2 className={styled.heading2}>Job Description:</h2>
-        <p className={styled.paragrap2}>{jobDescription}</p>
+        <pre className={styled.paragrap2}>{jobDescription}</pre>
       </div>
       <section className={styled.line}></section>
       <div className={styled.department}>
@@ -49,7 +49,7 @@ const JobView = ({
         </div>
         {responsibilities &&
           responsibilities.map((responsibility, i) => (
-            <ul className={styled.responsibilitieslist}>{responsibility}</ul>
+            <ul key={i} className={styled.responsibilitieslist}>{responsibility}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -58,7 +58,7 @@ const JobView = ({
           <h2 className={styled.heading5}>Education:</h2>
         </div>
         {education &&
-          education.map((e, i) => <ul className={styled.degreelist}>{e}</ul>)}
+          education.map((e, i) => <ul key={i} className={styled.degreelist}>{e}</ul>)}
       </div>
       <section className={styled.line}></section>
       <div className={styled.employement1}>
@@ -72,7 +72,7 @@ const JobView = ({
 
         {employement &&
           employement.map((employ, i) => (
-            <ul className={styled.employmentlist}>{employ}</ul>
+            <ul key={i} className={styled.employmentlist}>{employ}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -87,7 +87,7 @@ const JobView = ({
 
         {softskills &&
           softskills.map((softSkill, i) => (
-            <ul className={styled.softskillslist}>{softSkill}</ul>
+            <ul key={i} className={styled.softskillslist}>{softSkill}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -102,7 +102,7 @@ const JobView = ({
 
         {technicalskills &&
           technicalskills.map((technicalSkill, i) => (
-            <ul className={styled.technicallist}>{technicalSkill}</ul>
+            <ul key={i} className={styled.technicallist}>{technicalSkill}</ul>
           ))}
       </div>
       <section className={styled.line}></section>
@@ -116,7 +116,7 @@ const JobView = ({
         </div>
         {benefits &&
           benefits.map((benefitPerks, i) => (
-            <ul className={styled.perksandbenefitslist}>{benefitPerks}</ul>
+            <ul key={i} className={styled.perksandbenefitslist}>{benefitPerks}</ul>
           ))}
 
         <ul className={styled.perksandbenefitslist}>{benefits?.benefitPerks}</ul>
