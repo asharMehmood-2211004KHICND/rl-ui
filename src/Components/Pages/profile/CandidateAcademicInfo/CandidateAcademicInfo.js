@@ -209,6 +209,9 @@ function CandidateAcademicInfo() {
                 if (res) {
                     messageApi.success('Details deleted successfully!')
                     const newData = eduData.filter((item) => item.id !== deleteId);
+                    if (newData.length === 0) {
+                        setDisNextBtn(true)
+                    }
                     setEduData(newData)
                 }
                 else {
@@ -295,7 +298,6 @@ function CandidateAcademicInfo() {
                 else {
                     messageApi.error(updateUser)
                 }
-                setDisNextBtn(!res)
                 // swal({
                 //     title: "Personal Information Saved!",
                 //     icon: "success",
@@ -305,7 +307,6 @@ function CandidateAcademicInfo() {
                 console.log(err)
                 const updateUser = 'Error editing info!';
                 messageApi.error(updateUser)
-                setDisNextBtn(true)
             });
 
         setDegree('')
@@ -427,7 +428,7 @@ function CandidateAcademicInfo() {
                                 <td><InputLabel className={styles.inputLabel} text='Degree in Progress'></InputLabel></td>
                                 <td >
                                     {/* <span className={styles.degreeProgressText}>Degree in progress:</span> */}
-                                    <div style={{minWidth: '90px', margin: '10px'}}>
+                                    <div style={{ minWidth: '90px', margin: '10px' }}>
                                         <input
                                             checked={degreeProgress === 'Yes'}
                                             value={'Yes'}

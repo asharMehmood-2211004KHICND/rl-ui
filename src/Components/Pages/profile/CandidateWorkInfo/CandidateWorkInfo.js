@@ -56,7 +56,6 @@ export default function CandidateWorkInfo() {
             .catch(err => {
                 console.log(err, "\nhello I caught this error");
                 setWorkData([]);
-                setDisNextBtn(true)
             });
     }
 
@@ -143,12 +142,13 @@ export default function CandidateWorkInfo() {
                 const res = response ? response.ok : false;
                 const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 if (res) {
+                    setDisNextBtn(false)
                     messageApi.success(updateUser);
                 }
                 else {
                     messageApi.error(updateUser)
                 }
-                setDisNextBtn(!res)
+                
                 // swal({
                 //     title: "Personal Information Saved!",
                 //     icon: "success",
@@ -159,7 +159,6 @@ export default function CandidateWorkInfo() {
                 console.log(err)
                 const updateUser = 'Error saving info!';
                 messageApi.error(updateUser)
-                setDisNextBtn(true)
             });
         setCompany('')
         setCurrentlyWorking(false)
@@ -193,6 +192,9 @@ export default function CandidateWorkInfo() {
                 if (res) {
                     messageApi.success('Details deleted successfully!')
                     const newData = workData.filter((item) => item.id !== deleteId);
+                    if (newData.length === 0) {
+                        setDisNextBtn(true)
+                    }
                     setWorkData(newData)
                 }
                 else {
@@ -279,7 +281,6 @@ export default function CandidateWorkInfo() {
                 else {
                     messageApi.error(updateUser)
                 }
-                setDisNextBtn(!res)
                 // swal({
                 //     title: "Personal Information Saved!",
                 //     icon: "success",
@@ -289,7 +290,6 @@ export default function CandidateWorkInfo() {
                 console.log(err)
                 const updateUser = 'Error editing info!';
                 messageApi.error(updateUser)
-                setDisNextBtn(true)
             });
 
         setCompany('')
