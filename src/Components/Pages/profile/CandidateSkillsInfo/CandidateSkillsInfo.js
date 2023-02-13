@@ -9,6 +9,7 @@ import style from "./CandidateSkillsInfo.module.css";
 import { useNavigate } from "react-router-dom";
 
 const BaseURL = process.env.REACT_APP_API_URL3;
+// const BaseURL = 'http://192.168.0.129:5000';
 
 const fileCategories = ["Front-end", "Back-end", "Data Science", "UI/UX", "Other"]
 
