@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TimePicker from "react-time-picker";
 import styles from "./ScheduleInterview.module.css";
 import { Button } from "@mui/material";
@@ -10,13 +10,22 @@ import swal from 'sweetalert';
 
 const ScheduleInterview = () => {
   const { state } = useLocation();
-  console.log(state);
   const [interviewerId, setInterviewerId] = useState("");
   const [interviewerName, setInterviewerName] = useState("Hello");
+  const [hmName, setHmName] = useState("");
   const [interviewers,setInterviewers] = useState([]);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("10:00");
   const [errors, setErrors] = useState({});
+
+
+  useEffect(()=>{
+        fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/user/getByRole/2")
+        .then((response)=>response.json()).then((result)=>setInterviewers(result));
+
+        fetch("http://authenticationserviceelastic-env.eba-pf8t7rhm.us-east-1.elasticbeanstalk.com/user/"+state.JobData.hmId)
+        .then((response)=>response.json()).then((result)=>setHmName(result.first_name+" "+result.last_name));
+  },[])
 
   const validate = (values) => {
     let errors = {};
@@ -47,10 +56,11 @@ const ScheduleInterview = () => {
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       const data = {
-        job_id : state.JobData.id,
+        jobId : state.JobData.id,
+        jobTitle:state.JobData.title,
         interviewer_id:interviewerId,
         interviewer_name: interviewerName,
-        candidate_id: state.userId,
+        candidateId: state.userId,
         interview_date:date,
         interview_time: time,
         status:0
@@ -81,25 +91,6 @@ const ScheduleInterview = () => {
       );
     }
   }
-
-  const selectInterviewerOption = [
-    {
-      label: "Kamran Zahid",
-      value: 1,
-    },
-    {
-      label: "Afnaan Yousuf",
-      value: 2,
-    },
-    {
-      label: "Abdul Wasay",
-      value: 3,
-    },
-    {
-      label: "Hunain Parekh",
-      value: 4,
-    },
-  ];
   return (
     <>
       <div className={styles.mainContainer}>
@@ -125,7 +116,7 @@ const ScheduleInterview = () => {
                   <label>Hiring Manager:</label>
                   <InputField
                     readonly
-                    value={state.JobData.title}
+                    value={hmName}
                     type="text"
                     className={styles.halfSize}
                   ></InputField>
@@ -151,9 +142,9 @@ const ScheduleInterview = () => {
                     className={`${styles.halfSize} ${styles.select}`}
                   >
                     <option value="">Select Interviewer</option>
-                    {selectInterviewerOption.map((option) => (
-                      <option className={styles.option} value={option.value}>
-                        {option.label}
+                    {interviewers.map((option) => (
+                      <option className={styles.option} value={option.id}>
+                        {option.first_name} {option.last_name}
                       </option>
                     ))}
                   </select>

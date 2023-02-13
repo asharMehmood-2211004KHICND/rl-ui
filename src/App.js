@@ -29,6 +29,7 @@ import CreateStaff from './Components/Pages/Staff/CreateStaff';
 import ScheduleInterview from './Components/Pages/Schedule Interview/ScheduleInterview';
 import AddJobHMandInterviewers from './Components/Pages/JobHMandInterviewers/AddJobHMandInterviewers';
 import IndividualJobCandidate from './Components/Pages/JobPost/Candidate/JobView/IndividualJobCandidate';
+import AppliedJobs from './Components/Pages/ViewCandidateProfileInfo/AppliedJobs';
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
 				<Route path="/scheduleInterview" element={<PrivateRoute><ScheduleInterview /></PrivateRoute>} ></Route>
 				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>
 				<Route path="/view-application" element={<PrivateRoute><ViewCandidateProfileInfo/></PrivateRoute>} ></Route>
+				<Route path="/view-applied-jobs" element={<PrivateRoute><AppliedJobs/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)
