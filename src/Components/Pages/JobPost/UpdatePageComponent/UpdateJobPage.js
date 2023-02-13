@@ -341,7 +341,7 @@ const UpdateJobPage = () => {
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
       active:active_status,
-
+      hmId: sessionStorage.getItem('user_id')
     };
 
     fetch(

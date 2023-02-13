@@ -85,8 +85,7 @@ function IndividualJob() {
       travelling={data?.traveling}
       closingdate={data?.closeDate.substring(0, 10)}
     />
-    <AppliedCandidates params={params.jodId}/>
-
+    <AppliedCandidates JobData={data}/>
 
   </>  
   )

@@ -12,6 +12,7 @@ import swal from "sweetalert";
 import { useNavigate } from "react-router-dom";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
+// const BaseURL = "http://localhost:5000";
 
 const CreateJobPage = () => {
   const navigate = useNavigate();
@@ -308,6 +309,7 @@ const CreateJobPage = () => {
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
+      hmId: sessionStorage.getItem('user_id')
     };
 
     fetch(
