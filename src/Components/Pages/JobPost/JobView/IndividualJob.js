@@ -89,7 +89,7 @@ function IndividualJob() {
 
   </>  
   )
-}
+}  
 
 export default IndividualJob
 
