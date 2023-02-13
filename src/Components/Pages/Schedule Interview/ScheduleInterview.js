@@ -6,28 +6,21 @@ import { useState, useCallback } from "react";
 import InputField from "../profile/InputField/InputField";
 import '../../../index.css';
 import { useLocation } from "react-router-dom";
+import swal from 'sweetalert';
 
 const ScheduleInterview = () => {
   const { state } = useLocation();
   console.log(state);
-  const [candidateName, setCandidateName] = useState("");
-  const [interviewer, setInterviewer] = useState("");
+  const [interviewerId, setInterviewerId] = useState("");
+  const [interviewerName, setInterviewerName] = useState("Hello");
+  const [interviewers,setInterviewers] = useState([]);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("10:00");
   const [errors, setErrors] = useState({});
 
   const validate = (values) => {
     let errors = {};
-    if (!values.candidateName) {
-      errors.candidateName = "Candidate Name is required";
-    } else if (
-      /[!@#$%&?]/g.test(values.candidateName) ||
-      /\d/.test(values.candidateName)
-    ) {
-      errors.candidateName =
-        "Candidate Name should not contain numbers or any special character";
-    }
-    if (!values.interviewer) {
+    if (!values.interviewerId) {
       errors.interviewer = "Select Interviewer";
     }
     if (!values.date) {
@@ -39,12 +32,8 @@ const ScheduleInterview = () => {
     return errors;
   };
 
-  const handleCandidatename = useCallback((val) => {
-    setCandidateName(val);
-  }, []);
-
   const handleInterviewer = useCallback(e => {
-    setInterviewer(e.target.value);
+    setInterviewerId(e.target.value);
   }, []);
 
   const handleDate = useCallback((val) => {
@@ -54,15 +43,42 @@ const ScheduleInterview = () => {
   async function onSubmit(event) {
     event.preventDefault();
 
-    const errors = validate({ candidateName, interviewer, date, time });
+    const errors = validate({interviewerId, date, time });
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       const data = {
-        candidateName: candidateName,
-        interviewer: interviewer,
-        date: date,
-        time: time,
+        job_id : state.jobId,
+        interviewer_id:interviewerId,
+        interviewer_name: interviewerName,
+        candidate_id: state.userId,
+        interview_date:date,
+        interview_time: time,
+        status:0
       };
+
+      fetch("http://localhost:8080/interview", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          swal(
+            {
+              title: "Saved Successfully!",
+              icon: "success",
+            });
+        }
+        else if (response.status === 404) {
+          swal({
+            title: "Server Not Responding!",
+            icon: "error",
+          }
+          );
+        }
+      }
+      );
     }
   }
 
@@ -98,21 +114,39 @@ const ScheduleInterview = () => {
                   <label>Candidate Name:</label>
                   <InputField
                     readonly
-                    value={candidateName}
-                    handler={handleCandidatename}
+                    value={state.name}
                     type="text"
                     className={styles.halfSize}
                   ></InputField>
                 </div>
-                {errors.candidateName && (
-                  <p className={styles.error}>{errors.candidateName}</p>
-                )}
+              </div>
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <label>Hiring Manager:</label>
+                  <InputField
+                    readonly
+                    value={state.JobTitle}
+                    type="text"
+                    className={styles.halfSize}
+                  ></InputField>
+                </div>
+              </div>
+              <div className={styles.row}>
+                <div className={styles.column}>
+                  <label>Job Title:</label>
+                  <InputField
+                    readonly
+                    value={state.JobTitle}
+                    type="text"
+                    className={styles.halfSize}
+                  ></InputField>
+                </div>
               </div>
               <div className={styles.row}>
                 <div className={styles.column}>
                   <label>Select Interviewer:</label>
                   <select
-                    value={interviewer}
+                    value={interviewerId}
                     onChange={handleInterviewer}
                     className={`${styles.halfSize} ${styles.select}`}
                   >
