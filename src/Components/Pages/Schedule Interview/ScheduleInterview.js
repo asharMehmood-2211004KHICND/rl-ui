@@ -47,7 +47,7 @@ const ScheduleInterview = () => {
     setErrors(errors);
     if (Object.keys(errors).length === 0) {
       const data = {
-        job_id : state.jobId,
+        job_id : state.JobData.id,
         interviewer_id:interviewerId,
         interviewer_name: interviewerName,
         candidate_id: state.userId,
@@ -125,7 +125,7 @@ const ScheduleInterview = () => {
                   <label>Hiring Manager:</label>
                   <InputField
                     readonly
-                    value={state.JobTitle}
+                    value={state.JobData.title}
                     type="text"
                     className={styles.halfSize}
                   ></InputField>
@@ -136,7 +136,7 @@ const ScheduleInterview = () => {
                   <label>Job Title:</label>
                   <InputField
                     readonly
-                    value={state.JobTitle}
+                    value={state.JobData.title}
                     type="text"
                     className={styles.halfSize}
                   ></InputField>
