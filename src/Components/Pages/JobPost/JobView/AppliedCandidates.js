@@ -11,7 +11,7 @@ import Styled from "./jobview.module.css";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
-function  AppliedCandidates({params}) {
+function  AppliedCandidates({params, title}) {
 
 
   const [loading, setLoading] = useState(true);
@@ -113,7 +113,7 @@ function  AppliedCandidates({params}) {
         <span      >
           {/* <Button onClick={() => handleViewJob(record)}>View</Button> */}
           
-          <Link state={{ ...record }} to={`/scheduleInterview`}>
+          <Link state={{ ...record}} to={`/scheduleInterview`}>
             {
             /* <Button  variant='contained' 
             className={Styled.viewBtn}
@@ -125,7 +125,7 @@ function  AppliedCandidates({params}) {
               <FontAwesomeIcon icon={faUserGraduate} className={Styled.profileIcon}  />
             </IconButton>
           </Link>
-          <Link state={{ ...record }} to={`/scheduleInterview`}>
+          <Link state={{ ...record , jobId: params, JobTitle: title }} to={`/scheduleInterview`}>
             
             <IconButton >
               <FontAwesomeIcon icon={faCalendarAlt}   className={Styled.profileIcon} />
