@@ -145,7 +145,7 @@ const CreateStaff = () => {
         setRole(e.target.value);
     }, []);
 
-    const url = "http://localhost:8080/creatstaff"
+    const url = "http://createstaffelasticbean-env.eba-aftp3we4.ap-south-1.elasticbeanstalk.com/creatstaff"
 
     async function onSubmit(event) {
         event.preventDefault();
