@@ -49,14 +49,14 @@ const CreateStaff = () => {
         } else if (!/[A-Z]/g.test(values.password)) {
             errors.password = "Password must contain atleast 1 capital letter";
         }
-        if (!values.first_name) {
+        if (!values.firstName) {
             errors.first_name = "First Name is required";
         }
-        else if (/[!@#$%&?]/g.test(values.first_name) || /\d/.test(values.first_name)) {
+        else if (/[!@#$%&?]/g.test(values.firstName) || /\d/.test(values.firstName)) {
             errors.first_name = "First Name should not contain numbers or any special character";
         }
-        if (values.last_name) {
-            if (/[!@#$%&?]/g.test(values.last_name) || /\d/.test(values.last_name)) {
+        if (values.lastName) {
+            if (/[!@#$%&?]/g.test(values.lastName) || /\d/.test(values.lastName)) {
                 errors.last_name = "Last Name should not contain numbers or any special character";
             }
         }
@@ -104,7 +104,7 @@ const CreateStaff = () => {
         {
             "lable": "Data Engineer",
             "value": 4
-        }
+        },
     ]
 
 
@@ -137,8 +137,8 @@ const CreateStaff = () => {
         setPassword(val);
     }, []);
 
-    const handleDesignation = useCallback(val => {
-        setDesignation(val);
+    const handleDesignation = useCallback(e => {
+        setDesignation(e.target.value);
     }, []);
 
     const handleRole = useCallback(e => {
@@ -152,7 +152,7 @@ const CreateStaff = () => {
 
         const errors = validate({ email, password, firstName, lastName });
         setErrors(errors);
-        if (Object.keys(errors).length === 0) {
+        // if (Object.keys(errors).length === 0) {
             const data = {
                 firstName: firstName,
                 lastName: lastName,
@@ -196,7 +196,6 @@ const CreateStaff = () => {
                         body: JSON.stringify(data)
                     })
                         .then(response => {
-                            console.log(response);
                             swal({
                                 title: "User Created Successfully!",
                                 icon: "success",
@@ -230,7 +229,7 @@ const CreateStaff = () => {
                 }
             }
             );
-        }
+        // }
     }
     return (
         <>
