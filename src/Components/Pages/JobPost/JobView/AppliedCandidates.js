@@ -11,7 +11,7 @@ import Styled from "./jobview.module.css";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
-function  AppliedCandidates({params}) {
+function  AppliedCandidates({JobData}) {
 
 
   const [loading, setLoading] = useState(true);
@@ -21,7 +21,7 @@ function  AppliedCandidates({params}) {
   useEffect(() => {
     // setLoading(true);
     fetch(
-      `${BaseURL}/apply/list/${params}`,
+      `${BaseURL}/apply/list/${JobData.jodId}`,
       {
         method: "GET",
         headers: {
@@ -125,7 +125,7 @@ function  AppliedCandidates({params}) {
               <FontAwesomeIcon icon={faUserGraduate} className={Styled.profileIcon}  />
             </IconButton>
           </Link>
-          <Link state={{ ...record }} to={`/scheduleInterview`}>
+          <Link state={{ ...record, JobData }} to={`/scheduleInterview`}>
             
             <IconButton >
               <FontAwesomeIcon icon={faCalendarAlt}   className={Styled.profileIcon} />
