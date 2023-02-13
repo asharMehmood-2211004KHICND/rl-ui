@@ -13,6 +13,7 @@ const BaseURL = process.env.REACT_APP_API_URL1;
 
 function  AppliedCandidates({JobData}) {
 
+  console.log(JobData);
 
   const [loading, setLoading] = useState(true);
   const [candidates, setCandidate] = useState([]);
@@ -21,7 +22,7 @@ function  AppliedCandidates({JobData}) {
   useEffect(() => {
     // setLoading(true);
     fetch(
-      `${BaseURL}/apply/list/${JobData.jodId}`,
+      `${BaseURL}/apply/list/${JobData.id}`,
       {
         method: "GET",
         headers: {
