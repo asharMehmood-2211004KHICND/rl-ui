@@ -343,12 +343,12 @@ function CandidateAcademicInfo() {
                         <table className={styles.eduTable} >
                             <tr>
                                 <th>Qualification</th>
-                                <th>Title</th>
-                                <th>School / University / College</th>
+                                <th>Degree Title</th>
+                                <th>School/University/College</th>
                                 <th>In progress</th>
                                 <th>Completion date</th>
-                                <th>CGPA / Percentage</th>
-                                <th>FYP / Project / Thesis</th>
+                                <th>CGPA/Percentage</th>
+                                <th>FYP/Project/Thesis</th>
                                 <th>Action</th>
                             </tr>
                             {eduData.length === 0 ? <tr>
@@ -375,9 +375,9 @@ function CandidateAcademicInfo() {
                                                 okText="Yes"
                                                 cancelText="No"
                                             >
-                                                <Button className={styles.actionBtn} onClick={() => onDelete(item.id)} type="button" text={<i class="fa fa-trash"></i>} />
+                                                <Button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)} type="button" text={<i class="fa fa-trash"></i>} />
                                             </Popconfirm>
-                                                <Button className={styles.actionBtn} onClick={() => onEdit(item)} type="button" text={<i class="fas fa-edit"></i>} />
+                                                <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i class="fas fa-edit"></i>} />
                                             </td>
                                         </tr>
                                     )
@@ -414,10 +414,10 @@ function CandidateAcademicInfo() {
                         <table className={styles.formTable}>
                             <tr>
                                 <td><InputLabel className={styles.inputLabel} text='Qualification'></InputLabel></td>
-                                <td colSpan={3}><DropdownField value={degree} handler={handleDegree} options={qualificationOptions} className={''} placeholder='Qualification' /></td>
+                                <td colSpan={3}><DropdownField value={degree} handler={handleDegree} options={qualificationOptions} className={''} placeholder='Select' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Title'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='Degree Title'></InputLabel></td>
                                 <td colSpan={3}><InputField value={title} handler={handleTitle} type='text' placeholder='Title (example Pre-Med, BSCS etc.)' pattern="[a-zA-Z ]*" className={''} required='required' /></td>
                             </tr>
                             <tr>
@@ -454,7 +454,7 @@ function CandidateAcademicInfo() {
                             </tr>
                             <tr>
                                 <td><InputLabel className={styles.inputLabel} text='CGPA/Percentage'></InputLabel></td>
-                                <td colSpan={3}><InputField value={percentage} handler={handlePercentage} type='text' pattern="[0-9.%]*" placeholder='CGPA/Percentage' className={''} required='required' /></td>
+                                <td colSpan={3}><InputField value={percentage} handler={handlePercentage} type='text' pattern="[0-9.%]*" placeholder='e.g, 3.50 or 72%' className={''} required='required' /></td>
                             </tr>
                             <tr>
                                 <td><InputLabel className={styles.inputLabel} text='Final Year Project'></InputLabel></td>

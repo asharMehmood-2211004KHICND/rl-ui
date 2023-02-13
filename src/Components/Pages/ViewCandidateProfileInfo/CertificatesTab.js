@@ -19,7 +19,7 @@ export default function CertificateTab({ certificatesData }) {
                 text={"Certificates"}
                 className={''}
             /></div>
-            <table className={styles.eduTable} >
+            <table className={styles.dataTable} >
                 <thead>
                     <tr>
                         <th>File Name</th>
@@ -28,6 +28,8 @@ export default function CertificateTab({ certificatesData }) {
                     </tr>
                 </thead>
                 <tbody>
+                    {certificatesData.length === 0 &&
+                    <tr><td style={{textAlign: 'center', color: '#000'}} colSpan={3}>No Data</td></tr>}
                     {certificatesData.map((element) => {
                         return (
                             <tr key={element.id}>

@@ -24,7 +24,7 @@ export default function CandidateWorkInfo() {
 
     const [view, setView] = useState('details')
 
-    const [disNextBtn, setDisNextBtn] = useState(true)
+    // const [disNextBtn, setDisNextBtn] = useState(true)
     const [disEndDate, setDisEndDate] = useState(false)
     const [messageApi, contextHolder] = message.useMessage();
     const [showEdit, setShowEdit] = useState(false);
@@ -49,9 +49,9 @@ export default function CandidateWorkInfo() {
             .then((data) => {
                 console.log(data)
                 setWorkData(data)
-                if (data.length !== 0) {
-                    setDisNextBtn(false)
-                }
+                // if (data.length !== 0) {
+                //     setDisNextBtn(false)
+                // }
             })
             .catch(err => {
                 console.log(err, "\nhello I caught this error");
@@ -142,13 +142,13 @@ export default function CandidateWorkInfo() {
                 const res = response ? response.ok : false;
                 const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 if (res) {
-                    setDisNextBtn(false)
+                    // setDisNextBtn(false)
                     messageApi.success(updateUser);
                 }
                 else {
                     messageApi.error(updateUser)
                 }
-                
+
                 // swal({
                 //     title: "Personal Information Saved!",
                 //     icon: "success",
@@ -192,9 +192,9 @@ export default function CandidateWorkInfo() {
                 if (res) {
                     messageApi.success('Details deleted successfully!')
                     const newData = workData.filter((item) => item.id !== deleteId);
-                    if (newData.length === 0) {
-                        setDisNextBtn(true)
-                    }
+                    // if (newData.length === 0) {
+                    //     setDisNextBtn(true)
+                    // }
                     setWorkData(newData)
                 }
                 else {
@@ -357,9 +357,9 @@ export default function CandidateWorkInfo() {
                                                 okText="Yes"
                                                 cancelText="No"
                                             >
-                                                <Button className={styles.actionBtn} onClick={() => onDelete(item.id)} type="button" text={<i className="fa fa-trash"></i>} />
+                                                <Button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)} type="button" text={<i className="fa fa-trash"></i>} />
                                             </Popconfirm>
-                                                <Button className={styles.actionBtn} onClick={() => onEdit(item)} type="button" text={<i className="fas fa-edit"></i>} />
+                                                <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i className="fas fa-edit"></i>} />
                                             </td>
 
                                         </tr>
@@ -374,8 +374,8 @@ export default function CandidateWorkInfo() {
                         <Button onClick={onAddAnother} text="+ Add New" type="button" className={styles.saveButton} />
                     </div>
                     <div>
-                    <Button onClick={onBack} text="Back" type="button" className={styles.nextButton} />
-                        <Button disabled={disNextBtn} onClick={onNext} text="Next" type="button" className={styles.nextButton} />
+                        <Button onClick={onBack} text="Back" type="button" className={styles.nextButton} />
+                        <Button onClick={onNext} text="Next" type="button" className={styles.nextButton} />
                     </div>
 
                 </div>
@@ -394,8 +394,8 @@ export default function CandidateWorkInfo() {
                             <tr>
 
                                 <td><InputLabel className={styles.inputLabel} text='Company'></InputLabel></td>
-                                <td style={{minWidth: '250px', margin: '10px'}} ><InputField value={company} handler={handleCompany} type='text' pattern="[a-zA-Z ]*" placeholder='Company' className={styles.fullSize} required='required' icon='fa fa-briefcase' /></td>
-                                <td style={{minWidth: '120px', padding: '10px'}} ><InputLabel className={styles.inputLabel} text='Start Date'></InputLabel></td>
+                                <td style={{ minWidth: '250px', margin: '10px' }} ><InputField value={company} handler={handleCompany} type='text' pattern="[a-zA-Z ]*" placeholder='Company' className={styles.fullSize} required='required' icon='fa fa-briefcase' /></td>
+                                <td style={{ minWidth: '120px', padding: '10px' }} ><InputLabel className={styles.inputLabel} text='Start Date'></InputLabel></td>
 
                                 <td><InputField value={startDate} handler={handleStartDate} type='date' placeholder='Start Date' className={styles.inputFields} required='required' ></InputField></td>
 
@@ -403,7 +403,7 @@ export default function CandidateWorkInfo() {
                             <tr>
                                 <td><InputLabel className={styles.inputLabel} text='Currently Working'></InputLabel></td>
                                 <td><div className={styles.degreeProgressDiv}>
-                                    <div style={{minWidth: '90px', margin: '10px'}}>
+                                    <div style={{ minWidth: '90px', margin: '10px' }}>
 
                                         <input
                                             checked={CurrentlyWorking === 'Yes'}
@@ -425,7 +425,7 @@ export default function CandidateWorkInfo() {
                                         <span>No</span>
                                     </div>
                                 </div></td>
-                                <td style={{minWidth: '120px', padding: '10px'}} ><InputLabel className={styles.inputLabel} text='End Date'></InputLabel></td>
+                                <td style={{ minWidth: '120px', padding: '10px' }} ><InputLabel className={styles.inputLabel} text='End Date'></InputLabel></td>
 
                                 <td><InputField disabled={disEndDate} value={endDate} handler={handleEndDate} type='date' placeholder='End Date' className={styles.inputFields} required='required' ></InputField></td>
                             </tr>

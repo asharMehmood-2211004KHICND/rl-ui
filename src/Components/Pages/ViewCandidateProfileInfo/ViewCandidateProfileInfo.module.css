@@ -9,6 +9,7 @@
 }
 
 .navBtn {
+    width: 120px;
     margin: 15px;
     padding: 7px;
     border: none;
@@ -19,6 +20,7 @@
 }
 
 .active {
+    width: 120px;
     background-color: #252064;
     margin: 15px;
     padding: 7px;
@@ -67,7 +69,7 @@
 }
 
 
-.eduTable {
+.dataTable {
     margin-top: 20px;
     font-family: arial, sans-serif;
     border-collapse: collapse;
@@ -80,18 +82,18 @@
     border-radius: 5px;
 }
 
-.eduTable th {
+.dataTable th {
     padding: 10px;
     border: none;
     text-transform: capitalize;
     color: black;
 }
 
-.eduTable th:first-child {
+.dataTable th:first-child {
     text-align: start;
 }
 
-.eduTable tr td {
+.dataTable tr td {
     text-align: center;
     padding: 8px;
     /* border: 1px solid black; */
@@ -99,7 +101,7 @@
     color: #4A4C4E;
 }
 
-.eduTable tr td:first-child {
+.dataTable tr td:first-child {
     text-align: start;
     color: rgb(76, 76, 187);
     font-weight: 520;

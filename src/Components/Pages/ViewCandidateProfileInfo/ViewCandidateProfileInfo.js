@@ -81,7 +81,7 @@ export default function ViewCandidateProfileInfo() {
         <Button onClick={() => {setView("skills-info"); setActive(3)}} text="Skills" type="button" className={active === 3 ? styles.active : styles.navBtn} />
         <Button onClick={() => {setView("certificates-info"); setActive(4)}} text="Certificates" type="button" className={active === 4 ? styles.active : styles.navBtn} />
       </div>
-      <div>{render}</div>
+      {render}
     </>
   );
 }
