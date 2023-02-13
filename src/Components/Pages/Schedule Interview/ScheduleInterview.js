@@ -6,19 +6,21 @@ import { useState, useCallback } from "react";
 import InputField from "../profile/InputField/InputField";
 import '../../../index.css';
 import { useLocation } from "react-router-dom";
+import swal from 'sweetalert';
 
 const ScheduleInterview = () => {
   const { state } = useLocation();
   console.log(state);
   const [interviewerId, setInterviewerId] = useState("");
-  const [interviewerName, setInterviewerName] = useState("");
+  const [interviewerName, setInterviewerName] = useState("Hello");
+  const [interviewers,setInterviewers] = useState([]);
   const [date, setDate] = useState("");
   const [time, setTime] = useState("10:00");
   const [errors, setErrors] = useState({});
 
   const validate = (values) => {
     let errors = {};
-    if (!values.interviewer) {
+    if (!values.interviewerId) {
       errors.interviewer = "Select Interviewer";
     }
     if (!values.date) {
@@ -53,6 +55,30 @@ const ScheduleInterview = () => {
         interview_time: time,
         status:0
       };
+
+      fetch("http://localhost:8080/interview", {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+          'Content-type': 'application/json; charset=UTF-8',
+        },
+      }).then((response) => {
+        if (response.status === 200) {
+          swal(
+            {
+              title: "Saved Successfully!",
+              icon: "success",
+            });
+        }
+        else if (response.status === 404) {
+          swal({
+            title: "Server Not Responding!",
+            icon: "error",
+          }
+          );
+        }
+      }
+      );
     }
   }
 
