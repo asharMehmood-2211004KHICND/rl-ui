@@ -6,7 +6,7 @@ import { useLocation } from 'react-router-dom';
 
 // `http://192.168.0.98:8080/interview/getByJob/1`
 const WaqarUrl = process.env.REACT_APP_API_URL1;
-const HunainUrl = 'http://192.168.0.98:8080'
+const HunainUrl = process.env.REACT_APP_API_URL4;
 
 const jobsMock = [
     {
@@ -36,7 +36,7 @@ const AppliedJobs = () => {
     const scheduleInterviewUrl = `${HunainUrl}/interview/getByCandidate/${userId}`;
     const jobUrl = `${WaqarUrl}/apply/list/getJob/${userId}`
 
-    const [jobsData, setJobsData] = useState([jobsMock]);
+    const [jobsData, setJobsData] = useState([]);
     const [scheduleData, setScheduleData] = useState([]);
 
     const fetchData = (url, setData) => {
@@ -56,6 +56,26 @@ const AppliedJobs = () => {
     }, [])
 
     const newList = []
+
+    for(let item of jobsData){
+        for(let element of scheduleData){
+            if(item.id === element.jobId){
+                const obj = {
+                    id: element.id,
+                    jobId: item.id,
+                    jobName: item.title,
+                    interviewerId: element.interviewer_id,
+                    interviewerName: element.interviewer_name,
+                    interviewDate: element.interview_date,
+                    interviewTime: element.interview_time,
+                    interviewStatus: element.status,
+                    interviewerFeedback: element.interviewer_feedback,
+                    candidateFeedback: element.candidate_feedback
+                }
+                newList.append(obj)
+            }
+        }
+    }
 
     return (
         <>

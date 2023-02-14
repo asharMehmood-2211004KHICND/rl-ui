@@ -8,6 +8,8 @@ import '../../../index.css';
 import { useLocation } from "react-router-dom";
 import swal from 'sweetalert';
 
+const BaseUrl = process.env.REACT_APP_API_URL4;
+
 const ScheduleInterview = () => {
   const { state } = useLocation();
   const [interviewerId, setInterviewerId] = useState("");
@@ -66,7 +68,7 @@ const ScheduleInterview = () => {
         status:0
       };
 
-      fetch("http://localhost:8080/interview", {
+      fetch(`${BaseUrl}/interview`, {
         method: 'POST',
         body: JSON.stringify(data),
         headers: {
