@@ -1,0 +1,21 @@
+.contentBody {
+    margin: 20px;
+}
+
+.center {
+    text-align: center;
+}
+
+.antTable th {
+    background-color: #4481eb !important;
+    color: white !important;
+    text-align: center !important;
+}
+
+.antTable td {
+    text-align: center !important;
+}
+
+.link:hover {
+    text-decoration: underline;
+}
