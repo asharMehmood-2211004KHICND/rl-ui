@@ -47,7 +47,7 @@ const JobsList = ({jobsProp}) => {
         return response.json()
       })
       .then((data) => {
-        data = data.map(eachData=>{return {...eachData, department: eachData.department.departmentName}})
+        data = data.map(eachData=>{return {...eachData}})
         setJobs(data);
         setFilteredData(data);
         setLoading(false);
@@ -158,9 +158,7 @@ const JobsList = ({jobsProp}) => {
       }),
       closeDate: data.closeDate, //"2023-01-30"
       description: data.description,
-      responsibilitiess: data.responsibilitiess.map((rs) => {
-        return  rs.responsibility ;
-      }),
+      responsibilities: data.responsibilities,
       educations: data.educations.map((edu) => {
         return edu.education;
       }),
@@ -284,6 +282,7 @@ const JobsList = ({jobsProp}) => {
     dataIndex: 'department',
     key: 'type',
     sorter: (a, b) => a.department.localeCompare(b.department),
+    render: (text, record) => (<p> {record.department.departmentName}</p>)
     // sorter: true,
   }, {
     title: 'Applied Candidates',

@@ -27,11 +27,12 @@ const CreateJobPage = () => {
   const [softskills, setSoftskills] = useState([]);
   const [technicalskills, setTechnicalskills] = useState([]);
   const [experienceLevel, setExperienceLevel] = useState(""); // for single drop down
-  const [perksAndBenefits, setPerksAndBenefits] = useState([]);
+  const [Benefits, setBenefits] = useState([]);
+  const [Perks, setPerks] = useState([]);
   const [travelling, setTravelling] = useState(""); // for single drop down
   const [vacancies, setVacancies] = useState("");
   const [closingDate, setClosingDate] = useState(null);
-  const [selectedResponsibilites, setSelectedResponsibilities] = useState([]);
+  const [selectedResponsibilites, setSelectedResponsibilities] = useState();
   const [buttonDisable, setButtonDisable] = useState(false);
   const [buttonText, setButtonText] = useState("SUBMIT");
 
@@ -58,15 +59,11 @@ const CreateJobPage = () => {
     "19 Year",
     "20 Year",
   ];
-  const experienceLevelOptions = [0, 1, 2, 3, 4, 5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+  const experienceLevelOptions = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
+  ];
   const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
-
-  let responsibilityOptions = [
-    "Contribute in all phases of the development lifecycle",
-    "Write well designed, testable, efficient code",
-    "Ensure designs are in compliance with specifications",
-  ];
 
   let departmentOptions = ["Cloud Engineering", "Data Engineering"];
 
@@ -268,8 +265,7 @@ const CreateJobPage = () => {
       !employmentCategories.length ||
       !softskills.length ||
       !technicalskills.length ||
-      !selectedResponsibilites.length ||
-      !perksAndBenefits.length ||
+      !Benefits.length ||
       !experienceLevel.length
     ) {
       // alert("Please fill out all the required fields");
@@ -285,7 +281,7 @@ const CreateJobPage = () => {
 
     let requestData = {
       title: jobTitle,
-      department:{ id: 1, departmentName: department },
+      department: { id: 1, departmentName: department },
       employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
@@ -298,18 +294,16 @@ const CreateJobPage = () => {
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
-      responsibilitiess: selectedResponsibilites.map((rs) => {
-        return { responsibility: rs };
-      }),
+      responsibilities: selectedResponsibilites,
       educations: degrees.map((edu) => {
         return { education: edu };
       }),
-      benefitPerkss: perksAndBenefits.map((pb) => {
+      benefitPerkss: Benefits.map((pb) => {
         return { benefitPerks: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
-      hmId: sessionStorage.getItem('user_id')
+      hmId: sessionStorage.getItem("user_id"),
     };
 
     fetch(
@@ -351,9 +345,9 @@ const CreateJobPage = () => {
         setTechnicalskills([]);
         setClosingDate("");
         setDescription("");
-        setSelectedResponsibilities([]);
+        setSelectedResponsibilities();
         setDegrees([]);
-        setPerksAndBenefits([]);
+        setBenefits([]);
         setExperienceLevel(0);
         setVacancies(undefined);
 
@@ -413,6 +407,15 @@ const CreateJobPage = () => {
                 placeholder="Enter Job Description"
               ></textarea>
             </div>
+            <div className={styled.job_description_container}>
+              <h4 className={styled.heading3}>Responsibilities</h4>
+              <textarea
+                className={styled.job_description_input}
+                onChange={(e) => setSelectedResponsibilities(e.target.value)}
+                value={selectedResponsibilites}
+                placeholder="Enter Responsibilities"
+              ></textarea>
+            </div>
             <br></br>
 
             <div className={styled.div2}>
@@ -425,16 +428,18 @@ const CreateJobPage = () => {
                   setSelected={setEmploymentCategories}
                 ></MultiSelectDropDown>
               </div>
+              <div className={styled.experience}>
+                <h4 className={styled.heading12}>Experience</h4>
 
-              <div className={styled.responsibilities}>
-                <h4 className={styled.heading5}>Responsibilities</h4>
-
-                <MultiSelectDropDown
-                  fetchedOptions={responsibilityOptions}
-                  selected={selectedResponsibilites}
-                  setSelected={setSelectedResponsibilities}
-                ></MultiSelectDropDown>
+                <SimpleDropDown
+                  optionLabel="Year"
+                  selectedOption={experienceLevel}
+                  setSelectedOption={setExperienceLevel}
+                  options={experienceLevelOptions}
+                  optionText={experienceLevelOptionsValue}
+                ></SimpleDropDown>
               </div>
+              {/* responsibility */}
             </div>
             <br></br>
             <div className={styled.div3}>
@@ -496,26 +501,25 @@ const CreateJobPage = () => {
             </div>
             <br></br>
             <div className={styled.div5}>
-              <div className={styled.perksandbenifits}>
+            <div className={styled.perksandbenifits}>
                 <h4 className={styled.heading10}>Benefits</h4>
 
                 <MultiSelectDropDown
                   fetchedOptions={benefitsAndPerksOptions}
-                  selected={perksAndBenefits}
-                  setSelected={setPerksAndBenefits}
+                  selected={Benefits}
+                  setSelected={setBenefits}
+                ></MultiSelectDropDown>
+              </div> 
+              <div className={styled.perksandbenifits}>
+                <h4 className={styled.heading10}>Perks</h4>
+
+                <MultiSelectDropDown
+                  fetchedOptions={benefitsAndPerksOptions}
+                  selected={Perks}
+                  setSelected={setPerks}
                 ></MultiSelectDropDown>
               </div>
-              <div className={styled.experience}>
-                <h4 className={styled.heading12}>Experience</h4>
-
-                <SimpleDropDown
-                  optionLabel="Year"
-                  selectedOption={experienceLevel}
-                  setSelectedOption={setExperienceLevel}
-                  options={experienceLevelOptions}
-                  optionText={experienceLevelOptionsValue}
-                ></SimpleDropDown>
-              </div>
+              
             </div>
 
             <br></br>
