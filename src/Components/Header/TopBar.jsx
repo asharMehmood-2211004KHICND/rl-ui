@@ -13,7 +13,7 @@ export default function TopBar() {
 
 	const navigate = useNavigate();
 	const openProfile = () => {
-		navigate('/view-application')
+		navigate('/view-profile')
 	}
 
 	return (

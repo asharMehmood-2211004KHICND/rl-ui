@@ -1,12 +1,8 @@
-import Button from '../profile/Button/Button';
 import Heading from '../profile/Heading/Heading';
-import styles from './ViewCandidateProfileInfo.module.css'
+import styles from './CandidateAppliedJobs.module.css'
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 
-// `http://192.168.0.98:8080/interview/getByJob/1`
 const WaqarUrl = process.env.REACT_APP_API_URL1;
-const HunainUrl = process.env.REACT_APP_API_URL4;
 
 const jobsMock = [
     {
@@ -29,15 +25,13 @@ const jobsMock = [
     }
 ]
 
-const AppliedJobs = () => {
+const CandidateAppliedJobs = () => {
 
     const userId = sessionStorage.getItem("user_id")
 
-    const scheduleInterviewUrl = `${HunainUrl}/interview/getByCandidate/${userId}`;
     const jobUrl = `${WaqarUrl}/apply/list/getJob/${userId}`
 
     const [jobsData, setJobsData] = useState([]);
-    const [scheduleData, setScheduleData] = useState([]);
 
     const fetchData = (url, setData) => {
         fetch(url)
@@ -52,30 +46,7 @@ const AppliedJobs = () => {
 
     useEffect(() => {
         fetchData(jobUrl, setJobsData);
-        fetchData(scheduleInterviewUrl, setScheduleData)
     }, [])
-
-    const newList = []
-
-    for(let item of jobsData){
-        for(let element of scheduleData){
-            if(item.id === element.jobId){
-                const obj = {
-                    id: element.id,
-                    jobId: item.id,
-                    jobName: item.title,
-                    interviewerId: element.interviewer_id,
-                    interviewerName: element.interviewer_name,
-                    interviewDate: element.interview_date,
-                    interviewTime: element.interview_time,
-                    interviewStatus: element.status,
-                    interviewerFeedback: element.interviewer_feedback,
-                    candidateFeedback: element.candidate_feedback
-                }
-                newList.append(obj)
-            }
-        }
-    }
 
     return (
         <>
@@ -87,29 +58,19 @@ const AppliedJobs = () => {
                 <table className={styles.dataTable} >
                     <thead>
                         <tr>
+                            <th>S.No.</th>
                             <th>Job Title</th>
-                            <th>Interviewer</th>
-                            <th>Interview Date</th>
-                            <th>Interview Time</th>
-                            <th>Status</th>
-                            <th>Feedback</th>
-                            <th>Schedule</th>
                         </tr>
                     </thead>
                     <tbody>
                         {jobsData.length === 0 &&
                             <tr><td style={{ textAlign: 'center', color: '#000' }} colSpan={7}>No Data</td></tr>}
-                        {jobsData.map((element) => {
+                        {jobsData.map((element, i) => {
                             const { id, title } = element
                             return (
                                 <tr key={id}>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{i+1}</td>
+                                    <td>{title}</td>
                                 </tr>
                             );
                         })}
@@ -121,4 +82,4 @@ const AppliedJobs = () => {
 
 }
 
-export default AppliedJobs
+export default CandidateAppliedJobs
