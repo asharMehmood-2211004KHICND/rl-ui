@@ -62,6 +62,7 @@ function App() {
 				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>
 				<Route path="/view-profile" element={<PrivateRoute><ViewCandidateProfileInfo/></PrivateRoute>} ></Route>
 				<Route path="/my-interview-schedule" element={<PrivateRoute><CandidateInterviewSchedule/></PrivateRoute>} ></Route>
+				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)

@@ -6,53 +6,21 @@
     text-align: center;
 }
 
-.dataTable {
-    margin-top: 20px;
-    font-family: arial, sans-serif;
-    border-collapse: collapse;
-    /* border: 2px solid rgb(95, 95, 95); */
-    width: 100%;
-    box-sizing: border-box;
-    border: none;
-    outline: none;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
-    border-radius: 5px;
+.antTable th {
+    background-color: #4481eb !important;
+    color: white !important;
+    text-align: center !important;
 }
 
-.dataTable th {
-    padding: 10px;
-    border: none;
-    text-transform: capitalize;
-    color: black;
+.antTable td {
+    text-align: center !important;
 }
 
-.dataTable th:first-child {
-    text-align: start;
+.link {
+    color: #4481eb;
+    font-weight: bold;
 }
 
-.dataTable tr td {
-    text-align: center;
-    padding: 8px;
-    /* border: 1px solid black; */
-    border-top: 2px solid #909497;
-    color: #4A4C4E;
-}
-
-.dataTable tr td:first-child {
-    text-align: start;
-    color: rgb(76, 76, 187);
-    font-weight: 520;
-}
-
-.downBtn {
-    color: rgb(121, 115, 115);
-    font-size: 1.5rem;
-    background-color: white;
-    outline: none;
-    border: none;
-}
-
-.downBtn:hover {
-    color: red;
-    cursor: pointer;
+.link:hover {
+    text-decoration: underline;
 }

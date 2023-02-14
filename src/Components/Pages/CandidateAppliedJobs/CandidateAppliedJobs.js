@@ -1,6 +1,9 @@
 import Heading from '../profile/Heading/Heading';
 import styles from './CandidateAppliedJobs.module.css'
 import { useState, useEffect } from 'react';
+import { Table } from 'antd';
+import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const WaqarUrl = process.env.REACT_APP_API_URL1;
 
@@ -37,7 +40,15 @@ const CandidateAppliedJobs = () => {
         fetch(url)
             .then(async (response) => {
                 const data = await response.json();
-                setData(data);
+                const newData = data.map((item) => {
+                    const {id, title, closeDate, status} = item 
+                    const obj = {
+                        id, title, closeDate, 
+                        status: status ? status : 'Pending' 
+                    }
+                    return obj
+                })
+                setData(newData);
             })
             .catch((error) => {
                 console.log(error, "I caught this!")
@@ -48,6 +59,26 @@ const CandidateAppliedJobs = () => {
         fetchData(jobUrl, setJobsData);
     }, [])
 
+    const columns = [
+        {
+            title: 'Job Title',
+            dataIndex: 'title',
+            key: 'title',
+            render: (text, record) => <Link to={`/candidate/job/view/${record.id}`}><span className={styles.link}>{text}</span></Link> 
+        },
+        {
+            title: 'Status',
+            dataIndex: 'status',
+            key: 'status',
+        },
+        {
+            title: 'Closing Date',
+            dataIndex: 'closeDate',
+            key: 'closeDate',
+            render: (text) => moment(text).format('DD-MM-YYYY')
+        }
+    ];
+
     return (
         <>
             <div className={styles.contentBody}>
@@ -55,27 +86,7 @@ const CandidateAppliedJobs = () => {
                     text={"Applied Jobs"}
                     className={''}
                 /></div>
-                <table className={styles.dataTable} >
-                    <thead>
-                        <tr>
-                            <th>S.No.</th>
-                            <th>Job Title</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {jobsData.length === 0 &&
-                            <tr><td style={{ textAlign: 'center', color: '#000' }} colSpan={7}>No Data</td></tr>}
-                        {jobsData.map((element, i) => {
-                            const { id, title } = element
-                            return (
-                                <tr key={id}>
-                                    <td>{i+1}</td>
-                                    <td>{title}</td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
+                <Table className={styles.antTable} dataSource={jobsData} columns={columns} />
             </div >
         </>
     )

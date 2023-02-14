@@ -3,7 +3,6 @@ import styles from './CandidateInterviewSchedule.module.css'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Table } from 'antd';
-import { render } from '@testing-library/react';
 
 const HunainUrl = process.env.REACT_APP_API_URL4;
 
