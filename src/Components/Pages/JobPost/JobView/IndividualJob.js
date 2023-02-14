@@ -71,8 +71,8 @@ function IndividualJob() {
     <JobView 
       title={data?.title}
       jobDescription={data?.description}
-      department={data?.department }
-      responsibilities={data?.responsibilitiess?.map(res=>res.responsibility)}
+      department={data?.department.departmentName}
+      responsibilities={data?.responsibilities}
       education={data?.educations.map(res=>res.education)}
       employement={data?.employementCategory}
       softskills={data?.softSkills.map(res=>res.softSkill)}

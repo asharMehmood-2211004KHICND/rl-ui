@@ -50,6 +50,7 @@ function C_JobList() {
         return response.json()
       })
       .then((data) => {
+        data = data.map(d=>{return {...d, companyName: "Xloop"}})
         setJobs(data);
         setFilteredData(data);
         setLoading(false);

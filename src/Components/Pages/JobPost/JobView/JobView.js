@@ -46,11 +46,9 @@ const JobView = ({
       <div className={styled.responsibilities1}>
         <div className={styled.responsibilities}>
           <h2 className={styled.heading4}>Responsibilities:</h2>
+
+          <pre className={styled.paragrap2}>{responsibilities}</pre>
         </div>
-        {responsibilities &&
-          responsibilities.map((responsibility, i) => (
-            <ul key={i} className={styled.responsibilitieslist}>{responsibility}</ul>
-          ))}
       </div>
       <section className={styled.line}></section>
       <div className={styled.degrees1}>

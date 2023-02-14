@@ -70,9 +70,7 @@ function IndividualJobCandidate() {
         title={data?.title}
         jobDescription={data?.description}
         department={data?.department?.departmentName}
-        responsibilities={data?.responsibilitiess?.map(
-          (res) => res.responsibility
-        )}
+        responsibilities={data?.responsibilities}
         education={data?.educations.map((res) => res.education)}
         employement={data?.employementCategory}
         softskills={data?.softSkills.map((res) => res.softSkill)}

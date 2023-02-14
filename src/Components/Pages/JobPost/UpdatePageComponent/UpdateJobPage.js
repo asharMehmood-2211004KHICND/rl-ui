@@ -49,7 +49,7 @@ const UpdateJobPage = () => {
   const [vacancies, setVacancies] = useState(data.vacancyCount);
   const [closingDate, setClosingDate] = useState(new Date(data.closeDate));
   const [selectedResponsibilites, setSelectedResponsibilities] = useState(
-    data.responsibilitiess.map((data) => data.responsibility)
+    data.responsibilities
   );
   const [buttonDisable, setButtonDisable] = useState(false);
   const [buttonText, setButtonText] = useState("UPDATE");
@@ -85,11 +85,7 @@ const UpdateJobPage = () => {
   const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
 
-  let responsibilityOptions = [
-    "Contribute in all phases of the development lifecycle",
-    "Write well designed, testable, efficient code",
-    "Ensure designs are in compliance with specifications",
-  ];
+ 
 
   let departmentOptions = ["Cloud Engineering", "Data Engineering"];
 
@@ -299,7 +295,6 @@ const UpdateJobPage = () => {
       !employmentCategories.length ||
       !softskills.length ||
       !technicalskills.length ||
-      !selectedResponsibilites.length ||
       !perksAndBenefits.length ||
       !experienceLevel
     ) {
@@ -329,9 +324,7 @@ const UpdateJobPage = () => {
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
-      responsibilitiess: selectedResponsibilites.map((rs) => {
-        return { responsibility: rs };
-      }),
+      responsibilities: selectedResponsibilites,
       educations: degrees.map((edu) => {
         return { education: edu };
       }),
@@ -366,7 +359,7 @@ const UpdateJobPage = () => {
       })
       .then((data) => {
         swal({
-          title: "Job posted sucessfully!",
+          title: "Job Updated sucessfully!",
           icon: "success",
         });
 
@@ -383,9 +376,9 @@ const UpdateJobPage = () => {
         setTechnicalskills([]);
         setClosingDate("");
         setDescription("");
-        setSelectedResponsibilities([]);
+        setSelectedResponsibilities();
         setDegrees([]);
-        setPerksAndBenefits([]);
+        setPerksAndBenefits();
         setActive_status(undefined);
         setExperienceLevel(0);
         setVacancies(undefined);
@@ -478,6 +471,15 @@ const UpdateJobPage = () => {
                 placeholder="Enter Job Description"
               ></textarea>
             </div>
+            <div className={styled.job_description_container}>
+              <h4 className={styled.heading3}>Responsibilities</h4>
+              <textarea
+                className={styled.job_description_input}
+                onChange={(e) => setSelectedResponsibilities(e.target.value)}
+                value={selectedResponsibilites}
+                placeholder="Enter Responsibilities"
+              ></textarea>
+            </div>
             <br></br>
 
             <div className={styled.div2}>
@@ -490,16 +492,18 @@ const UpdateJobPage = () => {
                   setSelected={setEmploymentCategories}
                 ></MultiSelectDropDown>
               </div>
+              <div className={styled.experience}>
+                <h4 className={styled.heading12}>Experience</h4>
 
-              <div className={styled.responsibilities}>
-                <h4 className={styled.heading5}>Responsibilities</h4>
-
-                <MultiSelectDropDown
-                  fetchedOptions={responsibilityOptions}
-                  selected={selectedResponsibilites}
-                  setSelected={setSelectedResponsibilities}
-                ></MultiSelectDropDown>
+                <SimpleDropDown
+                  optionLabel="Year"
+                  selectedOption={experienceLevel}
+                  setSelectedOption={setExperienceLevel}
+                  options={experienceLevelOptions}
+                  optionText={experienceLevelOptionsValue}
+                ></SimpleDropDown>
               </div>
+             {/* responsibility */}
             </div>
             <br></br>
             <div className={styled.div3}>
@@ -561,7 +565,7 @@ const UpdateJobPage = () => {
             </div>
             <br></br>
             <div className={styled.div5}>
-              <div className={styled.perksandbenifits}>
+            <div className={styled.perksandbenifits}>
                 <h4 className={styled.heading10}>Benefits</h4>
 
                 <MultiSelectDropDown
@@ -569,18 +573,17 @@ const UpdateJobPage = () => {
                   selected={perksAndBenefits}
                   setSelected={setPerksAndBenefits}
                 ></MultiSelectDropDown>
-              </div>
-              <div className={styled.experience}>
-                <h4 className={styled.heading12}>Experience</h4>
+              </div>  
+              <div className={styled.perksandbenifits}>
+                <h4 className={styled.heading10}>Perks</h4>
 
-                <SimpleDropDown
-                  optionLabel="Year"
-                  selectedOption={experienceLevel}
-                  setSelectedOption={setExperienceLevel}
-                  options={experienceLevelOptions}
-                  optionText={experienceLevelOptionsValue}
-                ></SimpleDropDown>
+                <MultiSelectDropDown
+                  fetchedOptions={benefitsAndPerksOptions}
+                  // selected={perksAndBenefits}
+                  // setSelected={setPerksAndBenefits}
+                ></MultiSelectDropDown>
               </div>
+           
             </div>
 
             <br></br>
