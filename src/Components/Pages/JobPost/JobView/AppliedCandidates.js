@@ -13,7 +13,6 @@ const BaseURL = process.env.REACT_APP_API_URL1;
 
 function  AppliedCandidates({JobData}) {
 
-  console.log(JobData);
 
   const [loading, setLoading] = useState(true);
   const [candidates, setCandidate] = useState([]);

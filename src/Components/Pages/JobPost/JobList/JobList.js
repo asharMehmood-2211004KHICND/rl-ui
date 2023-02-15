@@ -287,9 +287,9 @@ const JobsList = ({jobsProp}) => {
   }, {
     title: 'Applied Candidates',
     align: 'center',
-    dataIndex: 'appliedCandidate',
+    dataIndex: 'jobApplies',
     width:150,
-    key: 'appliedCandidate',
+    key: 'jobApplies',
     ellipsis: false,
     sorter: (a, b) => a.appliedCandidate - b.appliedCandidate,
   },

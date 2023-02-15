@@ -1,0 +1,11 @@
+.tableJob{
+    color: green;
+}   
+.line {
+    border-bottom: solid;
+    border-color: #8080808a;
+   
+}  
+.body{
+    padding-left: 100px;
+}

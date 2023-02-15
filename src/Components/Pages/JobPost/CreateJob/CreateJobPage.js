@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Calander } from "../components/Calander";
 
 import { MultiSelectDropDown } from "../components/MultiSelect/MultiSelectDropDown";
@@ -65,9 +65,11 @@ const CreateJobPage = () => {
   const genderOptions = ["Male", "Female", "Anyone"];
   const travellingOptions = ["Yes", "No", "MayBe "];
 
-  let departmentOptions = ["Cloud Engineering", "Data Engineering"];
+  const [departmentOptions, setDepartmentOptions] = useState([])
 
-  let degreeOptions = ["BE", "BS", "MS"];
+  // let degreeOptions = ["BE", "BS", "MS"];
+
+  const [degreeOptions, setDegreeOptions] = useState([])
 
   let employmentCategoriesOptions = [
     "Part Time",
@@ -78,185 +80,273 @@ const CreateJobPage = () => {
     "Internship",
   ];
 
-  let softSkillsOptions = [
-    "Communication",
-    "Teamwork",
-    "Adaptability",
-    "Problem-solving",
-    "Critical thinking",
-    "Time management",
-    "Leadership",
-    "Creativity",
-    "Interpersonal skills",
-    "Conflict resolution",
-    "Active listening",
-    "Emotional intelligence",
-    "Negotiation",
-    "Stress management",
-    "Goal setting",
-    "Organization",
-    "Presentation skills",
-    "Decision making",
-    "Customer service",
-    "Positive attitude",
-  ];
+  // let softSkillsOptions = [
+  //   "Communication",
+  //   "Teamwork",
+  //   "Adaptability",
+  //   "Problem-solving",
+  //   "Critical thinking",
+  //   "Time management",
+  //   "Leadership",
+  //   "Creativity",
+  //   "Interpersonal skills",
+  //   "Conflict resolution",
+  //   "Active listening",
+  //   "Emotional intelligence",
+  //   "Negotiation",
+  //   "Stress management",
+  //   "Goal setting",
+  //   "Organization",
+  //   "Presentation skills",
+  //   "Decision making",
+  //   "Customer service",
+  //   "Positive attitude",
+  // ];
 
-  const technicalskillsOptions = [
-    "JavaScript",
-    "Java",
-    "Python",
-    "C++",
-    "C#",
-    "PHP",
-    "Ruby",
-    "SQL",
-    "HTML",
-    "CSS",
-    "React",
-    "Angular",
-    "Vue.js",
-    "Node.js",
-    "Express",
-    "MongoDB",
-    "PostgreSQL",
-    "MySQL",
-    "Redis",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "Git",
-    "GitHub",
-    "Bitbucket",
-    "Agile methodologies",
-    "Scrum",
-    "Kanban",
-    "JIRA",
-    "Trello",
-    "RESTful APIs",
-    "GraphQL",
-    "Microservices",
-    "Unit testing",
-    "Integration testing",
-    "Automated testing",
-    "Load testing",
-    "Security testing",
-    "Object-Oriented Programming (OOP)",
-    "Functional Programming",
-    "Design Patterns",
-    "Architecture design",
-    "Data structures",
-    "Algorithms",
-    "Continuous Integration (CI)",
-    "Continuous Deployment (CD)",
-    "Automated deployment",
-    "Automated scaling",
-    "Continuous monitoring",
-    "Debugging",
-    "Troubleshooting",
-    "Performance optimization",
-    "Code reviews",
-    "Refactoring",
-    "Code versioning",
-    "Code documentation",
-    "Cloud computing",
-    "Virtualization",
-    "Infrastructure as Code (IaC)",
-    "Network security",
-    "Firewall management",
-    "Encryption",
-    "Machine learning",
-    "Artificial intelligence",
-    "Natural language processing (NLP)",
-    "Computer vision",
-    "Big data",
-    "Data science",
-    "DevOps",
-    "IT Operations",
-    "IT Support",
-    "Project management",
-    "Requirements gathering",
-    "User experience (UX) design",
-    "User interface (UI) design",
-    "Mobile application development",
-    "Cross-platform development",
-    "Hybrid mobile development",
-    "Native mobile development",
-    "Augmented reality (AR)",
-    "Virtual reality (VR)",
-    "Game development",
-    "Web development",
-    "Backend development",
-    "Full-stack development",
-    "Software engineering",
-    "Software testing",
-    "Software quality assurance (QA)",
-    "Software maintenance",
-    "Software configuration management (SCM)",
-    "Software project management",
-    "Software release management",
-    "Software risk management",
-    "Software change management",
-    "Software asset management",
-    "Software licensing",
-  ];
+  const [softSkillsOptions, setSoftSkillsOptions] = useState([])
+  // const technicalskillsOptions = [
+  //   "JavaScript",
+  //   "Java",
+  //   "Python",
+  //   "C++",
+  //   "C#",
+  //   "PHP",
+  //   "Ruby",
+  //   "SQL",
+  //   "HTML",
+  //   "CSS",
+  //   "React",
+  //   "Angular",
+  //   "Vue.js",
+  //   "Node.js",
+  //   "Express",
+  //   "MongoDB",
+  //   "PostgreSQL",
+  //   "MySQL",
+  //   "Redis",
+  //   "AWS",
+  //   "Docker",
+  //   "Kubernetes",
+  //   "Git",
+  //   "GitHub",
+  //   "Bitbucket",
+  //   "Agile methodologies",
+  //   "Scrum",
+  //   "Kanban",
+  //   "JIRA",
+  //   "Trello",
+  //   "RESTful APIs",
+  //   "GraphQL",
+  //   "Microservices",
+  //   "Unit testing",
+  //   "Integration testing",
+  //   "Automated testing",
+  //   "Load testing",
+  //   "Security testing",
+  //   "Object-Oriented Programming (OOP)",
+  //   "Functional Programming",
+  //   "Design Patterns",
+  //   "Architecture design",
+  //   "Data structures",
+  //   "Algorithms",
+  //   "Continuous Integration (CI)",
+  //   "Continuous Deployment (CD)",
+  //   "Automated deployment",
+  //   "Automated scaling",
+  //   "Continuous monitoring",
+  //   "Debugging",
+  //   "Troubleshooting",
+  //   "Performance optimization",
+  //   "Code reviews",
+  //   "Refactoring",
+  //   "Code versioning",
+  //   "Code documentation",
+  //   "Cloud computing",
+  //   "Virtualization",
+  //   "Infrastructure as Code (IaC)",
+  //   "Network security",
+  //   "Firewall management",
+  //   "Encryption",
+  //   "Machine learning",
+  //   "Artificial intelligence",
+  //   "Natural language processing (NLP)",
+  //   "Computer vision",
+  //   "Big data",
+  //   "Data science",
+  //   "DevOps",
+  //   "IT Operations",
+  //   "IT Support",
+  //   "Project management",
+  //   "Requirements gathering",
+  //   "User experience (UX) design",
+  //   "User interface (UI) design",
+  //   "Mobile application development",
+  //   "Cross-platform development",
+  //   "Hybrid mobile development",
+  //   "Native mobile development",
+  //   "Augmented reality (AR)",
+  //   "Virtual reality (VR)",
+  //   "Game development",
+  //   "Web development",
+  //   "Backend development",
+  //   "Full-stack development",
+  //   "Software engineering",
+  //   "Software testing",
+  //   "Software quality assurance (QA)",
+  //   "Software maintenance",
+  //   "Software configuration management (SCM)",
+  //   "Software project management",
+  //   "Software release management",
+  //   "Software risk management",
+  //   "Software change management",
+  //   "Software asset management",
+  //   "Software licensing",
+  // ];
+  const [technicalskillsOptions, setTechnicalskillsOptions] = useState([])
 
-  const benefitsAndPerksOptions = [
-    "Competitive salary",
-    "Performance bonuses",
-    "Stock options",
-    "Health insurance",
-    "Dental insurance",
-    "Vision insurance",
-    "Life insurance",
-    "Disability insurance",
-    "Paid time off (PTO)",
-    "Sick leave",
-    "Vacation time",
-    "Holiday pay",
-    "Flexible schedules",
-    "Remote work options",
-    "Work-life balance",
-    "Education and training opportunities",
-    "Certification programs",
-    "Career advancement opportunities",
-    "Mentorship programs",
-    "Collaborative work environment",
-    "Team building activities",
-    "Wellness programs",
-    "Gym memberships",
-    "Free snacks and beverages",
-    "Casual dress code",
-    "Corporate discounts",
-    "Commuter benefits",
-    "Parental leave",
-    "Family care leave",
-    "On-site child care",
-    "Pet-friendly workplace",
-    "Free parking or transportation reimbursement",
-    "Ergonomic workstations",
-    "Standing desks",
-    "Relocation assistance",
-    "International assignments",
-    "Company outings and events",
-    "Team bonding activities",
-    "Philanthropy opportunities",
-    "Diversity and inclusion initiatives",
-    "Sustainability initiatives",
-    "Company-sponsored sports teams",
-    "Free or subsidized meals",
-    "Break rooms with amenities",
-    "Collaborative workspaces",
-    "Standing desks",
-    "Nap rooms",
-    "Pet-friendly office policies",
-    "On-site massage therapy",
-    "Free or discounted transportation options",
-    "Sponsored community service opportunities",
-  ];
+  // const benefitsAndPerksOptions = [
+  //   "Competitive salary",
+  //   "Performance bonuses",
+  //   "Stock options",
+  //   "Health insurance",
+  //   "Dental insurance",
+  //   "Vision insurance",
+  //   "Life insurance",
+  //   "Disability insurance",
+  //   "Paid time off (PTO)",
+  //   "Sick leave",
+  //   "Vacation time",
+  //   "Holiday pay",
+  //   "Flexible schedules",
+  //   "Remote work options",
+  //   "Work-life balance",
+  //   "Education and training opportunities",
+  //   "Certification programs",
+  //   "Career advancement opportunities",
+  //   "Mentorship programs",
+  //   "Collaborative work environment",
+  //   "Team building activities",
+  //   "Wellness programs",
+  //   "Gym memberships",
+  //   "Free snacks and beverages",
+  //   "Casual dress code",
+  //   "Corporate discounts",
+  //   "Commuter benefits",
+  //   "Parental leave",
+  //   "Family care leave",
+  //   "On-site child care",
+  //   "Pet-friendly workplace",
+  //   "Free parking or transportation reimbursement",
+  //   "Ergonomic workstations",
+  //   "Standing desks",
+  //   "Relocation assistance",
+  //   "International assignments",
+  //   "Company outings and events",
+  //   "Team bonding activities",
+  //   "Philanthropy opportunities",
+  //   "Diversity and inclusion initiatives",
+  //   "Sustainability initiatives",
+  //   "Company-sponsored sports teams",
+  //   "Free or subsidized meals",
+  //   "Break rooms with amenities",
+  //   "Collaborative workspaces",
+  //   "Standing desks",
+  //   "Nap rooms",
+  //   "Pet-friendly office policies",
+  //   "On-site massage therapy",
+  //   "Free or discounted transportation options",
+  //   "Sponsored community service opportunities",
+  // ];
+
+  const [benefitsAndPerksOptions, setBenefitsAndPerksOptions] = useState([])
 
   let locationOptions = ["Karachi", "Lahore", "Islamabad"];
 
+
+  useEffect(()=>{
+
+    fetch(`${BaseURL}/department/all`)
+    .then( async (response) =>{
+      if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+        return await response.json()}
+        )
+    .then((data) => {
+      data = data.map(d=>d.departmentName)
+      setDepartmentOptions(data);
+    })
+    .catch((err) => {
+      if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+      else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+    });
+
+    fetch(`${BaseURL}/benefits/all`)
+      .then( async (response) =>{
+        if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+          return await response.json()}
+          )
+      .then((data) => {
+        data = data.map(d=>d.benefitPerks)
+        setBenefitsAndPerksOptions(data);
+      })
+      .catch((err) => {
+        if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+        else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+      });
+
+      fetch(`${BaseURL}/education/all`)
+        .then( async (response) =>{
+          if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+            return await response.json()}
+            )
+        .then((data) => {
+          data = data.map(d=>d.education)
+          setDegreeOptions(data);
+        })
+        .catch((err) => {
+          if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+          else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+        });
+
+        fetch(`${BaseURL}/softSkill/all`)
+          .then( async (response) =>{
+            if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+              return await response.json()}
+              )
+          .then((data) => {
+            data = data.map(d=>d.softSkill) 
+            setSoftSkillsOptions(data);
+          })
+          .catch((err) => {
+            if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+            else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+          });
+
+          fetch(`${BaseURL}/technicalskill/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.map(d=>d.technicalSkill) 
+              setTechnicalskillsOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
+
+
+            console.log(degreeOptions)
+            console.log(departmentOptions)
+            console.log(benefitsAndPerksOptions)
+            console.log(benefitsAndPerksOptions)
+            console.log(softSkillsOptions)
+            console.log(technicalskillsOptions)
+  },[])
+
+
   const handleSubmit = (event) => {
+
     event.preventDefault();
     setButtonText("Loading...");
     setButtonDisable(true);
