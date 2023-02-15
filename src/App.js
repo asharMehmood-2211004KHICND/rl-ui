@@ -33,6 +33,10 @@ import CandidateAppliedJobs from './Components/Pages/CandidateAppliedJobs/Candid
 import CandidateInterviewSchedule from './Components/Pages/CandidateInterviewSchedule/CandidateInterviewSchedule';
 import InterviewerInterviewSchedule from './Components/Pages/InterviewerInterviewSchedule/InterviewerInterviewSchedule';
 import Education from './Components/Pages/JobPost/DropDownComponents/Education';
+import Department from './Components/Pages/JobPost/DropDownComponents/Department';
+import TechnicalSkills from './Components/Pages/JobPost/DropDownComponents/TechnicalSkills';
+import SoftSkill from './Components/Pages/JobPost/DropDownComponents/SoftSkill';
+import Benefit from './Components/Pages/JobPost/DropDownComponents/Benefit';
 
 
 function App() {
@@ -67,6 +71,10 @@ function App() {
 				<Route path="/interview-schedule" element={<PrivateRoute><InterviewerInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>
 				<Route path='/admin/education' element={<PrivateRoute><Education/></PrivateRoute>} ></Route>
+				<Route path='/admin/department' element={<PrivateRoute><Department/></PrivateRoute>} ></Route>
+				<Route path='/admin/t-skill' element={<PrivateRoute>< TechnicalSkills/></PrivateRoute>} ></Route>
+				<Route path='/admin/s-skill' element={<PrivateRoute>< SoftSkill/></PrivateRoute>} ></Route>
+				<Route path='/admin/benefit' element={<PrivateRoute><  Benefit /></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)
