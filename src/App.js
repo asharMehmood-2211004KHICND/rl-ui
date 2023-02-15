@@ -32,6 +32,7 @@ import IndividualJobCandidate from './Components/Pages/JobPost/Candidate/JobView
 import CandidateAppliedJobs from './Components/Pages/CandidateAppliedJobs/CandidateAppliedJobs';
 import CandidateInterviewSchedule from './Components/Pages/CandidateInterviewSchedule/CandidateInterviewSchedule';
 import InterviewerInterviewSchedule from './Components/Pages/InterviewerInterviewSchedule/InterviewerInterviewSchedule';
+import Education from './Components/Pages/JobPost/DropDownComponents/Education';
 
 
 function App() {
@@ -65,6 +66,7 @@ function App() {
 				<Route path="/my-interview-schedule" element={<PrivateRoute><CandidateInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/interview-schedule" element={<PrivateRoute><InterviewerInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>
+				<Route path='/admin/education' element={<PrivateRoute><Education/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)

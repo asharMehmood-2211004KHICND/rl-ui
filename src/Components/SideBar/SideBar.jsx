@@ -52,10 +52,16 @@ export default function SideBar() {
 					<div className="sideBarTitle">Other Links</div>
 
 					<ul className="sideBarList">
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" />Job Types</li>
-						<li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" />Locations</li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Job Types</Link></li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Soft Skills</Link></li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Technical Skills</Link></li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="/admin/education">Departments</Link></li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="/admin/education">Degree Types</Link></li>
+						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Locations</Link></li>
+
+						{/* <li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" /></li>
 						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Skills</li>
-						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" />Questions</li>
+						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" />Questions</li> */}
 					</ul>
 
 
