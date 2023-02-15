@@ -16,6 +16,11 @@
     text-align: center !important;
 }
 
+.link {
+    color: #4481eb;
+    font-weight: bold;
+}
+
 .link:hover {
     text-decoration: underline;
 }

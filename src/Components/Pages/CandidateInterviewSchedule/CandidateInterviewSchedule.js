@@ -69,7 +69,7 @@ const CandidateInterviewSchedule = () => {
             title: 'Your Feedback',
             dataIndex: 'candidate_feedback',
             key: 'candidate_feedback',
-            render: (text, record) => text === null ? 'Give feedback' : text,
+            render: (text, record) => text === null ? <Link to={`/candidate-feedback/${record.id}`}><span className={styles.link}>Give feedback</span></Link> : text,
         },
     ];
 

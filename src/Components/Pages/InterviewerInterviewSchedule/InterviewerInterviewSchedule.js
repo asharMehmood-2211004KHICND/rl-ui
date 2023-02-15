@@ -64,13 +64,13 @@ const InterviewerInterviewSchedule = () => {
             title: 'Interviewer Comments',
             dataIndex: 'interviewer_feedback',
             key: 'interviewer_feedback',
-            render: (text, record) => text === null ? '---' : text,
+            render: (text, record) => text === null ? <Link to={`/interviewer-feedback/${record.id}`}><span className={styles.link}>Give feedback</span></Link> : text,
         },
         {
             title: 'Your Feedback',
             dataIndex: 'candidate_feedback',
             key: 'candidate_feedback',
-            render: (text, record) => text === null ? 'Give feedback' : text,
+            render: (text, record) => text === null ? '---' : text,
         },
     ];
 
@@ -78,7 +78,7 @@ const InterviewerInterviewSchedule = () => {
         <>
             <div className={styles.contentBody}>
                 <div className={styles.center}><Heading
-                    text={"My Interview Schedule"}
+                    text={"Interviews you have to take"}
                     className={''}
                 /></div>
                 <Table className={styles.antTable} dataSource={scheduleData} columns={columns} />
