@@ -3,30 +3,50 @@ background-color: aqua;
 }
 
 .Maincontent{
-    background-color: rgb(10, 57, 186);
-    height: 500px;
+	background-color: rgb(10, 57, 186);
+	height: 500px;
 }
 
 .hcards{
-    display: flex;
-    justify-content: left;
+	display: flex;
+	justify-content: left;
 }
 .card{
-    padding: 10px;
-    margin-left: 20px;
-    width: 300px;
-    border: 1px #aaa solid;
-    border-radius: 10px;
+	padding: 10px;
+	margin-left: 20px;
+	width: 25%;
+	border: 1px #aaa solid;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
 }
 .cardtitle{
-    font-size: 20pt;
-    
+	font-size: 20pt;
+	
 }
 .cardcount{
-    font-size: 40pt;
-    color: #4481eb;
+	font-size: 50pt;
+	color: #4481eb;
 }
 .carddetails{
-    font-size: 14pt;
-    color: #2455a9;
+	font-size: 14pt;
+	color: #2455a9;
+}
+.link{
+	text-decoration: none;
+	color: #2455a9;
+	
+}
+
+.cardlower{
+	display: flex;
+	justify-content: space-between;
+	align-items: last baseline;
+}
+.cardicon{
+	font-size: 100pt;
+	color: #ccc;
+}
+.dark{
+	color: #807e7e;
 }

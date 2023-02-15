@@ -7,6 +7,7 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
@@ -40,11 +41,13 @@ export default function SideBar() {
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Dashboard</div>
 					<ul className="sideBarList">
-						<li><NavLink className="sideBarListItem" to="/" activeClassName="active"><HomeIcon className="menuIcon" />Home</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/job/all" activeClassName="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/view"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" /> Candidates</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/users"><AssignmentIndIcon className="menuIcon" /> Users</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/createStaff"><AssignmentIndIcon className="menuIcon" /> Users</NavLink></li>
 					</ul>
 				</div>
 
