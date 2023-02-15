@@ -7,7 +7,7 @@ import GroupAddIcon from '@mui/icons-material/GroupAdd';
 import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
 
@@ -40,11 +40,11 @@ export default function SideBar() {
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Dashboard</div>
 					<ul className="sideBarList">
-						<li onClick={home} className="sideBarListItem"><HomeIcon className="menuIcon" /> Home</li>
-						<li className="sideBarListItem active"><QueuePlayNextIcon className="menuIcon" /><Link to="/job/all">Openings</Link></li>
-						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Interview Schedule</li>
-						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" /><Link to="/candidate/JobList"> Candidates</Link></li>
-						<li className="sideBarListItem"><AssignmentIndIcon className="menuIcon" /> Users</li>
+						<li><NavLink className="sideBarListItem" to="/" activeClassName="active"><HomeIcon className="menuIcon" />Home</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/job/all" activeClassName="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/view"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" /> Candidates</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/users"><AssignmentIndIcon className="menuIcon" /> Users</NavLink></li>
 					</ul>
 				</div>
 

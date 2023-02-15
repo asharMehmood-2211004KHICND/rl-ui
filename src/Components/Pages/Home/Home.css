@@ -6,3 +6,27 @@ background-color: aqua;
     background-color: rgb(10, 57, 186);
     height: 500px;
 }
+
+.hcards{
+    display: flex;
+    justify-content: left;
+}
+.card{
+    padding: 10px;
+    margin-left: 20px;
+    width: 300px;
+    border: 1px #aaa solid;
+    border-radius: 10px;
+}
+.cardtitle{
+    font-size: 20pt;
+    
+}
+.cardcount{
+    font-size: 40pt;
+    color: #4481eb;
+}
+.carddetails{
+    font-size: 14pt;
+    color: #2455a9;
+}

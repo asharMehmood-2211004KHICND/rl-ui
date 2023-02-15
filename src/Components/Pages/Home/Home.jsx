@@ -7,8 +7,18 @@ export default function Home() {
 
   return (
     <div>
-      <h1 className='mainHeading'>Home Page</h1>
-      <div className='Maincontent'>Content will go here</div>
+      <div className='hcards'>
+        <div className='card'>
+          <p className='cardtitle'>Openings</p>
+          <h2 className='cardcount'>22</h2>
+          <p className='carddetails'>Details</p>
+        </div>
+        <div className='card'>
+          <p className='cardtitle'>Openings</p>
+          <h2 className='cardcount'>22</h2>
+          <p className='carddetails'>Details...</p>
+        </div>
+      </div>
     </div>
   )
 }
