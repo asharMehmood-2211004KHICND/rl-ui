@@ -12,7 +12,16 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
 
+	/**
+	 1	Candidate
+	 2	Interviewer
+	 3	Hiring Manager
+	 4	HR/Admin
+	*/
+	const role = sessionStorage.getItem('user_roleid');
+	
 	const navigate = useNavigate();
+	// const {persona} = useContext(StateContext);
 
 	function logout() {
 		sessionStorage.clear();
@@ -41,20 +50,21 @@ export default function SideBar() {
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Dashboard</div>
 					<ul className="sideBarList">
-						<li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>}
+						{role==='1' && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>}
+						{role==='4' && <li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>}
 					</ul>
 				</div>
 
-				<div className="sideBarMenu">
-					<div className="sideBarTitle">Other Links</div>
+					{role==='4' && (
+					<div className="sideBarMenu">
 
+					<div className="sideBarTitle">Other Links</div>
 					<ul className="sideBarList">
 						<li><NavLink className="sideBarListItem" to="/admin/jobType"><AssignmentIndIcon className="menuIcon" />Job Types</NavLink></li>
 						<li><NavLink className="sideBarListItem" to="/admin/s-skill"><AssignmentIndIcon className="menuIcon" />Soft Skills</NavLink></li>
@@ -65,9 +75,10 @@ export default function SideBar() {
 						<li><NavLink className="sideBarListItem" to="/admin/benefit"><AssignmentIndIcon className="menuIcon" />Benefit List</NavLink></li>
 						<li><NavLink className="sideBarListItem" to="/admin/perks"><AssignmentIndIcon className="menuIcon" />Perks List</NavLink></li>
 					</ul>
-
-
 				</div>
+					)}
+
+
 
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Personal</div>
@@ -77,6 +88,7 @@ export default function SideBar() {
 						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
 				</div>
+
 			</div>
 		</div>
 	)
