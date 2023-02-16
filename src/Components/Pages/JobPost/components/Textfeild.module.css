@@ -1,0 +1,22 @@
+.input{
+    -ms-box-sizing: border-box !important;
+  -moz-box-sizing: border-box !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+  padding: 10px 10px 10px 30px !important;
+  font-size: 1.2rem !important;
+  border-radius: 6px !important;
+  background-color: #F0F0F0 !important;
+  outline: none !important;
+  border: 1px solid #6270B1 !important;
+  width: 382px !important;
+  margin: 5px !important;
+  height: 48px !important;
+}
+.input:hover{
+    background-color: #ebe6e6 !important;
+}
+.input:focus{
+    outline: none !important;
+  box-shadow: 0 0 10px #2196F3 !important;
+}

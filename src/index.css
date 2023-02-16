@@ -3,3 +3,27 @@
   padding: 0;
   font-family: 'Poppins', sans-serif;
 }
+.ant-select-show-search:where(.css-dev-only-do-not-override-ixblex).ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  -ms-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 30px;
+  font-size: 1.2rem;
+  border-radius: 6px;
+  background-color: #F0F0F0;
+  outline: none;
+  border: 1px solid #6270B1;
+  width: 382px;
+  margin: 5px;
+}
+
+.ant-select-show-search:where(.css-dev-only-do-not-override-ixblex).ant-select:not(.ant-select-customize-input) .ant-select-selector:focus{
+  outline: none;
+  box-shadow: 0 0 10px #2196F3;
+}
+.ant-select-show-search:where(.css-dev-only-do-not-override-ixblex).ant-select:not(.ant-select-customize-input) .ant-select-selector:hover{
+  background-color: #ebe6e6;
+  border-color: #6270B1;
+
+}
