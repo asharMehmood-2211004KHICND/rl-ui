@@ -1,6 +1,5 @@
 import { Form, InputNumber, Popconfirm, Table, Typography, Input } from "antd";
 import { useEffect, useState } from "react";
-
 // import swal from 'sweetalert';
 import {
   faTrash,
@@ -10,6 +9,10 @@ import swal from "sweetalert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconButton } from "@mui/material";
 import styled from "./Demo.module.css";
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
+
 const EditableCell = ({
   editing,
   dataIndex,
@@ -47,14 +50,14 @@ const EditableCell = ({
 const SoftSkill = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [softSkill, setsoftSkill] = useState("");
+  const [jobType, setJobType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/softSkill/all`
+        `${BaseURL}/softSkill/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -63,7 +66,7 @@ const SoftSkill = () => {
         return await response.json()
       })
       .then((data) => {
-        data = data.map(d=>{return {...d, key: d.id}})
+        data = data.map((d, i)=>{return {...d, index:i+1, key: d.id}})
         setData(data);
         // console.log(data);
       })
@@ -90,8 +93,9 @@ const SoftSkill = () => {
 
   const isEditing = (record) => record.key === editingKey;
   const edit = (record) => {
+    
     form.setFieldsValue({
-      softSkill:record.softSkill,
+      softSkillName:record.softSkillName,
       ...record,
     });
 
@@ -118,20 +122,19 @@ const SoftSkill = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          softSkill: row.softSkill,
+          softSkillName: row.softSkillName,
           // ...row,
         });
         
-        console.log(newData);
 
         fetch(
-          `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/softSkill/update/${key}`,
+          `${BaseURL}/softSkill/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({softSkill: row.softSkill}),
+            body: JSON.stringify({softSkillName: row.softSkillName}),
           },
     
           {
@@ -150,7 +153,7 @@ const SoftSkill = () => {
           .then((response) => {
             setData(newData)
             setEditingKey("");
-            // setsoftSkill("");
+            // setEducation("");
           })
           .catch((err) => {
             if(err.Error>400){
@@ -177,20 +180,18 @@ const SoftSkill = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, setsoftSkill]);
+    setData([...data, jobType]);
   };
-
-
 
   const addItem = () => { 
     const requestData = {
-      softSkill: softSkill,
+      softSkillName: jobType,
     };
     
 
     fetch(
-      // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/softSkill/add`,
+      // `${BaseURL}/job/all`,
+      `${BaseURL}/softSkill/add`,
       {
         method: "POST",
         headers: {
@@ -213,9 +214,9 @@ const SoftSkill = () => {
         return response.json()
       })
       .then((response) => {
-        response ={ ...response, key: response.id };
+        response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setsoftSkill("");
+        setJobType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -244,7 +245,7 @@ const SoftSkill = () => {
     //   })
     // );
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/softSkill/reactive/${record.id}`,
+      `${BaseURL}/softSkill/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -286,8 +287,9 @@ const SoftSkill = () => {
 
   const handleDeleteJob = (record) => {
 
+    console.log(record.id)
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/softSkill/delete/${record.id}`,
+      `${BaseURL}/softSkill/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -329,18 +331,18 @@ const SoftSkill = () => {
   const columns = [
     {
       title: "#",
-      dataIndex: "id",
+      dataIndex: "index",
       width: "30%",
       editable: false,
-      sorter: (a, b) => a.id - b.id,
+      sorter: (a, b) => a.index - b.index,
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Soft Skill",
-      dataIndex: "softSkill",
-      width: "38%",
+      title: "Skill",
+      dataIndex: "softSkillName",
+      width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.softSkill}</p>),
+      render: (text, render)=>(<p>{render.softSkillName}</p>),
     },
     {
       title: "Action",
@@ -382,7 +384,7 @@ const SoftSkill = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleActiceJob}
+                //   onClick={handleActiceJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon 
@@ -400,7 +402,7 @@ const SoftSkill = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleDeleteJob}
+                //   onClick={handleDeleteJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon
@@ -432,17 +434,17 @@ const SoftSkill = () => {
   });
   return (
     <>
-      <section className={styled.heading}> Soft Skills </section>
+      <section className={styled.heading}> Soft Skill</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={softSkill}
-          onChange={(e) => setsoftSkill(e.target.value)}
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={softSkill === ""}
+          disabled={jobType === ""}
           type="text"
           onClick={addItem}
         >

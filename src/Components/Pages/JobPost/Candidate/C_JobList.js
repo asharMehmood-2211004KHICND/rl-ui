@@ -12,15 +12,15 @@ const page_size = 4;
 
 function C_JobList() {
   const [jobs, setJobs] = useState( [
-      {
-        companyLogo: "https://picsum.photos/200",
-        companyName: "Google",
-        jobTitle: "Software Engineer",
-        postDate: "2022-12-31",
-        location: "Mountain View, CA",
-        description: "fkn mfkwn fjn jirf i igfniorhan erug io",
-        category: "IT",
-      }
+      // {
+      //   companyLogo: "https://picsum.photos/200",
+      //   companyName: "Google",
+      //   jobTitle: "Software Engineer",
+      //   postDate: "2022-12-31",
+      //   location: "Mountain View, CA",
+      //   description: "fkn mfkwn fjn jirf i igfniorhan erug io",
+      //   category: "IT",
+      // }
     ]
   );
 

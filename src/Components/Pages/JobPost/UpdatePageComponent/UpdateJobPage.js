@@ -22,29 +22,25 @@ const UpdateJobPage = () => {
 
   const [jobTitle, setJobTitle] = useState(data.title);
   const [description, setDescription] = useState(data.description);
-  const [department, setDepartment] = useState(data.department ); // for single drop down
+  const [department, setDepartment] = useState(data.departments.departmentName ); // for single drop down
   const [degrees, setDegrees] = useState(
-    data.educations.map((data) => data.education)
+    data.educations.map((data) => data.educationName)
   );
   //data problem
   // const [employmentCategories, setEmploymentCategories] = useState(data.employementCategory);
 
-  const [employmentCategories, setEmploymentCategories] = useState([
-    "Full Time",
-    "Part Time",
-  ]);
-
+  const [employmentCategories, setEmploymentCategories] = useState(data.jobTypes.map(jt=>jt.jobTypeName));
   const [genders, setGenders] = useState(data.gender); // for single drop down
-  const [location, setLocation] = useState(data.location); // for single drop down
+  const [location, setLocation] = useState(data.locations.locationName); // for single drop down
   const [softskills, setSoftskills] = useState(
-    data.softSkills.map((data) => data.softSkill)
+    data.softSkills.map((data) => data.softSkillName)
   );
   const [technicalskills, setTechnicalskills] = useState(
-    data.technicalSkills.map((data) => data.technicalSkill)
+    data.technicalSkills.map((data) => data.technicalSkillName)
   );
   const [experienceLevel, setExperienceLevel] = useState(data.experienceLevel); // for single drop down
   const [perksAndBenefits, setPerksAndBenefits] = useState(
-    data.benefitPerkss.map((data) => data.benefitPerks)
+    data.benefits.map((data) => data.benefitsName)
   );
   const [travelling, setTravelling] = useState(data.traveling); // for single drop down
   const [vacancies, setVacancies] = useState(data.vacancyCount);
@@ -56,14 +52,36 @@ const UpdateJobPage = () => {
   const [buttonText, setButtonText] = useState("UPDATE");
 
   const [active_status, setActive_status] = useState(data.active);
+
   const [departmentOptions, setDepartmentOptions] = useState([])
   const [degreeOptions, setDegreeOptions] = useState([])
   const [softSkillsOptions, setSoftSkillsOptions] = useState([])
   const [technicalskillsOptions, setTechnicalskillsOptions] = useState([])
-  const [benefitsAndPerksOptions, setBenefitsAndPerksOptions] = useState([])
+  const [employmentCategoriesOptions, setEmploymentCategoriesOptions] = useState([])
+  const [benefitsOptions, setBenefitsOptions] = useState([])
+  const [perksOptions, setPerksOptions] = useState([])
+  const [locationOptions, setLocationOptions] = useState([])
 
 
   useEffect(()=>{
+
+    
+    fetch(`${BaseURL}/jobType/all`)
+    .then( async (response) =>{
+      if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+        return await response.json()}
+        )
+    .then((data) => {
+              data = data.filter(d=>d.active)
+      
+      data = data.map(d=>d.jobTypeName)
+      setEmploymentCategoriesOptions(data);
+    })
+    .catch((err) => {
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+      else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+    });
+
 
     fetch(`${BaseURL}/department/all`)
     .then( async (response) =>{
@@ -71,11 +89,13 @@ const UpdateJobPage = () => {
         return await response.json()}
         )
     .then((data) => {
+              data = data.filter(d=>d.active)
+      
       data = data.map(d=>d.departmentName)
       setDepartmentOptions(data);
     })
     .catch((err) => {
-      if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
       else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
     });
 
@@ -85,13 +105,16 @@ const UpdateJobPage = () => {
           return await response.json()}
           )
       .then((data) => {
-        data = data.map(d=>d.benefitPerks)
-        setBenefitsAndPerksOptions(data);
+              data = data.filter(d=>d.active)
+        
+        data = data.map(d=>d.benefitsName)
+        setBenefitsOptions(data);
       })
       .catch((err) => {
-        if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+        if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
         else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
       });
+
 
       fetch(`${BaseURL}/education/all`)
         .then( async (response) =>{
@@ -99,11 +122,13 @@ const UpdateJobPage = () => {
             return await response.json()}
             )
         .then((data) => {
-          data = data.map(d=>d.education)
+              data = data.filter(d=>d.active)
+          
+          data = data.map(d=>d.educationName)
           setDegreeOptions(data);
         })
         .catch((err) => {
-          if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+          if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
           else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
         });
 
@@ -113,36 +138,64 @@ const UpdateJobPage = () => {
               return await response.json()}
               )
           .then((data) => {
-            data = data.map(d=>d.softSkill) 
+              data = data.filter(d=>d.active)
+            
+            data = data.map(d=>d.softSkillName) 
             setSoftSkillsOptions(data);
           })
           .catch((err) => {
-            if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+            if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
             else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
           });
 
-          fetch(`${BaseURL}/technicalskill/all`)
+          fetch(`${BaseURL}/technicalSkill/all`)
             .then( async (response) =>{
               if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
                 return await response.json()}
                 )
             .then((data) => {
-              data = data.map(d=>d.technicalSkill) 
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.technicalSkillName) 
               setTechnicalskillsOptions(data);
             })
             .catch((err) => {
-              if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
               else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
             });
 
+            fetch(`${BaseURL}/location/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.locationName) 
+              setLocationOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
 
-            console.log(degreeOptions)
-            console.log(departmentOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(softSkillsOptions)
-            console.log(technicalskillsOptions)
+            fetch(`${BaseURL}/perks/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              data = data.map(d=>d.perksName) 
+              setPerksOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
   },[])
+
 
   const experienceLevelOptionsValue = [
     "Fresh Graduate",
@@ -178,14 +231,14 @@ const UpdateJobPage = () => {
 
   // let degreeOptions = ["BE", "BS", "MS"];
 
-  let employmentCategoriesOptions = [
-    "Part Time",
-    "Full Time",
-    "Contract Base",
-    "Remote",
-    "Onsite",
-    "Internship",
-  ];
+  // let employmentCategoriesOptions = [
+  //   "Part Time",
+  //   "Full Time",
+  //   "Contract Base",
+  //   "Remote",
+  //   "Onsite",
+  //   "Internship",
+  // ];
 
   // let softSkillsOptions = [
   //   "Communication",
@@ -364,7 +417,7 @@ const UpdateJobPage = () => {
   //   "Sponsored community service opportunities",
   // ];
 
-  let locationOptions = ["Karachi", "Lahore", "Islamabad"];
+  // let locationOptions = ["Karachi", "Lahore", "Islamabad"];
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -656,7 +709,7 @@ const UpdateJobPage = () => {
                 <h4 className={styled.heading10}>Benefits</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={benefitsOptions}
                   selected={perksAndBenefits}
                   setSelected={setPerksAndBenefits}
                 ></MultiSelectDropDown>
@@ -665,7 +718,7 @@ const UpdateJobPage = () => {
                 <h4 className={styled.heading10}>Perks</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={perksOptions}
                   // selected={perksAndBenefits}
                   // setSelected={setPerksAndBenefits}
                 ></MultiSelectDropDown>

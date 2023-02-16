@@ -47,17 +47,17 @@ const EditableCell = ({
     </td>
   );
 };
-const Department = () => {
+const TechnicalSkill = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [type, setType] = useState("");
+  const [jobType, setJobType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `${BaseURL}/department/all`
+        `${BaseURL}/technicalSkill/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -95,7 +95,7 @@ const Department = () => {
   const edit = (record) => {
     
     form.setFieldsValue({
-      departmentName:record.departmentName,
+      technicalSkillName:record.technicalSkillName,
       ...record,
     });
 
@@ -122,19 +122,19 @@ const Department = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          departmentName: row.departmentName,
+          technicalSkillName: row.technicalSkillName,
           // ...row,
         });
         
 
         fetch(
-          `${BaseURL}/department/update/${key}`,
+          `${BaseURL}/technicalSkill/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({departmentName: row.departmentName}),
+            body: JSON.stringify({technicalSkillName: row.technicalSkillName}),
           },
     
           {
@@ -180,18 +180,18 @@ const Department = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, type]);
+    setData([...data, jobType]);
   };
 
   const addItem = () => { 
     const requestData = {
-      departmentName: type,
+      technicalSkillName: jobType,
     };
     
 
     fetch(
       // `${BaseURL}/job/all`,
-      `${BaseURL}/department/add`,
+      `${BaseURL}/technicalSkill/add`,
       {
         method: "POST",
         headers: {
@@ -216,7 +216,7 @@ const Department = () => {
       .then((response) => {
         response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setType("");
+        setJobType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -245,7 +245,7 @@ const Department = () => {
     //   })
     // );
     fetch(
-      `${BaseURL}/department/reactive/${record.id}`,
+      `${BaseURL}/technicalSkill/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -289,7 +289,7 @@ const Department = () => {
 
     console.log(record.id)
     fetch(
-      `${BaseURL}/department/delete/${record.id}`,
+      `${BaseURL}/technicalSkill/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -338,11 +338,11 @@ const Department = () => {
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Department",
-      dataIndex: "departmentName",
+      title: "Skill",
+      dataIndex: "technicalSkillName",
       width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.departmentName}</p>),
+      render: (text, render)=>(<p>{render.technicalSkillName}</p>),
     },
     {
       title: "Action",
@@ -434,17 +434,17 @@ const Department = () => {
   });
   return (
     <>
-      <section className={styled.heading}>Departments</section>
+      <section className={styled.heading}> Technical Skill</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={type}
-          onChange={(e) => setType(e.target.value)}
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={type === ""}
+          disabled={jobType === ""}
           type="text"
           onClick={addItem}
         >
@@ -471,4 +471,4 @@ const Department = () => {
     </>
   );
 };
-export default Department;
+export default TechnicalSkill;

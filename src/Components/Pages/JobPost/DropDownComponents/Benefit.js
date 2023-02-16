@@ -9,6 +9,10 @@ import swal from "sweetalert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconButton } from "@mui/material";
 import styled from "./Demo.module.css";
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
+
 const EditableCell = ({
   editing,
   dataIndex,
@@ -46,14 +50,14 @@ const EditableCell = ({
 const Benefit = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [benefit, setBenefit] = useState("");
+  const [jobType, setJobType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/benefits/all`
+        `${BaseURL}/benefits/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -62,7 +66,7 @@ const Benefit = () => {
         return await response.json()
       })
       .then((data) => {
-        data = data.map(d=>{return {...d, key: d.id}})
+        data = data.map((d, i)=>{return {...d, index:i+1, key: d.id}})
         setData(data);
         // console.log(data);
       })
@@ -89,8 +93,9 @@ const Benefit = () => {
 
   const isEditing = (record) => record.key === editingKey;
   const edit = (record) => {
+    
     form.setFieldsValue({
-      Benefit:record.benefitPerks,
+      benefitsName:record.benefitsName,
       ...record,
     });
 
@@ -117,20 +122,19 @@ const Benefit = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          benefitPerks: row.Benefit,
+          benefitsName: row.benefitsName,
           // ...row,
         });
         
-        console.log(newData);
 
         fetch(
-          `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/benefits/update/${key}`,
+          `${BaseURL}/benefits/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({benefitPerks: row.Benefit}),
+            body: JSON.stringify({benefitsName: row.benefitsName}),
           },
     
           {
@@ -149,7 +153,7 @@ const Benefit = () => {
           .then((response) => {
             setData(newData)
             setEditingKey("");
-            // setBenefit("");
+            // setEducation("");
           })
           .catch((err) => {
             if(err.Error>400){
@@ -176,20 +180,18 @@ const Benefit = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, setBenefit]);
+    setData([...data, jobType]);
   };
-
-
 
   const addItem = () => { 
     const requestData = {
-      benefitPerks: benefit,
+      benefitsName: jobType,
     };
     
 
     fetch(
-      // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/benefits/add`,
+      // `${BaseURL}/job/all`,
+      `${BaseURL}/benefits/add`,
       {
         method: "POST",
         headers: {
@@ -212,9 +214,9 @@ const Benefit = () => {
         return response.json()
       })
       .then((response) => {
-        response ={ ...response, key: response.id };
+        response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setBenefit("");
+        setJobType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -243,7 +245,7 @@ const Benefit = () => {
     //   })
     // );
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/benefits/reactive/${record.id}`,
+      `${BaseURL}/benefits/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -285,8 +287,9 @@ const Benefit = () => {
 
   const handleDeleteJob = (record) => {
 
+    console.log(record.id)
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/benefits/delete/${record.id}`,
+      `${BaseURL}/benefits/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -328,18 +331,18 @@ const Benefit = () => {
   const columns = [
     {
       title: "#",
-      dataIndex: "id",
+      dataIndex: "index",
       width: "30%",
       editable: false,
-      sorter: (a, b) => a.id - b.id,
+      sorter: (a, b) => a.index - b.index,
       defaultSortOrder: "ascend" 
     },
     {
       title: "Benefit",
-      dataIndex: "Benefit",
-      width: "38%",
+      dataIndex: "benefitsName",
+      width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.benefitPerks}</p>),
+      render: (text, render)=>(<p>{render.benefitsName}</p>),
     },
     {
       title: "Action",
@@ -381,7 +384,7 @@ const Benefit = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleActiceJob}
+                //   onClick={handleActiceJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon 
@@ -399,7 +402,7 @@ const Benefit = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleDeleteJob}
+                //   onClick={handleDeleteJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon
@@ -431,17 +434,17 @@ const Benefit = () => {
   });
   return (
     <>
-      <section className={styled.heading}> Benefit List </section>
+      <section className={styled.heading}>Benefits</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={benefit}
-          onChange={(e) => setBenefit(e.target.value)}
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={benefit === ""}
+          disabled={jobType === ""}
           type="text"
           onClick={addItem}
         >

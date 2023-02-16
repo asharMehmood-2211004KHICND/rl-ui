@@ -47,17 +47,17 @@ const EditableCell = ({
     </td>
   );
 };
-const Department = () => {
+const JobType = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [type, setType] = useState("");
+  const [jobType, setJobType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `${BaseURL}/department/all`
+        `${BaseURL}/jobType/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -95,7 +95,7 @@ const Department = () => {
   const edit = (record) => {
     
     form.setFieldsValue({
-      departmentName:record.departmentName,
+      jobTypeName:record.jobTypeName,
       ...record,
     });
 
@@ -122,19 +122,19 @@ const Department = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          departmentName: row.departmentName,
+          jobTypeName: row.jobTypeName,
           // ...row,
         });
         
 
         fetch(
-          `${BaseURL}/department/update/${key}`,
+          `${BaseURL}/jobType/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({departmentName: row.departmentName}),
+            body: JSON.stringify({jobTypeName: row.jobTypeName}),
           },
     
           {
@@ -180,18 +180,18 @@ const Department = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, type]);
+    setData([...data, jobType]);
   };
 
   const addItem = () => { 
     const requestData = {
-      departmentName: type,
+      jobTypeName: jobType,
     };
     
 
     fetch(
       // `${BaseURL}/job/all`,
-      `${BaseURL}/department/add`,
+      `${BaseURL}/jobType/add`,
       {
         method: "POST",
         headers: {
@@ -216,7 +216,7 @@ const Department = () => {
       .then((response) => {
         response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setType("");
+        setJobType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -245,7 +245,7 @@ const Department = () => {
     //   })
     // );
     fetch(
-      `${BaseURL}/department/reactive/${record.id}`,
+      `${BaseURL}/jobType/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -289,7 +289,7 @@ const Department = () => {
 
     console.log(record.id)
     fetch(
-      `${BaseURL}/department/delete/${record.id}`,
+      `${BaseURL}/jobType/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -338,11 +338,11 @@ const Department = () => {
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Department",
-      dataIndex: "departmentName",
+      title: "Job Types",
+      dataIndex: "jobTypeName",
       width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.departmentName}</p>),
+      render: (text, render)=>(<p>{render.jobTypeName}</p>),
     },
     {
       title: "Action",
@@ -434,17 +434,17 @@ const Department = () => {
   });
   return (
     <>
-      <section className={styled.heading}>Departments</section>
+      <section className={styled.heading}> Job Type</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={type}
-          onChange={(e) => setType(e.target.value)}
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={type === ""}
+          disabled={jobType === ""}
           type="text"
           onClick={addItem}
         >
@@ -471,4 +471,4 @@ const Department = () => {
     </>
   );
 };
-export default Department;
+export default JobType;

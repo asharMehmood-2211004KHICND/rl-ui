@@ -47,7 +47,7 @@ const EditableCell = ({
     </td>
   );
 };
-const Department = () => {
+const Degree = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
   const [type, setType] = useState("");
@@ -57,7 +57,7 @@ const Department = () => {
 
     const fetchData = ()=>{
       fetch(
-        `${BaseURL}/department/all`
+        `${BaseURL}/education/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -95,7 +95,7 @@ const Department = () => {
   const edit = (record) => {
     
     form.setFieldsValue({
-      departmentName:record.departmentName,
+      educationName:record.educationName,
       ...record,
     });
 
@@ -122,19 +122,19 @@ const Department = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          departmentName: row.departmentName,
+          educationName: row.educationName,
           // ...row,
         });
         
 
         fetch(
-          `${BaseURL}/department/update/${key}`,
+          `${BaseURL}/education/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({departmentName: row.departmentName}),
+            body: JSON.stringify({educationName: row.educationName}),
           },
     
           {
@@ -185,13 +185,13 @@ const Department = () => {
 
   const addItem = () => { 
     const requestData = {
-      departmentName: type,
+      educationName: type,
     };
     
 
     fetch(
       // `${BaseURL}/job/all`,
-      `${BaseURL}/department/add`,
+      `${BaseURL}/education/add`,
       {
         method: "POST",
         headers: {
@@ -245,7 +245,7 @@ const Department = () => {
     //   })
     // );
     fetch(
-      `${BaseURL}/department/reactive/${record.id}`,
+      `${BaseURL}/education/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -289,7 +289,7 @@ const Department = () => {
 
     console.log(record.id)
     fetch(
-      `${BaseURL}/department/delete/${record.id}`,
+      `${BaseURL}/education/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -338,11 +338,11 @@ const Department = () => {
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Department",
-      dataIndex: "departmentName",
+      title: "Degree",
+      dataIndex: "educationName",
       width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.departmentName}</p>),
+      render: (text, render)=>(<p>{render.educationName}</p>),
     },
     {
       title: "Action",
@@ -434,7 +434,7 @@ const Department = () => {
   });
   return (
     <>
-      <section className={styled.heading}>Departments</section>
+      <section className={styled.heading}>Degree Types</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
@@ -471,4 +471,4 @@ const Department = () => {
     </>
   );
 };
-export default Department;
+export default Degree;

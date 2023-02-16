@@ -1,6 +1,5 @@
 import { Form, InputNumber, Popconfirm, Table, Typography, Input } from "antd";
 import { useEffect, useState } from "react";
-
 // import swal from 'sweetalert';
 import {
   faTrash,
@@ -10,6 +9,10 @@ import swal from "sweetalert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconButton } from "@mui/material";
 import styled from "./Demo.module.css";
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
+
 const EditableCell = ({
   editing,
   dataIndex,
@@ -44,17 +47,17 @@ const EditableCell = ({
     </td>
   );
 };
-const TechnicalSkills = () => {
+const Location = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [technicalSkill, setTechnicalSkill] = useState("");
+  const [jobType, setJobType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/technicalskill/all`
+        `${BaseURL}/location/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -63,7 +66,7 @@ const TechnicalSkills = () => {
         return await response.json()
       })
       .then((data) => {
-        data = data.map(d=>{return {...d, key: d.id}})
+        data = data.map((d, i)=>{return {...d, index:i+1, key: d.id}})
         setData(data);
         // console.log(data);
       })
@@ -90,8 +93,9 @@ const TechnicalSkills = () => {
 
   const isEditing = (record) => record.key === editingKey;
   const edit = (record) => {
+    
     form.setFieldsValue({
-      technicalSkill:record.technicalSkill,
+      locationName:record.locationName,
       ...record,
     });
 
@@ -118,20 +122,19 @@ const TechnicalSkills = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          technicalSkill: row.technicalSkill,
+          locationName: row.locationName,
           // ...row,
         });
         
-        console.log(newData);
 
         fetch(
-          `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/technicalskill/update/${key}`,
+          `${BaseURL}/location/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({technicalSkill: row.technicalSkill}),
+            body: JSON.stringify({locationName: row.locationName}),
           },
     
           {
@@ -150,7 +153,7 @@ const TechnicalSkills = () => {
           .then((response) => {
             setData(newData)
             setEditingKey("");
-            // setTechnicalSkill("");
+            // setEducation("");
           })
           .catch((err) => {
             if(err.Error>400){
@@ -177,20 +180,18 @@ const TechnicalSkills = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, setTechnicalSkill]);
+    setData([...data, jobType]);
   };
-
-
 
   const addItem = () => { 
     const requestData = {
-      technicalSkill: technicalSkill,
+      locationName: jobType,
     };
     
 
     fetch(
-      // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/technicalskill/add`,
+      // `${BaseURL}/job/all`,
+      `${BaseURL}/location/add`,
       {
         method: "POST",
         headers: {
@@ -213,9 +214,9 @@ const TechnicalSkills = () => {
         return response.json()
       })
       .then((response) => {
-        response ={ ...response, key: response.id };
+        response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setTechnicalSkill("");
+        setJobType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -244,7 +245,7 @@ const TechnicalSkills = () => {
     //   })
     // );
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/technicalskill/reactive/${record.id}`,
+      `${BaseURL}/location/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -286,8 +287,9 @@ const TechnicalSkills = () => {
 
   const handleDeleteJob = (record) => {
 
+    console.log(record.id)
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/technicalskill/delete/${record.id}`,
+      `${BaseURL}/location/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -329,18 +331,18 @@ const TechnicalSkills = () => {
   const columns = [
     {
       title: "#",
-      dataIndex: "id",
+      dataIndex: "index",
       width: "30%",
       editable: false,
-      sorter: (a, b) => a.id - b.id,
+      sorter: (a, b) => a.index - b.index,
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Technical",
-      dataIndex: "technicalSkill",
-      width: "38%",
+      title: "Location",
+      dataIndex: "locationName",
+      width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.technicalSkill}</p>),
+      render: (text, render)=>(<p>{render.locationName}</p>),
     },
     {
       title: "Action",
@@ -382,7 +384,7 @@ const TechnicalSkills = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleActiceJob}
+                //   onClick={handleActiceJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon 
@@ -400,7 +402,7 @@ const TechnicalSkills = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleDeleteJob}
+                //   onClick={handleDeleteJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon
@@ -432,17 +434,17 @@ const TechnicalSkills = () => {
   });
   return (
     <>
-      <section className={styled.heading}> Technical Skills </section>
+      <section className={styled.heading}>Locations</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={technicalSkill}
-          onChange={(e) => setTechnicalSkill(e.target.value)}
+          value={jobType}
+          onChange={(e) => setJobType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={technicalSkill === ""}
+          disabled={jobType === ""}
           type="text"
           onClick={addItem}
         >
@@ -469,4 +471,4 @@ const TechnicalSkills = () => {
     </>
   );
 };
-export default TechnicalSkills;
+export default Location;

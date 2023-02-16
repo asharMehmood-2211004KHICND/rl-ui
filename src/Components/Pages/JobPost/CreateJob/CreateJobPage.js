@@ -68,20 +68,21 @@ const CreateJobPage = () => {
   
   const travellingOptions = ["Yes", "No", "MayBe "];
 
+
+
   const [departmentOptions, setDepartmentOptions] = useState([])
-
-  // let degreeOptions = ["BE", "BS", "MS"];
-
   const [degreeOptions, setDegreeOptions] = useState([])
+  const [employmentCategoriesOptions, setEmploymentCategoriesOptions] = useState([])
+  // let employmentCategoriesOptions = [
+  //   "Part Time",
+  //   "Full Time",
+  //   "Contract Base",
+  //   "Remote",
+  //   "Onsite",
+  //   "Internship",
+  // ];
 
-  let employmentCategoriesOptions = [
-    "Part Time",
-    "Full Time",
-    "Contract Base",
-    "Remote",
-    "Onsite",
-    "Internship",
-  ];
+
 
   // let softSkillsOptions = [
   //   "Communication",
@@ -207,7 +208,7 @@ const CreateJobPage = () => {
   // ];
   const [technicalskillsOptions, setTechnicalskillsOptions] = useState([])
 
-  // const benefitsAndPerksOptions = [
+  // const benefitsOptions = [
   //   "Competitive salary",
   //   "Performance bonuses",
   //   "Stock options",
@@ -261,12 +262,31 @@ const CreateJobPage = () => {
   //   "Sponsored community service opportunities",
   // ];
 
-  const [benefitsAndPerksOptions, setBenefitsAndPerksOptions] = useState([])
+  const [benefitsOptions, setBenefitsOptions] = useState([])
+  const [perksOptions, setPerksOptions] = useState([])
 
-  let locationOptions = ["Karachi", "Lahore", "Islamabad"];
-
+  // let locationOptions = ["Karachi", "Lahore", "Islamabad"];
+const [locationOptions, setLocationOptions] = useState([])
 
   useEffect(()=>{
+
+    
+    fetch(`${BaseURL}/jobType/all`)
+    .then( async (response) =>{
+      if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+        return await response.json()}
+        )
+    .then((data) => {
+              data = data.filter(d=>d.active)
+      
+      data = data.map(d=>d.jobTypeName)
+      setEmploymentCategoriesOptions(data);
+    })
+    .catch((err) => {
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+      else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+    });
+
 
     fetch(`${BaseURL}/department/all`)
     .then( async (response) =>{
@@ -274,11 +294,13 @@ const CreateJobPage = () => {
         return await response.json()}
         )
     .then((data) => {
+              data = data.filter(d=>d.active)
+      
       data = data.map(d=>d.departmentName)
       setDepartmentOptions(data);
     })
     .catch((err) => {
-      if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
       else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
     });
 
@@ -288,13 +310,16 @@ const CreateJobPage = () => {
           return await response.json()}
           )
       .then((data) => {
-        data = data.map(d=>d.benefitPerks)
-        setBenefitsAndPerksOptions(data);
+              data = data.filter(d=>d.active)
+        
+        data = data.map(d=>d.benefitsName)
+        setBenefitsOptions(data);
       })
       .catch((err) => {
-        if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+        if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
         else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
       });
+
 
       fetch(`${BaseURL}/education/all`)
         .then( async (response) =>{
@@ -302,11 +327,13 @@ const CreateJobPage = () => {
             return await response.json()}
             )
         .then((data) => {
-          data = data.map(d=>d.education)
+              data = data.filter(d=>d.active)
+          
+          data = data.map(d=>d.educationName)
           setDegreeOptions(data);
         })
         .catch((err) => {
-          if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+          if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
           else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
         });
 
@@ -316,35 +343,62 @@ const CreateJobPage = () => {
               return await response.json()}
               )
           .then((data) => {
-            data = data.map(d=>d.softSkill) 
+              data = data.filter(d=>d.active)
+            
+            data = data.map(d=>d.softSkillName) 
             setSoftSkillsOptions(data);
           })
           .catch((err) => {
-            if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+            if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
             else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
           });
 
-          fetch(`${BaseURL}/technicalskill/all`)
+          fetch(`${BaseURL}/technicalSkill/all`)
             .then( async (response) =>{
               if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
                 return await response.json()}
                 )
             .then((data) => {
-              data = data.map(d=>d.technicalSkill) 
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.technicalSkillName) 
               setTechnicalskillsOptions(data);
             })
             .catch((err) => {
-              if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
               else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
             });
 
+            fetch(`${BaseURL}/location/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.locationName) 
+              setLocationOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
 
-            console.log(degreeOptions)
-            console.log(departmentOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(softSkillsOptions)
-            console.log(technicalskillsOptions)
+            fetch(`${BaseURL}/perks/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              data = data.map(d=>d.perksName) 
+              setPerksOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
   },[])
 
 
@@ -374,25 +428,25 @@ const CreateJobPage = () => {
 
     let requestData = {
       title: jobTitle,
-      department: { id: 1, departmentName: department },
-      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
+      departments: { id: 1, departmentName: department },
+      jobTypes: employmentCategories.map(m => {return {jobTypeName: m} }), // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
-      location: location,
+      locations:{id:1, locationName: location},
       softSkills: softskills.map((ss) => {
-        return { softSkill: ss };
+        return { softSkillName: ss };
       }),
       technicalSkills: technicalskills.map((ts) => {
-        return { technicalSkill: ts };
+        return { technicalSkillName: ts };
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
       responsibilities: selectedResponsibilites,
       educations: degrees.map((edu) => {
-        return { education: edu };
+        return { educationName: edu };
       }),
-      benefitPerkss: Benefits.map((pb) => {
-        return { benefitPerks: pb };
+      benefits: Benefits.map((pb) => {
+        return { benefitsName: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
@@ -415,7 +469,10 @@ const CreateJobPage = () => {
     )
       .then((response) => {
         if (!(response.status >= 200 && response.status < 300)) {
-          throw new Error(response.status);
+          const error = new Error(response.statusText);
+          error.status = response.status;
+          throw error;
+
         }
         return response.json();
       })
@@ -447,19 +504,20 @@ const CreateJobPage = () => {
         navigate("/job/all");
       })
       .catch((err) => {
-        if (err.Error > 400) {
+        if (err.status >= 400 && err.status < 500) {
           swal({
-            title: "Server Down",
+            title: "Invalid Data",
             icon: "error",
           });
-        } else if (err.Error > 299) {
+        } else if (err.status >= 500) {
           swal({
-            title: "Server Busy",
+            title: "Server Down",
             icon: "error",
           });
         }
         setButtonText("SUBMIT");
         setButtonDisable(false);
+        console.log(err.status)
       });
   };
 
@@ -598,7 +656,7 @@ const CreateJobPage = () => {
                 <h4 className={styled.heading10}>Benefits</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={benefitsOptions}
                   selected={Benefits}
                   setSelected={setBenefits}
                 ></MultiSelectDropDown>
@@ -607,7 +665,7 @@ const CreateJobPage = () => {
                 <h4 className={styled.heading10}>Perks</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={perksOptions}
                   selected={Perks}
                   setSelected={setPerks}
                 ></MultiSelectDropDown>
