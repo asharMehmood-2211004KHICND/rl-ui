@@ -55,16 +55,14 @@ export default function SideBar() {
 					<div className="sideBarTitle">Other Links</div>
 
 					<ul className="sideBarList">
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Job Types</Link></li>
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Soft Skills</Link></li>
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Technical Skills</Link></li>
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="/admin/education">Departments</Link></li>
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="/admin/education">Degree Types</Link></li>
-						<li className="sideBarListItem"><HomeIcon className="menuIcon" /><Link to="">Locations</Link></li>
-
-						{/* <li className="sideBarListItem"><QueuePlayNextIcon className="menuIcon" /></li>
-						<li className="sideBarListItem"><TodayIcon className="menuIcon" />Skills</li>
-						<li className="sideBarListItem"><GroupAddIcon className="menuIcon" />Questions</li> */}
+						<li><NavLink className="sideBarListItem" to="/admin/jobType"><AssignmentIndIcon className="menuIcon" />Job Types</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/s-skill"><AssignmentIndIcon className="menuIcon" />Soft Skills</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/t-skill"><AssignmentIndIcon className="menuIcon" />Technical Skills</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/department"><AssignmentIndIcon className="menuIcon" />Departments</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/education"><AssignmentIndIcon className="menuIcon" />Degree Types</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/location"><AssignmentIndIcon className="menuIcon" />Locations</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/benefit"><AssignmentIndIcon className="menuIcon" />Benefit List</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/admin/perks"><AssignmentIndIcon className="menuIcon" />Perks List</NavLink></li>
 					</ul>
 
 

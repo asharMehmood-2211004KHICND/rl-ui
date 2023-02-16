@@ -10,7 +10,7 @@ import logo from '../../../../Header/image.png'
 export default function Job({ job }) {
   const isNew = Date.now() - Date.parse(job.postDate) < 604800000;
   // const companyLogo = "https://picsum.photos/200";
-  
+  console.log(job);
   // const momentDate = moment(job.postDate);
 
   return (
@@ -33,11 +33,11 @@ export default function Job({ job }) {
             </h3>
             <p style={{ margin: 0, fontSize: 12 }}>{job.companyName}</p>
             <p style={{ margin: 0, fontSize: 12 }}>
-              {job.location} | {moment(job.postDate).fromNow()}
+              {job.locations.locationName} | {moment(job.postDate).fromNow()}
             </p>
             <div className={styled.locationDate}>
-              {job.employementCategory?.map((category,i)=>
-                { return <Tag  className={styled.categoryTag} key={i}>{category}</Tag>}
+              {job.jobTypes?.map((category,i)=>
+                { return <Tag  className={styled.categoryTag} key={i}>{category.jobTypeName}</Tag>}
               )}
             </div>
             <div

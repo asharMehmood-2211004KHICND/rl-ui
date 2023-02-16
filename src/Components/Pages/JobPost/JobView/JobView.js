@@ -7,7 +7,7 @@ const JobView = ({
   department,
   responsibilities,
   education,
-  employement,
+  employements,
   softskills,
   technicalskills,
   benefits,
@@ -32,7 +32,7 @@ const JobView = ({
           <TableJob head={"Department:"} body={department} />
           <TableJob head={"Responsibilities:"} body={responsibilities} />
           <TableJob head={"Education:"} body={education} />
-          <TableJob head={"Employment:"} body={employement} />
+          <TableJob head={"Employment:"} body={employements} />
           <TableJob head={"Soft Skills:"} body={softskills} />
           <TableJob head={"Technical Skills:"} body={technicalskills} />
           <TableJob head={"Benefits:"} body={benefits} />

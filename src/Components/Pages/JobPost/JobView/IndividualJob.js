@@ -13,6 +13,7 @@ function IndividualJob() {
     const {state} = useLocation();
     const [data, setData] = useState(state);
 
+    console.log(data);
     useEffect(() => {  
       if(!data){
       fetch(
@@ -71,14 +72,14 @@ function IndividualJob() {
     <JobView 
       title={data?.title}
       jobDescription={data?.description}
-      department={data?.department.departmentName}
+      department={data?.departments.departmentName}
       responsibilities={data?.responsibilities}
-      education={data?.educations.map(res=>res.education)}
-      employement={data?.employementCategory}
-      softskills={data?.softSkills.map(res=>res.softSkill)}
-      technicalskills={data?.technicalSkills.map(res=>res.technicalSkill)}
-      benefits={data?.benefitPerkss.map(res=>res.benefitPerks)}
-      location={data?.location}
+      education={data?.educations.map(res=>res.educationName)}
+      employements={data?.jobTypes.map(res=>res.jobTypeName)}
+      softskills={data?.softSkills.map(res=>res.softSkillName)}
+      technicalskills={data?.technicalSkills.map(res=>res.technicalSkillName)}
+      benefits={data?.benefits.map(res=>res.benefitsName)}
+      location={data?.locations.locationName}
       experience={data?.experienceLevel}
       vacancies={data?.vacancyCount}
       gender={data?.gender}
