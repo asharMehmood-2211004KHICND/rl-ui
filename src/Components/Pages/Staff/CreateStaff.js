@@ -285,18 +285,7 @@ const CreateStaff = () => {
                                 </div>
                                 {errors.email && <p className={styles.error}>{errors.email}</p>}
                             </div>
-                            <div className={styles.row}>
-                                <div className={styles.column}>
-                                    <label>Designation:</label>
-                                    <select value={designation} onChange={handleDesignation} className={`${styles.halfSize} ${styles.select}`}>
-                                        <option value="">Select Designation</option>
-                                        {designationOption.map((option) => (
-                                            <option className={styles.option} value={option.value}>{option.label}</option>
-                                        ))}
-                                    </select>
-                                </div>
-                                {errors.email && <p className={styles.error}>{errors.email}</p>}
-                            </div>
+                            
                         </div>
                         <div className={styles.form_column}>
                             <div className={styles.row}>
@@ -306,11 +295,11 @@ const CreateStaff = () => {
                                 </div>
                                 {errors.last_name && <p className={styles.error}>{errors.last_name}</p>}
                             </div>
-                            <div className={styles.row}>
+                            {/* <div className={styles.row}>
                                 <div className={styles.picColumn}>
                                     <img className={styles.usericon} src={Male} />
                                 </div>
-                            </div>
+                            </div> */}
                             <div className={styles.row}>
                                 <div className={styles.column}>
                                     <label className={styles.dob_label}>Date of Birth:</label>
@@ -324,6 +313,18 @@ const CreateStaff = () => {
                                     <select value={role} onChange={handleRole} className={`${styles.halfSize} ${styles.select}`}>
                                         <option value="">Select Roles</option>
                                         {roleOptions.map((option) => (
+                                            <option className={styles.option} value={option.value}>{option.label}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                                {errors.email && <p className={styles.error}>{errors.email}</p>}
+                            </div>
+                            <div className={styles.row}>
+                                <div className={styles.column}>
+                                    <label>Designation:</label>
+                                    <select value={designation} onChange={handleDesignation} className={`${styles.halfSize} ${styles.select}`}>
+                                        <option value="">Select Designation</option>
+                                        {designationOption.map((option) => (
                                             <option className={styles.option} value={option.value}>{option.label}</option>
                                         ))}
                                     </select>

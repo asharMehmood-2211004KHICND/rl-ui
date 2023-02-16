@@ -20,13 +20,13 @@ export const MultiSelectDropDown = ({
 
   return (
 <div
- className="MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt"
+//  className="MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt"
  >
   <Select
-    // className="multiSelectStyled"
+    className="multiSelectStyled"
     // className={styled.Select}
     mode="multiple"
-    style={{ width: "100%" }}
+    // style={{ width: "100%" }}
     placeholder="Please select"
     value={selected}
     onChange={handleSelect}

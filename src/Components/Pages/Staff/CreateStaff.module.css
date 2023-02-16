@@ -12,7 +12,7 @@
 
 .form_row {
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
 }
 
 .form_column {
@@ -67,7 +67,7 @@
   background-color: #f0f0f0;
   outline: none;
   border: 1px solid #6270b1;
-  width: 420px;
+  /* width: 420px; */
 }
 
 .option {
@@ -76,7 +76,7 @@
 
 .btnDiv{
   display: flex;
-  justify-content:center;
+  /* justify-content:center; */
   margin-top: 20px;
 }
 
@@ -116,3 +116,14 @@
     width: 100%;
   }
 }
+/* 
+    box-sizing: border-box;
+    padding: 10px 10px 10px 30px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    background-color: #F0F0F0;
+    outline: none;
+    border: 1px solid #6270B1;
+    width: 100%;
+    margin: 5px;
+*/
