@@ -143,30 +143,32 @@ const JobsList = ({jobsProp}) => {
   const handleCreateClone = job=>{
     
     const {id , ...data} = job; 
+    console.log(job)
     const requestData = {
-      title: data.title,
-      department: data.department,
-      employementCategory: data.employementCategory, // ["FULL_TIME","ONLINE"],
-      gender: data.gender, //["MALE","FEMALE"],
-      traveling: data.traveling,
-      location: data.location,
-      softSkills: data.softSkills.map((ss) => {
-        return  ss.softSkill ;
-      }),
-      technicalSkills: data.technicalSkills.map((ts) => {
-        return  ts.technicalSkill ;
-      }),
-      closeDate: data.closeDate, //"2023-01-30"
-      description: data.description,
-      responsibilities: data.responsibilities,
-      educations: data.educations.map((edu) => {
-        return edu.education;
-      }),
-      benefitPerkss: data.benefitPerkss.map((pb) => {
-        return  pb.benefitPerks;
-      }),
-      experienceLevel: parseInt(data.experienceLevel),
-      vacancyCount: data.vacancyCount,
+      ...data
+      // title: data.title,
+      // departments: data.department,
+      // jobTypes: data.employementCategory, // ["FULL_TIME","ONLINE"],
+      // gender: data.gender, //["MALE","FEMALE"],
+      // traveling: data.traveling,
+      // location: data.location,
+      // softSkills: data.softSkills.map((ss) => {
+      //   return  ss.softSkill ;
+      // }),
+      // technicalSkills: data.technicalSkills.map((ts) => {
+      //   return  ts.technicalSkill ;
+      // }),
+      // closeDate: data.closeDate, //"2023-01-30"
+      // description: data.description,
+      // responsibilities: data.responsibilities,
+      // educations: data.educations.map((edu) => {
+      //   return edu.education;
+      // }),
+      // benefitPerkss: data.benefitPerkss.map((pb) => {
+      //   return  pb.benefitPerks;
+      // }),
+      // experienceLevel: parseInt(data.experienceLevel),
+      // vacancyCount: data.vacancyCount,
     };
 
     fetch(
@@ -279,10 +281,10 @@ const JobsList = ({jobsProp}) => {
   {
     title: 'Department',
     width:200,
-    dataIndex: 'department',
+    dataIndex: 'departments',
     key: 'type',
     sorter: (a, b) => a.department.localeCompare(b.department),
-    render: (text, record) => (<p> {record.department.departmentName}</p>)
+    render: (text, record) => (<p> {record.departments.departmentName}</p>)
     // sorter: true,
   }, {
     title: 'Applied Candidates',

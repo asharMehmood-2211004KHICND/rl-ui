@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import JobView from './JobView';
 import swal from "sweetalert";
 import AppliedCandidates from './AppliedCandidates';
+import styled from "./jobview.module.css";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
@@ -13,6 +14,7 @@ function IndividualJob() {
     const {state} = useLocation();
     const [data, setData] = useState(state);
 
+    console.log(data);
     useEffect(() => {  
       if(!data){
       fetch(
@@ -66,28 +68,33 @@ function IndividualJob() {
     , [])
 
   return (
-  <>
+  <div className={styled.individualParentDiv}>
     {/* // <div>IndividualJob</div> */}
     <JobView 
       title={data?.title}
       jobDescription={data?.description}
-      department={data?.department.departmentName}
+      department={data?.departments.departmentName}
       responsibilities={data?.responsibilities}
-      education={data?.educations.map(res=>res.education)}
-      employement={data?.employementCategory}
-      softskills={data?.softSkills.map(res=>res.softSkill)}
-      technicalskills={data?.technicalSkills.map(res=>res.technicalSkill)}
-      benefits={data?.benefitPerkss.map(res=>res.benefitPerks)}
-      location={data?.location}
+      education={data?.educations.map(res=>res.educationName)}
+      employements={data?.jobTypes.map(res=>res.jobTypeName)}
+      softskills={data?.softSkills.map(res=>res.softSkillName)}
+      technicalskills={data?.technicalSkills.map(res=>res.technicalSkillName)}
+      benefits={data?.benefits.map(res=>res.benefitsName)}
+      location={data?.locations.locationName}
       experience={data?.experienceLevel}
       vacancies={data?.vacancyCount}
       gender={data?.gender}
       travelling={data?.traveling}
       closingdate={data?.closeDate.substring(0, 10)}
-    />
+    >
+      <div>
+        <h1 style={{textAlign:"center"}} >Job View</h1>
+      </div>
+
+    </JobView>
     <AppliedCandidates JobData={data}/>
 
-  </>  
+  </div>  
   )
 }  
 

@@ -32,9 +32,16 @@ import IndividualJobCandidate from './Components/Pages/JobPost/Candidate/JobView
 import CandidateAppliedJobs from './Components/Pages/CandidateAppliedJobs/CandidateAppliedJobs';
 import CandidateInterviewSchedule from './Components/Pages/CandidateInterviewSchedule/CandidateInterviewSchedule';
 import InterviewerInterviewSchedule from './Components/Pages/InterviewerInterviewSchedule/InterviewerInterviewSchedule';
-import Education from './Components/Pages/JobPost/DropDownComponents/Education';
 import CandidateFeedback from './Components/Pages/CandidateFeedback/CandidateFeedback'
 import InterviewerFeedback from './Components/Pages/InterviewerFeedback/InterviewerFeedback'
+import Degree from './Components/Pages/JobPost/DropDownComponents/Degree';
+import Department from './Components/Pages/JobPost/DropDownComponents/Department';
+import TechnicalSkill from './Components/Pages/JobPost/DropDownComponents/TechnicalSkill';
+import SoftSkill from './Components/Pages/JobPost/DropDownComponents/SoftSkill';
+import Benefit from './Components/Pages/JobPost/DropDownComponents/Benefit';
+import JobType from './Components/Pages/JobPost/DropDownComponents/JobType';
+import Location from './Components/Pages/JobPost/DropDownComponents/Location';
+import Perks from './Components/Pages/JobPost/DropDownComponents/Perks';
 import CandidateUsers from './Components/Pages/Users/CandidateUsers';
 import StaffUsers from './Components/Pages/Users/StaffUsers';
 
@@ -70,9 +77,17 @@ function App() {
 				<Route path="/my-interview-schedule" element={<PrivateRoute><CandidateInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/interview-schedule" element={<PrivateRoute><InterviewerInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>
-				<Route path='/admin/education' element={<PrivateRoute><Education/></PrivateRoute>} ></Route>
 				<Route path='/candidate-feedback/:interviewId' element={<PrivateRoute><CandidateFeedback/></PrivateRoute>} ></Route>
 				<Route path='/interviewer-feedback/:interviewId' element={<PrivateRoute><InterviewerFeedback/></PrivateRoute>} ></Route>
+				<Route path='/admin/education' element={<PrivateRoute><Degree/></PrivateRoute>} ></Route>
+				<Route path='/admin/department' element={<PrivateRoute><Department/></PrivateRoute>} ></Route>
+				<Route path='/admin/t-skill' element={<PrivateRoute>< TechnicalSkill/></PrivateRoute>} ></Route>
+				<Route path='/admin/s-skill' element={<PrivateRoute>< SoftSkill/></PrivateRoute>} ></Route>
+				<Route path='/admin/benefit' element={<PrivateRoute><  Benefit /></PrivateRoute>} ></Route>
+				<Route path='/admin/jobType' element={<PrivateRoute><  JobType /></PrivateRoute>} ></Route>
+				<Route path='/admin/location' element={<PrivateRoute><  Location /></PrivateRoute>} ></Route>
+				<Route path='/admin/perks' element={<PrivateRoute><Perks/></PrivateRoute>} ></Route>
+				
 				<Route path='/users/candidates' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
 				<Route path='/users/staff' element={<PrivateRoute><StaffUsers/></PrivateRoute>} ></Route>
 			</Routes>

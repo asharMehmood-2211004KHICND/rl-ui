@@ -9,6 +9,10 @@ import swal from "sweetalert";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IconButton } from "@mui/material";
 import styled from "./Demo.module.css";
+
+const BaseURL = process.env.REACT_APP_API_URL1;
+
+
 const EditableCell = ({
   editing,
   dataIndex,
@@ -43,17 +47,17 @@ const EditableCell = ({
     </td>
   );
 };
-const Education = () => {
+const Department = () => {
   const [form] = Form.useForm();
   const [data, setData] = useState([]);
-  const [education, setEducation] = useState("");
+  const [type, setType] = useState("");
   const [editingKey, setEditingKey] = useState("");
 
   useEffect(()=>{
 
     const fetchData = ()=>{
       fetch(
-        `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/education/all`
+        `${BaseURL}/department/all`
       )
       .then( async (response) =>{
         if(!(response.status>=200 && response.status<300) ){
@@ -62,7 +66,7 @@ const Education = () => {
         return await response.json()
       })
       .then((data) => {
-        data = data.map(d=>{return {...d, key: d.id}})
+        data = data.map((d, i)=>{return {...d, index:i+1, key: d.id}})
         setData(data);
         // console.log(data);
       })
@@ -89,8 +93,9 @@ const Education = () => {
 
   const isEditing = (record) => record.key === editingKey;
   const edit = (record) => {
+    
     form.setFieldsValue({
-      education:record.education,
+      departmentName:record.departmentName,
       ...record,
     });
 
@@ -117,20 +122,19 @@ const Education = () => {
         const item = newData[index];
         newData.splice(index, 1, {
           ...item,
-          education: row.education,
+          departmentName: row.departmentName,
           // ...row,
         });
         
-        console.log(newData);
 
         fetch(
-          `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/education/update/${key}`,
+          `${BaseURL}/department/update/${key}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify({education: row.education}),
+            body: JSON.stringify({departmentName: row.departmentName}),
           },
     
           {
@@ -176,20 +180,18 @@ const Education = () => {
   };
   //////////////////////////////////////////////////////////////////////
   const handleChange = () => {
-    setData([...data, setEducation]);
+    setData([...data, type]);
   };
-
-
 
   const addItem = () => { 
     const requestData = {
-      education: education,
+      departmentName: type,
     };
     
 
     fetch(
-      // `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/job/all`,
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/education/add`,
+      // `${BaseURL}/job/all`,
+      `${BaseURL}/department/add`,
       {
         method: "POST",
         headers: {
@@ -212,9 +214,9 @@ const Education = () => {
         return response.json()
       })
       .then((response) => {
-        response ={ ...response, key: response.id };
+        response ={ ...response, index:data.length+1, key: response.id };
         setData([...data, response]);
-        setEducation("");
+        setType("");
       })
       .catch((err) => {
         if(err.Error>400){
@@ -243,7 +245,7 @@ const Education = () => {
     //   })
     // );
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/education/reactive/${record.id}`,
+      `${BaseURL}/department/reactive/${record.id}`,
       {
         method: "POST",
         headers: {
@@ -285,8 +287,9 @@ const Education = () => {
 
   const handleDeleteJob = (record) => {
 
+    console.log(record.id)
     fetch(
-      `http://jobserviceelasticservice-env.eba-nivmzfat.ap-south-1.elasticbeanstalk.com/education/delete/${record.id}`,
+      `${BaseURL}/department/delete/${record.id}`,
       {
         method: "DELETE",
         headers: {
@@ -328,18 +331,18 @@ const Education = () => {
   const columns = [
     {
       title: "#",
-      dataIndex: "id",
+      dataIndex: "index",
       width: "30%",
       editable: false,
-      sorter: (a, b) => a.id - b.id,
+      sorter: (a, b) => a.index - b.index,
       defaultSortOrder: "ascend" 
     },
     {
-      title: "Degree",
-      dataIndex: "education",
-      width: "38%",
+      title: "Department",
+      dataIndex: "departmentName",
+      width: "30%",
       editable: true,
-      render: (text, render)=>(<p>{render.education}</p>),
+      render: (text, render)=>(<p>{render.departmentName}</p>),
     },
     {
       title: "Action",
@@ -381,7 +384,7 @@ const Education = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleActiceJob}
+                //   onClick={handleActiceJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon 
@@ -399,7 +402,7 @@ const Education = () => {
                 cancelText="No"
               >
                 <IconButton
-                  onClick={handleDeleteJob}
+                //   onClick={handleDeleteJob}
                   className={styled.DeleteBtn}
                 >
                   <FontAwesomeIcon
@@ -431,17 +434,17 @@ const Education = () => {
   });
   return (
     <>
-      <section className={styled.heading}> Degree List</section>
+      <section className={styled.heading}>Departments</section>
       <div className={styled.textbox}>
         <input
           className={styled.text}
           type={styled.textbar}
-          value={education}
-          onChange={(e) => setEducation(e.target.value)}
+          value={type}
+          onChange={(e) => setType(e.target.value)}
         />
         <button
           className={styled.button}
-          disabled={education === ""}
+          disabled={type === ""}
           type="text"
           onClick={addItem}
         >
@@ -468,4 +471,4 @@ const Education = () => {
     </>
   );
 };
-export default Education;
+export default Department;

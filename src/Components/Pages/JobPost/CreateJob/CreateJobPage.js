@@ -59,211 +59,50 @@ const CreateJobPage = () => {
     "19 Year",
     "20 Year",
   ];
+
   const experienceLevelOptions = [
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20,
   ];
+
   const genderOptions = ["Male", "Female", "Anyone"];
+  
   const travellingOptions = ["Yes", "No", "MayBe "];
 
+
+
   const [departmentOptions, setDepartmentOptions] = useState([])
-
-  // let degreeOptions = ["BE", "BS", "MS"];
-
   const [degreeOptions, setDegreeOptions] = useState([])
-
-  let employmentCategoriesOptions = [
-    "Part Time",
-    "Full Time",
-    "Contract Base",
-    "Remote",
-    "Onsite",
-    "Internship",
-  ];
-
-  // let softSkillsOptions = [
-  //   "Communication",
-  //   "Teamwork",
-  //   "Adaptability",
-  //   "Problem-solving",
-  //   "Critical thinking",
-  //   "Time management",
-  //   "Leadership",
-  //   "Creativity",
-  //   "Interpersonal skills",
-  //   "Conflict resolution",
-  //   "Active listening",
-  //   "Emotional intelligence",
-  //   "Negotiation",
-  //   "Stress management",
-  //   "Goal setting",
-  //   "Organization",
-  //   "Presentation skills",
-  //   "Decision making",
-  //   "Customer service",
-  //   "Positive attitude",
-  // ];
+  const [employmentCategoriesOptions, setEmploymentCategoriesOptions] = useState([])
 
   const [softSkillsOptions, setSoftSkillsOptions] = useState([])
-  // const technicalskillsOptions = [
-  //   "JavaScript",
-  //   "Java",
-  //   "Python",
-  //   "C++",
-  //   "C#",
-  //   "PHP",
-  //   "Ruby",
-  //   "SQL",
-  //   "HTML",
-  //   "CSS",
-  //   "React",
-  //   "Angular",
-  //   "Vue.js",
-  //   "Node.js",
-  //   "Express",
-  //   "MongoDB",
-  //   "PostgreSQL",
-  //   "MySQL",
-  //   "Redis",
-  //   "AWS",
-  //   "Docker",
-  //   "Kubernetes",
-  //   "Git",
-  //   "GitHub",
-  //   "Bitbucket",
-  //   "Agile methodologies",
-  //   "Scrum",
-  //   "Kanban",
-  //   "JIRA",
-  //   "Trello",
-  //   "RESTful APIs",
-  //   "GraphQL",
-  //   "Microservices",
-  //   "Unit testing",
-  //   "Integration testing",
-  //   "Automated testing",
-  //   "Load testing",
-  //   "Security testing",
-  //   "Object-Oriented Programming (OOP)",
-  //   "Functional Programming",
-  //   "Design Patterns",
-  //   "Architecture design",
-  //   "Data structures",
-  //   "Algorithms",
-  //   "Continuous Integration (CI)",
-  //   "Continuous Deployment (CD)",
-  //   "Automated deployment",
-  //   "Automated scaling",
-  //   "Continuous monitoring",
-  //   "Debugging",
-  //   "Troubleshooting",
-  //   "Performance optimization",
-  //   "Code reviews",
-  //   "Refactoring",
-  //   "Code versioning",
-  //   "Code documentation",
-  //   "Cloud computing",
-  //   "Virtualization",
-  //   "Infrastructure as Code (IaC)",
-  //   "Network security",
-  //   "Firewall management",
-  //   "Encryption",
-  //   "Machine learning",
-  //   "Artificial intelligence",
-  //   "Natural language processing (NLP)",
-  //   "Computer vision",
-  //   "Big data",
-  //   "Data science",
-  //   "DevOps",
-  //   "IT Operations",
-  //   "IT Support",
-  //   "Project management",
-  //   "Requirements gathering",
-  //   "User experience (UX) design",
-  //   "User interface (UI) design",
-  //   "Mobile application development",
-  //   "Cross-platform development",
-  //   "Hybrid mobile development",
-  //   "Native mobile development",
-  //   "Augmented reality (AR)",
-  //   "Virtual reality (VR)",
-  //   "Game development",
-  //   "Web development",
-  //   "Backend development",
-  //   "Full-stack development",
-  //   "Software engineering",
-  //   "Software testing",
-  //   "Software quality assurance (QA)",
-  //   "Software maintenance",
-  //   "Software configuration management (SCM)",
-  //   "Software project management",
-  //   "Software release management",
-  //   "Software risk management",
-  //   "Software change management",
-  //   "Software asset management",
-  //   "Software licensing",
-  // ];
+  
   const [technicalskillsOptions, setTechnicalskillsOptions] = useState([])
 
-  // const benefitsAndPerksOptions = [
-  //   "Competitive salary",
-  //   "Performance bonuses",
-  //   "Stock options",
-  //   "Health insurance",
-  //   "Dental insurance",
-  //   "Vision insurance",
-  //   "Life insurance",
-  //   "Disability insurance",
-  //   "Paid time off (PTO)",
-  //   "Sick leave",
-  //   "Vacation time",
-  //   "Holiday pay",
-  //   "Flexible schedules",
-  //   "Remote work options",
-  //   "Work-life balance",
-  //   "Education and training opportunities",
-  //   "Certification programs",
-  //   "Career advancement opportunities",
-  //   "Mentorship programs",
-  //   "Collaborative work environment",
-  //   "Team building activities",
-  //   "Wellness programs",
-  //   "Gym memberships",
-  //   "Free snacks and beverages",
-  //   "Casual dress code",
-  //   "Corporate discounts",
-  //   "Commuter benefits",
-  //   "Parental leave",
-  //   "Family care leave",
-  //   "On-site child care",
-  //   "Pet-friendly workplace",
-  //   "Free parking or transportation reimbursement",
-  //   "Ergonomic workstations",
-  //   "Standing desks",
-  //   "Relocation assistance",
-  //   "International assignments",
-  //   "Company outings and events",
-  //   "Team bonding activities",
-  //   "Philanthropy opportunities",
-  //   "Diversity and inclusion initiatives",
-  //   "Sustainability initiatives",
-  //   "Company-sponsored sports teams",
-  //   "Free or subsidized meals",
-  //   "Break rooms with amenities",
-  //   "Collaborative workspaces",
-  //   "Standing desks",
-  //   "Nap rooms",
-  //   "Pet-friendly office policies",
-  //   "On-site massage therapy",
-  //   "Free or discounted transportation options",
-  //   "Sponsored community service opportunities",
-  // ];
 
-  const [benefitsAndPerksOptions, setBenefitsAndPerksOptions] = useState([])
+  const [benefitsOptions, setBenefitsOptions] = useState([])
+  const [perksOptions, setPerksOptions] = useState([])
 
-  let locationOptions = ["Karachi", "Lahore", "Islamabad"];
-
+const [locationOptions, setLocationOptions] = useState([])
 
   useEffect(()=>{
+
+    
+    fetch(`${BaseURL}/jobType/all`)
+    .then( async (response) =>{
+      if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+        return await response.json()}
+        )
+    .then((data) => {
+              data = data.filter(d=>d.active)
+      
+      data = data.map(d=>d.jobTypeName)
+      setEmploymentCategoriesOptions(data);
+    })
+    .catch((err) => {
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+      else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+    });
+
 
     fetch(`${BaseURL}/department/all`)
     .then( async (response) =>{
@@ -271,11 +110,13 @@ const CreateJobPage = () => {
         return await response.json()}
         )
     .then((data) => {
+              data = data.filter(d=>d.active)
+      
       data = data.map(d=>d.departmentName)
       setDepartmentOptions(data);
     })
     .catch((err) => {
-      if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+      if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
       else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
     });
 
@@ -285,13 +126,16 @@ const CreateJobPage = () => {
           return await response.json()}
           )
       .then((data) => {
-        data = data.map(d=>d.benefitPerks)
-        setBenefitsAndPerksOptions(data);
+              data = data.filter(d=>d.active)
+        
+        data = data.map(d=>d.benefitsName)
+        setBenefitsOptions(data);
       })
       .catch((err) => {
-        if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+        if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
         else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
       });
+
 
       fetch(`${BaseURL}/education/all`)
         .then( async (response) =>{
@@ -299,11 +143,13 @@ const CreateJobPage = () => {
             return await response.json()}
             )
         .then((data) => {
-          data = data.map(d=>d.education)
+              data = data.filter(d=>d.active)
+          
+          data = data.map(d=>d.educationName)
           setDegreeOptions(data);
         })
         .catch((err) => {
-          if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+          if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
           else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
         });
 
@@ -313,35 +159,62 @@ const CreateJobPage = () => {
               return await response.json()}
               )
           .then((data) => {
-            data = data.map(d=>d.softSkill) 
+              data = data.filter(d=>d.active)
+            
+            data = data.map(d=>d.softSkillName) 
             setSoftSkillsOptions(data);
           })
           .catch((err) => {
-            if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+            if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
             else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
           });
 
-          fetch(`${BaseURL}/technicalskill/all`)
+          fetch(`${BaseURL}/technicalSkill/all`)
             .then( async (response) =>{
               if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
                 return await response.json()}
                 )
             .then((data) => {
-              data = data.map(d=>d.technicalSkill) 
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.technicalSkillName) 
               setTechnicalskillsOptions(data);
             })
             .catch((err) => {
-              if(err.Error>400){ swal( {  title: "Server Down", icon: "error",});}
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
               else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
             });
 
+            fetch(`${BaseURL}/location/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              
+              data = data.map(d=>d.locationName) 
+              setLocationOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
 
-            console.log(degreeOptions)
-            console.log(departmentOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(benefitsAndPerksOptions)
-            console.log(softSkillsOptions)
-            console.log(technicalskillsOptions)
+            fetch(`${BaseURL}/perks/all`)
+            .then( async (response) =>{
+              if(!(response.status>=200 && response.status<300) ){ throw new Error(response.status);}  
+                return await response.json()}
+                )
+            .then((data) => {
+              data = data.filter(d=>d.active)
+              data = data.map(d=>d.perksName) 
+              setPerksOptions(data);
+            })
+            .catch((err) => {
+              if(err.Error>=400){ swal( {  title: "Server Down", icon: "error",});}
+              else if(err.Error>299){ swal({  title: "Server Busy",  icon: "error",});}
+            });
   },[])
 
 
@@ -371,25 +244,25 @@ const CreateJobPage = () => {
 
     let requestData = {
       title: jobTitle,
-      department: { id: 1, departmentName: department },
-      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
+      departments: { id: 1, departmentName: department },
+      jobTypes: employmentCategories.map(m => {return {jobTypeName: m} }), // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
-      location: location,
+      locations:{id:1, locationName: location},
       softSkills: softskills.map((ss) => {
-        return { softSkill: ss };
+        return { softSkillName: ss };
       }),
       technicalSkills: technicalskills.map((ts) => {
-        return { technicalSkill: ts };
+        return { technicalSkillName: ts };
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
       responsibilities: selectedResponsibilites,
       educations: degrees.map((edu) => {
-        return { education: edu };
+        return { educationName: edu };
       }),
-      benefitPerkss: Benefits.map((pb) => {
-        return { benefitPerks: pb };
+      benefits: Benefits.map((pb) => {
+        return { benefitsName: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
@@ -412,7 +285,10 @@ const CreateJobPage = () => {
     )
       .then((response) => {
         if (!(response.status >= 200 && response.status < 300)) {
-          throw new Error(response.status);
+          const error = new Error(response.statusText);
+          error.status = response.status;
+          throw error;
+
         }
         return response.json();
       })
@@ -444,19 +320,20 @@ const CreateJobPage = () => {
         navigate("/job/all");
       })
       .catch((err) => {
-        if (err.Error > 400) {
+        if (err.status >= 400 && err.status < 500) {
           swal({
-            title: "Server Down",
+            title: "Invalid Data",
             icon: "error",
           });
-        } else if (err.Error > 299) {
+        } else if (err.status >= 500) {
           swal({
-            title: "Server Busy",
+            title: "Server Down",
             icon: "error",
           });
         }
         setButtonText("SUBMIT");
         setButtonDisable(false);
+        console.log(err.status)
       });
   };
 
@@ -595,7 +472,7 @@ const CreateJobPage = () => {
                 <h4 className={styled.heading10}>Benefits</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={benefitsOptions}
                   selected={Benefits}
                   setSelected={setBenefits}
                 ></MultiSelectDropDown>
@@ -604,7 +481,7 @@ const CreateJobPage = () => {
                 <h4 className={styled.heading10}>Perks</h4>
 
                 <MultiSelectDropDown
-                  fetchedOptions={benefitsAndPerksOptions}
+                  fetchedOptions={perksOptions}
                   selected={Perks}
                   setSelected={setPerks}
                 ></MultiSelectDropDown>
