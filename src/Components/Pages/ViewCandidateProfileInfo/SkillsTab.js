@@ -21,8 +21,8 @@ export default function SkillsTab({ skillsData }) {
         text={"Skills"}
         className={''}
       /></div>
+      {skillsData.length === 0 && <div style={{ justifyContent: 'center' }} className={styles.card} >No Data</div>}
       <div style={{ margin: '20px', padding: '15px', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
-        {skillsData.length === 0 && 'No Data'}
         {skillsData.map(({ id, skill, proficiency }) => {
           const [level, color] = giveMeSkillLevel(proficiency)
           return (<div className={styles.skill}>{skill} <Tag color={color} >{level}</Tag></div>)

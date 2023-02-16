@@ -9,21 +9,24 @@
 }
 
 .navBtn {
-    width: 120px;
+    min-width: 120px;
+    font-size: 20px;
     margin: 15px;
-    padding: 7px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
-    background-color: rgb(57, 103, 255);
+    /* background-color: rgb(57, 103, 255); */
+    background-color: rgb(68, 129, 235);
     color: #fff;
     cursor: pointer;
 }
 
 .active {
-    width: 120px;
+    min-width: 120px;
+    font-size: 20px;
     background-color: #252064;
     margin: 15px;
-    padding: 7px;
+    padding: 10px;
     border: none;
     border-radius: 10px;
     color: #fff;
