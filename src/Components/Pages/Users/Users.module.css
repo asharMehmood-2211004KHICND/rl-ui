@@ -1,0 +1,57 @@
+.navBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBtn {
+    font-size: 20px;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4481eb;
+    color: #fff;
+    cursor: pointer;
+}
+
+.active {
+    font-size: 20px;
+    background-color: #252064;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.antTable th {
+    background-color: #4481eb !important;
+    color: white !important;
+    text-align: center !important;
+}
+
+.antTable td {
+    text-align: center !important;
+}
+
+.JobsTableHeading{
+    /* border: 1px solid black; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    /* justify-content: space-around; */
+}
+
+.JobsTableHeading h1{
+    color: #4481eb !important;
+    padding-right: 20px;
+    /* margin-left: 50%; */
+}
+
+.addBtn{
+    color: #4481eb;
+}

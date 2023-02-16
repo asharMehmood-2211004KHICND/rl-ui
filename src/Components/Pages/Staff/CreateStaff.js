@@ -5,6 +5,7 @@ import InputField from "../profile/InputField/InputField";
 import styles from "./CreateStaff.module.css";
 import Male from "../../images/male.png";
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
 const BaseURL = process.env.REACT_APP_API_URL2;
 
@@ -15,7 +16,7 @@ const BaseURL = process.env.REACT_APP_API_URL2;
 //   }
 
 const CreateStaff = () => {
-
+    const navigate = useNavigate()
 
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -231,6 +232,11 @@ const CreateStaff = () => {
             );
         // }
     }
+
+    const onCancel = () => {
+        navigate('/users/staff')
+    }
+
     return (
         <>
             <div className={styles.mainContainer}>
@@ -328,6 +334,7 @@ const CreateStaff = () => {
                     </div>
                     <div className={styles.btnDiv}>
                         <Button type="submit" text="Save" className={styles.saveButtonStaff}>Submit</Button>
+                        <Button onClick={onCancel} type="button" text="Save" className={styles.saveButtonStaff}>Cancel</Button>
                     </div>
                 </form>
                 {/* <form className={styles.formCreateStaff} onSubmit={onSubmit}>

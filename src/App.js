@@ -35,6 +35,8 @@ import InterviewerInterviewSchedule from './Components/Pages/InterviewerIntervie
 import Education from './Components/Pages/JobPost/DropDownComponents/Education';
 import CandidateFeedback from './Components/Pages/CandidateFeedback/CandidateFeedback'
 import InterviewerFeedback from './Components/Pages/InterviewerFeedback/InterviewerFeedback'
+import CandidateUsers from './Components/Pages/Users/CandidateUsers';
+import StaffUsers from './Components/Pages/Users/StaffUsers';
 
 
 function App() {
@@ -71,6 +73,8 @@ function App() {
 				<Route path='/admin/education' element={<PrivateRoute><Education/></PrivateRoute>} ></Route>
 				<Route path='/candidate-feedback/:interviewId' element={<PrivateRoute><CandidateFeedback/></PrivateRoute>} ></Route>
 				<Route path='/interviewer-feedback/:interviewId' element={<PrivateRoute><InterviewerFeedback/></PrivateRoute>} ></Route>
+				<Route path='/users/candidates' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
+				<Route path='/users/staff' element={<PrivateRoute><StaffUsers/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)
