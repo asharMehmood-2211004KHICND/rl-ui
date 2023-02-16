@@ -2,6 +2,7 @@ import styled from "./jobview.module.css";
 import TableJob from "./Table/TableJob";
 
 const JobView = ({
+ children,
   title,
   jobDescription,
   department,
@@ -22,10 +23,7 @@ const JobView = ({
   return (
     <>
       <div className={styled.jobview}>
-        {" "}
-        <div className={styled.herosec}>
-          <h1 className={styled.heading}>Job View</h1>
-        </div>
+       {children}
         <table className={styled.tableJob}>
           <TableJob head={"Title:"} body={title} />
           <TableJob head={"Job Description:"} body={jobDescription} />

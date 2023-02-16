@@ -3,6 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import JobView from './JobView';
 import swal from "sweetalert";
 import AppliedCandidates from './AppliedCandidates';
+import styled from "./jobview.module.css";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
@@ -67,7 +68,7 @@ function IndividualJob() {
     , [])
 
   return (
-  <>
+  <div className={styled.individualParentDiv}>
     {/* // <div>IndividualJob</div> */}
     <JobView 
       title={data?.title}
@@ -85,10 +86,15 @@ function IndividualJob() {
       gender={data?.gender}
       travelling={data?.traveling}
       closingdate={data?.closeDate.substring(0, 10)}
-    />
+    >
+      <div>
+        <h1 style={{textAlign:"center"}} >Job View</h1>
+      </div>
+
+    </JobView>
     <AppliedCandidates JobData={data}/>
 
-  </>  
+  </div>  
   )
 }  
 

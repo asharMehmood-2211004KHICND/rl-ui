@@ -39,9 +39,7 @@ const UpdateJobPage = () => {
     data.technicalSkills.map((data) => data.technicalSkillName)
   );
   const [experienceLevel, setExperienceLevel] = useState(data.experienceLevel); // for single drop down
-  const [perksAndBenefits, setPerksAndBenefits] = useState(
-    data.benefits.map((data) => data.benefitsName)
-  );
+  const [Benefits, setBenefits] = useState( data.benefits.map((data) => data.benefitsName));
   const [travelling, setTravelling] = useState(data.traveling); // for single drop down
   const [vacancies, setVacancies] = useState(data.vacancyCount);
   const [closingDate, setClosingDate] = useState(new Date(data.closeDate));
@@ -227,207 +225,9 @@ const UpdateJobPage = () => {
 
  
 
-  // let departmentOptions = ["Cloud Engineering", "Data Engineering"];
-
-  // let degreeOptions = ["BE", "BS", "MS"];
-
-  // let employmentCategoriesOptions = [
-  //   "Part Time",
-  //   "Full Time",
-  //   "Contract Base",
-  //   "Remote",
-  //   "Onsite",
-  //   "Internship",
-  // ];
-
-  // let softSkillsOptions = [
-  //   "Communication",
-  //   "Teamwork",
-  //   "Adaptability",
-  //   "Problem-solving",
-  //   "Critical thinking",
-  //   "Time management",
-  //   "Leadership",
-  //   "Creativity",
-  //   "Interpersonal skills",
-  //   "Conflict resolution",
-  //   "Active listening",
-  //   "Emotional intelligence",
-  //   "Negotiation",
-  //   "Stress management",
-  //   "Goal setting",
-  //   "Organization",
-  //   "Presentation skills",
-  //   "Decision making",
-  //   "Customer service",
-  //   "Positive attitude",
-  // ];
-
-  // const technicalskillsOptions = [
-  //   "JavaScript",
-  //   "Java",
-  //   "Python",
-  //   "C++",
-  //   "C#",
-  //   "PHP",
-  //   "Ruby",
-  //   "SQL",
-  //   "HTML",
-  //   "CSS",
-  //   "React",
-  //   "Angular",
-  //   "Vue.js",
-  //   "Node.js",
-  //   "Express",
-  //   "MongoDB",
-  //   "PostgreSQL",
-  //   "MySQL",
-  //   "Redis",
-  //   "AWS",
-  //   "Docker",
-  //   "Kubernetes",
-  //   "Git",
-  //   "GitHub",
-  //   "Bitbucket",
-  //   "Agile methodologies",
-  //   "Scrum",
-  //   "Kanban",
-  //   "JIRA",
-  //   "Trello",
-  //   "RESTful APIs",
-  //   "GraphQL",
-  //   "Microservices",
-  //   "Unit testing",
-  //   "Integration testing",
-  //   "Automated testing",
-  //   "Load testing",
-  //   "Security testing",
-  //   "Object-Oriented Programming (OOP)",
-  //   "Functional Programming",
-  //   "Design Patterns",
-  //   "Architecture design",
-  //   "Data structures",
-  //   "Algorithms",
-  //   "Continuous Integration (CI)",
-  //   "Continuous Deployment (CD)",
-  //   "Automated deployment",
-  //   "Automated scaling",
-  //   "Continuous monitoring",
-  //   "Debugging",
-  //   "Troubleshooting",
-  //   "Performance optimization",
-  //   "Code reviews",
-  //   "Refactoring",
-  //   "Code versioning",
-  //   "Code documentation",
-  //   "Cloud computing",
-  //   "Virtualization",
-  //   "Infrastructure as Code (IaC)",
-  //   "Network security",
-  //   "Firewall management",
-  //   "Encryption",
-  //   "Machine learning",
-  //   "Artificial intelligence",
-  //   "Natural language processing (NLP)",
-  //   "Computer vision",
-  //   "Big data",
-  //   "Data science",
-  //   "DevOps",
-  //   "IT Operations",
-  //   "IT Support",
-  //   "Project management",
-  //   "Requirements gathering",
-  //   "User experience (UX) design",
-  //   "User interface (UI) design",
-  //   "Mobile application development",
-  //   "Cross-platform development",
-  //   "Hybrid mobile development",
-  //   "Native mobile development",
-  //   "Augmented reality (AR)",
-  //   "Virtual reality (VR)",
-  //   "Game development",
-  //   "Web development",
-  //   "Backend development",
-  //   "Full-stack development",
-  //   "Software engineering",
-  //   "Software testing",
-  //   "Software quality assurance (QA)",
-  //   "Software maintenance",
-  //   "Software configuration management (SCM)",
-  //   "Software project management",
-  //   "Software release management",
-  //   "Software risk management",
-  //   "Software change management",
-  //   "Software asset management",
-  //   "Software licensing",
-  // ];
-
-  // const benefitsAndPerksOptions = [
-  //   "Competitive salary",
-  //   "Performance bonuses",
-  //   "Stock options",
-  //   "401(k) plan",
-  //   "Health insurance",
-  //   "Dental insurance",
-  //   "Vision insurance",
-  //   "Life insurance",
-  //   "Disability insurance",
-  //   "Paid time off (PTO)",
-  //   "Sick leave",
-  //   "Vacation time",
-  //   "Holiday pay",
-  //   "Flexible schedules",
-  //   "Remote work options",
-  //   "Work-life balance",
-  //   "Education and training opportunities",
-  //   "Certification programs",
-  //   "Career advancement opportunities",
-  //   "Mentorship programs",
-  //   "Collaborative work environment",
-  //   "Team building activities",
-  //   "Wellness programs",
-  //   "Gym memberships",
-  //   "Free snacks and beverages",
-  //   "Casual dress code",
-  //   "Corporate discounts",
-  //   "Commuter benefits",
-  //   "Parental leave",
-  //   "Family care leave",
-  //   "On-site child care",
-  //   "Pet-friendly workplace",
-  //   "Free parking or transportation reimbursement",
-  //   "Ergonomic workstations",
-  //   "Standing desks",
-  //   "Relocation assistance",
-  //   "International assignments",
-  //   "Company outings and events",
-  //   "Team bonding activities",
-  //   "Philanthropy opportunities",
-  //   "Diversity and inclusion initiatives",
-  //   "Sustainability initiatives",
-  //   "Company-sponsored sports teams",
-  //   "Free or subsidized meals",
-  //   "Break rooms with amenities",
-  //   "Collaborative workspaces",
-  //   "Standing desks",
-  //   "Nap rooms",
-  //   "Pet-friendly office policies",
-  //   "On-site massage therapy",
-  //   "Free or discounted transportation options",
-  //   "Sponsored community service opportunities",
-  // ];
-
-  // let locationOptions = ["Karachi", "Lahore", "Islamabad"];
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(degrees.length);
-    // console.log(employmentCategories.length);
-    // console.log(softskills.length);
-    // console.log(technicalskills.length);
-    // console.log(selectedResponsibilites.length);
-    // console.log(experienceLevel.length);
-    // console.log(perksAndBenefits.length);
     setButtonText("Loading...");
     setButtonDisable(true);
     if (
@@ -435,7 +235,7 @@ const UpdateJobPage = () => {
       !employmentCategories.length ||
       !softskills.length ||
       !technicalskills.length ||
-      !perksAndBenefits.length ||
+      !Benefits.length ||
       !experienceLevel
     ) {
       console.log(degrees);
@@ -448,28 +248,28 @@ const UpdateJobPage = () => {
       setButtonDisable(false);
       return;
     }
-
+    console.log(employmentCategories)
     let requestData = {
       title: jobTitle,
-      department: { id: 1, departmentName: department },
-      employementCategory: employmentCategories, // ["FULL_TIME","ONLINE"],
+      departments: { id: 1, departmentName: department },
+      jobTypes: employmentCategories.map(m => {return {jobTypeName: m} }), // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
-      location: location,
+      locations: {id:1, locationName: location},
       softSkills: softskills.map((ss) => {
-        return { softSkill: ss };
+        return { softSkillName: ss };
       }),
       technicalSkills: technicalskills.map((ts) => {
-        return { technicalSkill: ts };
+        return { technicalSkillName: ts };
       }),
       closeDate: closingDate, //"2023-01-30"
       description: description,
       responsibilities: selectedResponsibilites,
       educations: degrees.map((edu) => {
-        return { education: edu };
+        return { educationName: edu };
       }),
-      benefitPerkss: perksAndBenefits.map((pb) => {
-        return { benefitPerks: pb };
+      benefits: Benefits.map((pb) => {
+        return { benefitsName: pb };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
@@ -518,7 +318,7 @@ const UpdateJobPage = () => {
         setDescription("");
         setSelectedResponsibilities();
         setDegrees([]);
-        setPerksAndBenefits();
+        setBenefits();
         setActive_status(undefined);
         setExperienceLevel(0);
         setVacancies(undefined);
@@ -710,8 +510,8 @@ const UpdateJobPage = () => {
 
                 <MultiSelectDropDown
                   fetchedOptions={benefitsOptions}
-                  selected={perksAndBenefits}
-                  setSelected={setPerksAndBenefits}
+                  selected={Benefits}
+                  setSelected={setBenefits}
                 ></MultiSelectDropDown>
               </div>  
               <div className={styled.perksandbenifits}>
