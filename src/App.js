@@ -88,7 +88,7 @@ function App() {
 				<Route path='/admin/location' element={<PrivateRoute><  Location /></PrivateRoute>} ></Route>
 				<Route path='/admin/perks' element={<PrivateRoute><Perks/></PrivateRoute>} ></Route>
 				
-				<Route path='/users/candidates' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
+				<Route path='/users/candidates/:value' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
 				<Route path='/users/staff' element={<PrivateRoute><StaffUsers/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Users.module.css'
 import Button from '../profile/Button/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -68,8 +68,11 @@ const activeColumns = [
 ];
 
 const CandidateUsers = () => {
-  const [view, setView] = useState('all')
-  const [active, setActive] = useState(0)
+
+  const {value} = useParams();
+
+  const [view, setView] = useState(value)
+  const [active, setActive] = useState(value === 'all' ? 0 : 1)
 
   const [allData, setAllData] = useState([])
   const [activeData, setActiveData] = useState([])

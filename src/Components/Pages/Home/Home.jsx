@@ -207,7 +207,7 @@ export default function Home() {
           <div className='cardupper'>
             <p className='cardtitle'>Candidates</p>
             <h2 className='cardcount'>{total.registeredUsers}</h2>
-            <p className='carddetails'><Link to='/interview-schedule' className='link'>Details...</Link></p>
+            <p className='carddetails'><Link to='/users/candidates/all' className='link'>Details...</Link></p>
           </div>
           <div className='cardlower'>
             <PeopleIcon className='cardicon' />
@@ -218,7 +218,7 @@ export default function Home() {
           <div className='cardupper'>
             <p className='cardtitle'>Active Profiles</p>
             <h2 className='cardcount'>{total.profile}</h2>
-            <p className='carddetails'><Link to='/' className='link'>Details...</Link></p>
+            <p className='carddetails'><Link to='/users/candidates/active' className='link'>Details...</Link></p>
           </div>
           <div className='cardlower'>
             <PersonAddIcon className='cardicon' />

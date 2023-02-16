@@ -47,7 +47,7 @@ export default function SideBar() {
 						<li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>
 						<li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>
 						<li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>
-						<li><NavLink className="sideBarListItem" to="/users/candidates"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>
+						<li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>
 						<li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>
 					</ul>
 				</div>
