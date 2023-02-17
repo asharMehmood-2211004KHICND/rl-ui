@@ -55,3 +55,12 @@
 .addBtn{
     color: #4481eb;
 }
+
+.link {
+    color: #4481eb;
+    font-weight: bold;
+}
+
+.link:hover {
+    text-decoration: underline;
+}

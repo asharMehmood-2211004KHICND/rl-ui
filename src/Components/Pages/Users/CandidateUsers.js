@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Users.module.css'
 import Button from '../profile/Button/Button';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Table, Spin } from 'antd';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUserCheck, faUser } from '@fortawesome/free-solid-svg-icons';
@@ -43,7 +43,7 @@ const activeColumns = [
       title: 'Name',
       dataIndex: 'firstName',
       key: 'firstName',
-      render: (text, record) => `${text} ${record.lastName}`
+      render: (text, record) => <Link to='/view-profile' state={{userId: record.userId}}><span className={styles.link}>{`${text} ${record.lastName}`}</span></Link>
   },
   {
       title: 'Gender',
