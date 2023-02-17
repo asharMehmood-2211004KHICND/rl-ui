@@ -8,6 +8,7 @@ export const MultiSelectDropDown = ({
   fetchedOptions,
   selected,
   setSelected,
+  nameTag = "name"
 }) => {
   function handleSelect(selectedOption) { 
     setSelected(selectedOption);
@@ -20,13 +21,10 @@ export const MultiSelectDropDown = ({
 
   return (
 <div
-//  className="MultiSelectDropDown_MultiSelectDropDown_Select__q-Jt"
  >
   <Select
     className="multiSelectStyled"
-    // className={styled.Select}
     mode="multiple"
-    // style={{ width: "100%" }}
     placeholder="Please select"
     value={selected}
     onChange={handleSelect}
