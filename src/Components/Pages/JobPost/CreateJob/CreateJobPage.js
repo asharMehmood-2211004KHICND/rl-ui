@@ -244,11 +244,11 @@ const [locationOptions, setLocationOptions] = useState([])
 
     let requestData = {
       title: jobTitle,
-      departments: { id: 1, departmentName: department },
+      departments: { departmentName: department },
       jobTypes: employmentCategories.map(m => {return {jobTypeName: m} }), // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
-      locations:{id:1, locationName: location},
+      locations:{ locationName: location},
       softSkills: softskills.map((ss) => {
         return { softSkillName: ss };
       }),
@@ -263,6 +263,9 @@ const [locationOptions, setLocationOptions] = useState([])
       }),
       benefits: Benefits.map((pb) => {
         return { benefitsName: pb };
+      }),
+      perks: Perks.map((pk) => {
+        return { perksName: pk };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,

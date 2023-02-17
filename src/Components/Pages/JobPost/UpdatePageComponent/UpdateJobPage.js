@@ -59,6 +59,8 @@ const UpdateJobPage = () => {
   const [benefitsOptions, setBenefitsOptions] = useState([])
   const [perksOptions, setPerksOptions] = useState([])
   const [locationOptions, setLocationOptions] = useState([])
+  const [Perks, setPerks] = useState( data.perks.map((data) => data.perksName));
+
 
 
   useEffect(()=>{
@@ -236,6 +238,7 @@ const UpdateJobPage = () => {
       !softskills.length ||
       !technicalskills.length ||
       !Benefits.length ||
+      !Perks.length ||
       !experienceLevel
     ) {
       console.log(degrees);
@@ -251,11 +254,11 @@ const UpdateJobPage = () => {
     console.log(employmentCategories)
     let requestData = {
       title: jobTitle,
-      departments: { id: 1, departmentName: department },
+      departments: {departmentName: department },
       jobTypes: employmentCategories.map(m => {return {jobTypeName: m} }), // ["FULL_TIME","ONLINE"],
       gender: genders, //["MALE","FEMALE"],
       traveling: travelling,
-      locations: {id:1, locationName: location},
+      locations: { locationName: location},
       softSkills: softskills.map((ss) => {
         return { softSkillName: ss };
       }),
@@ -270,6 +273,9 @@ const UpdateJobPage = () => {
       }),
       benefits: Benefits.map((pb) => {
         return { benefitsName: pb };
+      }),
+      perks: Perks.map((per) => {
+        return { perksName: per };
       }),
       experienceLevel: parseInt(experienceLevel),
       vacancyCount: vacancies,
@@ -318,7 +324,8 @@ const UpdateJobPage = () => {
         setDescription("");
         setSelectedResponsibilities();
         setDegrees([]);
-        setBenefits();
+        setBenefits([]);
+        setPerks([]);
         setActive_status(undefined);
         setExperienceLevel(0);
         setVacancies(undefined);
@@ -519,8 +526,8 @@ const UpdateJobPage = () => {
 
                 <MultiSelectDropDown
                   fetchedOptions={perksOptions}
-                  // selected={perksAndBenefits}
-                  // setSelected={setPerksAndBenefits}
+                  selected={Perks}
+                  setSelected={setPerks}
                 ></MultiSelectDropDown>
               </div>
            
