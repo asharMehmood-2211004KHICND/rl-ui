@@ -79,7 +79,7 @@ export default function Job({ job }) {
               icon={faHeart  }
               style={{ fontSize: 20, marginRight: 8 }}
             /> */}
-            <CiHeart className={styled.HeartIcon} />
+            {/* <CiHeart className={styled.HeartIcon} /> */}
           </div>
         </div>
       </Card>

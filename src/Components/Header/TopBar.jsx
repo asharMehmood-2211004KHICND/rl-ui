@@ -6,14 +6,20 @@ import dummyfemale from '../images/female.png'
 
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useNavigate } from 'react-router-dom'
+import auth from '../Hook/auth'
 
 export default function TopBar() {
 
 	let user = sessionStorage.getItem("user_firstname");
 
+	
+	const role = sessionStorage.getItem('user_roleid');
+	// const role = '4';
+	
+
 	const navigate = useNavigate();
 	const openProfile = () => {
-		navigate('/view-profile')
+		auth(['1','2','3'], role) && navigate('/view-profile')
 	}
 
 	return (

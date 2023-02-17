@@ -84,12 +84,8 @@ function C_JobList() {
   };
 
   return (
-    <div>
-      <div>
-        {" "}
-        <img alt="Header" className={styled.header_img} src="/header.jpg" />
-      </div>
-      <div style={{ display: "flex", justifyContent: "center" }}>
+    <div className={styled.jobListMainContainer}>
+      <div style={{ display: "flex", justifyContent: "center" }} className={styled.searchBox}>
         <Search
           placeholder="Search..."
           enterButton="Search"

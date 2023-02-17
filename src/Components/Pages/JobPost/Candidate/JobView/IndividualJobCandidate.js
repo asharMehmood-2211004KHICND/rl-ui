@@ -4,6 +4,7 @@ import JobView from "../../JobView/JobView";
 import swal from "sweetalert";
 import { Button } from "@mui/material";
 import styled from "../../JobView/jobview.module.css";
+import auth from "../../../../Hook/auth";
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
@@ -142,9 +143,9 @@ function IndividualJobCandidate() {
       >
         <div className={styled.herosec}>
           <h1 >Job View</h1>
-          <Button variant="contained" onClick={handleApply} disabled={buttonDisable} className={styled.viewBtn}>
+          {auth(['1'], sessionStorage.getItem('user_roleid'))  && <Button variant="contained" onClick={handleApply} disabled={buttonDisable} className={styled.viewBtn}>
             {buttonText}
-          </Button>
+          </Button>}
         </div>
       </JobView>
     </div>

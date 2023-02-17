@@ -7,7 +7,10 @@ import { render } from '@testing-library/react';
 
 const HunainUrl = process.env.REACT_APP_API_URL4;
 
-const interviewStatus = ['Pending', 'Approved', 'Rejected']
+const interviewStatus = [{status: 'Pending', color: '#ff8c00'}, 
+    {status: 'Approved', color: 'green'}, 
+    {status: 'Rejected', color: 'red'}
+]
 
 const InterviewerInterviewSchedule = () => {
     const userId = sessionStorage.getItem("user_id")
@@ -58,7 +61,7 @@ const InterviewerInterviewSchedule = () => {
             title: 'Status',
             dataIndex: 'status',
             key: 'status',
-            render: (text, record) => interviewStatus[text],
+            render: (text, record) => <span style={{color: interviewStatus[text].color, fontWeight: '500', textTransform: 'uppercase'}}>{interviewStatus[text].status}</span>,
         },
         {
             title: 'Interviewer Comments',

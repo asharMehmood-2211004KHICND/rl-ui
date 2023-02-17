@@ -4,6 +4,7 @@ import JobView from './JobView';
 import swal from "sweetalert";
 import AppliedCandidates from './AppliedCandidates';
 import styled from "./jobview.module.css";
+import auth from '../../../Hook/auth';
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
