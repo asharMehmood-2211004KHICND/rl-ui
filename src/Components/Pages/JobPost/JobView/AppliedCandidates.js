@@ -113,7 +113,7 @@ function  AppliedCandidates({JobData}) {
         <span      >
           {/* <Button onClick={() => handleViewJob(record)}>View</Button> */}
           
-          <Link state={{ ...record}} to={`/scheduleInterview`}>
+          <Link state={{ ...record}} to={`/view-profile`}>
             {
             /* <Button  variant='contained' 
             className={Styled.viewBtn}

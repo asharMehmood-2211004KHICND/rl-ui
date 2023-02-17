@@ -10,6 +10,8 @@ import CertificatesTab from "./CertificatesTab";
 const BaseURL = process.env.REACT_APP_API_URL3;
 
 export default function ViewCandidateProfileInfo() {
+
+  
   const [view, setView] = useState("personal-info");
   const userId = sessionStorage.getItem("user_id")
 

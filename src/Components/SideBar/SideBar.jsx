@@ -35,11 +35,11 @@ export default function SideBar() {
 					<div className="sideBarTitle">Dashboard</div>
 					<ul className="sideBarList">
 						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>}
-						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
-						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
+						{ auth(['4','3'], role) && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
+						{ auth(['1'], role) && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
 						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>}
-						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}
-						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>}
+						{ auth(['1'], role) && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}
+						{ auth(['1'], role) && <li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>}
 						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>}
 						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>}
 					</ul>
@@ -64,7 +64,7 @@ export default function SideBar() {
 
 
 
-				{ auth(['3'], role)  && <div className="sideBarMenu">
+				{ auth(['4'], role)  && <div className="sideBarMenu">
 					<div className="sideBarTitle">Personal</div>
 
 					<ul className="sideBarList">
