@@ -6,12 +6,22 @@ import SkillsTab from "./SkillsTab";
 import WorkTab from "./WorkTab";
 import styles from "./ViewCandidateProfileInfo.module.css"
 import CertificatesTab from "./CertificatesTab";
+import { useLocation } from 'react-router-dom';
 
 const BaseURL = process.env.REACT_APP_API_URL3;
 
 export default function ViewCandidateProfileInfo() {
+
+  let userId;
+  const {state} = useLocation()
+  if(state?.userId){
+    userId = state.userId
+  }
+  else {
+    userId = sessionStorage.getItem("user_id")
+  }
+
   const [view, setView] = useState("personal-info");
-  const userId = sessionStorage.getItem("user_id")
 
   const [personalData, setPersonalData] = useState({});
   const [academicData, setAcademicData] = useState([]);
