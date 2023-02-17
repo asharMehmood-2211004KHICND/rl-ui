@@ -433,7 +433,7 @@ const Benefit = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}>Benefits</section>
       <div className={styled.textbox}>
         <input
@@ -459,6 +459,7 @@ const Benefit = () => {
               cell: EditableCell,
             },
           }}
+          className={styled.JobTable}
           bordered
           dataSource={data}
           columns={mergedColumns}
@@ -468,7 +469,7 @@ const Benefit = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default Benefit;

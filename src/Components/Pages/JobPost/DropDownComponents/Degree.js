@@ -433,7 +433,7 @@ const Degree = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}>Degree Types</section>
       <div className={styled.textbox}>
         <input
@@ -460,6 +460,7 @@ const Degree = () => {
             },
           }}
           bordered
+          className={styled.JobTable}
           dataSource={data}
           columns={mergedColumns}
           rowClassName="editable-row"
@@ -468,7 +469,7 @@ const Degree = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default Degree;

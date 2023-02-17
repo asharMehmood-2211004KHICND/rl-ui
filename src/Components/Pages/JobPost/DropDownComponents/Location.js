@@ -433,7 +433,7 @@ const Location = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}>Locations</section>
       <div className={styled.textbox}>
         <input
@@ -460,6 +460,7 @@ const Location = () => {
             },
           }}
           bordered
+          className={styled.JobTable}
           dataSource={data}
           columns={mergedColumns}
           rowClassName="editable-row"
@@ -468,7 +469,7 @@ const Location = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default Location;

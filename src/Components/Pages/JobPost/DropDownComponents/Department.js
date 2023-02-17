@@ -433,7 +433,7 @@ const Department = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}>Departments</section>
       <div className={styled.textbox}>
         <input
@@ -460,6 +460,7 @@ const Department = () => {
             },
           }}
           bordered
+          className={styled.JobTable}
           dataSource={data}
           columns={mergedColumns}
           rowClassName="editable-row"
@@ -468,7 +469,7 @@ const Department = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default Department;

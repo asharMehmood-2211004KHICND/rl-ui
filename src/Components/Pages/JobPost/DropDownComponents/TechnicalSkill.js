@@ -433,7 +433,7 @@ const TechnicalSkill = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}> Technical Skill</section>
       <div className={styled.textbox}>
         <input
@@ -461,6 +461,7 @@ const TechnicalSkill = () => {
           }}
           bordered
           dataSource={data}
+          className={styled.JobTable}
           columns={mergedColumns}
           rowClassName="editable-row"
           pagination={{
@@ -468,7 +469,7 @@ const TechnicalSkill = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default TechnicalSkill;
