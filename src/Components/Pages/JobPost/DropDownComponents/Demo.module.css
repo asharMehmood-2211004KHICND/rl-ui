@@ -1,3 +1,8 @@
+.MainContainerOfDropDown{
+    width: 60%;
+    margin: auto;
+}
+
 
 .DeleteIcon{
     color: rgba(255, 8, 8, 0.856);
@@ -40,4 +45,29 @@
 .cycle_btn{
     color: green;
     font-size: 20px;
+}
+.JobTable th {
+    background-color: var(--main-color) !important;
+    color: var(--white-color-contrast) !important;
+}
+  
+.JobTable th svg {
+    color: var(--white-color-contrast) !important;
+}
+
+
+.JobsTableHeading{
+    /* border: 1px solid black; */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    /* justify-content: space-around; */
+}
+
+.JobsTableHeading h1{
+    color: var(--main-color) !important;
+    padding-right: 20px;
+    /* margin-left: 50%; */
 }

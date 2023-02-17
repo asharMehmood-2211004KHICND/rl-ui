@@ -434,7 +434,7 @@ const Perks = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}>Perks</section>
       <div className={styled.textbox}>
         <input
@@ -462,6 +462,7 @@ const Perks = () => {
           }}
           bordered
           dataSource={data}
+          className={styled.JobTable}
           columns={mergedColumns}
           rowClassName="editable-row"
           pagination={{
@@ -469,7 +470,7 @@ const Perks = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default Perks;

@@ -433,7 +433,7 @@ const SoftSkill = () => {
     };
   });
   return (
-    <>
+    <div className={styled.MainContainerOfDropDown}>
       <section className={styled.heading}> Soft Skill</section>
       <div className={styled.textbox}>
         <input
@@ -461,6 +461,7 @@ const SoftSkill = () => {
           }}
           bordered
           dataSource={data}
+          className={styled.JobTable}
           columns={mergedColumns}
           rowClassName="editable-row"
           pagination={{
@@ -468,7 +469,7 @@ const SoftSkill = () => {
           }}
         />
       </Form>
-    </>
+    </div>
   );
 };
 export default SoftSkill;
