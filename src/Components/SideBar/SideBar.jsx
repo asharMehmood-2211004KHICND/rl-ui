@@ -12,13 +12,8 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 export default function SideBar() {
 
-	/**
-	 1	Candidate
-	 2	Interviewer
-	 3	Hiring Manager
-	 4	HR/Admin
-	*/
-	const role = sessionStorage.getItem('user_roleid');
+	// const role = sessionStorage.getItem('user_roleid');
+	const role = '4';
 	
 	const navigate = useNavigate();
 	// const {persona} = useContext(StateContext);
@@ -28,19 +23,8 @@ export default function SideBar() {
 		navigate('/login');
 	}
 
-	function home() {
-		navigate('/Home');
-	}
-
-
-	function createJob() {
-		navigate('/createJob');
-	}
-
-
-
-	function profile() {
-		navigate('/profile');
+	const auth = (arrRole, roleId) =>{
+		return arrRole.some(value=> value===roleId);
 	}
 
 	return (
@@ -50,18 +34,18 @@ export default function SideBar() {
 				<div className="sideBarMenu">
 					<div className="sideBarTitle">Dashboard</div>
 					<ul className="sideBarList">
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>}
-						{role==='1' && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>}
-						{role==='4' && <li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/my-applications"><AssignmentIcon className="menuIcon" />My Applicaitons</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/users/candidates/all"><AssignmentIndIcon className="menuIcon" />Candidates</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/users/staff"><AssignmentIndIcon className="menuIcon" />Staff</NavLink></li>}
 					</ul>
 				</div>
 
-					{role==='4' && (
+					{ auth(['4'], role) && (
 					<div className="sideBarMenu">
 
 					<div className="sideBarTitle">Other Links</div>
@@ -80,14 +64,14 @@ export default function SideBar() {
 
 
 
-				<div className="sideBarMenu">
+				{ auth(['3'], role)  && <div className="sideBarMenu">
 					<div className="sideBarTitle">Personal</div>
 
 					<ul className="sideBarList">
 						<li className="sideBarListItem"><AccountBoxIcon className="menuIcon" /><Link to="/profile">Profile</Link></li>
 						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
-				</div>
+				</div>}
 
 			</div>
 		</div>
