@@ -41,6 +41,7 @@ function  AppliedCandidates({JobData}) {
       })
       .then((data) => {
         data = data.map((eachData) => {
+          console.log(eachData)
           return {
             ...eachData,
             key: eachData?.id||4,
@@ -48,7 +49,7 @@ function  AppliedCandidates({JobData}) {
             name: `${eachData?.firstName} ${eachData?.lastName}`,
             contact: eachData?.phoneNumber,
             appliedDate: moment(eachData?.appliedDate).format('YYYY-MM-DD'),
-            status: "Approved",
+            status: "Pending..",
           };
         });
         setCandidate(data);
@@ -98,12 +99,12 @@ function  AppliedCandidates({JobData}) {
       dataIndex: "appliedDate",
       key: "type",
     },
-    {
-      title: "Status",
-      width: 200,
-      dataIndex: "status",
-      key: "type",
-    },
+    // {
+    //   title: "Status",
+    //   width: 200,
+    //   dataIndex: "status",
+    //   key: "type",
+    // },
     {
       title: "Action",
       key: "action",

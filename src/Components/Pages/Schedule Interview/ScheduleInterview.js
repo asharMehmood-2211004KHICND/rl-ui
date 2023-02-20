@@ -13,7 +13,7 @@ const BaseUrl = process.env.REACT_APP_API_URL4;
 const ScheduleInterview = () => {
   const { state } = useLocation();
   const [interviewerId, setInterviewerId] = useState("");
-  const [interviewerName, setInterviewerName] = useState("Hello");
+  const [interviewerName, setInterviewerName] = useState("");
   const [hmName, setHmName] = useState("");
   const [interviewers,setInterviewers] = useState([]);
   const [date, setDate] = useState("");
@@ -45,6 +45,8 @@ const ScheduleInterview = () => {
 
   const handleInterviewer = useCallback(e => {
     setInterviewerId(e.target.value);
+    const index = e.nativeEvent.target.selectedIndex;
+    setInterviewerName(e.nativeEvent.target[index].text);    
   }, []);
 
   const handleDate = useCallback((val) => {
@@ -60,7 +62,7 @@ const ScheduleInterview = () => {
       const data = {
         jobId : state.JobData.id,
         jobTitle:state.JobData.title,
-        interviewer_id:interviewerId,
+        interviewerId:interviewerId,
         interviewer_name: interviewerName,
         candidateId: state.userId,
         interview_date:date,
