@@ -283,7 +283,7 @@ const JobsList = ({jobsProp}) => {
     width:200,
     dataIndex: 'departments',
     key: 'type',
-    sorter: (a, b) => a.department.localeCompare(b.department),
+    sorter: (a, b) => a.department.departmentName.localeCompare(b.department.departmentName),
     render: (text, record) => (<p> {record.departments.departmentName}</p>)
     // sorter: true,
   }, {
