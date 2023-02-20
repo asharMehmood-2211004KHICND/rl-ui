@@ -47,6 +47,11 @@ const Interviews = () => {
             key: 'interviewer_name',
         },
         {
+            title: 'Candidate',
+            dataIndex: 'candidate_name',
+            key: 'candidate_name',
+        },
+        {
             title: 'Interview Date',
             dataIndex: 'interview_date',
             key: 'interview_date',
@@ -66,10 +71,10 @@ const Interviews = () => {
             title: 'Interviewer Comments',
             dataIndex: 'interviewer_feedback',
             key: 'interviewer_feedback',
-            render: (text, record) => text === null ? <Link to={`/interviewer-feedback/${record.id}`}><span className={styles.link}>Give feedback</span></Link> : text,
+            render: (text, record) => text === null ? '---' : text,
         },
         {
-            title: 'Your Feedback',
+            title: 'Candidate Feedback',
             dataIndex: 'candidate_feedback',
             key: 'candidate_feedback',
             render: (text, record) => text === null ? '---' : text,

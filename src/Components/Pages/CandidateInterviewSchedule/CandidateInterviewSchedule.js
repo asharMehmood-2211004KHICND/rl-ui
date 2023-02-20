@@ -6,7 +6,10 @@ import { Table } from 'antd';
 
 const HunainUrl = process.env.REACT_APP_API_URL4;
 
-const interviewStatus = ['Pending', 'Approved', 'Rejected']
+const interviewStatus = [{status: 'Pending', color: '#ff8c00'}, 
+    {status: 'Approved', color: 'green'}, 
+    {status: 'Rejected', color: 'red'}
+]
 
 const CandidateInterviewSchedule = () => {
     const userId = sessionStorage.getItem("user_id")
@@ -57,7 +60,7 @@ const CandidateInterviewSchedule = () => {
             title: 'Status',
             dataIndex: 'status',
             key: 'status',
-            render: (text, record) => interviewStatus[text],
+            render: (text, record) => <span style={{color: interviewStatus[text].color, fontWeight: '500', textTransform: 'uppercase'}}>{interviewStatus[text].status}</span>,
         },
         {
             title: 'Interviewer Comments',

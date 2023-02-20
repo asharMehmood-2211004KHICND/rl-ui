@@ -24,6 +24,7 @@ const InterviewerInterviewSchedule = () => {
             .then(async (response) => {
                 const data = await response.json();
                 setData(data);
+                console.log(data)
             })
             .catch((error) => {
                 console.log(error, "I caught this!")
@@ -43,9 +44,9 @@ const InterviewerInterviewSchedule = () => {
             
         },
         {
-            title: 'Interviewer',
-            dataIndex: 'interviewer_name',
-            key: 'interviewer_name',
+            title: 'Candidate',
+            dataIndex: 'candidate_name',
+            key: 'candidate_name',
         },
         {
             title: 'Interview Date',
@@ -64,13 +65,13 @@ const InterviewerInterviewSchedule = () => {
             render: (text, record) => <span style={{color: interviewStatus[text].color, fontWeight: '500', textTransform: 'uppercase'}}>{interviewStatus[text].status}</span>,
         },
         {
-            title: 'Interviewer Comments',
+            title: 'Your comments',
             dataIndex: 'interviewer_feedback',
             key: 'interviewer_feedback',
             render: (text, record) => text === null ? <Link to={`/interviewer-feedback/${record.id}`}><span className={styles.link}>Give feedback</span></Link> : text,
         },
         {
-            title: 'Your Feedback',
+            title: 'Candidate Feedback',
             dataIndex: 'candidate_feedback',
             key: 'candidate_feedback',
             render: (text, record) => text === null ? '---' : text,

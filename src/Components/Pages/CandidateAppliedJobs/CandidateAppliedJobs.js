@@ -7,6 +7,11 @@ import moment from 'moment';
 
 const WaqarUrl = process.env.REACT_APP_API_URL1;
 
+const interviewStatus = [{status: 'Pending', color: '#ff8c00'}, 
+    {status: 'Approved', color: 'green'}, 
+    {status: 'Rejected', color: 'red'}
+]
+
 const jobsMock = [
     {
         name: 'Dunkin Donuts job',
@@ -44,7 +49,7 @@ const CandidateAppliedJobs = () => {
                     const {id, title, closeDate, status} = item 
                     const obj = {
                         id, title, closeDate, 
-                        status: status ? status : 'Pending' 
+                        status: status ? status : 0 
                     }
                     return obj
                 })
@@ -66,11 +71,11 @@ const CandidateAppliedJobs = () => {
             key: 'title',
             render: (text, record) => <Link to={`/candidate/job/view/${record.id}`}><span className={styles.link}>{text}</span></Link> 
         },
-        {
-            title: 'Status',
-            dataIndex: 'status',
-            key: 'status',
-        },
+        // {
+        //     title: 'Status',
+        //     dataIndex: 'status',
+        //     key: 'status',
+        // },
         {
             title: 'Closing Date',
             dataIndex: 'closeDate',
