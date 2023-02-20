@@ -67,6 +67,7 @@ const ScheduleInterview = () => {
         jobTitle:state.JobData.title,
         interviewerId:interviewerId,
         interviewer_name: interviewerName,
+        candidate_name:state.name,
         candidateId: state.userId,
         interview_date:date,
         interview_time: time,
