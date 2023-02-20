@@ -45,6 +45,7 @@ const Interviews = () => {
             title: 'Interviewer',
             dataIndex: 'interviewer_name',
             key: 'interviewer_name',
+            render: (text, record) => <Link to='/view-profile' state={{userId: record.interviewerId}}><span className={styles.link}>{text}</span></Link>
         },
         {
             title: 'Candidate',
