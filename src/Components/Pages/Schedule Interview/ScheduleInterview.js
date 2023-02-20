@@ -7,10 +7,13 @@ import InputField from "../profile/InputField/InputField";
 import '../../../index.css';
 import { useLocation } from "react-router-dom";
 import swal from 'sweetalert';
+import { useNavigate } from "react-router-dom";
 
 const BaseUrl = process.env.REACT_APP_API_URL4;
 
 const ScheduleInterview = () => {
+
+  const navigate = useNavigate();
   const { state } = useLocation();
   const [interviewerId, setInterviewerId] = useState("");
   const [interviewerName, setInterviewerName] = useState("");
@@ -80,9 +83,10 @@ const ScheduleInterview = () => {
         if (response.status === 200) {
           swal(
             {
-              title: "Saved Successfully!",
+              title: "Scheduled Successfully!",
               icon: "success",
             });
+            navigate("/");
         }
         else if (response.status === 404) {
           swal({
