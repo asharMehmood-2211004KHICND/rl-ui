@@ -38,7 +38,7 @@ function PersonalInfoTab({ personalData }) {
           <div className={styles.line}><p className={styles.tag}>City:</p><p>{city}</p></div>
         </div>
         <div className={styles.column}>
-          <div className={styles.line}><p className={styles.tag}>Postal Code:</p><p>---</p></div>
+          {/* <div className={styles.line}><p className={styles.tag}>Postal Code:</p><p>---</p></div> */}
           <div className={styles.line}><p className={styles.tag}>Country:</p><p>Pakistan</p></div>
         </div>
       </div>

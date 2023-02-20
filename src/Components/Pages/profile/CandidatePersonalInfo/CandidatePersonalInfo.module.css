@@ -204,3 +204,8 @@ width: 94%;
   min-width: 120px;
   padding: 15px;
 }
+
+.inputLabel {
+  font-weight: 500;
+  font-size: 1.1rem;
+}

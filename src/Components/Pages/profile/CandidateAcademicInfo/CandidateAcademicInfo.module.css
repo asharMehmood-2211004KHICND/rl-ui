@@ -249,17 +249,18 @@ width: 94%;
   outline: none;
   /* border: 2px solid #000; */
   border: none;
-  font-size: 1.1rem;
+  font-size: 22px;
   color: #404040;
   cursor: pointer;
-  transition: ease-out 500ms;
+  /* transition: ease-out 500ms; */
 }
 .editBtn:hover{
-  color: #1660ff;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* color: #1660ff; */
+  color: #1f80cf;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }
 
 .deleteBtn:hover{
   color: red;
-  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+  /* box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px; */
 }

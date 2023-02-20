@@ -323,7 +323,7 @@ export default function CandidateskillInfo() {
       {contextHolder}
       <div className={styles.mainContainer} style={{ display: "block" }}>
         <form className={styles.formPersonalInfo} onSubmit={onSubmit}>
-          <Heading className={styles.personalInfoHeading} text="Skills" />
+          <Heading className={styles.personalInfoHeading} text="Skills" optional={'(Required)'} />
           <table className={styles.formTable}>
             <tr>
               <td>
@@ -390,7 +390,7 @@ export default function CandidateskillInfo() {
                             onClick={() => onDelete(element.id)}
                             type="button"
                             text={<i class="fa fa-trash"></i>}
-                            className={style.deleteBtn}
+                            className={`${styles.actionBtn} ${styles.deleteBtn}`}
                           />}
                       </Popconfirm>
                     </td>
@@ -462,6 +462,14 @@ export default function CandidateskillInfo() {
                     <td>{element.originalFileName}</td>
                     <td>{element.category}</td>
                     <td>
+                      <Button
+                        onClick={() => onDownload(element.bucketFileName)}
+                        type="button"
+                        text={<i className="fa-solid fa-cloud-arrow-down"></i>}
+                        className={`${styles.actionBtn} ${style.downloadBtn}`}
+                      />
+                    </td>
+                    <td>
                       <Popconfirm
                         title="Delete File"
                         description="Are you sure to delete this file?"
@@ -475,17 +483,9 @@ export default function CandidateskillInfo() {
                             onClick={() => onDeleteFile(element.id)}
                             type="button"
                             text={<i className="fa fa-trash"></i>}
-                            className={style.deleteBtn}
+                            className={`${styles.actionBtn} ${styles.deleteBtn}`}
                           />}
                       </Popconfirm>
-                    </td>
-                    <td>
-                      <Button
-                        onClick={() => onDownload(element.bucketFileName)}
-                        type="button"
-                        text={<i className="fa-solid fa-cloud-arrow-down"></i>}
-                        className={style.downloadBtn}
-                      />
                     </td>
                   </tr>
                 );

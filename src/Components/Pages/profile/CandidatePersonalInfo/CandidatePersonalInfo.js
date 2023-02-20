@@ -5,10 +5,11 @@ import PhoneComponent from "../PhoneComponent/PhoneComponent";
 import Button from "../Button/Button";
 import Heading from "../Heading/Heading";
 import styles from "./CandidatePersonalInfo.module.css";
+import style from "../CandidateAcademicInfo/CandidateAcademicInfo.module.css";
 import { useNavigate } from "react-router-dom";
 import InputLabel from "../Label/InputLabel";
 import { message } from 'antd';
-//import swal from 'sweetalert';
+import swal from 'sweetalert';
 
 const BaseURL = process.env.REACT_APP_API_URL3;
 
@@ -154,21 +155,29 @@ function CandidatePersonalInfo() {
                 setDisableNextBtn(!res)
                 if (res) {
                     updateUser = dataExists ? 'Info edited successfully!' : updateUser
-                    messageApi.success(updateUser);
+                    // messageApi.success(updateUser);
+                    swal({
+                        title: updateUser,
+                        icon: "success",
+                    })
                 }
                 else {
-                    messageApi.error(updateUser)
+                    // messageApi.error(updateUser)
+                    swal({
+                        title: updateUser,
+                        icon: "error",
+                    })
                 }
 
-                // swal({
-                //     title: "Personal Information Saved!",
-                //     icon: "success",
-                // })
             })
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error saving info!';
-                messageApi.error(updateUser);
+                // messageApi.error(updateUser);
+                swal({
+                    title: updateUser,
+                    icon: "error",
+                })
                 setDisableNextBtn(true)
             });
     }
@@ -185,7 +194,7 @@ function CandidatePersonalInfo() {
             <div className={styles.mainContainer}>
                 <form className={styles.formPersonalInfo} onSubmit={onSubmit}>
                     
-                    <Heading className={styles.personalInfoHeading} text="Personal Information" />
+                    <Heading className={styles.personalInfoHeading} text="Personal Information" optional={'(required)'} />
                     {/* <div>
                         <InputField value={firstname} handler={handleFirstname} type='text' placeholder='First Name' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField>
                         <InputField value={lastname} handler={handleLastname} type='text' placeholder='Last Name' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='fa-regular fa-user'></InputField>
@@ -215,35 +224,35 @@ function CandidatePersonalInfo() {
                     </div> */}
                     <table>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='First Name'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*First Name'></InputLabel></td>
                             <td className={styles.makeFieldAdjustment}><InputField value={firstname} handler={handleFirstname} type='text' placeholder='First Name' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='fa-solid fa-user'></InputField></td>
-                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='Last Name' ></InputLabel></td>
+                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='*Last Name' ></InputLabel></td>
                             <td><InputField value={lastname} handler={handleLastname} type='text' placeholder='Last Name' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='fa-regular fa-user'></InputField></td>
                         </tr>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='Gender'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*Gender'></InputLabel></td>
                             <td className={styles.makeFieldAdjustment}><DropdownField value={gender} handler={handleGender} options={['Male', 'Female', 'Rather not say']} className={styles.halfSize} placeholder='Select' icon='fa-sharp fa-solid fa-person-dress' /></td>
-                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='Birth Date'></InputLabel></td>
+                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='*Birth Date'></InputLabel></td>
                             <td><InputField value={dob} handler={handleDob} min="" type='date' placeholder='' className={styles.halfSize} required='required' icon='fa-solid fa-calendar-days'></InputField></td>
                         </tr>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='CNIC'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*CNIC'></InputLabel></td>
                             <td className={styles.makeFieldAdjustment}><InputField value={nin} handler={handleNin} type='text' pattern="[0-9]*" placeholder='CNIC' className={styles.halfSize} required='required' icon='fa-solid fa-address-card'></InputField></td>
-                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='Marital status'></InputLabel></td>
+                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='*Marital status'></InputLabel></td>
                             <td><DropdownField value={maritalstat} handler={handleMaritalstat} options={['Single', 'Married']} className={styles.halfSize} placeholder='Select' icon='fa-solid fa-heart' /></td>
                         </tr>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='Email'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*Email'></InputLabel></td>
                             <td className={styles.makeFieldAdjustment}><InputField disabled={true} value={email} type='email' placeholder='Email' className={styles.halfSize} required='required' icon='fa-solid fa-envelope'></InputField></td>
-                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='City'></InputLabel></td>
+                            <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='*City'></InputLabel></td>
                             <td><InputField value={city} handler={handleCity} type='text' placeholder='City' pattern="[a-zA-Z ]*" className={styles.halfSize} required='required' icon='ffa-sharp fa-solid fa-city'></InputField></td>
                         </tr>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='Contact No'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*Contact No'></InputLabel></td>
                             <td colSpan="3"><PhoneComponent value={phone} handler={handlePhone} placeholder='Mobile Number' type='text' className='' required='required' /></td>
                         </tr>
                         <tr>
-                            <td><InputLabel className={styles.inputLabel} text='Address'></InputLabel></td>
+                            <td><InputLabel className={styles.inputLabel} text='*Address'></InputLabel></td>
                             <td colSpan="3"><InputField value={address} handler={handleAddress} type='text' placeholder='Address' className={styles.fullSize} required='required' icon='fa-solid fa-location-dot'></InputField></td>
                         </tr>
                         <tr>

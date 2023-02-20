@@ -6,7 +6,7 @@ import Heading from "../Heading/Heading";
 import styles from '../CandidateAcademicInfo/CandidateAcademicInfo.module.css'
 import TextArea from "../Textarea/TextArea";
 import { message, Popconfirm } from 'antd';
-// import swal from 'sweetalert';
+import swal from 'sweetalert';
 // import AddCircleIcon from '@material-ui/icons/AddCircle';
 import InputLabel from '../Label/InputLabel';
 import { useNavigate } from "react-router-dom";
@@ -159,21 +159,30 @@ function CandidateAcademicInfo() {
                 const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 setDisNextBtn(!res)
                 if (res) {
-                    messageApi.success(updateUser);
+                    // messageApi.success(updateUser);
+                    swal({
+                        title: updateUser,
+                        icon: "success",
+                    })
                 }
                 else {
-                    messageApi.error(updateUser)
+                    // messageApi.error(updateUser)
+                    swal({
+                        title: updateUser,
+                        icon: "error",
+                    })
                 }
-                // swal({
-                //     title: "Personal Information Saved!",
-                //     icon: "success",
-                // })
+                
                 setEduData([...eduData, data])
             })
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error saving info!';
-                messageApi.error(updateUser);
+                // messageApi.error(updateUser);
+                swal({
+                    title: updateUser,
+                    icon: "error",
+                })
                 setDisNextBtn(true)
             });
         setDegree('')
@@ -207,7 +216,11 @@ function CandidateAcademicInfo() {
                 const res = response ? response.ok : false;
                 console.log(response)
                 if (res) {
-                    messageApi.success('Details deleted successfully!')
+                    // messageApi.success('Details deleted successfully!')
+                    swal({
+                        title: "Details deleted successfully!",
+                        icon: "success",
+                    })
                     const newData = eduData.filter((item) => item.id !== deleteId);
                     if (newData.length === 0) {
                         setDisNextBtn(true)
@@ -215,7 +228,11 @@ function CandidateAcademicInfo() {
                     setEduData(newData)
                 }
                 else {
-                    messageApi.error('Error deleting details!')
+                    // messageApi.error('Error deleting details!')
+                    swal({
+                        title: "Error deleting details!",
+                        icon: "error",
+                    })
                 }
 
 
@@ -223,7 +240,11 @@ function CandidateAcademicInfo() {
 
             })
             .catch((err) => {
-                messageApi.error('Error deleting details!')
+                // messageApi.error('Error deleting details!')
+                swal({
+                    title: "Error deleting details!",
+                    icon: "error",
+                })
                 console.log(err)
                 setDeleteId(null);
             })
@@ -285,7 +306,11 @@ function CandidateAcademicInfo() {
                 const res = response ? response.ok : false;
                 const updateUser = res ? 'Info edited successfully!' : 'Error editing info!';
                 if (res) {
-                    messageApi.success(updateUser);
+                    // messageApi.success(updateUser);
+                    swal({
+                        title: updateUser,
+                        icon: "success",
+                    })
                     const newData = eduData.map((item) => {
                         if (item.id === editId) {
                             return data
@@ -296,17 +321,22 @@ function CandidateAcademicInfo() {
                     setEduData(newData)
                 }
                 else {
-                    messageApi.error(updateUser)
+                    // messageApi.error(updateUser)
+                    swal({
+                        title: updateUser,
+                        icon: "error",
+                    })
                 }
-                // swal({
-                //     title: "Personal Information Saved!",
-                //     icon: "success",
-                // })
+                
             })
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error editing info!';
-                messageApi.error(updateUser)
+                // messageApi.error(updateUser)
+                swal({
+                    title: updateUser,
+                    icon: "error",
+                })
             });
 
         setDegree('')
@@ -338,7 +368,7 @@ function CandidateAcademicInfo() {
             <>
                 {contextHolder}
                 <div className={styles.mainContainer} style={{ display: 'block' }}>
-                    <Heading className={styles.personalInfoHeading} text="Academic Background" />
+                    <Heading className={styles.personalInfoHeading} text="Academic Background" optional={'(required)'} />
                     <div className={styles.tableContainer}>
                         <table className={styles.eduTable} >
                             <tr>
@@ -367,7 +397,9 @@ function CandidateAcademicInfo() {
                                                             return <td>{item[it]}</td>;
                                                 })
                                             }
-                                            <td><Popconfirm
+                                            <td>
+                                            <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i class="fas fa-edit"></i>} />
+                                                <Popconfirm
                                                 title="Delete details"
                                                 description="Are you sure to delete this details?"
                                                 onConfirm={deleteField}
@@ -377,7 +409,7 @@ function CandidateAcademicInfo() {
                                             >
                                                 <Button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)} type="button" text={<i class="fa fa-trash"></i>} />
                                             </Popconfirm>
-                                                <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i class="fas fa-edit"></i>} />
+                                                
                                             </td>
                                         </tr>
                                     )
@@ -413,19 +445,19 @@ function CandidateAcademicInfo() {
 
                         <table className={styles.formTable}>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Qualification'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Qualification'></InputLabel></td>
                                 <td colSpan={3}><DropdownField value={degree} handler={handleDegree} options={qualificationOptions} className={''} placeholder='Select' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Degree Title'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Degree Title'></InputLabel></td>
                                 <td colSpan={3}><InputField value={title} handler={handleTitle} type='text' placeholder='Title (example Pre-Med, BSCS etc.)' pattern="[a-zA-Z ]*" className={''} required='required' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Institute'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Institute'></InputLabel></td>
                                 <td colSpan='3'><InputField value={institute} handler={handleInstitute} type='text' placeholder='School/University/College' pattern="[a-zA-Z ]*" className={''} required='required' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Degree in Progress'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Degree in Progress'></InputLabel></td>
                                 <td >
                                     {/* <span className={styles.degreeProgressText}>Degree in progress:</span> */}
                                     <div style={{ minWidth: '90px', margin: '10px' }}>
@@ -453,7 +485,7 @@ function CandidateAcademicInfo() {
                                 <td><InputField disabled={disGradDate} value={graduationDate} handler={handleGraduationDate} type='date' placeholder='' className={styles.graduationDate} required='required' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='CGPA/Percentage'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*CGPA/Percentage'></InputLabel></td>
                                 <td colSpan={3}><InputField value={percentage} handler={handlePercentage} type='text' pattern="[0-9.%]*" placeholder='e.g, 3.50 or 72%' className={''} required='required' /></td>
                             </tr>
                             <tr>

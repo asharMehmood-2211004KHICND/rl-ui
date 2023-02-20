@@ -7,6 +7,7 @@ import InputLabel from "../Label/InputLabel"
 import { useCallback, useState, useEffect } from "react"
 import { message, Popconfirm } from 'antd';
 import { useNavigate } from "react-router-dom"
+import swal from 'sweetalert';
 
 const BaseURL = process.env.REACT_APP_API_URL3;
 
@@ -143,10 +144,18 @@ export default function CandidateWorkInfo() {
                 const updateUser = res ? 'Info saved successfully!' : 'Error saving info!';
                 if (res) {
                     // setDisNextBtn(false)
-                    messageApi.success(updateUser);
+                    // messageApi.success(updateUser);
+                    swal({
+                        title: updateUser,
+                        icon: "success",
+                    })
                 }
                 else {
-                    messageApi.error(updateUser)
+                    // messageApi.error(updateUser)
+                    swal({
+                        title: updateUser,
+                        icon: "error",
+                    })
                 }
 
                 // swal({
@@ -158,7 +167,11 @@ export default function CandidateWorkInfo() {
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error saving info!';
-                messageApi.error(updateUser)
+                // messageApi.error(updateUser)
+                swal({
+                    title: updateUser,
+                    icon: "error",
+                })
             });
         setCompany('')
         setCurrentlyWorking(false)
@@ -190,7 +203,11 @@ export default function CandidateWorkInfo() {
                 const res = response ? response.ok : false;
                 console.log(response)
                 if (res) {
-                    messageApi.success('Details deleted successfully!')
+                    // messageApi.success('Details deleted successfully!')
+                    swal({
+                        title: 'Details deleted successfully!',
+                        icon: "success",
+                    })
                     const newData = workData.filter((item) => item.id !== deleteId);
                     // if (newData.length === 0) {
                     //     setDisNextBtn(true)
@@ -198,7 +215,11 @@ export default function CandidateWorkInfo() {
                     setWorkData(newData)
                 }
                 else {
-                    messageApi.error('Error deleting details!')
+                    // messageApi.error('Error deleting details!')
+                    swal({
+                        title: 'Error deleting details!',
+                        icon: "error",
+                    })
                 }
 
 
@@ -206,7 +227,11 @@ export default function CandidateWorkInfo() {
 
             })
             .catch((err) => {
-                messageApi.error('Error deleting details!')
+                // messageApi.error('Error deleting details!')
+                swal({
+                    title: 'Error deleting details!',
+                    icon: "error",
+                })
                 console.log(err)
                 setDeleteId(null);
             })
@@ -268,7 +293,11 @@ export default function CandidateWorkInfo() {
                 const res = response ? response.ok : false;
                 const updateUser = res ? 'Info edited successfully!' : 'Error editing info!';
                 if (res) {
-                    messageApi.success(updateUser);
+                    // messageApi.success(updateUser);
+                    swal({
+                        title: updateUser,
+                        icon: "success",
+                    })
                     const newData = workData.map((item) => {
                         if (item.id === editId) {
                             return data
@@ -279,7 +308,11 @@ export default function CandidateWorkInfo() {
                     setWorkData(newData)
                 }
                 else {
-                    messageApi.error(updateUser)
+                    // messageApi.error(updateUser)
+                    swal({
+                        title: updateUser,
+                        icon: "error",
+                    })
                 }
                 // swal({
                 //     title: "Personal Information Saved!",
@@ -289,7 +322,11 @@ export default function CandidateWorkInfo() {
             .catch(err => {
                 console.log(err)
                 const updateUser = 'Error editing info!';
-                messageApi.error(updateUser)
+                // messageApi.error(updateUser)
+                swal({
+                    title: updateUser,
+                    icon: "error",
+                })
             });
 
         setCompany('')
@@ -320,7 +357,7 @@ export default function CandidateWorkInfo() {
             <>
                 {contextHolder}
                 <div className={styles.mainContainer} style={{ display: 'block' }}>
-                    <Heading className={styles.personalInfoHeading} text="Work Experience" />
+                    <Heading className={styles.personalInfoHeading} text="Work Experience" optional={'(Optional)'} />
                     <div className={styles.tableContainer}>
                         <table className={styles.eduTable} >
                             <tr>
@@ -349,7 +386,9 @@ export default function CandidateWorkInfo() {
                                                             return <td>{item[it]}</td>;
                                                 })
                                             }
-                                            <td><Popconfirm
+                                            <td>
+                                            <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i className="fas fa-edit"></i>} />
+                                                <Popconfirm
                                                 title="Delete details"
                                                 description="Are you sure to delete this details?"
                                                 onConfirm={deleteField}
@@ -359,7 +398,7 @@ export default function CandidateWorkInfo() {
                                             >
                                                 <Button className={`${styles.actionBtn} ${styles.deleteBtn}`} onClick={() => onDelete(item.id)} type="button" text={<i className="fa fa-trash"></i>} />
                                             </Popconfirm>
-                                                <Button className={`${styles.actionBtn} ${styles.editBtn}`} onClick={() => onEdit(item)} type="button" text={<i className="fas fa-edit"></i>} />
+                                                
                                             </td>
 
                                         </tr>
@@ -393,15 +432,15 @@ export default function CandidateWorkInfo() {
                         <table>
                             <tr>
 
-                                <td><InputLabel className={styles.inputLabel} text='Company'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Company'></InputLabel></td>
                                 <td style={{ minWidth: '250px', margin: '10px' }} ><InputField value={company} handler={handleCompany} type='text' pattern="[a-zA-Z ]*" placeholder='Company' className={styles.fullSize} required='required' icon='fa fa-briefcase' /></td>
-                                <td style={{ minWidth: '120px', padding: '10px' }} ><InputLabel className={styles.inputLabel} text='Start Date'></InputLabel></td>
+                                <td style={{ minWidth: '120px', padding: '10px' }} ><InputLabel className={styles.inputLabel} text='*Start Date'></InputLabel></td>
 
                                 <td><InputField value={startDate} handler={handleStartDate} type='date' placeholder='Start Date' className={styles.inputFields} required='required' ></InputField></td>
 
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Currently Working'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Currently Working'></InputLabel></td>
                                 <td><div className={styles.degreeProgressDiv}>
                                     <div style={{ minWidth: '90px', margin: '10px' }}>
 
@@ -430,11 +469,11 @@ export default function CandidateWorkInfo() {
                                 <td><InputField disabled={disEndDate} value={endDate} handler={handleEndDate} type='date' placeholder='End Date' className={styles.inputFields} required='required' ></InputField></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Job Title'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Job Title'></InputLabel></td>
                                 <td colSpan="3"><InputField value={title} handler={handleTitle} type='text' pattern="[a-zA-Z ]*" placeholder='Job Title' className={styles.inputFields} required='required' /></td>
                             </tr>
                             <tr>
-                                <td><InputLabel className={styles.inputLabel} text='Job Type'></InputLabel></td>
+                                <td><InputLabel className={styles.inputLabel} text='*Job Type'></InputLabel></td>
 
                                 <td colSpan="3"> <DropdownField value={jobType} handler={handleJobType} options={['Full time', 'Part time', 'Intern']} className={styles.inputFields} placeholder='select type' />
                                 </td>
