@@ -13,8 +13,8 @@ import auth from '../Hook/auth';
 
 export default function SideBar() {
 
-	// const role = sessionStorage.getItem('user_roleid');
-	const role = '1';
+	const role = sessionStorage.getItem('user_roleid');
+	// const role = '1';
 	
 	const navigate = useNavigate();
 	// const {persona} = useContext(StateContext);
