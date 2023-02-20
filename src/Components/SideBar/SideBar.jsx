@@ -35,6 +35,7 @@ export default function SideBar() {
 					<ul className="sideBarList">
 						{ auth(['4','2','3','1'], role) && <li><NavLink className="sideBarListItem" to="/" activeclassname="active"><HomeIcon className="menuIcon" />Home</NavLink></li>}
 						{ auth(['4','3','2'], role) && <li><NavLink className="sideBarListItem" to="/job/all" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Openings</NavLink></li>}
+						{ auth(['4'], role) && <li><NavLink className="sideBarListItem" to="/interviews" activeclassname="active"><QueuePlayNextIcon className="menuIcon" />Interviews</NavLink></li>}
 						{ auth(['1'], role) && <li><NavLink className="sideBarListItem" to="/my-interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />My Interviews</NavLink></li>}
 						{ auth(['2','3'], role) && <li><NavLink className="sideBarListItem" to="/interview-schedule" activeclassname="active"><TodayIcon className="menuIcon" />Interview Schedule</NavLink></li>}
 						{ auth(['1'], role) && <li><NavLink className="sideBarListItem" to="/candidate/JobList"><GroupAddIcon className="menuIcon" />Available Jobs</NavLink></li>}

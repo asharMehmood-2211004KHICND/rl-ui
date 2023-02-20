@@ -44,6 +44,7 @@ import Location from './Components/Pages/JobPost/DropDownComponents/Location';
 import Perks from './Components/Pages/JobPost/DropDownComponents/Perks';
 import CandidateUsers from './Components/Pages/Users/CandidateUsers';
 import StaffUsers from './Components/Pages/Users/StaffUsers';
+import Interviews from './Components/Pages/Interviews/Interviews';
 
 
 
@@ -92,6 +93,7 @@ function App() {
 				<Route path='/admin/perks' element={<PrivateRoute><Perks/></PrivateRoute>} ></Route>
 				<Route path='/users/candidates/:value' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
 				<Route path='/users/staff' element={<PrivateRoute><StaffUsers/></PrivateRoute>} ></Route>
+				<Route path='/interviews' element={<PrivateRoute><Interviews/></PrivateRoute>} ></Route>
 			</Routes>
 		</BrowserRouter>
 	)
