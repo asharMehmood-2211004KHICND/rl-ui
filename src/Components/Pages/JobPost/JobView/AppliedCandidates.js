@@ -99,12 +99,12 @@ function  AppliedCandidates({JobData}) {
       dataIndex: "appliedDate",
       key: "type",
     },
-    {
-      title: "Status",
-      width: 200,
-      dataIndex: "status",
-      key: "type",
-    },
+    // {
+    //   title: "Status",
+    //   width: 200,
+    //   dataIndex: "status",
+    //   key: "type",
+    // },
     {
       title: "Action",
       key: "action",
