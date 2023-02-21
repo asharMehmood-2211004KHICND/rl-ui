@@ -188,6 +188,9 @@ function CandidatePersonalInfo() {
         navigate("/academic-details");
     }
 
+    const date = new Date()
+    const dateString = date.toISOString().split("T")[0]
+    
     return (
         <>
             {contextHolder}
@@ -233,7 +236,7 @@ function CandidatePersonalInfo() {
                             <td><InputLabel className={styles.inputLabel} text='*Gender'></InputLabel></td>
                             <td className={styles.makeFieldAdjustment}><DropdownField value={gender} handler={handleGender} options={['Male', 'Female', 'Rather not say']} className={styles.halfSize} placeholder='Select' icon='fa-sharp fa-solid fa-person-dress' /></td>
                             <td className={styles.makeLabelAdjustment}><InputLabel className={styles.inputLabel} text='*Birth Date'></InputLabel></td>
-                            <td><InputField value={dob} handler={handleDob} min="" type='date' placeholder='' className={styles.halfSize} required='required' icon='fa-solid fa-calendar-days'></InputField></td>
+                            <td><InputField value={dob} handler={handleDob} max={dateString} type='date' placeholder='' className={styles.halfSize} required='required' icon='fa-solid fa-calendar-days'></InputField></td>
                         </tr>
                         <tr>
                             <td><InputLabel className={styles.inputLabel} text='*CNIC'></InputLabel></td>
