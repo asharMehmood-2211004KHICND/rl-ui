@@ -12,6 +12,7 @@ function InputField({
   pattern,
   accept,
   min,
+  max,
   refling
 }) {
   const handleChange = (e) => {
@@ -32,6 +33,7 @@ function InputField({
       <input
         ref={refling}
         min={min}
+        max={max}
         accept = {accept}
         pattern={pattern}
         disabled={disabled}
