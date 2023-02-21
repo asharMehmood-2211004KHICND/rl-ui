@@ -315,7 +315,7 @@ export default function CandidateskillInfo() {
   }
 
   const onDone = () => {
-    navigate("/")
+    navigate("/my-profile")
   }
 
   return (
