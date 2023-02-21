@@ -363,6 +363,9 @@ function CandidateAcademicInfo() {
         navigate("/profile")
     }
 
+    const date = new Date()
+    const dateString = date.toISOString().split("T")[0]
+
     if (view === 'details') {
         return (
             <>
@@ -482,7 +485,7 @@ function CandidateAcademicInfo() {
                                     </div>
                                 </td>
                                 <td><InputLabel className={styles.inputLabel} text='Completion date'></InputLabel></td>
-                                <td><InputField disabled={disGradDate} value={graduationDate} handler={handleGraduationDate} type='date' placeholder='' className={styles.graduationDate} required='required' /></td>
+                                <td><InputField disabled={disGradDate} value={graduationDate} handler={handleGraduationDate} max={dateString} type='date' placeholder='' className={styles.graduationDate} required='required' /></td>
                             </tr>
                             <tr>
                                 <td><InputLabel className={styles.inputLabel} text='*CGPA/Percentage'></InputLabel></td>
