@@ -6,6 +6,7 @@ import moment from "moment/moment";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import authNagation from "../../../Hook/authNagation";
 import Styled from "./jobview.module.css";
 
 
@@ -126,6 +127,8 @@ function  AppliedCandidates({JobData}) {
               <FontAwesomeIcon icon={faUserGraduate} className={Styled.profileIcon}  />
             </IconButton>
           </Link>
+
+          {authNagation(["3"], sessionStorage.getItem("user_roleid")) && 
           <Link state={{ ...record, JobData }} to={`/scheduleInterview`}>
             
             <IconButton >
@@ -137,7 +140,7 @@ function  AppliedCandidates({JobData}) {
               >
               Schedule
             </Button> */}
-          </Link>
+          </Link>}
          </span>
       ),
     },
