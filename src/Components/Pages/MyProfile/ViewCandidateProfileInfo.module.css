@@ -1,0 +1,124 @@
+.center {
+    text-align: center;
+}
+
+.navBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navBtn {
+    min-width: 120px;
+    font-size: 20px;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    /* background-color: rgb(57, 103, 255); */
+    background-color: rgb(68, 129, 235);
+    color: #fff;
+    cursor: pointer;
+}
+
+.active {
+    min-width: 120px;
+    font-size: 20px;
+    background-color: #252064;
+    margin: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    cursor: pointer;
+}
+
+.subHeading {
+    /* margin: 10px; */
+}
+
+.contentBody {
+    margin: 20px;
+}
+
+.card{
+    margin: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
+    display: flex;
+    /* justify-content: space-between; */
+}
+
+.column {
+    width: 450px;
+}
+
+.line {
+    display: flex;
+}
+
+.tag {
+    width: 200px;
+    font-weight: bold;
+}
+
+.skill {
+    font-size: 15px;
+    padding: 12px;
+    margin: 10px;
+    border-radius: 25px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+
+.dataTable {
+    margin-top: 20px;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    /* border: 2px solid rgb(95, 95, 95); */
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px;
+    border-radius: 5px;
+}
+
+.dataTable th {
+    padding: 10px;
+    border: none;
+    text-transform: capitalize;
+    color: black;
+}
+
+.dataTable th:first-child {
+    text-align: start;
+}
+
+.dataTable tr td {
+    text-align: center;
+    padding: 8px;
+    /* border: 1px solid black; */
+    border-top: 2px solid #909497;
+    color: #4A4C4E;
+}
+
+.dataTable tr td:first-child {
+    text-align: start;
+    color: rgb(76, 76, 187);
+    font-weight: 520;
+}
+
+.downBtn {
+    color: rgb(121, 115, 115);
+    font-size: 1.5rem;
+    background-color: white;
+    outline: none;
+    border: none;
+}
+
+.downBtn:hover {
+    color: red;
+    cursor: pointer;
+}

@@ -10,6 +10,7 @@ import CandidateAcademicInfo from './Components/Pages/profile/CandidateAcademicI
 import CandidateWorkInfo from './Components/Pages/profile/CandidateWorkInfo/CandidateWorkInfo'
 import CandidateSkillsInfo from './Components/Pages/profile/CandidateSkillsInfo/CandidateSkillsInfo'
 import ViewCandidateProfileInfo from './Components/Pages/ViewCandidateProfileInfo/ViewCandidateProfileInfo';
+import MyProfile from './Components/Pages/MyProfile/MyProfile';
 import {
 	BrowserRouter,
 	Routes,
@@ -78,6 +79,7 @@ function App() {
 				<Route path="/scheduleInterview" element={<PrivateRoute><ScheduleInterview /></PrivateRoute>} ></Route>
 				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>
 				<Route path="/view-profile" element={<PrivateRoute><ViewCandidateProfileInfo/></PrivateRoute>} ></Route>
+				<Route path="/my-profile" element={<PrivateRoute><MyProfile/></PrivateRoute>} ></Route>
 				<Route path="/my-interview-schedule" element={<PrivateRoute><CandidateInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/interview-schedule" element={<PrivateRoute><InterviewerInterviewSchedule/></PrivateRoute>} ></Route>
 				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>

@@ -71,7 +71,7 @@ export default function SideBar() {
 				}
 
 					<ul className="sideBarList">
-					{ auth(['1','2','3'], role) && <li className="sideBarListItem"><AccountBoxIcon className="menuIcon" /><Link to="/profile">Profile</Link></li> }
+					{ auth(['1','2','3'], role) && <li><NavLink className="sideBarListItem" to="/profile"><AccountBoxIcon className="menuIcon" />Profile</NavLink></li> }
 						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
 				</div>

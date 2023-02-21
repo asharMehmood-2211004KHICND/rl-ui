@@ -18,8 +18,8 @@ function PersonalInfoTab({ personalData }) {
       /></div>
       {Object.keys(personalData).length === 0 ?
       <>
-        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className={styles.column}>
-          <p>No Data</p>
+        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}} className={styles.card}>
+          No Data
         </div>
       </> :
       <>

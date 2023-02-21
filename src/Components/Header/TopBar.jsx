@@ -19,7 +19,7 @@ export default function TopBar() {
 
 	const navigate = useNavigate();
 	const openProfile = () => {
-		auth(['1','2','3'], role) && navigate('/view-profile')
+		auth(['1','2','3'], role) && navigate('/my-profile')
 	}
 
 	return (
