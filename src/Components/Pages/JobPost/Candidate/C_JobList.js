@@ -72,16 +72,37 @@ function C_JobList() {
       });
   }, [])
 
+
+  const flattenObject = (obj) => {
+    return Object.values(obj).reduce((acc, val) => {
+      if (typeof val === 'object') {
+        return acc + flattenObject(val);
+      } else {
+        return acc + val;
+      }
+    }, '');
+  }
+  
   const onSearch = (value) => {
     const filterData = jobs.filter((jobObject) => {
-      return Object.values(jobObject)
-        .join("")
-        .toLowerCase()
-        .includes(value.toLowerCase());
+      const flattenedObject = flattenObject(jobObject);
+      return flattenedObject.toLowerCase().includes(value.toLowerCase());
     });
     console.log(filterData);
     setFilteredData(filterData);
   };
+
+  
+  // const onSearch = (value) => {
+  //   const filterData = jobs.filter((jobObject) => {
+  //       return Object.values(jobObject)
+  //         .join("")
+  //         .toLowerCase()
+  //         .includes(value.toLowerCase());
+  //   });
+  //   console.log(filterData);
+  //   setFilteredData(filterData);
+  // };
 
   return (
     <div className={styled.jobListMainContainer}>
