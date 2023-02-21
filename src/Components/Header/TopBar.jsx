@@ -35,7 +35,8 @@ export default function TopBar() {
 				<div className="topRight" style={{cursor: 'pointer'}} onClick={openProfile}>
 					<img src={dummymale} className='avatarTop' />
 					<div className="topIconContainer">
-						<span id="user_name">{user}</span> <ArrowDropDownIcon className='menuIcon' />
+						<span id="user_name">{user}</span> 
+						{/* <ArrowDropDownIcon className='menuIcon' /> */}
 					</div>
 				</div>
 

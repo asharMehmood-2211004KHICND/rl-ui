@@ -8,6 +8,7 @@ import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
 import LogoutIcon from '@mui/icons-material/Logout';
 import AccountBoxIcon from '@mui/icons-material/AccountBox';
 import AssignmentIcon from '@mui/icons-material/Assignment';
+import Edit from '@mui/icons-material/Edit';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import auth from '../Hook/auth';
 
@@ -71,7 +72,8 @@ export default function SideBar() {
 				}
 
 					<ul className="sideBarList">
-					{ auth(['1','2','3'], role) && <li><NavLink className="sideBarListItem" to="/profile"><AccountBoxIcon className="menuIcon" />Profile</NavLink></li> }
+					{ auth(['1','2','3'], role) && <li><NavLink className="sideBarListItem" to="/profile"><Edit className="menuIcon" />Update Profile</NavLink></li> }
+					{ auth(['1','2','3'], role) && <li><NavLink className="sideBarListItem" to="/my-profile"><AccountBoxIcon className="menuIcon" />View Profile</NavLink></li> }
 						<li onClick={logout} className="sideBarListItem"><LogoutIcon className="menuIcon" />Logout</li>
 					</ul>
 				</div>

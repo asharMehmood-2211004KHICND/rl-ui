@@ -128,7 +128,7 @@ function  AppliedCandidates({JobData}) {
             </IconButton>
           </Link>
 
-          {authNagation(["3"], sessionStorage.getItem("user_roleid")) && 
+          {authNagation(["1","2","3"], sessionStorage.getItem("user_roleid")) && 
           <Link state={{ ...record, JobData }} to={`/scheduleInterview`}>
             
             <IconButton >
