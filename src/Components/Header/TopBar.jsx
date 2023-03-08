@@ -10,18 +10,13 @@ import auth from '../Hook/auth'
 
 export default function TopBar() {
 
-	let user = sessionStorage.getItem("user_firstname");
-
+	let 	user 	  = sessionStorage.getItem("user_firstname");
+	const 	role 	  = sessionStorage.getItem('user_roleid');
+	const 	navigate  = useNavigate();
 	
-	const role = sessionStorage.getItem('user_roleid');
-	// const role = '4';
-	
-
-	const navigate = useNavigate();
 	const openProfile = () => {
 		auth(['1','2','3'], role) && navigate('/my-profile')
 	}
-
 	return (
 		<div className='topHeader'>
 			<div className="topHeaderWrapper">
@@ -30,7 +25,6 @@ export default function TopBar() {
 					<span className="logoText">
 						Applicant Tracking System
 					</span>
-
 				</div>
 				<div className="topRight" style={{cursor: 'pointer'}} onClick={openProfile}>
 					<img src={dummymale} className='avatarTop' />
@@ -39,8 +33,6 @@ export default function TopBar() {
 						{/* <ArrowDropDownIcon className='menuIcon' /> */}
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	)

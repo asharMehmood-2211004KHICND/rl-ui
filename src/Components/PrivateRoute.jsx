@@ -1,26 +1,23 @@
 import React from 'react'
-import { Navigate } from 'react-router-dom';
+import { Navigate, Route, } from 'react-router-dom';
 import TopBar from './Header/TopBar';
 import SideBar from './SideBar/SideBar';
+import { TopAndSideBar } from './TopSideBar/TopAndSideBar';
 
 
 
-export default function PrivateRoute({ children }) {
+export default function PrivateRoute({  children: Component ,  path}) {
     if (sessionStorage.getItem('user_id') == null) {
         return <Navigate to="/login" />
     }
     else {
-        return (
-            <div className="App">
-                <TopBar />
-                <div className="containerz">
-                    <SideBar />
-                    <div className="pages">
-                        {children}
-                    </div>
-                </div>
-            </div>
-        )
-
+        return (<TopAndSideBar>{Component}</TopAndSideBar>)
+        // return (<Route  ></Route>)
     }
+
+    // (<Route path={path} element={Component} render={(props) => (
+    //     sessionStorage.getItem('user_id') == null
+    //       ? <Component {...props} />
+    //       : <Navigate to='/login' />
+    //   )} />)
 }

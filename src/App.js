@@ -14,6 +14,7 @@ import MyProfile from './Components/Pages/MyProfile/MyProfile';
 import {
 	BrowserRouter,
 	Routes,
+	
 	Route
 } from "react-router-dom";
 
@@ -46,12 +47,11 @@ import Perks from './Components/Pages/JobPost/DropDownComponents/Perks';
 import CandidateUsers from './Components/Pages/Users/CandidateUsers';
 import StaffUsers from './Components/Pages/Users/StaffUsers';
 import Interviews from './Components/Pages/Interviews/Interviews';
+import { TopAndSideBar } from './Components/TopSideBar/TopAndSideBar';
 
 
 
 function App() {
-
-
 
 	return (
 		<BrowserRouter>
@@ -60,42 +60,41 @@ function App() {
 				<Route element={<VerificationEmail/>} path="/forgetpassword" />
 				<Route element={<ForgetRoute><ForgetPassword/></ForgetRoute>} path="/resetpassword" />
 			</Routes>
-
 			<Routes>
-				<Route path="/" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/Dashboard" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/Home" element={<PrivateRoute><Home /></PrivateRoute>} ></Route>
-				<Route path="/profile" element={<PrivateRoute><CandidatePersonalInfo /></PrivateRoute>} ></Route>
-				<Route path="/academic-details" element={<PrivateRoute><CandidateAcademicInfo /></PrivateRoute>} ></Route>
-				<Route path="/work-experience" element={<PrivateRoute><CandidateWorkInfo /></PrivateRoute>} ></Route>
-				<Route path="/skills" element={<PrivateRoute><CandidateSkillsInfo/></PrivateRoute>} ></Route>
-				<Route path="/createStaff" element={<PrivateRoute><CreateStaff /></PrivateRoute>}></Route>
-				<Route path="/createJob" element={<PrivateRoute><CreateJobPage /></PrivateRoute>} ></Route>
-				<Route path="/job/all" element={<PrivateRoute><JobsList /></PrivateRoute>} ></Route>
-				<Route path="/job/update" element={<PrivateRoute><UpdateJobPage /></PrivateRoute>} ></Route>
-				<Route path="/job/view/:jodId" element={<PrivateRoute><IndividualJob /></PrivateRoute>} ></Route>
-				<Route path="/candidate/job/view/:jodId" element={<PrivateRoute><IndividualJobCandidate /></PrivateRoute>} ></Route>
-				<Route path="/candidate/JobList" element={<PrivateRoute>< C_JobList/></PrivateRoute>} ></Route>
-				<Route path="/scheduleInterview" element={<PrivateRoute><ScheduleInterview /></PrivateRoute>} ></Route>
-				<Route path="/addJobHMandInterviewer" element={<PrivateRoute><AddJobHMandInterviewers/></PrivateRoute>} ></Route>
-				<Route path="/view-profile" element={<PrivateRoute><ViewCandidateProfileInfo/></PrivateRoute>} ></Route>
-				<Route path="/my-profile" element={<PrivateRoute><MyProfile/></PrivateRoute>} ></Route>
-				<Route path="/my-interview-schedule" element={<PrivateRoute><CandidateInterviewSchedule/></PrivateRoute>} ></Route>
-				<Route path="/interview-schedule" element={<PrivateRoute><InterviewerInterviewSchedule/></PrivateRoute>} ></Route>
-				<Route path="/my-applications" element={<PrivateRoute><CandidateAppliedJobs/></PrivateRoute>} ></Route>
-				<Route path='/candidate-feedback/:interviewId' element={<PrivateRoute><CandidateFeedback/></PrivateRoute>} ></Route>
-				<Route path='/interviewer-feedback/:interviewId' element={<PrivateRoute><InterviewerFeedback/></PrivateRoute>} ></Route>
-				<Route path='/admin/education' element={<PrivateRoute><Degree/></PrivateRoute>} ></Route>
-				<Route path='/admin/department' element={<PrivateRoute><Department/></PrivateRoute>} ></Route>
-				<Route path='/admin/t-skill' element={<PrivateRoute>< TechnicalSkill/></PrivateRoute>} ></Route>
-				<Route path='/admin/s-skill' element={<PrivateRoute>< SoftSkill/></PrivateRoute>} ></Route>
-				<Route path='/admin/benefit' element={<PrivateRoute><  Benefit /></PrivateRoute>} ></Route>
-				<Route path='/admin/jobType' element={<PrivateRoute><  JobType /></PrivateRoute>} ></Route>
-				<Route path='/admin/location' element={<PrivateRoute><  Location /></PrivateRoute>} ></Route>
-				<Route path='/admin/perks' element={<PrivateRoute><Perks/></PrivateRoute>} ></Route>
-				<Route path='/users/candidates/:value' element={<PrivateRoute><CandidateUsers/></PrivateRoute>} ></Route>
-				<Route path='/users/staff' element={<PrivateRoute><StaffUsers/></PrivateRoute>} ></Route>
-				<Route path='/interviews' element={<PrivateRoute><Interviews/></PrivateRoute>} ></Route>
+				<Route path="/" 									element={<PrivateRoute children={<Home />}	  />} />
+				<Route path="/Dashboard" 							element={<PrivateRoute children={<Home />}    />} />
+				<Route path="/Home" 								element={<PrivateRoute children={<Home />}    />} />
+				<Route path="/profile" 								element={<PrivateRoute children={<CandidatePersonalInfo />} />} />
+				<Route path="/academic-details" 					element={<PrivateRoute children={<CandidateAcademicInfo />}/>} />
+				<Route path="/work-experience" 						element={<PrivateRoute children={<CandidateWorkInfo />}/> } />
+				<Route path="/skills" 								element={<PrivateRoute children={<CandidateSkillsInfo/>}/>} />
+				<Route path="/createStaff" 							element={<PrivateRoute children={<CreateStaff />} />}/>
+				<Route path="/createJob" 							element={<PrivateRoute children={<CreateJobPage />} />} />
+				<Route path="/job/all" 								element={<PrivateRoute children={<JobsList /> } />} />
+				<Route path="/job/update" 							element={<PrivateRoute children={<UpdateJobPage />}/>  } />
+				<Route path="/job/view/:jodId" 						element={<PrivateRoute children={<IndividualJob /> } />} />
+				<Route path="/candidate/job/view/:jodId" 			element={<PrivateRoute children={<IndividualJobCandidate />} />} />
+				<Route path="/candidate/JobList" 					element={<PrivateRoute children={< C_JobList/>}/>} />
+				<Route path="/scheduleInterview" 					element={<PrivateRoute children={<ScheduleInterview />} />} />
+				<Route path="/addJobHMandInterviewer" 				element={<PrivateRoute children={ <AddJobHMandInterviewers/>} />} />
+				<Route path="/view-profile" 						element={<PrivateRoute children={<ViewCandidateProfileInfo/>}/>} />
+				<Route path="/my-profile" 							element={<PrivateRoute children={<MyProfile/>} /> } />
+				<Route path="/my-interview-schedule" 				element={<PrivateRoute children={<CandidateInterviewSchedule/>}/> } />
+				<Route path="/interview-schedule" 					element={<PrivateRoute children={<InterviewerInterviewSchedule/>}/> } />
+				<Route path="/my-applications" 						element={<PrivateRoute children={<CandidateAppliedJobs/>}/> } />
+				<Route path='/candidate-feedback/:interviewId'		element={<PrivateRoute children={<CandidateFeedback/>}/> } />
+				<Route path='/interviewer-feedback/:interviewId'	element={<PrivateRoute children={<InterviewerFeedback/>}/> } />
+				<Route path='/admin/education' 						element={<PrivateRoute children={<Degree/>} />} />
+				<Route path='/admin/department' 					element={<PrivateRoute children={<Department/>} /> } />
+				<Route path='/admin/t-skill' 						element={<PrivateRoute children={< TechnicalSkill/>}/> } />
+				<Route path='/admin/s-skill' 						element={<PrivateRoute children={< SoftSkill/>}/> } />
+				<Route path='/admin/benefit' 						element={<PrivateRoute children={<  Benefit />}/>  } />
+				<Route path='/admin/jobType' 						element={<PrivateRoute children={<  JobType />}/>} />
+				<Route path='/admin/location' 						element={<PrivateRoute children={<  Location />}/>} />
+				<Route path='/admin/perks' 							element={<PrivateRoute children={<Perks/>}/>} />
+				<Route path='/users/candidates/:value' 				element={<PrivateRoute children={<CandidateUsers/>}/>} />
+				<Route path='/users/staff' 							element={<PrivateRoute children={<StaffUsers/>}/>} />
+				<Route path='/interviews' 							element={<PrivateRoute children={<Interviews/>}/>} />
 			</Routes>
 		</BrowserRouter>
 	)
