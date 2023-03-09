@@ -53,11 +53,11 @@
     position: relative;
       
 }
-
+/* 
 .HeartIcon:hover {
     color: red;
-    /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
-}
+  
+} */
 
 .categoryTag{
     border: 1px solid var(--main-color);
@@ -68,3 +68,8 @@
 .newTag{
     color: var(--main-color);
 }
+
+.red-heart {
+    color: red;
+  }
+  

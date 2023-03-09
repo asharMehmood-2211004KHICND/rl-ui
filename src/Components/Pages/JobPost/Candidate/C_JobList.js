@@ -22,7 +22,15 @@ function C_JobList() {
       //   category: "IT",
       // }
     ]
+
+    
+
   );
+
+
+  const [favourites, setFavourites] = useState([]);
+
+  
 
   const [filteredData, setFilteredData] = useState(jobs);
   
@@ -123,7 +131,7 @@ function C_JobList() {
       <List
         itemLayout="vertical"
         dataSource={filteredData}
-        renderItem={(job) => <C_Job job={job} />}
+        renderItem={(job) => <C_Job job={job} favourites={favourites} setFavourites={setFavourites}/>}
         pagination={{
           onChange: (page) => {
             console.log(page);
