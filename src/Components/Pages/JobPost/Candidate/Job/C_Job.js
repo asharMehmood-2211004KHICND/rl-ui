@@ -74,15 +74,16 @@ export default function Job({ job }) {
               marginLeft: "auto",
             }}
           >
-            {/* <FontAwesomeIcon icon={faHeart} /> */}
-            {/* <FontAwesomeIcon
+            {/* <FontAwesomeIcon icon={faHeart} />
+            <FontAwesomeIcon
               icon={faHeart  }
               style={{ fontSize: 20, marginRight: 8 }}
             /> */}
-            {/* <CiHeart className={styled.HeartIcon} /> */}
+            <CiHeart className={styled.HeartIcon} />
           </div>
         </div>
       </Card>
+      {/* <h2>mohsen seth</h2> */}
     </div>
   );
 }
