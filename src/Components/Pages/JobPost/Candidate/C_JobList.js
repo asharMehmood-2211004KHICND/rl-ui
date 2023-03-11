@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import C_Job from "./Job/C_Job";
 import styled from "./C_JobList.module.css";
 import swal from "sweetalert";
+import { FavouriteJobsList } from "./FavouriteJobs/FavouriteJobsList";
+
 
 const BaseURL = process.env.REACT_APP_API_URL1;
 
@@ -127,6 +129,8 @@ function C_JobList() {
           }}
         />
       </div>
+
+      <FavouriteJobsList favouritesJobs={favourites} setFavoriteJobs={setFavourites} ></FavouriteJobsList>
 
       <List
         itemLayout="vertical"

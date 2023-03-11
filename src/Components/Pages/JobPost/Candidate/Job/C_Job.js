@@ -11,6 +11,7 @@ export default function Job({ job , favourites,setFavourites}) {
 
   const [isfavourite, setIsFavourite] = React.useState(false);
 
+  const user_id= sessionStorage.getItem("user_id") 
 
   const isNew = Date.now() - Date.parse(job.postDate) < 604800000;
   // const companyLogo = "https://picsum.photos/200";
@@ -18,13 +19,85 @@ export default function Job({ job , favourites,setFavourites}) {
   // const momentDate = moment(job.postDate);
 
 
-  const toggleFavorite = () => {
-    if(isfavourite==false){
-      setIsFavourite(true);
-      console.log("added to favourite");
+  // const toggleFavorite = () => {
+  //   const storageKey = `fav_${job.id}`;
+  //   const storedValue = sessionStorage.getItem(storageKey);
 
+  //     if(storedValue === 'true'){
+  //       console.log( sessionStorage.getItem("user_id"));
+
+  //       fetch('http://localhost:5000/favourites/', {
+  //         method: 'POST',
+  //         headers: {
+  //           'Content-Type': 'application/json'
+  //         },
+  //         body: JSON.stringify({ 
+  //           jobId:  job.id,
+  //           userId: sessionStorage.getItem("user_id"), 
+  //         })
+  //       })
+  //       .then(response => response.json())
+  //       .then(data => console.log(data))
+  //       .catch(error => console.error(error));
+        
+  //       sessionStorage.setItem(`fav_${job.id}`, true);
+
+  //       setIsFavourite(true)
+
+  //       console.log(`${job.id} added to fav`);
+  //     }else{
+
+  //       fetch(`http://localhost:5000/favourites/${user_id}/${job.id}`, {
+  //         method: 'DELETE'
+  //       })
+  //       .then(response => response.json())
+  //       .then(data => console.log(data))
+  //       .catch(error => console.error(error));
+
+  //       sessionStorage.removeItem(`fav_${job.id}`);
+
+
+  //       setIsFavourite(false)
+  //       console.log(`${job.id} removed from fav`);
+  //     }
+  // }
+
+  const toggleFavorite = () => {
+    const storageKey = `fav_${job.id}`;
+    const storedValue = sessionStorage.getItem(storageKey);
+  
+    if (storedValue === 'true') {
+      fetch(`http://localhost:5000/favourites/${user_id}/${job.id}`, {
+        method: 'DELETE'
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+  
+      sessionStorage.removeItem(storageKey);
+      setIsFavourite(false);
+      console.log(`${job.id} removed from fav`);
+    } else {
+      fetch('http://localhost:5000/favourites/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          jobId:  job.id,
+          userId: sessionStorage.getItem("user_id"), 
+        })
+      })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error(error));
+  
+      sessionStorage.setItem(storageKey, 'true');
+      setIsFavourite(true);
+      console.log(`${job.id} added to fav`);
     }
   }
+  
 
 
 
